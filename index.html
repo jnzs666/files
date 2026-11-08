@@ -6,25 +6,38 @@
 <style>
 :root{--bg:#faf9f6;--ink:#26231f;--sub:#7a7368;--line:#e3dcd0;--head:#33465c;--acc:#a4622a;--new:#b8452c}
 *{box-sizing:border-box}
-html{scroll-padding-top:132px}
+html{scroll-padding-top:140px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;font-size:14.5px;line-height:1.7}
-.top{position:sticky;top:0;z-index:20;background:rgba(250,249,246,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:30;background:rgba(250,249,246,.98);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .in{max-width:1200px;margin:0 auto;padding:12px 22px 9px}
 .ttl{font-size:19px;font-weight:700;margin:0;display:inline-block}
 .stat{font-size:12.5px;color:var(--sub);margin-left:9px}
-#q{width:100%;padding:9px 14px;font-size:14px;border:1px solid var(--line);border-radius:8px;background:#fff;outline:none;font-family:inherit;margin:8px 0 8px}
+#q{width:100%;padding:9px 14px;font-size:14px;border:1px solid var(--line);border-radius:8px;background:#fff;outline:none;font-family:inherit;margin:8px 0 9px}
 #q:focus{border-color:var(--head)}
-.tags{display:flex;gap:7px;flex-wrap:wrap}
-.tag{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-size:13.5px;
-  padding:4px 13px;border:1px solid var(--line);background:#fff;color:var(--head);border-radius:16px}
+.nav{display:flex;gap:7px;flex-wrap:wrap}
+.drop{position:relative}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13.5px;cursor:pointer;
+  padding:5px 12px;border:1px solid var(--line);background:#fff;color:var(--head);border-radius:16px;transition:.12s}
 .tag:hover{border-color:var(--acc);color:var(--acc)}
-.tag i{font-style:normal;font-size:12px;color:var(--sub)}
+.drop.open .tag{background:var(--head);color:#fff;border-color:var(--head)}
+.tag .n{font-size:12px;opacity:.65}
+.tag .car{font-size:10px;transition:.18s;display:inline-block}
+.drop.open .tag .car{transform:rotate(180deg)}
+.menu{display:none;position:absolute;left:0;top:calc(100% + 7px);min-width:192px;z-index:40;
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 26px rgba(70,55,35,.16);
+  padding:6px;overflow:hidden}
+.drop.open .menu{display:block}
+.mh{font-size:11.5px;color:var(--sub);padding:5px 10px 6px;border-bottom:1px solid #f0ece3;margin-bottom:4px}
+.menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;
+  color:#3a4956;font-size:13.5px;padding:7px 10px;border-radius:6px;white-space:nowrap}
+.menu a:hover{background:#f3efe5;color:var(--acc)}
+.menu a i{font-style:normal;font-size:12px;color:var(--sub)}
 .wrap{max-width:1200px;margin:0 auto;padding:16px 22px 80px}
 .board{margin:0 0 30px}
 .board h2{font-size:19px;margin:0 0 4px;padding-left:11px;border-left:4px solid var(--head);
-  display:flex;align-items:baseline;gap:9px;scroll-margin-top:132px}
+  display:flex;align-items:baseline;gap:9px;scroll-margin-top:140px}
 .bnum{font-size:12.5px;color:var(--sub);font-weight:400}
-.grp{margin:14px 0 0;scroll-margin-top:132px}
+.grp{margin:14px 0 0;scroll-margin-top:140px}
 .grp h3{font-size:14.5px;margin:0 0 9px;color:var(--acc);display:flex;align-items:center;gap:8px;font-weight:700}
 .grp h3::after{content:"";flex:1;height:1px;background:var(--line)}
 .cnt{font-size:12px;color:var(--sub);font-weight:400;background:#efebe2;border-radius:10px;padding:1px 8px;order:2}
@@ -37,19 +50,18 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei
 .new{display:inline-block;background:#fde9e3;color:var(--new);font-size:11px;font-weight:700;
   padding:0 6px;border-radius:8px;margin-left:6px;vertical-align:middle}
 .foot{margin-top:34px;padding-top:13px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
-.hide{display:none !important}
 @media (max-width:760px){
-  html{scroll-padding-top:150px}
-  .board h2,.grp{scroll-margin-top:150px}
+  html{scroll-padding-top:158px}
+  .board h2,.grp{scroll-margin-top:158px}
   .grid{grid-template-columns:1fr}
 }
 </style></head><body>
 
 <div class="top"><div class="in">
   <span class="ttl">文件库</span>
-  <span class="stat">共 59 份 · 6 个板块 · 13 个子目录 · 点卡片直接打开</span>
+  <span class="stat">共 59 份 · 点板块看子目录 · 点卡片直接打开</span>
   <input id="q" type="search" placeholder="搜标题……">
-  <div class="tags"><a class="tag" href="#b0">经营管理<i>20</i></a><a class="tag" href="#b1">人力资源<i>5</i></a><a class="tag" href="#b2">抖音运营<i>11</i></a><a class="tag" href="#b3">产品开发<i>11</i></a><a class="tag" href="#b4">供应链<i>2</i></a><a class="tag" href="#b5">其他<i>10</i></a></div>
+  <div class="nav"><div class="drop" data-bi="0"><button class="tag" type="button">经营管理<span class="n">20</span><span class="car">▾</span></button><div class="menu"><div class="mh">经营管理 · 4 个子目录</div><a href="#s0-0">战略与规划<i>3</i></a><a href="#s0-1">经营分析<i>6</i></a><a href="#s0-2">会议主持<i>6</i></a><a href="#s0-3">法务与合规<i>5</i></a></div></div><div class="drop" data-bi="1"><button class="tag" type="button">人力资源<span class="n">5</span><span class="car">▾</span></button><div class="menu"><div class="mh">人力资源 · 3 个子目录</div><a href="#s1-0">招聘<i>3</i></a><a href="#s1-1">薪酬与绩效<i>1</i></a><a href="#s1-2">简历与人才<i>1</i></a></div></div><div class="drop" data-bi="2"><button class="tag" type="button">抖音运营<span class="n">11</span><span class="car">▾</span></button><div class="menu"><div class="mh">抖音运营 · 3 个子目录</div><a href="#s2-0">抖音项目<i>5</i></a><a href="#s2-1">达人数据<i>2</i></a><a href="#s2-2">内容营销<i>4</i></a></div></div><div class="drop" data-bi="3"><button class="tag" type="button">产品开发<span class="n">11</span><span class="car">▾</span></button><div class="menu"><div class="mh">产品开发 · 1 个子目录</div><a href="#s3-0">产品线与品类<i>11</i></a></div></div><div class="drop" data-bi="4"><button class="tag" type="button">供应链<span class="n">2</span><span class="car">▾</span></button><div class="menu"><div class="mh">供应链 · 1 个子目录</div><a href="#s4-0">库存与看板<i>2</i></a></div></div><div class="drop" data-bi="5"><button class="tag" type="button">其他<span class="n">10</span><span class="car">▾</span></button><div class="menu"><div class="mh">其他 · 1 个子目录</div><a href="#s5-0">工具与技能<i>10</i></a></div></div></div>
 </div></div>
 
 <div class="wrap">
@@ -58,11 +70,43 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei
 </div>
 
 <script>
+var drops=[].slice.call(document.querySelectorAll('.drop'));
+
+function closeAll(except){
+  drops.forEach(function(d){ if(d!==except) d.classList.remove('open'); });
+}
+
+drops.forEach(function(d){
+  var tag=d.querySelector('.tag');
+  tag.addEventListener('click',function(e){
+    e.stopPropagation();
+    var willOpen=!d.classList.contains('open');
+    closeAll(d);
+    d.classList.toggle('open', willOpen);
+  });
+  // 点菜单里的项：跳转并收起
+  [].slice.call(d.querySelectorAll('.menu a')).forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.stopPropagation();
+      var id=a.getAttribute('href').slice(1);
+      var el=document.getElementById(id);
+      if(el){ el.scrollIntoView({behavior:'smooth',block:'start'}); }
+      d.classList.remove('open');
+    });
+  });
+  // 点菜单本身不关闭（阻止冒泡）
+  d.querySelector('.menu').addEventListener('click',function(e){ e.stopPropagation(); });
+});
+
+// 点别处就消失
+document.addEventListener('click',function(){ closeAll(null); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeAll(null); });
+
+// 搜索
 var q=document.getElementById('q');
 var cards=[].slice.call(document.querySelectorAll('.card'));
 var grps=[].slice.call(document.querySelectorAll('.grp'));
 var boards=[].slice.call(document.querySelectorAll('.board'));
-
 q.addEventListener('input',function(){
   var v=q.value.trim().toLowerCase();
   cards.forEach(function(c){ c.style.display=(!v||c.dataset.k.indexOf(v)>-1)?'':'none'; });
