@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theratools 空气波 · 产品整理与内容营销方案 v1</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 0 80px;
+    background: #fdf6f0; color: #5d4e6d;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    font-size: 15px; line-height: 1.75;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 26px; }
+  .banner {
+    background: linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);
+    padding: 44px 26px 38px; margin-bottom: 34px;
+  }
+  .banner .inner { max-width: 1080px; margin: 0 auto; }
+  .banner h1 { margin: 0 0 10px; font-size: 30px; font-weight: 600; letter-spacing: .5px; color: #4a3f5c; }
+  .banner .sub { font-size: 15px; color: #6b5f7c; }
+  .banner .meta { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    display: inline-block; padding: 4px 13px; border-radius: 999px;
+    background: rgba(255,255,255,.72); color: #6b5f7c; font-size: 12.5px;
+  }
+  h2 {
+    font-size: 21px; font-weight: 600; margin: 46px 0 18px; padding-left: 14px;
+    border-left: 5px solid #ffb5c5; color: #4a3f5c; line-height: 1.4;
+  }
+  h2 .num { color: #b4a7c4; font-weight: 500; margin-right: 8px; }
+  h3 { font-size: 16.5px; font-weight: 600; margin: 30px 0 12px; color: #4a3f5c; }
+  h4 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: #6b5f7c; }
+  p { margin: 10px 0; }
+  .card {
+    background: #fff; border-radius: 14px; padding: 22px 24px; margin: 16px 0;
+    box-shadow: 0 2px 14px rgba(180,160,200,.12);
+  }
+  .lead {
+    background: #fff; border-radius: 14px; padding: 24px 26px; margin: 0 0 10px;
+    box-shadow: 0 2px 14px rgba(180,160,200,.12); border-left: 5px solid #ffb5c5;
+  }
+  .lead .big { font-size: 19px; font-weight: 600; color: #4a3f5c; line-height: 1.6; }
+  .lead .small { font-size: 14px; color: #9a8caf; margin-top: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+  thead th {
+    background: #fbf5fb; color: #6b5f7c; font-weight: 600; text-align: left;
+    padding: 11px 12px; border-bottom: 1px solid #f0e4f0; font-size: 13px;
+  }
+  tbody td { padding: 11px 12px; border-bottom: 1px solid #f0e4f0; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #fefcfd; }
+  .win { color: #6ec49b; font-weight: 600; }
+  .lose { color: #f28a97; font-weight: 600; }
+  .mid { color: #b4a7c4; }
+  ul, ol { margin: 10px 0; padding-left: 22px; }
+  li { margin: 7px 0; }
+  .kv { display: grid; grid-template-columns: 150px 1fr; gap: 6px 16px; font-size: 14px; }
+  .kv .k { color: #9a8caf; }
+  .kv .v { color: #5d4e6d; }
+  .warn {
+    background: #fff8f5; border-radius: 14px; padding: 22px 24px; margin: 18px 0;
+    border-left: 5px solid #ffb3a7; box-shadow: 0 2px 14px rgba(180,160,200,.12);
+  }
+  .warn h3 { margin-top: 0; color: #c96a56; }
+  .good {
+    background: #f6fdf9; border-radius: 14px; padding: 22px 24px; margin: 18px 0;
+    border-left: 5px solid #b8ead1; box-shadow: 0 2px 14px rgba(180,160,200,.12);
+  }
+  .good h3 { margin-top: 0; color: #3d9d76; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .mini {
+    background: #fff; border-radius: 14px; padding: 18px 20px;
+    box-shadow: 0 2px 14px rgba(180,160,200,.12); border-top: 4px solid #d8bfff;
+  }
+  .mini.t2 { border-top-color: #a8d8ff; }
+  .mini.t3 { border-top-color: #b8ead1; }
+  .mini.t4 { border-top-color: #ffdca8; }
+  .mini h4 { margin: 0 0 8px; font-size: 15px; color: #4a3f5c; }
+  .mini p { font-size: 13.5px; color: #7d718f; margin: 6px 0 0; line-height: 1.65; }
+  .idea {
+    background: #fff; border-radius: 10px; padding: 11px 15px; margin: 8px 0;
+    font-size: 13.5px; border-left: 3px solid #e2f0cb;
+  }
+  .idea b { color: #6b5f7c; }
+  .foot {
+    margin-top: 52px; padding-top: 22px; border-top: 2px solid #f0e4f0;
+    font-size: 12.5px; color: #b4a7c4; line-height: 1.9;
+  }
+  @media (max-width: 820px) {
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    .kv { grid-template-columns: 110px 1fr; }
+    table { font-size: 12.5px; }
+    thead th, tbody td { padding: 9px 8px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .banner { background: #fdf6f0; }
+    .card, .mini, .lead, .warn, .good { box-shadow: none; border: 1px solid #f0e4f0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="inner">
+    <h1>空气波 · 产品整理与内容营销方案</h1>
+    <div class="sub">Theratools ｜ 从康复医学与产品参数出发，看清它真正强在哪、哪里不能吹</div>
+    <div class="meta">
+      <span class="tag">版本 v1</span>
+      <span class="tag">2026-09-21</span>
+      <span class="tag">主阵地：小红书</span>
+      <span class="tag">衔接 9 月千川作战表</span>
+      <span class="tag">含合规话术替换表</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="lead">
+  <div class="big">核心判断：空气波真正打赢的不是筋膜枪，是"懒"。</div>
+  <div class="small">筋膜枪需要你动手、够得着、还得使劲；空气波是你躺下、套上、按一下，20 分钟后腿就轻了。<b>这个品类的结构性优势是"操作成本为零"</b>——不用动手，不用找人帮忙，不累。使用门槛低意味着使用频率高，频率高才有口碑和复购。小红书的内容要围绕这个点打，而不是围绕 mmHg 数字打。<br><br>第二句判断：<b>不要跟着竞品比"最高压力"，也不要比"腔数多"。</b>这两个方向的研究证据都不支持，卷进去只会让自己越讲越虚，而且离合规红线越来越近。</div>
+</div>
+
+<h2><span class="num">01</span>产品认知：空气波到底是什么</h2>
+
+<div class="card">
+  <div class="kv">
+    <div class="k">学名</div><div class="v">间歇性充气加压疗法（IPC, Intermittent Pneumatic Compression），也叫梯度压力治疗、循环压力治疗</div>
+    <div class="k">家用叫法</div><div class="v">气压腿套、气压裤、空气波腿套、气压恢复靴、compression boots</div>
+    <div class="k">机制</div><div class="v">多腔气囊按"远端→近端"顺序充放气，形成波浪式梯度压力，模拟人体"肌肉泵"，推动静脉血与淋巴液向心回流</div>
+    <div class="k">工作循环</div><div class="v">充气（挤压、推动液体上行）→ 保压 → 放气（血管再充盈），循环往复</div>
+    <div class="k">关键区别</div><div class="v">它做的是"循环"，不是"敲打"。和筋膜枪、按摩椅的原理完全不同类——这是内容说服力的起点</div>
+  </div>
+</div>
+
+<p>把这个机制讲清楚的类比是：<b>下肢静脉本身没有泵</b>，它靠小腿肌肉收缩把血往上挤回来。所以你久坐久站，泵就停了；空气波是给腿外接了一个泵。这个说法既准确，又不需要任何疗效宣称，是天然合规的表达。</p>
+
+<h2><span class="num">02</span>参数基线：Theratools 在售款 vs 国际竞品</h2>
+
+<h3>Theratools 在售参数（公开商品页核对）</h3>
+<table>
+  <thead><tr><th style="width:32%">参数项</th><th>在售标注</th></tr></thead>
+  <tbody>
+    <tr><td>气囊腔数</td><td>6 腔（部分基础款 3–4 腔）</td></tr>
+    <tr><td>最大压力</td><td>240 mmHg（部分款标注 260 mmHg）</td></tr>
+    <tr><td>压力档位</td><td>5 档 / 8 档力度可调</td></tr>
+    <tr><td>按摩模式</td><td>6 种（恢复模式、放松模式、脉冲按摩等）</td></tr>
+    <tr><td>加热功能</td><td>部分款 2–3 档加热</td></tr>
+    <tr><td>覆盖范围</td><td>臀腿一体：脚面 → 小腿 → 大腿 → 臀部下沿</td></tr>
+    <tr><td>操控方式</td><td>触屏 / 按键 / APP 蓝牙智控（部分款）</td></tr>
+    <tr><td>认证</td><td>FDA / CE（部分款）</td></tr>
+    <tr><td>专属款</td><td>青少年款（身高 170cm 以下专属适配设计）</td></tr>
+    <tr><td>价格带</td><td>¥798（基础腿部）– ¥1626（气压裤常卖价）</td></tr>
+  </tbody>
+</table>
+
+<h3>国际主流竞品对照</h3>
+<table>
+  <thead>
+    <tr><th style="width:26%">品牌型号</th><th style="width:16%">腔 / 区</th><th style="width:16%">压力范围</th><th style="width:20%">操控</th><th>参考价</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hyperice Normatec 3</td><td>5 区重叠</td><td>30–110 mmHg</td><td>控制器 + App</td><td>约 $899</td></tr>
+    <tr><td>Hyperice Normatec Go</td><td>5 区</td><td>20–80 mmHg</td><td>App</td><td>—</td></tr>
+    <tr><td>Therabody RecoveryAir JetBoots Prime</td><td>4 腔重叠</td><td>25–100 mmHg</td><td>无线内置泵 + App</td><td>约 $550</td></tr>
+    <tr><td>Air Relax Pro AR-4.0</td><td>4 腔</td><td>40–170 mmHg</td><td>触屏控制器</td><td>约 $475</td></tr>
+    <tr><td>SLSAIR C6</td><td>6 腔</td><td>20–200 mmHg</td><td>单腔独立控制</td><td>低价带</td></tr>
+    <tr><td><b>Theratools 气压裤</b></td><td><b>6 腔</b></td><td><b>最高 240–260 mmHg</b></td><td><b>触屏 / APP</b></td><td><b>¥1476–1626</b></td></tr>
+  </tbody>
+</table>
+
+<div class="good">
+  <h3>读这张表要读出的三件事</h3>
+  <ol style="margin-bottom:0">
+    <li><b>腔数和压力上限我们都不输，价格是国际大牌的四分之一左右。</b>Normatec 3 约 $899（折人民币六千多），我们一千六。这是最朴素也最有说服力的优势。</li>
+    <li><b>但压力数字不要用来"压"竞品。</b>国际大牌把上限设在 100–110 mmHg 不是做不到，是不需要——研究显示运动恢复的有效区间在 60–80 mmHg，超过 100 mmHg 没有证据显示更好，反而更容易不适。所以我们讲 240 mmHg 的正确说法是"<b>覆盖专业康复区间，档位可往下调</b>"，而不是"压强更大"。</li>
+    <li><b>不要卷腔数。</b>业内的选购共识已经明确：腔数多能让挤压过渡更平滑，但腔数本身不能证明恢复效果更好。谁先说破这一点，谁就显得专业。</li>
+  </ol>
+</div>
+
+<h2><span class="num">03</span>康复医学视角：它做了什么，以及证据到哪为止</h2>
+
+<div class="grid3">
+  <div class="mini">
+    <h4>四条生理效应</h4>
+    <p>① <b>促进静脉回流</b>——加压减少静脉淤血；② <b>改善淋巴循环</b>——淋巴系统自己没有泵，只能靠肌肉运动和外部压力推动，所以顺序加压对它特别有效；③ <b>增强动脉灌注</b>——放气期血管反应性扩张；④ <b>副交感激活</b>——被动节律性按压本身就是一种放松，会降低皮质醇。</p>
+  </div>
+  <div class="mini t2">
+    <h4>治疗参数（物理治疗通用）</h4>
+    <p>压力：常规 30–120 mmHg；静脉相关问题 40–60；淋巴水肿 30–60；术后水肿 40–70；<b>健康人群运动恢复 60–100</b>。<br>单次时长：20–45 分钟，运动恢复 20–30 分钟即可。<br>频率：运动后或每日 1–2 次。<br>体位：肢体略高于心脏，效果更好。</p>
+  </div>
+  <div class="mini t3">
+    <h4>医院场景 vs 家用场景</h4>
+    <p><b>医院场景证据很强</b>——DVT（深静脉血栓）预防是证据等级 A 的成熟医学应用，淋巴水肿管理同样是标准疗法。<br><b>家用运动恢复场景证据较弱</b>——这一点下面单独讲，因为它直接决定我们的话术边界。</p>
+  </div>
+</div>
+
+<h3>证据边界：这是全案最需要诚实的一节</h3>
+<div class="warn">
+  <h3>研究怎么说</h3>
+  <ul>
+    <li><b>主观感受，证据较好。</b>2022 年发表于 Journal of Clinical Medicine 的系统综述与 meta 分析，汇总多项研究后发现：压缩治疗对减轻延迟性肌肉酸痛（DOMS）有<b>中等效应量</b>，对"主观恢复感"也有中等效应。</li>
+    <li><b>客观运动表现，证据弱。</b>2024 年 Biology of Sport 的系统综述分析了运动员群体的下肢 IPC 研究，结论是该领域<b>仍处早期阶段，未见一致优于其他恢复方式</b>。2021 年 Journal of Sport Rehabilitation 的评析指出：IPC 的即时镇痛效果<b>不优于按摩</b>，1–2 周窗口内也<b>没有功能性恢复优势</b>。</li>
+    <li><b>甚至有反例。</b>2019 年一项骑行研究显示，使用压缩靴后第二组运动的血乳酸水平反而更高。</li>
+  </ul>
+  <p style="margin-bottom:0">英文圈对这个品类的通行总结是一句话：<b>"压缩靴能可靠地让你感觉更好，但大概不会让你第二天真的更快。"</b></p>
+</div>
+
+<div class="good">
+  <h3>这个边界不是坏消息，它正好等于我们的内容策略</h3>
+  <p style="margin-bottom:0">把上面的结论翻译成一句话就是——<b>卖"感觉"，不卖"成绩"</b>。<br>可以说：腿变轻了、不那么沉了、第二天不那么难受、睡前放松、久坐后不那么胀。<br>不能说：跑得更快、成绩提升、恢复时间缩短、乳酸清除更快。<br>巧的是，能说的这一半，正好也是合规允许说的那一半。证据边界和合规红线在这里重合了，所以这条线不会让我们内容变弱，反而让我们讲得比竞品更可信。</p>
+</div>
+
+<h2><span class="num">04</span>竞品格局与差异化定位</h2>
+
+<table>
+  <thead><tr><th style="width:20%">竞争层级</th><th style="width:26%">代表</th><th style="width:26%">他们的强项</th><th>我们的打法</th></tr></thead>
+  <tbody>
+    <tr><td><b>国际专业品牌</b></td><td>Hyperice Normatec、Therabody</td><td>心智制高点、专业运动员背书、App 生态</td><td>不硬碰品牌，用"参数不输 + 价格四分之一"错位竞争</td></tr>
+    <tr><td><b>跨境白牌</b></td><td>Air Relax、SLSAIR、亚马逊无牌</td><td>低价、参数堆得高</td><td>用"康复渠道同源"和品控做区隔，不打价格战</td></tr>
+    <tr><td><b>国内械字号</b></td><td>怡辉等</td><td>有医疗器械注册证，可讲医疗用途</td><td>⚠️ 他们有资质路径，我们若按按摩器卖，绝不能照抄话术</td></tr>
+    <tr><td><b>相邻品类</b></td><td>筋膜枪、腿部按摩仪、泡脚桶、按摩椅</td><td>抢同一笔"放松预算"</td><td>用"分工"叙事：它们管局部和主动，空气波管整体循环和被动</td></tr>
+  </tbody>
+</table>
+
+<div class="card">
+  <h3 style="margin-top:0">定位切口：运动康复级的「臀腿一体」恢复系统</h3>
+  <p>三个别人给不了的东西：</p>
+  <ul style="margin-bottom:0">
+    <li><b>臀腿一体全包裹。</b>Normatec 和 Therabody 都止于大腿。而臀大肌、腘绳肌恰恰是深蹲、硬拉、跑者最需要照顾、又最难自己够到的部位。这是产品层的硬差异，也是最好拍出来给用户看的差异。</li>
+    <li><b>青少年专属款。</b>身高 170cm 以下专属适配设计，竞品完全没有。这是一个没人跟我们抢的位置——而作战表里它客单 ¥1600、利润最厚。</li>
+    <li><b>康复门诊同源。</b>Theratools 的主线是康复从业者渠道（筋膜刀、电动治疗床、RRT 同属"手法治疗"线），不是跨境白牌。这是撑住价格和信任的底座。</li>
+  </ul>
+</div>
+
+<h2><span class="num">05</span>合规红线：开工前必须先确认的一件事</h2>
+
+<div class="warn">
+  <h3>⚠️ 先问清楚：我们是按"按摩器"还是按"医疗器械"卖？</h3>
+  <p>这决定了 80% 的话术边界，内容团队不能自己判断。</p>
+  <ul>
+    <li><b>按按摩器类目</b> → 适用《广告法》第十七条：<b>禁止涉及疾病治疗功能，不得使用医疗用语</b>。"预防深静脉血栓""治疗静脉曲张""淋巴水肿""排毒"全部不能说。</li>
+    <li><b>按医疗器械</b> → 需前置广告审查，可讲注册证载明的适用范围，但仍<b>不得做功效断言、不得说明有效率、不得与其他器械比较功效、不得用代言人</b>（第十六条）。</li>
+  </ul>
+  <p style="margin-bottom:0"><b>特别提醒：</b>竞品"怡辉"的公开内容里标了医疗器械注册证号（冀械注准 20222090413），并直接写"预防深静脉血栓"。<b>他们有资质路径，我们如果没有，照搬这套话术就是直接踩线。</b>这是本品类最容易出事的地方。<br><br>另外，市面上大量同类内容（淘宝好物网、搜狐自媒体等）里出现"改善率 76%""韩国理疗院同源技术"这类无法验证的数据——<b>一律不得引用</b>，它们既是虚假宣传风险，也会拉低品牌专业度。</p>
+</div>
+
+<h3>话术替换表（内容团队逐条对照）</h3>
+<table>
+  <thead><tr><th style="width:46%">✕ 不能写 / 不能说</th><th>✓ 替换成</th></tr></thead>
+  <tbody>
+    <tr><td>预防深静脉血栓 / 防血栓</td><td>久坐久站后的腿部放松（避开"血栓"这个病理概念）</td></tr>
+    <tr><td>治疗静脉曲张、改善静脉功能</td><td>腿部包裹式按压放松</td></tr>
+    <tr><td>淋巴排毒 / 促进淋巴排毒</td><td>顺序加压放松（"排毒"属医疗和功效用语）</td></tr>
+    <tr><td>消除水肿 / 消肿</td><td>缓解久坐久站后的沉重感、酸胀感</td></tr>
+    <tr><td>瘦腿、腿围缩小 1.5cm</td><td>使用后的放松与轻盈感（不做任何数值承诺）</td></tr>
+    <tr><td>改善率 76%、临床验证有效</td><td>不引用任何无法验证的数据</td></tr>
+    <tr><td>医生推荐 / 国家队医推荐</td><td>康复场景常用（避免代言、证明性质表述）</td></tr>
+    <tr><td>一次见效、立竿见影</td><td>每次 20 分钟，建议运动后或久坐后使用</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="num">06</span>人群与场景矩阵</h2>
+<table>
+  <thead><tr><th style="width:10%">优先级</th><th style="width:24%">人群</th><th style="width:26%">核心场景</th><th>打法要点</th></tr></thead>
+  <tbody>
+    <tr><td><b>P1</b></td><td>久坐久站上班族</td><td>坐一天腿沉、站一天腿胀、晚上腿难受</td><td>小红书基本盘，量最大、转化最快。内容生活化，不带货感</td></tr>
+    <tr><td><b>P2</b></td><td>运动人群（跑者 / 健身 / 球类）</td><td>跑完、练完腿酸，第二天还要练</td><td>客单高、内容专业、口碑强。对应作战表已有的 DZ 体能、陈仑 PG13 素材</td></tr>
+    <tr><td><b>P3</b></td><td>家长（青少年款）</td><td>孩子训练后放松、长身体阶段</td><td>竞品空白，客单 ¥1600 最高，情感驱动。面向家长而非孩子沟通</td></tr>
+    <tr><td><b>P4</b></td><td>中老年 / 送礼</td><td>腿脚不舒服、给父母买</td><td>视频号 + 私域，重信任、决策慢</td></tr>
+    <tr><td colspan="4" style="color:#c96a56"><b>建议只走 B 端专业场景、不做 C 端主推：</b>产后恢复、术后恢复 —— 医疗属性太强，话术风险高，普通内容号很难把握尺度</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="num">07</span>小红书内容营销方案（主阵地）</h2>
+
+<h3>7.1 账号定位</h3>
+<div class="card">
+  <p style="margin-top:0">不做"品牌号"，做<b>恢复理疗体验号</b>。人设：一个懂点康复的运动爱好者 / 一个坐办公室的普通人。</p>
+  <p style="margin-bottom:0">理由很实际：小红书对硬广品牌号降权明显，对"真人体验 + 可收藏干货"给流量，而对"品牌官号发产品图"几乎不给自然流。这个品类还有知识门槛（压力选多少、什么时候不能用），谁把知识讲清楚，谁就拿到搜索流量。</p>
+</div>
+
+<h3>7.2 内容支柱与配比</h3>
+<div class="grid2">
+  <div class="mini">
+    <h4>生活场景 · 50%</h4>
+    <p>久坐一天的腿、跑完的腿、出差 6 小时的腿。<b>核心必拍：躺着用的那个过程。</b>这是空气波最直观的卖点——不用动手。真实场景，弱带货感。</p>
+  </div>
+  <div class="mini t2">
+    <h4>干货知识 · 25%</h4>
+    <p>气压腿套怎么选、压力是不是越高越好、什么时候不能用、每次用多久。<b>这类内容收藏率最高</b>，是这个品类在小红书拿自然流的钥匙。</p>
+  </div>
+  <div class="mini t3">
+    <h4>对比测评 · 15%</h4>
+    <p>和筋膜枪 / 泡沫轴 / 按摩椅的分工，与国际品牌的参数对照，千元档和六千档差在哪。<b>决策类内容，直接催转化。</b></p>
+  </div>
+  <div class="mini t4">
+    <h4>产品与品牌 · 10%</h4>
+    <p>产品露出、活动、用户反馈合集。比例刻意压到 10%——这个品类在小红书，硬推的边际收益远低于干货和场景。</p>
+  </div>
+</div>
+<p style="font-size:13.5px;color:#9a8caf">说明：通用框架是 70/20/10（生活/趋势/产品）。这里改成 50/25/15/10，是因为本品类有明确的知识门槛，且"对比测评"是决策必经环节——把这两块加厚，转化路径更短。</p>
+
+<h3>7.3 关键词矩阵（小红书搜索是主入口）</h3>
+<table>
+  <thead><tr><th style="width:18%">词类</th><th>关键词</th></tr></thead>
+  <tbody>
+    <tr><td><b>品类大词</b></td><td>气压腿套、空气波、气压裤、气压靴、腿部按摩器、空气波腿套</td></tr>
+    <tr><td><b>场景长尾</b></td><td>久坐腿肿怎么办、站一天腿胀、跑完腿酸怎么恢复、晚上腿沉睡不着、水肿腿、腿沉重</td></tr>
+    <tr><td><b>人群词</b></td><td>跑步恢复、健身女孩、久坐上班族、上班族养生、运动恢复装备</td></tr>
+    <tr><td><b>竞品 / 平替</b></td><td>normatec 平替、气压腿套推荐、气压腿套测评、压缩靴怎么选、气压腿套哪个牌子好</td></tr>
+    <tr><td><b>决策词</b></td><td>气压腿套有用吗、气压腿套值得买吗、气压腿套和筋膜枪的区别</td></tr>
+  </tbody>
+</table>
+<p><b>落位规则：</b>每篇笔记标题嵌 1 个品类大词 + 1 个场景长尾；正文自然出现 2–3 个关键词；话题固定带 <code>#气压腿套</code> <code>#运动恢复</code> <code>#久坐族</code>。同一个长尾词至少要有 3 篇不同角度的笔记覆盖，才能吃到搜索位。</p>
+
+<h3>7.4 选题库（笔记标题）</h3>
+<h4>生活场景流</h4>
+<div class="idea"><b>01</b> 每天坐 9 小时，我的腿是这样救回来的</div>
+<div class="idea"><b>02</b> 跑完半马那天晚上，我躺在沙发上干了这件事</div>
+<div class="idea"><b>03</b> 出差坐 6 小时飞机，落地第一件事不是洗澡</div>
+<div class="idea"><b>04</b> 在客厅躺 20 分钟，换一双轻快的腿</div>
+<h4>干货知识流</h4>
+<div class="idea"><b>05</b> 气压腿套到底有没有用？我查了 4 篇系统综述</div>
+<div class="idea"><b>06</b> 气压腿套压力越高越好吗？答案可能和你想的不一样</div>
+<div class="idea"><b>07</b> 有几种情况真的不能用气压腿套（这条一定要看）</div>
+<div class="idea"><b>08</b> 气压腿套怎么选：只看这 3 个参数就够了</div>
+<h4>对比决策流</h4>
+<div class="idea"><b>09</b> 气压腿套和筋膜枪根本不冲突，它们是分工的</div>
+<div class="idea"><b>10</b> 一千多和六千块的气压腿套，差在哪</div>
+<div class="idea"><b>11</b> 用了三个月，说点实话</div>
+
+<h3>7.5 达人策略</h3>
+<div class="card">
+  <ul style="margin-bottom:0">
+    <li><b>优先腰部达人（1w–10w 粉）</b>，垂类依次为：跑步、健身、职场 / 久坐、生活方式。这个量级的性价比和真实感最好，也最不容易被平台判定为商业内容。</li>
+    <li><b>形式优先级：真实使用过程 vlog &gt; 图文测评 &gt; 口播。</b>口播最弱且容易踩代言红线。</li>
+    <li><b>脚本核心一定要拍"躺着用"。</b>把这个动作拍出来，比讲三分钟参数有效——它直观传达了"不用动手"这个最大卖点。</li>
+    <li><b>与现有素材复用：</b>作战表里 A 类达人实拍（DZ 体能、陈仑 PG13 的 8 月底片）完全可以二次剪成小红书图文或短视频，一次拍摄两平台分发，不用重复投入。</li>
+  </ul>
+</div>
+
+<h3>7.6 30 天内容日历</h3>
+<table>
+  <thead><tr><th style="width:14%">周次</th><th style="width:20%">主题</th><th style="width:18%">发布节奏</th><th>内容安排</th></tr></thead>
+  <tbody>
+    <tr><td><b>第 1 周</b></td><td>铺认知</td><td>3–4 篇</td><td>选题 01/02 生活场景打底 + 选题 05 干货立专业人设。目标：把账号定位立住</td></tr>
+    <tr><td><b>第 2 周</b></td><td>铺场景</td><td>3–4 篇</td><td>选题 03/04 覆盖出差、居家场景 + 选题 06 压力认知。目标：卡住场景长尾词</td></tr>
+    <tr><td><b>第 3 周</b></td><td>建决策</td><td>3–4 篇</td><td>选题 09/10/11 对比与实测 + 选题 07 避坑。目标：把搜索决策词位占住</td></tr>
+    <tr><td><b>第 4 周</b></td><td>收转化</td><td>3–4 篇</td><td>用户反馈合集 + 青少年款家长向内容 + 数据复盘、跑出可复制的内容模型</td></tr>
+  </tbody>
+</table>
+<p style="font-size:13.5px;color:#9a8caf">发布时段：优先 19:00–21:00（目标人群活跃高峰），其次午休 12:00–13:00。发布后 2 小时内回复全部评论，前 2 小时的互动直接影响推荐量级。</p>
+
+<h3>7.7 指标基线</h3>
+<div class="card">
+  <div class="kv">
+    <div class="k">互动率</div><div class="v">5%+（小红书平台基线高于其他平台）</div>
+    <div class="k">收藏率</div><div class="v"><b>8%+</b> —— 这个品类最关键的一项。干货内容收藏率高，说明内容有决策价值</div>
+    <div class="k">分享率</div><div class="v">2%+</div>
+    <div class="k">有效评论占比</div><div class="v">30%+（出现"有用吗""在哪买"即算有效，是转化前兆）</div>
+    <div class="k">爆文</div><div class="v">每月 1–2 篇 10w+ 浏览</div>
+    <div class="k">搜索占比</div><div class="v">流量来源中搜索占比 ≥ 30%，低于此说明关键词策略没做起来</div>
+  </div>
+</div>
+
+<h2><span class="num">08</span>与现有抖音千川打法的衔接</h2>
+
+<p>《9 月空气波作战表》里已经在跑的三条线可以直接复用，不需要另起炉灶：</p>
+
+<table>
+  <thead><tr><th style="width:16%">作战表已有的线</th><th style="width:34%">现状</th><th>小红书如何接</th></tr></thead>
+  <tbody>
+    <tr><td><b>素材线</b></td><td>A 类达人实拍改投流（要底片 / 授权）、B 类合作拍摄、C 类剪辑二创</td><td>同一批底片二次剪辑为小红书竖版短视频和图文，<b>一次拍摄两平台分发</b>，摊薄单条内容成本</td></tr>
+    <tr><td><b>达人线</b></td><td>已约国家队医周老师专业背书、DZ 体能、陈仑 PG13，新拓达人寄样</td><td>新拓达人优先选"抖音 + 小红书双开号"的垂类达人，一次合作两边出片</td></tr>
+    <tr><td><b>人群线</b></td><td>跑者恢复、久坐上班族、运动损伤 / 术后康复三个方向</td><td>前两个直接对应小红书关键词矩阵；第三个（术后康复）建议只在 B 端专业内容触及，不做 C 端主推</td></tr>
+    <tr><td><b>青少年款</b></td><td>客单 ¥1600、利润最厚，已有 Happy 仔同款视频 + 家长视角素材规划</td><td><b>单独开一条小红书内容线</b>。妈妈人群在小红书是绝对主场，这个位置竞品完全空白，值得单独投入</td></tr>
+  </tbody>
+</table>
+
+<div class="good">
+  <h3>一个可以立刻执行的动作</h3>
+  <p style="margin-bottom:0">作战表 9/12 有一项"周老师视频交片（硬性）"。这条专业背书素材在小红书的用法，和抖音不一样——<br><b>抖音</b>用它做投流素材（强背书、促转化）；<b>小红书</b>把同一条素材拆成"康复场景里怎么用"的知识型笔记，弱化推荐感、强化科普感。同一条片子，两种剪法，两条分发路径。</p>
+</div>
+
+<h2><span class="num">09</span>风险与待确认</h2>
+<div class="card">
+  <ol style="margin-bottom:0">
+    <li><b>【必答项】Theratools 空气波按按摩器还是按器械备案？</b>这决定 80% 的话术边界。竞品怡辉走了械字号所以敢讲医疗用途，我们如果没有资质，绝不能抄。建议和法务出一份书面口径再开工。</li>
+    <li><b>压力参数对外口径要统一。</b>商品页同时出现 240 mmHg 和 260 mmHg，对外只允许说一个数，避免同一产品在不同内容里数据打架。</li>
+    <li><b>不要打"压力越大越好"和"腔数越多越好"。</b>这两条都没有证据支持，讲了反而给竞品留把柄，也把自己推向功效宣称。</li>
+    <li><b>青少年款面向家长沟通。</b>内容不得诱导未成年人，也不宜出现"孩子用了长个子"这类暗示。</li>
+    <li><b>第三方素材里的伪数据一律不用。</b>"改善率 76%""韩国理疗院同源"这类表述既是合规风险，也拉低专业形象。</li>
+    <li><b>不要拿"术后康复"做 C 端主推场景。</b>医疗属性过强，普通内容号难把握尺度，风险收益比不划算。</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <b>资料来源</b>：Theratools 天猫 / 京东在售商品参数页；《9 月空气波作战表 v1（2026-09-07）》；Journal of Clinical Medicine 2022 压缩治疗系统综述与 meta 分析；Biology of Sport 2024 下肢 IPC 运动员群体系统综述；Journal of Sport Rehabilitation 2021 循证评析；International Journal of Exercise Science 2019 / 2020 相关研究；物理治疗通用 IPC 治疗参数规范；Hyperice、Therabody、Air Relax、SLSAIR 官方公开规格；《中华人民共和国广告法》第十六条、第十七条；聚慕医疗器械空气波压力治疗仪技术说明。<br><br>
+  <b>使用说明</b>：本方案中的 Theratools 参数以公开在售页标称值为准，实际内容制作前请与产品部核对最新规格。所有对外话术须经法务复核，并在确认资质路径（按摩器 / 医疗器械）后定稿。
+</div>
+
+</div>
+</body>
+</html>

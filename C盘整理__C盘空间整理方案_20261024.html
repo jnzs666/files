@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>C 盘空间整理方案</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;--pink:#ffb5c5;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.75;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:36px 0 12px;padding-left:12px;border-left:5px solid var(--pink);line-height:1.3}
+h3{font-size:16.5px;margin:20px 0 8px;color:#6a5b78}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:15px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:25px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid var(--pink);border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 8px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:15px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}.purple{color:#7c6ab0;font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px;font-family:Consolas,monospace}
+pre{background:#2f2a35;color:#e8e2ef;border-radius:10px;padding:12px 15px;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:Consolas,monospace;margin:8px 0}
+pre .c{color:#9a8caf}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t1{background:#e6f6ee;color:#2f8a63}.t2{background:#e6efff;color:#2f5fa5}.t3{background:#fff1e6;color:#a5641a}.t4{background:#ffe9ec;color:#c0384a}
+.foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+.bar{background:#f2eef5;border-radius:6px;height:14px;position:relative;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pink);border-radius:6px}
+.risk{font-size:12px;color:var(--sub)}
+.step{background:#fdfbff;border-radius:8px;padding:10px 14px;margin:6px 0;font-size:13px;border-left:3px solid #cfc2ee}
+.step b{color:#7c6ab0}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>C 盘空间整理方案</h1>
+  <p>2026-10-24 ｜ <b>本方案仅为扫描分析结果，未改动任何文件</b></p>
+  <p>目标：把可用空间从现在 38.4 GB 提到 <b>75 GB 以上</b>，且不动系统关键文件</p>
+</div>
+
+<!-- ============ 一、现状 ============ -->
+<h2>一、现状诊断</h2>
+
+<div class="crit">
+  <div class="big">
+    <div class="stat"><b>195.3 GB</b><span>C 盘总容量</span></div>
+    <div class="stat"><b class="red">156.9 GB</b><span>已用（80.3%）</span></div>
+    <div class="stat"><b class="orange">38.4 GB</b><span>当前可用</span></div>
+    <div class="stat"><b class="green">189.5 GB</b><span>D 盘可用（迁移目标）</span></div>
+  </div>
+  <div class="why">
+    <b>关键前提：D 盘有 189.5 GB 空闲。</b>所以这次整理的主力不是"删"，是<b>"搬"</b>。
+    <p style="margin:8px 0 0">C 盘已用到 80.3%，Windows 建议保持在 85% 以下，否则会影响：系统更新、虚拟内存、临时文件写入、程序安装。你现在离警戒线不远了。</p>
+  </div>
+</div>
+
+<h2>二、C 盘空间都被谁占了</h2>
+
+<div class="crit">
+  <table>
+    <tr><th style="width:230px">位置</th><th class="num" style="width:100px">占用</th><th style="width:110px">占比</th><th>说明</th></tr>
+    <tr><td><b>C:\Users（用户目录）</b></td><td class="num"><b>62.47 GB</b></td><td><div class="bar"><i style="width:100%"></i></div></td><td>最大头，其中 AppData 占 50.74 GB</td></tr>
+    <tr><td><b>C:\Windows</b></td><td class="num">38.68 GB</td><td><div class="bar"><i style="width:62%"></i></div></td><td>其中 WinSxS 23.15 GB、System32 9.26 GB</td></tr>
+    <tr><td>根目录系统文件</td><td class="num">18.32 GB</td><td><div class="bar"><i style="width:29%"></i></div></td><td>pagefile 11.76 + hiberfil 6.29 + swapfile 0.27</td></tr>
+    <tr><td>Program Files + (x86)</td><td class="num">17.48 GB</td><td><div class="bar"><i style="width:28%"></i></div></td><td>已装软件，WXWork 4.09 / Office 3.02 最大</td></tr>
+    <tr><td>ProgramData</td><td class="num">2.12 GB</td><td><div class="bar"><i style="width:3%"></i></div></td><td>—</td></tr>
+    <tr><td>回收站</td><td class="num">1.14 GB</td><td><div class="bar"><i style="width:2%"></i></div></td><td>还没清空</td></tr>
+    <tr><td>其他（DrvPath / Calibre 等）</td><td class="num">1.15 GB</td><td><div class="bar"><i style="width:2%"></i></div></td><td>—</td></tr>
+  </table>
+</div>
+
+<h3>单点占用 Top 12（按大小）</h3>
+<div class="crit">
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:270px">项目</th><th class="num" style="width:95px">大小</th><th>是什么 / 能不能动</th></tr>
+    <tr><td>1</td><td><b>WinSxS</b>（C:\Windows）</td><td class="num">23.15 GB</td><td>系统组件库。<b>不能删</b>，但可用 DISM 清理旧版本，通常能省 1–5 GB</td></tr>
+    <tr><td>2</td><td><b>pagefile.sys</b></td><td class="num">11.76 GB</td><td>虚拟内存文件。<b>可缩小或搬到 D 盘</b>，省 7–8 GB</td></tr>
+    <tr><td>3</td><td><b>Tencent 数据</b>（AppData\Roaming）</td><td class="num">11.31 GB</td><td>企业微信 6.53 + 微信 4.64。<b>聊天文件可改路径到 D 盘</b></td></tr>
+    <tr><td>4</td><td>System32</td><td class="num">9.26 GB</td><td>系统核心。<b>绝对不动</b></td></tr>
+    <tr><td>5</td><td><b>Chrome 数据</b></td><td class="num">7.42 GB</td><td>其中 <b>OptGuideOnDeviceModel 3.98 GB</b> 是 Chrome 内置 AI 模型 + 缓存，可清</td></tr>
+    <tr><td>6</td><td><b>hiberfil.sys</b></td><td class="num">6.29 GB</td><td>休眠文件。<b>不用休眠就能关掉，全部释放</b></td></tr>
+    <tr><td>7</td><td>WPS（kingsoft）</td><td class="num">4.74 GB</td><td>缓存+备份文件，可清理一部分</td></tr>
+    <tr><td>8</td><td>豆包 Doubao</td><td class="num">4.32 GB</td><td>应用数据，可清缓存</td></tr>
+    <tr><td>9</td><td><b>抖店工作台</b></td><td class="num">3.26 GB</td><td><b>可改数据目录到 D 盘</b></td></tr>
+    <tr><td>10</td><td><b>.workbuddy</b></td><td class="num">3.58 GB</td><td>日志 0.81 GB（<b>30 天前 478 MB 可删</b>）、binaries 1.22 GB</td></tr>
+    <tr><td>11</td><td><b>Downloads</b></td><td class="num">3.06 GB</td><td>其中安装包 2.97 GB，<b>Coze 同一个包有 9 份 = 1.43 GB 纯浪费</b></td></tr>
+    <tr><td>12</td><td><b>各类缓存</b></td><td class="num">6.4 GB</td><td>npm-cache 2.89 + .cache 1.77 + Temp 1.71</td></tr>
+  </table>
+</div>
+
+<!-- ============ 三、方案 ============ -->
+<h2>三、整理方案：三梯队，按风险从低到高</h2>
+
+<div class="crit ok">
+  <h3><span class="tag t1">第一梯队</span> 纯清理 —— 零风险，可立即做，约省 <b>12.8 GB</b></h3>
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:230px">清什么</th><th class="num" style="width:90px">能省</th><th>怎么做</th></tr>
+    <tr>
+      <td>1</td><td><b>Downloads 里的安装包</b></td><td class="num green">2.97 GB</td>
+      <td><b>Coze 安装包有 9 份，删 8 份就省 1.43 GB</b>。其余（豆包 993MB、dsh 276MB、Qoder 241MB）装完就没用了，可全删。<br>
+        <span class="risk">⚠ 只删安装包（.exe/.msi），别删别的东西</span></td>
+    </tr>
+    <tr>
+      <td>2</td><td>npm 缓存</td><td class="num green">2.89 GB</td>
+      <td><code>npm cache clean --force</code><br><span class="risk">纯缓存，删了下次装包会重新下</span></td>
+    </tr>
+    <tr>
+      <td>3</td><td>.cache（codex-runtimes + puppeteer）</td><td class="num green">1.77 GB</td>
+      <td>删 <code>C:\Users\52400\.cache</code> 下这两个目录<br><span class="risk">下次用到会重新下载</span></td>
+    </tr>
+    <tr>
+      <td>4</td><td>Temp 临时文件</td><td class="num green">1.71 GB</td>
+      <td>清 <code>C:\Users\52400\AppData\Local\Temp</code> 里的内容<br><span class="risk">正在被占用的会跳过，正常</span></td>
+    </tr>
+    <tr>
+      <td>5</td><td>回收站</td><td class="num green">1.14 GB</td>
+      <td>右键回收站 → 清空<br><span class="risk">清空前扫一眼有没有误删的</span></td>
+    </tr>
+    <tr>
+      <td>6</td><td>应用更新器残留</td><td class="num green">1.12 GB</td>
+      <td>AppData\Local 下 <code>@guanjia-openclawelectron-updater</code> 0.58 + <code>@deepseek-aidsh-desktop-updater</code> 0.54<br><span class="risk">安装包残留，可删</span></td>
+    </tr>
+    <tr>
+      <td>7</td><td>pip 缓存</td><td class="num green">0.69 GB</td>
+      <td><code>pip cache purge</code></td>
+    </tr>
+    <tr>
+      <td>8</td><td>.workbuddy 旧日志</td><td class="num green">0.48 GB</td>
+      <td>删 <code>C:\Users\52400\.workbuddy\logs</code> 下 30 天前的文件<br><span class="risk">日志只用于排查，旧的没用</span></td>
+    </tr>
+    <tr class="tot"><td colspan="2">小计</td><td class="num">≈ 12.8 GB</td><td>全部零风险，不影响任何功能</td></tr>
+  </table>
+</div>
+
+<div class="crit">
+  <h3><span class="tag t2">第二梯队</span> 迁移到 D 盘 —— 低风险，约省 <b>14.4 GB</b></h3>
+  <p>这三项都是"数据跟着软件走"，软件本身不动，只改数据存放路径。<b>D 盘有 189.5 GB，随便放。</b></p>
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:200px">搬什么</th><th class="num" style="width:90px">能省</th><th>怎么搬（在软件设置里改，别手动剪切）</th></tr>
+    <tr>
+      <td>1</td><td><b>微信聊天文件</b></td><td class="num">4.64 GB</td>
+      <td>微信 → 设置 → <b>文件管理</b> → 更改存储位置 → 选 <code>D:\微信文件</code><br>改完微信会自己搬，别手动动文件夹</td>
+    </tr>
+    <tr>
+      <td>2</td><td><b>企业微信文件</b></td><td class="num">6.53 GB</td>
+      <td>企业微信 → 设置 → <b>通用</b> → 文件存储位置 → 改到 <code>D:\WXWork</code><br><span class="risk">这块最大，最值得搬</span></td>
+    </tr>
+    <tr>
+      <td>3</td><td><b>抖店工作台数据</b></td><td class="num">3.26 GB</td>
+      <td>抖店工作台 → 设置 → 缓存/数据目录 → 改到 <code>D:\抖店数据</code></td>
+    </tr>
+    <tr class="tot"><td colspan="2">小计</td><td class="num">≈ 14.4 GB</td><td>一次搬完，以后新文件也存 D 盘</td></tr>
+  </table>
+  <div class="why">
+    <b>为什么必须用软件自己的设置改：</b>手动剪切文件夹，软件的索引/数据库路径还指着 C 盘，会报错或者重新下载一遍。<b>从设置里改，软件会自己迁移并更新路径。</b>
+  </div>
+</div>
+
+<div class="crit warn">
+  <h3><span class="tag t3">第三梯队</span> 系统级调整 —— 需管理员权限，约省 <b>13–19 GB</b></h3>
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:200px">调什么</th><th class="num" style="width:100px">能省</th><th>怎么做 + 代价</th></tr>
+    <tr>
+      <td>1</td><td><b>关闭休眠</b>（hiberfil.sys）</td><td class="num green">6.29 GB</td>
+      <td>管理员 CMD 执行 <code>powercfg /h off</code><br>
+        <span class="risk">⚠ 代价：不能用"休眠"，且"快速启动"会失效（开机慢几秒）。<b>如果你用笔记本合盖休眠，别关。</b></span></td>
+    </tr>
+    <tr>
+      <td>2</td><td><b>虚拟内存搬 D 盘 / 缩小</b></td><td class="num green">7–8 GB</td>
+      <td>系统属性 → 高级 → 性能设置 → 高级 → 虚拟内存 → 更改 → C 盘设为"无分页文件"，D 盘设 8192–16384 MB<br>
+        <span class="risk">⚠ 代价：D 盘如果是机械硬盘，会略慢。SSD 就无所谓。</span></td>
+    </tr>
+    <tr>
+      <td>3</td><td><b>DISM 清理 WinSxS</b></td><td class="num">1–5 GB</td>
+      <td>管理员 CMD：<code>DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase</code><br>
+        <span class="risk">⚠ 代价：执行后无法卸载已安装的更新（回滚不了）。系统稳定的话没问题。耗时 10–30 分钟。</span></td>
+    </tr>
+    <tr>
+      <td>4</td><td>系统还原点</td><td class="num">视情况</td>
+      <td>系统保护 → 配置 → 限制最大使用量到 3–5%<br><span class="risk">保留最近的还原点，删更早的</span></td>
+    </tr>
+    <tr class="tot"><td colspan="2">小计</td><td class="num">≈ 13–19 GB</td><td>建议只做 1 和 3，2 看你 D 盘是不是 SSD</td></tr>
+  </table>
+</div>
+
+<!-- ============ 四、预期 ============ -->
+<h2>四、做完能到多少</h2>
+
+<div class="crit ok">
+  <table>
+    <tr><th style="width:250px">阶段</th><th class="num" style="width:130px">释放</th><th class="num" style="width:150px">可用空间</th><th>耗时</th></tr>
+    <tr><td>现在</td><td class="num">—</td><td class="num">38.4 GB</td><td>—</td></tr>
+    <tr><td>+ 第一梯队（纯清理）</td><td class="num green">+12.8 GB</td><td class="num">51.2 GB</td><td>20 分钟</td></tr>
+    <tr><td>+ 第二梯队（迁移）</td><td class="num green">+14.4 GB</td><td class="num">65.6 GB</td><td>40 分钟</td></tr>
+    <tr><td>+ 第三梯队（系统级）</td><td class="num green">+13~19 GB</td><td class="num"><b>79–85 GB</b></td><td>40 分钟</td></tr>
+    <tr class="tot"><td>全部做完</td><td class="num">≈ +40~46 GB</td><td class="num"><b>79–85 GB</b></td><td>约 1.5–2 小时</td></tr>
+  </table>
+  <div class="one">
+    "做到第一梯队，C 盘就从 80.3% 降到 73.8%，已经脱离警戒线。<br>
+    做到第二梯队，降到 66.4%——<b>这个状态能撑很久</b>。"
+  </div>
+</div>
+
+<!-- ============ 五、顺序建议 ============ -->
+<h2>五、建议的执行顺序（别一次全做）</h2>
+
+<div class="crit">
+  <ol>
+    <li><b>今天先做第一梯队</b>（纯清理，20 分钟，零风险）→ 立省 12.8 GB，先看到效果</li>
+    <li><b>明天做第二梯队</b>（迁移，40 分钟）→ 微信/企微要重启，找个不忙的时候</li>
+    <li><b>第三梯队挑着做</b>：
+      <ul style="margin:4px 0">
+        <li>只做 <b>DISM 清理</b>（最安全，收益稳）</li>
+        <li>关休眠看你习惯——<b>如果常用休眠就先别关</b></li>
+        <li>虚拟内存搬盘看你 D 盘是不是 SSD——<b>是 SSD 就搬，机械盘就别动</b></li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+<!-- ============ 六、额外发现 ============ -->
+<h2>六、顺手发现的两个"隐形浪费"</h2>
+
+<div class="crit warn">
+  <h3>1. Chrome 内置 AI 模型占 3.98 GB</h3>
+  <p><code>AppData\Local\Google\Chrome\User Data\OptGuideOnDeviceModel</code> —— 这是 Chrome 的<b>端侧 AI 模型</b>（Gemini Nano），给"帮我写"之类的功能用的。</p>
+  <p><b>如果你不用 Chrome 的 AI 功能</b>：Chrome 设置 → 搜索"AI" → 关闭相关选项，然后删掉这个文件夹，<b>直接省 3.98 GB</b>。</p>
+  <p class="src">注意：Chrome 更新后可能会重新下载。关掉设置就不会。</p>
+</div>
+
+<div class="crit warn">
+  <h3>2. 豆包（Doubao）4.32 GB，装了可能在后台堆数据</h3>
+  <p>AppData\Local\Doubao 4.32 GB + DoubaoWork 0.72 GB = <b>5.04 GB</b>。如果你不常用，可以考虑卸载或者清缓存。</p>
+  <p class="src">顺便：WPS 4.74 GB 里也有大量备份文件，可以在 WPS 设置里清"备份中心"。</p>
+</div>
+
+<!-- ============ 七、别动 ============ -->
+<h2>七、这几个千万别动（会出问题）</h2>
+
+<div class="crit bad">
+  <table>
+    <tr><th style="width:250px">位置</th><th>为什么不能动</th></tr>
+    <tr><td><code>C:\Windows\System32</code></td><td>系统核心，删了开不了机</td></tr>
+    <tr><td><code>C:\Windows\WinSxS</code>（直接删）</td><td>只能用 DISM 清，<b>手动删必然崩系统</b></td></tr>
+    <tr><td><code>C:\Windows\Installer</code></td><td>软件卸载/修复要用，删了以后卸载不了程序</td></tr>
+    <tr><td><code>C:\Users\52400\.workbuddy\binaries</code></td><td>node/python 运行环境，删了 WorkBuddy 里的技能全废</td></tr>
+    <tr><td><code>C:\Users\52400\.workbuddy\projects</code></td><td>你的项目工作区，不是缓存</td></tr>
+    <tr><td><code>C:\ProgramData</code> 里的东西</td><td>共享配置，多数软件依赖</td></tr>
+    <tr><td>各种"一键清理"软件的深度清理</td><td>容易误删注册表/系统备份，<b>建议手动按这份清单做</b></td></tr>
+  </table>
+</div>
+
+<!-- ============ 八、长期 ============ -->
+<h2>八、想长期不再紧张，做这三件事</h2>
+
+<div class="crit ask">
+  <ol>
+    <li><b>改默认下载目录到 D 盘</b>：浏览器设置 → 下载 → 位置改成 <code>D:\下载</code>。这一步能长期防止 Downloads 再堆 3 GB。</li>
+    <li><b>把工作文件放 D 盘</b>：你现在 `D:\个人知识库`、`D:\工作文件夹` 已经很规范，继续保持。C 盘只放系统和软件。</li>
+    <li><b>每月扫一次</b>：这份清单我可以在每月最后一天提醒你跑一遍，第一梯队那 8 项 20 分钟搞定。</li>
+  </ol>
+</div>
+
+<!-- ============ 说明 ============ -->
+<h2>九、关于这份方案</h2>
+
+<div class="crit">
+  <div class="why">
+    <b>我只做了扫描，没有删除或移动任何文件。</b>
+    <ul style="margin:6px 0">
+      <li>所有数字都是刚才实际扫描得出的（PowerShell 递归统计）</li>
+      <li>扫描方式：只读（<code>Get-ChildItem</code> / <code>Measure-Object</code> / <code>dism /analyzecomponentstore</code>）</li>
+      <li>DISM 分析和系统还原点检查<b>需要管理员权限</b>，所以具体能清多少没拿到准数，表里写的是行业经验区间</li>
+      <li>唯一不确定的：虚拟内存和休眠文件的实际可释放量，取决于你当前设置</li>
+    </ul>
+  </div>
+  <div class="one">
+    "要不要我帮你执行第一梯队？<br>
+    <b>那 8 项都可以我直接做，做完给你报每一笔的实际释放量。</b><br>
+    但删之前我会先列清单给你确认，绝不会自作主张。"
+  </div>
+</div>
+
+<div class="foot">
+  <p><b>扫描时间</b>：2026-10-24 14:19–14:26（GMT+8）｜扫描方式：PowerShell 递归统计，只读</p>
+  <p><b>数据口径</b>：目录大小为该目录下所有文件（含隐藏/系统文件）字节数之和；单点占用可能因交叉包含而略有重复（如 AppData 内的项目已计入 Users）</p>
+  <p><b>权限说明</b>：DISM 组件分析、系统还原点占用、hiberfil.sys 精确状态需管理员权限，本次未取得，相应数值采用系统在根目录显示的文件大小</p>
+  <p>抖抖 · 2026-10-24</p>
+</div>
+
+</div></body></html>

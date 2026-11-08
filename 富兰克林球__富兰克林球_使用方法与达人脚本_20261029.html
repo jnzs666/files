@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>富兰克林球 · 使用方法与达人脚本</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;--pink:#ffb5c5;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.78;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:36px 0 12px;padding-left:12px;border-left:5px solid var(--pink);line-height:1.3}
+h3{font-size:16.5px;margin:20px 0 8px;color:#6a5b78}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.crit{background:#fff;border-left:6px solid var(--pink);border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 8px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:15px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}.purple{color:#7c6ab0;font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px;font-family:Consolas,monospace}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t-a{background:#ffe9ec;color:#c0384a}.t-b{background:#e6f6ee;color:#2f8a63}.t-c{background:#e6efff;color:#2f5fa5}
+.t-d{background:#fff1e6;color:#a5641a}.t-e{background:#efeaf9;color:#6a55a8}.t-f{background:#fff3c2;color:#8a6a1f}
+.foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+/* 脚本卡 */
+.script{background:#fff;border-radius:14px;margin:20px 0;box-shadow:0 3px 16px rgba(180,160,200,.14);overflow:hidden}
+.sh{background:#fdf0f4;padding:14px 20px;border-bottom:1px solid var(--line)}
+.sh .no{font-family:Consolas,monospace;font-size:12px;color:#a5404f;font-weight:700;letter-spacing:1px}
+.sh h4{margin:3px 0 5px;font-size:18px;color:#5d4e6d}
+.sh .meta{font-size:12.5px;color:#9a8caf}
+.sb{padding:16px 20px 20px}
+.kv{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.kv span{background:#f6f0f7;border-radius:6px;padding:3px 10px;font-size:12.5px;color:#7c6ab0}
+.hook{background:#fff8e6;border-left:4px solid #e8b873;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.hook b{color:#9a7b1f}
+.beat{border-left:3px solid #ffd3de;padding-left:14px;margin:10px 0}
+.beat .t{font-family:Consolas,monospace;font-size:12px;color:#a5404f;font-weight:700}
+.beat .d{font-size:14px;margin-top:2px}
+.beat .v{background:#fdfbff;border-radius:6px;padding:8px 12px;margin-top:5px;font-size:13.5px;color:#5d4e6d;font-style:normal}
+.beat .v b{color:#7c6ab0;font-style:normal}
+.sell{background:#eefaf3;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13.5px;border-left:4px solid #6ec49b}
+.sell b{color:#1f7a55}
+.grp{margin:26px 0 6px;font-size:17px;font-weight:700;color:#a5404f;border-bottom:2px solid #ffd3de;padding-bottom:6px}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>富兰克林球 · 使用方法手册 + 6 个达人拍摄脚本</h1>
+  <p>2026-10-29 ｜ 用于达人沟通：先看使用方法，再挑脚本</p>
+  <p>数据口径：9月经营分析会官方数据 ｜ 动作要领基于 Franklin Method 官方教材 + 临床盆底康复指南</p>
+</div>
+
+<!-- ============ 一、产品是什么 ============ -->
+<h2>一、产品是什么（一分钟说清）</h2>
+
+<div class="crit ok">
+  <div class="why">
+    <b>一句话定义：</b>富兰克林球（Franklin Ball）不是按摩球，也不是瑜伽球。<b>它是「身体感知训练球」</b>——
+    设计目的是通过精准的物理反馈，让大脑重新"找到"某块肌肉或某个关节的位置。
+    <p style="margin:8px 0 0">它来自 <b>Franklin Method（富兰克林方法）</b>，一套源自欧洲的身心训练体系，核心是"用意象+触觉反馈重建动作模式"。在欧美康复与普拉提圈用了几十年，国内是最近三四年才起来的。</p>
+  </div>
+
+  <h3>和"普通瑜伽球"的本质区别（这是你的第一卖点）</h3>
+  <table>
+    <tr><th style="width:130px">维度</th><th style="width:230px">富兰克林球</th><th>普通充气瑜伽球</th></tr>
+    <tr><td><b>尺寸</b></td><td><b>5 英寸 = 12.7cm（±0.2）</b></td><td>55–75cm，一个人坐上去的那种</td></tr>
+    <tr><td><b>结构</b></td><td><b>空心薄壁</b>，按压形变 1.5–2cm</td><td>壁厚实心倾向，几乎压不动</td></tr>
+    <tr><td><b>表面</b></td><td><b>微凸点纹理</b>（高度 ≥0.8mm），激活皮肤感受器</td><td>光滑或粗颗粒，纹理只为防滑</td></tr>
+    <tr><td><b>用途</b></td><td><b>感知训练</b>：盆底、筋膜、核心</td><td>运动辅助：坐、平衡、拉伸</td></tr>
+    <tr><td><b>反馈</b></td><td>能感觉到"每个凸点独立顶起皮肤"</td><td>只有"沙沙感"，不知道压在哪儿</td></tr>
+  </table>
+
+  <div class="one">
+    "普通瑜伽球是让你<b>坐在上面</b>，<br>
+    富兰克林球是让你<b>知道身体在哪儿</b>。"
+  </div>
+
+  <h3>我们的在售规格（发脚本前请核对）</h3>
+  <table>
+    <tr><th style="width:170px">型号</th><th>特征</th><th>适合什么时候推</th></tr>
+    <tr><td><b>充气款（空心）</b></td><td>硬度可调、形变可控、接球感更柔</td><td>盆底肌训练、肩颈松解、初学者</td></tr>
+    <tr><td><b>实心款</b></td><td>免充气、承重强、冬天偏凉</td><td>普拉提核心、承重动作、送人</td></tr>
+  </table>
+  <p class="src">⚠ 具体在售颜色/规格以商品页为准，请对照核对后再给达人。实心款 26 年计划做品质升级。</p>
+</div>
+
+<!-- ============ 二、使用方法 ============ -->
+<h2>二、使用方法（三大场景，8 个动作）</h2>
+
+<div class="crit bad">
+  <h3>⚠ 先记住三个"黄金细节"——这是效果的 80%</h3>
+  <p>同样的球，用法对了有效果，用法错了等于白用。这三个细节必须让达人讲到：</p>
+  <table>
+    <tr><th style="width:80px">步骤</th><th style="width:130px">叫什么</th><th>具体怎么做</th></tr>
+    <tr style="background:#fff5f6">
+      <td><b>第一步</b></td><td><b>坐准</b></td>
+      <td>不是随便坐上去。要让<b>坐骨结节精准落在球体"赤道线"两侧</b>——就是球最粗的那一圈。这样微凸纹理才正好贴合骶髂关节周围，这是触发盆底肌协同收缩的前提位置。</td>
+    </tr>
+    <tr style="background:#fff5f6">
+      <td><b>第二步</b></td><td><b>压稳</b></td>
+      <td>初学者最容易犯的错：为了按得深，<b>耸肩、憋气</b>。正确做法是<b>呼气时缓慢下沉</b>，让体重经坐骨自然传到球上，球产生 <b>1.5–2cm 可控形变</b>——这个区间才是筋膜张力调节的黄金窗口。压太浅没反馈，压太深球塌陷、身体代偿。</td>
+    </tr>
+    <tr style="background:#fff5f6">
+      <td><b>第三步</b></td><td><b>感细</b></td>
+      <td>不要大力来回滚。做<b>微幅横向滚动（幅度 ≤3cm）</b>，靠表面纹理持续刺激皮肤感受器，强化大脑对那个区域的空间定位。这恰恰是传统静态训练替代不了的价值。</td>
+    </tr>
+  </table>
+  <p class="src">依据：Franklin Method 官方盆底教材（2020）+ 2026 年国内筋膜球选型标准</p>
+</div>
+
+<h3>场景一 · 盆底肌（产后修复 / 漏尿 / 久坐腰酸）</h3>
+<div class="crit">
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:150px">动作</th><th>怎么做</th><th style="width:170px">要点</th></tr>
+    <tr>
+      <td>1</td><td><b>坐姿呼吸激活</b><br><span class="mx">最基础，必学</span></td>
+      <td>坐椅子上，球放两坐骨之间。吸气时肋骨向两侧打开，<b>呼气时盆底肌轻轻上提</b>（像憋尿的发力感，但只是"向上提"不是"向下压"）。10–15 次一组。</td>
+      <td class="red">不要憋气<br>不要用大腿夹</td>
+    </tr>
+    <tr>
+      <td>2</td><td><b>坐骨钟摆</b><br><span class="mx">pelvic rock</span></td>
+      <td>坐球上，骨盆前后轻摇。<b>动作由盆底肌发起</b>，不是腰在动。</td>
+      <td>幅度小，慢</td>
+    </tr>
+    <tr>
+      <td>3</td><td><b>坐骨提拉</b><br><span class="mx">sit bone pull ups</span></td>
+      <td>一侧坐骨压在球上，另一侧坐骨<b>缓慢向下沉（离心）</b>，再<b>缓慢抬起（向心）</b>。两侧交替。</td>
+      <td class="green">这是核心动作<br>能明显感觉到盆底</td>
+    </tr>
+    <tr>
+      <td>4</td><td><b>双膝夹球桥式</b></td>
+      <td>仰卧屈膝，球夹在两膝之间（<b>轻压</b>）。呼气时上提盆底，臀部抬起成低桥，控制着落下。</td>
+      <td class="red">桥要低<br>高了会憋气肋骨外翻</td>
+    </tr>
+  </table>
+  <div class="why">
+    <b>为什么用球比不用球好：</b>很多人做凯格尔找不到发力点，因为"看不见摸不着"。球给出的是<b>真实的物理反馈</b>——你能感觉到"这里在被顶着"，大脑才知道该往哪儿发力。这就是"让意识真正落到那块肌肉上"。
+  </div>
+  <div class="one">
+    "产后漏尿不是'生完孩子都这样'，<br>
+    是<b>那块肌肉从来没被唤醒过</b>。"
+  </div>
+</div>
+
+<h3>场景二 · 筋膜松解（肩颈 / 上背 / 臀腿）</h3>
+<div class="crit">
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:150px">部位</th><th>怎么做</th><th style="width:150px">适合谁</th></tr>
+    <tr>
+      <td>5</td><td><b>上背部（胸椎）</b></td>
+      <td>仰卧，球放在<b>肩胛骨下方</b>的胸椎处，双臂打开放地上。<b>深呼吸</b>，感觉胸廓和肋骨在球上展开。</td>
+      <td>含胸驼背、久坐</td>
+    </tr>
+    <tr>
+      <td>6</td><td><b>颈后（枕骨下）</b></td>
+      <td>仰卧，球放<b>后脑勺根部</b>。让头轻轻沉进去，<b>左右缓慢滚动</b>，松解枕下小肌群。</td>
+      <td>头前伸、偏头痛</td>
+    </tr>
+    <tr>
+      <td>7</td><td><b>肩胛内侧（电脑肩）</b></td>
+      <td>球放肩胛骨内侧靠墙，身体缓慢后压，滚 30 秒。<b>压到酸痛点停住呼吸 3 次</b>再走。</td>
+      <td>办公室人群<br><b>最易出爆款</b></td>
+    </tr>
+    <tr>
+      <td>8</td><td><b>臀部 / 腘绳肌</b></td>
+      <td>仰卧，球放<b>骶骨或大腿后侧上部</b>，左右轻晃骨盆。</td>
+      <td>久坐臀痛、跑者</td>
+    </tr>
+  </table>
+  <p class="src">这一组适合"泛人群"——不需要专业知识就能感受到效果，是最容易出量的方向。</p>
+</div>
+
+<h3>场景三 · 普拉提 / 核心（专业圈）</h3>
+<div class="crit">
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:150px">用法</th><th>怎么做</th></tr>
+    <tr><td>9</td><td><b>不稳定平面锚点</b></td>
+      <td>平板支撑时<b>单脚踩球、单手扶球</b>。不稳定平面会强迫深层腹横肌全程参与，因为身体必须不断微调才不会掉。</td></tr>
+    <tr><td>10</td><td><b>单腿坐姿稳定性测试</b></td>
+      <td>单腿坐在球上，<b>维持 30 秒不滑移</b>——这是资深教练现场验球的通用方法，比看货号更接近真实使用逻辑。</td></tr>
+  </table>
+  <div class="why">
+    <b>给普拉提教练的钩子：</b>"核心找不到，是因为你一直在<b>稳定平面</b>上练。" 稳定平面下，深层肌群可以偷懒；球一放上去，它就藏不住了。
+  </div>
+</div>
+
+<!-- ============ 三、常见错误 ============ -->
+<h2>三、六个常见错误（这些是内容钩子，也是退货原因）</h2>
+
+<div class="crit warn">
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:200px">错误</th><th>后果 / 为什么错</th></tr>
+    <tr><td>1</td><td><b>憋气用力</b></td><td>腹压升高反而往下压盆底肌，<span class="red">练反了</span>。必须"呼气时上提"。</td></tr>
+    <tr><td>2</td><td><b>过度用力挤压</b></td><td>压力大 ≠ 效果好。用力过猛会变成大腿内收肌和臀部在发力，盆底肌反而不是主角。<b>越轻越准。</b></td></tr>
+    <tr><td>3</td><td><b>耸肩、抬胸"坐直"</b></td><td>真正的对位比"挺胸抬头"安静得多。耸肩会让颈肩代偿。</td></tr>
+    <tr><td>4</td><td><b>塌腰、骨盆后倾</b></td><td>变成腰和腹在代偿，盆底肌没参与。</td></tr>
+    <tr><td>5</td><td><b>用普通瑜伽球代替</b></td><td>壁厚、纹理浅、无微凸设计——<span class="red">既撑不住坐姿，也触发不了本体感觉</span>。这是最常见的"买错"。</td></tr>
+    <tr><td>6</td><td><b>一次练太久</b></td><td>单次 10–15 分钟上限，时间太长肌肉疲劳、血液循环受阻。</td></tr>
+  </table>
+  <div class="one">
+    "这六个错误里，前四个几乎每个人都犯过。<br>
+    <b>这就是为什么这个品需要内容——不是产品不好卖，是没人讲清怎么用。</b>"
+  </div>
+</div>
+
+<!-- ============ 四、脚本 ============ -->
+<h2>四、6 个达人脚本</h2>
+
+<div class="crit ask">
+  <p><b>怎么用这六个脚本：</b></p>
+  <ul style="margin:4px 0">
+    <li>每个脚本标了<b>达人类型</b>——按达人属性匹配，别让普拉提教练拍"产后漏尿"</li>
+    <li>台词是<b>可直接念的</b>，但允许达人按自己口癖改，别让他们背稿</li>
+    <li><b>镜头建议</b>列了必拍的关键画面，这些决定完播率</li>
+    <li>脚本 1、5 是"专业背书型"，适合立信任；脚本 2、3 是"泛人群型"，适合出量；脚本 4 是"专业圈"；脚本 6 是"套装连带"</li>
+  </ul>
+</div>
+
+<div class="grp">▍A 组 · 反常识钩子（立专业、破认知）</div>
+
+<div class="script">
+  <div class="sh">
+    <div class="no">SCRIPT 01</div>
+    <h4>「90% 的人用筋膜球都用错了」</h4>
+    <div class="meta">反常识 · 专业背书 · 破认知</div>
+  </div>
+  <div class="sb">
+    <div class="kv">
+      <span>达人类型：康复师 / 运动医学 / 健身教练</span>
+      <span>时长：60–75 秒</span>
+      <span>目标：立信任 + 带货</span>
+    </div>
+    <div class="hook"><b>钩子（前 3 秒）：</b>"如果你觉得筋膜球没用，大概率是用错了——包括很多教练。"</div>
+
+    <div class="beat"><div class="t">0–5s · 抛冲突</div>
+      <div class="v">"筋膜球这东西，<b>90% 的人都在瞎滚</b>。"</div></div>
+    <div class="beat"><div class="t">5–20s · 讲错在哪</div>
+      <div class="v">"两个最常见的错：<b>一是越用力越好</b>，压得龇牙咧嘴；<b>二是漫无目的地滚</b>，滚完不知道松了哪儿。"</div></div>
+    <div class="beat"><div class="t">20–45s · 给正确标准（核心）</div>
+      <div class="v">"正确的方法只有三个字：<b>坐准、压稳、感细</b>。<br>
+      坐准——坐骨结节要卡在球最粗那一圈，不是随便坐；<br>
+      压稳——呼气时慢慢下沉，让球压出 <b>1.5 到 2 厘米</b>，这个区间才是筋膜能响应的；<br>
+      感细——不是大力滚，是<b>小幅横向移动，别超过 3 厘米</b>，靠表面凸点刺激神经。"</div></div>
+    <div class="beat"><div class="t">45–65s · 落到产品</div>
+      <div class="v">"所以球本身很关键。<b>5 英寸、12.7 厘米、空心薄壁、表面微凸</b>——这四个条件缺一个，你刚才那套就做不出来。<br>
+      普通瑜伽球壁太厚，压不动，纹理也浅，<b>它只是让你坐上去，不会告诉你身体在哪儿</b>。"</div></div>
+    <div class="beat"><div class="t">65–75s · 收口</div>
+      <div class="v">"想练对，先从选对球开始。"</div></div>
+
+    <div class="sell"><b>卖点落点：</b>12.7cm 科学尺寸 ｜ 空心薄壁形变可控 ｜ 微凸点纹理 ｜ 与普通瑜伽球的本质区别</div>
+    <div class="hook" style="background:#eefaf3;border-left-color:#6ec49b"><b>拍摄要点：</b>必须有一个<b>按压演示</b>镜头——手指压球，让观众看到"能压下去 1.5cm"，这是最直观的说服力。再补一个普通瑜伽球压不动的对比。</div>
+  </div>
+</div>
+
+<div class="script">
+  <div class="sh">
+    <div class="no">SCRIPT 05</div>
+    <h4>「为什么你买的筋膜球三天就变瘪」</h4>
+    <div class="meta">选购测评 · 建立鉴别标准 · 强转化</div>
+  </div>
+  <div class="sb">
+    <div class="kv">
+      <span>达人类型：好物测评 / 运动装备测评</span>
+      <span>时长：50–60 秒</span>
+      <span>目标：直接把"怎么挑"变成"为什么选这个"</span>
+    </div>
+    <div class="hook"><b>钩子：</b>"买筋膜球别看颜色，看这四个地方，能筛掉 80% 的垃圾货。"</div>
+
+    <div class="beat"><div class="t">0–5s</div>
+      <div class="v">"筋膜球买回来三天就瘪、表面发黏、滚到尾椎还打滑——<b>你买错的是结构，不是运气</b>。"</div></div>
+    <div class="beat"><div class="t">5–40s · 四步鉴别（干货）</div>
+      <div class="v">
+      "<b>第一，量直径。</b>要标 <b>5 英寸、也就是 12.7 厘米 ±0.2</b>。只写"约 5 英寸"或"标准款"的，别买。<br>
+      <b>第二，压赤道区。</b>从中间压下去，应该有<b>缓慢的回弹，形变至少 1.5 厘米</b>，而且回弹均匀。塌下去不回来的、或者硬得压不动的，都不行。<br>
+      <b>第三，看凸点。</b>指尖垂直轻压球面，你应该能<b>清楚感觉到每个凸点独立顶起皮肤</b>——如果只是一片模糊的"沙沙感"，说明凸点低于 0.8 毫米，感受器根本激不活。<br>
+      <b>第四，摸材质。</b>TPU 该是柔韧的、不冰不烫的，不是那种发黏的廉价 PVC。"</div></div>
+    <div class="beat"><div class="t">40–55s · 落产品</div>
+      <div class="v">"这四个条件，我手上这个 Theratools 的富兰克林球是齐的：<b>12.7 厘米、空心薄壁、凸点清晰、TPU 不黏</b>。它还有实心款，承重更稳，看你练什么。"</div></div>
+    <div class="beat"><div class="t">55–60s</div>
+      <div class="v">"记住——<b>球不对，动作全白练</b>。"</div></div>
+
+    <div class="sell"><b>卖点落点：</b>四项可验证标准全部达标 ｜ 充气/实心双规格 ｜ 把"选购逻辑"变成我们的标准</div>
+    <div class="hook" style="background:#eefaf3;border-left-color:#6ec49b"><b>拍摄要点：</b>四个动作必须<b>全部给特写</b>——尺子量直径、手指压球、指尖按凸点、揉材质。测评类内容，画面证据 > 口头描述。</div>
+  </div>
+</div>
+
+<div class="grp">▍B 组 · 痛点直击（泛人群、易出量）</div>
+
+<div class="script">
+  <div class="sh">
+    <div class="no">SCRIPT 02</div>
+    <h4>「生完孩子三年，我第一次感觉到那里在动」</h4>
+    <div class="meta">产后修复 · 情绪共鸣 · 高转化</div>
+  </div>
+  <div class="sb">
+    <div class="kv">
+      <span>达人类型：产后妈妈 / 母婴健康 / 女性健康</span>
+      <span>时长：70–90 秒</span>
+      <span>目标：情感共鸣 + 方法教学</span>
+    </div>
+    <div class="hook"><b>钩子：</b>"我一直以为漏尿是生完孩子必须接受的代价，直到有人告诉我：你只是没找到那块肌肉。"</div>
+
+    <div class="beat"><div class="t">0–15s · 共情</div>
+      <div class="v">"生完孩子三年，我咳嗽漏尿、跳绳漏尿、大笑也漏。<b>我以为这就是当妈的代价。</b><br>
+      后来才知道——<b>不是那块肌肉坏了，是我从来没'找到'过它</b>。"</div></div>
+    <div class="beat"><div class="t">15–30s · 为什么找不到</div>
+      <div class="v">"凯格尔运动人人都在说，但<b>90% 的人做的是错的</b>——因为你看不见、摸不着，大脑根本不知道该往哪儿发力。<b>你以为在练盆底，其实在夹屁股。</b>"</div></div>
+    <div class="beat"><div class="t">30–60s · 给方法（核心）</div>
+      <div class="v">"我的物理治疗师给了我一个球，就这么大，<b>12.7 厘米</b>。<br>
+      你先<b>坐在球上，让两个坐骨卡在球最粗那一圈</b>——不是随便坐，要卡准。<br>
+      然后<b>吸气让肋骨打开，呼气的时候，轻轻把盆底往上提</b>。<br>
+      你会发现：<b>球在顶着你的那一瞬间，你突然知道该往哪儿使劲了。</b><br>
+      再做一个动作：一侧坐骨压球，另一侧慢慢往下沉，再慢慢抬起来，两边交替。"</div></div>
+    <div class="beat"><div class="t">60–80s · 提醒误区</div>
+      <div class="v">"两个坑别踩：<b>一，别憋气</b>——憋气反而往下压，越练越糟；<b>二，别用力夹</b>——轻轻的就够了，用力了就变成大腿在干活了。"</div></div>
+    <div class="beat"><div class="t">80–90s · 收口</div>
+      <div class="v">"我练了两周，跳绳的时候终于不用夹着腿了。<br>
+      记住：<b>漏尿不是年纪大了，是那块肌肉在等你叫醒它。</b>"</div></div>
+
+    <div class="sell"><b>卖点落点：</b>坐骨结节定位法 ｜ 12.7cm 贴合盆底 ｜ 物理反馈唤醒本体感觉 ｜ 不憋气、不用力</div>
+    <div class="hook" style="background:#eefaf3;border-left-color:#6ec49b"><b>拍摄要点：</b>① 一定要有<b>侧面坐姿特写</b>，让观众看清"坐骨卡在赤道线"是什么样子；② 呼吸节奏要拍出来（吸气肋骨打开→呼气上提）；③ <b>不要出现"治愈""根治"字眼</b>，说"改善""帮助"，医械类内容有合规红线。</div>
+  </div>
+</div>
+
+<div class="script">
+  <div class="sh">
+    <div class="no">SCRIPT 03</div>
+    <h4>「肩膀硬得像石头？一个球，30 秒」</h4>
+    <div class="meta">办公室人群 · 泛流量 · 最容易出量</div>
+  </div>
+  <div class="sb">
+    <div class="kv">
+      <span>达人类型：职场健康 / 健身 / 生活方式</span>
+      <span>时长：40–50 秒</span>
+      <span>目标：最大曝光、拉新客，不追求专业深度</span>
+    </div>
+    <div class="hook"><b>钩子：</b>"久坐的人肩膀都是硬的，不用按摩椅，一个球就够了。"</div>
+
+    <div class="beat"><div class="t">0–5s</div>
+      <div class="v">"每天坐 8 小时，你的肩胛骨内侧一定有两个结。"</div></div>
+    <div class="beat"><div class="t">5–30s · 教动作</div>
+      <div class="v">"找个墙，把球放在<b>肩胛骨内侧</b>——就是后背两块骨头中间那个凹陷。<br>
+      身体靠上去，慢慢往后压。<br>
+      找到一个<b>特别酸的点，停住，深呼吸三次</b>，让身体自己松开。<br>
+      然后再慢慢上下滚 30 秒。"</div></div>
+    <div class="beat"><div class="t">30–45s · 讲为什么</div>
+      <div class="v">"为什么用这个球而不是网球？<b>网球太硬，压的是骨头；这个球是空心的，压下去会变形，正好贴住肌肉的弧度。</b><br>
+      而且表面有凸点，能刺激到更深一层。<b>放在包里，上班随时用。</b>"</div></div>
+    <div class="beat"><div class="t">45–50s</div>
+      <div class="v">"试一次你就知道，<b>肩膀原来可以这么轻</b>。"</div></div>
+
+    <div class="sell"><b>卖点落点：</b>空心可形变（贴肌肉弧度）｜ 微凸点深层刺激 ｜ 便携 ｜ 比网球/按摩椅更对症</div>
+    <div class="hook" style="background:#eefaf3;border-left-color:#6ec49b"><b>拍摄要点：</b>① <b>靠墙压球的实拍</b>是核心画面，一定要拍到肩膀"沉下来"的那一下；② 拍一个"网球 vs 这个球"的按压对比，说服力最强；③ 结尾给一个"用完放进包里"的镜头，强化便携。</div>
+  </div>
+</div>
+
+<div class="grp">▍C 组 · 专业圈 / 连带销售</div>
+
+<div class="script">
+  <div class="sh">
+    <div class="no">SCRIPT 04</div>
+    <h4>「核心找不到？因为你一直在稳定平面上练」</h4>
+    <div class="meta">普拉提 / 瑜伽教练 · 专业圈层</div>
+  </div>
+  <div class="sb">
+    <div class="kv">
+      <span>达人类型：普拉提教练 / 瑜伽导师 / 康复训练师</span>
+      <span>时长：50–60 秒</span>
+      <span>目标：专业认同 + 教练群体口碑</span>
+    </div>
+    <div class="hook"><b>钩子：</b>"学员说找不到核心，我通常不让她再加练——我给她一个球。"</div>
+
+    <div class="beat"><div class="t">0–10s · 抛观点</div>
+      <div class="v">"在垫子上做一百个死虫，不如在<b>不稳定平面</b>上撑 30 秒。<br>
+      因为稳定的时候，你的深层肌群可以偷懒。"</div></div>
+    <div class="beat"><div class="t">10–35s · 演示</div>
+      <div class="v">"平板支撑，<b>单脚踩球、单手扶球</b>。<br>
+      你会立刻发现——<b>身体开始自己找平衡，腹横肌必须全程在线</b>，它藏不住了。<br>
+      还有一个我常用的测试：<b>单腿坐在球上，能不能维持 30 秒不滑移。</b>滑移就说明深层控制还不够。"</div></div>
+    <div class="beat"><div class="t">35–55s · 为什么是这种球</div>
+      <div class="v">"关键在<b>尺寸和结构</b>。<b>12.7 厘米</b>，刚好是能承重又不至于让你完全失控的大小；<b>空心薄壁</b>，受压时会变形，所以它能"配合"你的身体，而不是跟你对抗。<br>
+      实心款承重更稳，适合做支撑；充气款反馈更细，适合练感知。<b>两个我都备着。</b>"</div></div>
+    <div class="beat"><div class="t">55–60s</div>
+      <div class="v">"教学生之前，先让她'感觉到'——<b>感觉得到，才练得对。</b>"</div></div>
+
+    <div class="sell"><b>卖点落点：</b>不稳定平面训练价值 ｜ 12.7cm 承重与失控的平衡点 ｜ 充气/实心分工 ｜ 教练自用背书</div>
+    <div class="hook" style="background:#eefaf3;border-left-color:#6ec49b"><b>拍摄要点：</b>① 一定要拍<b>踩球/扶球做平板</b>的完整过程，让观众看到"身体在微调"；② 拍单腿坐球 30 秒不滑移的测试；③ 说话用教练语言（"深层控制""本体感觉"），专业圈吃这套。</div>
+  </div>
+</div>
+
+<div class="script">
+  <div class="sh">
+    <div class="no">SCRIPT 06</div>
+    <h4>「跑完不放松，等于白跑」</h4>
+    <div class="meta">跑者 / 运动恢复 · 走套装连带</div>
+  </div>
+  <div class="sb">
+    <div class="kv">
+      <span>达人类型：跑步 / 铁三 / 运动康复</span>
+      <span>时长：60–70 秒</span>
+      <span>目标：拉高客单（可连带泡沫轴、拉伸带）</span>
+    </div>
+    <div class="hook"><b>钩子：</b>"跑量上去了膝盖开始疼，八成不是膝盖的问题，是你没松这三个地方。"</div>
+
+    <div class="beat"><div class="t">0–10s · 立观点</div>
+      <div class="v">"跑者最容易忽略的不是热身，是<b>赛后那 10 分钟</b>。<br>
+      乳酸堆着不散，第二天腿是沉的，一周下来就是慢性劳损。"</div></div>
+    <div class="beat"><div class="t">10–45s · 三个点位</div>
+      <div class="v">
+      "<b>第一个，足底。</b>球踩在脚弓下，从脚跟慢慢滚到前掌，每只脚 30 秒。足底筋膜一松，整条腿的张力都下来了。<br>
+      <b>第二个，臀中肌。</b>侧躺，球压在<b>臀部外侧偏上</b>的位置，慢慢滚。这是跑者最容易僵、又最没人管的地方。<br>
+      <b>第三个，髂胫束。</b>侧躺，球压在<b>大腿外侧中段</b>，不用来回滚，<b>停在那儿深呼吸</b>就行——髂胫束是结缔组织，越滚越激惹。"</div></div>
+    <div class="beat"><div class="t">45–60s · 讲为什么用这个球</div>
+      <div class="v">"泡沫轴压不到这么细的地方。<b>这个球 12.7 厘米，能精准卡进足弓、臀外侧这些凹陷</b>。而且是空心的，压下去会变形，<b>不会像网球那样硌骨头</b>。"</div></div>
+    <div class="beat"><div class="t">60–70s · 连带</div>
+      <div class="v">"我现在的恢复三件套：<b>球松小肌群、泡沫轴滚大腿、拉伸带拉髋</b>。<br>
+      三个都要，缺一个都是半套。"</div></div>
+
+    <div class="sell"><b>卖点落点：</b>精准卡位（12.7cm 进凹陷）｜ 空心不硌骨 ｜ 可连带泡沫轴 + 拉伸带（提客单）</div>
+    <div class="hook" style="background:#eefaf3;border-left-color:#6ec49b"><b>拍摄要点：</b>① 三个点位都要<b>拍到球卡进凹陷</b>的画面，这是"精准"的最好证明；② 足底滚球最好在<b>跑完当天</b>拍，真实的疲惫感更可信；③ 结尾把三件套摆在一起拍，为套装页引流。</div>
+  </div>
+</div>
+
+<!-- ============ 五、给达人的沟通要点 ============ -->
+<h2>五、跟达人沟通时，你必须先讲清的四件事</h2>
+
+<div class="crit warn">
+  <ol>
+    <li><b>这不是"按摩球"</b>——如果达人说"就是个滚筋膜的球"，方向就偏了。它是<b>感知训练工具</b>，卖的是"让你找到肌肉"，不是"按得爽"。</li>
+    <li><b>用法门槛是内容的核心，不是障碍</b>——正因为它有讲究（坐准/压稳/感细），才有内容可讲。不要简化成"随便滚滚"。</li>
+    <li><b>合规红线要提前说</b>——不能出现"治愈""根治""治疗"，说"改善""帮助""辅助"。涉及漏尿、盆底，一定提醒"严重情况请就医"。</li>
+    <li><b>必须拍到"物理反馈"的画面</b>——手指压球能压下去、凸点顶起皮肤、球卡进凹陷。这三个画面比任何台词都管用。</li>
+  </ol>
+  <div class="one">
+    "这个品不缺流量，缺的是<b>把用法讲透的那个人</b>。<br>
+    谁能把'坐准、压稳、感细'讲明白，谁就能带得动。"
+  </div>
+</div>
+
+<!-- ============ 六、待确认 ============ -->
+<h2>六、发给达人前，请你先确认三件事</h2>
+
+<div class="crit ask">
+  <table>
+    <tr><th style="width:44px">#</th><th style="width:230px">要确认什么</th><th>为什么重要</th></tr>
+    <tr><td>1</td><td><b>在售规格到底是哪些？</b></td>
+      <td>我写的是"充气款 + 实心款"，但你说的"ic球"具体指哪款、有哪些颜色尺寸，<b>需要按商品页核对</b>。脚本里出现的规格必须和实物一致，否则达人收到货发现不对，会影响合作。</td></tr>
+    <tr><td>2</td><td><b>价格带和套装方案定了吗？</b></td>
+      <td>脚本 6 提到"恢复三件套（球+泡沫轴+拉伸带）"。如果套装还没定，这个脚本先别发，或者把连带部分去掉。</td></tr>
+    <tr><td>3</td><td><b>有没有械字号 / 资质？</b></td>
+      <td>涉及盆底肌、漏尿这类表述，如果产品有械字号，话术空间大很多；如果没有，<b>必须避开医疗宣称</b>。这条决定脚本 2 能不能拍。</td></tr>
+  </table>
+</div>
+
+<div class="foot">
+  <p><b>信息来源</b>：<br>
+  · 产品动作要领：Franklin Method 官方《Pelvic Power for a Toned &amp; Balanced Pelvic Floor》练习清单（2020）｜临床盆底康复指南（Lake City PT 等）<br>
+  · 产品规格与选型标准：2026 年富兰克林筋膜球选型基准（5 英寸 / 12.7cm±0.2 / 空心形变 1.5–2cm / 凸点 ≥0.8mm）<br>
+  · 我方销售数据：9 月经营分析会官方口径 —— 球类 19 SKU 做 26.7 万、利润率 35.6%；富兰克林筋膜球 8→9 月 -1.07 万（-14.6%）<br>
+  · 26 年产品优化计划：富兰克林球实心款品质升级、富兰克林筋膜球优化包装（来源《产品研发部工作流》）</p>
+  <p><b>说明</b>：<br>
+  · 动作要领来自 Franklin Method 官方教材与临床康复资料，<b>不是我们自己编的</b>；但具体到"我们的球"的尺寸/硬度手感，需以实物核对<br>
+  · 脚本台词是为达人准备的<b>可直接念的版本</b>，达人可按自己口癖调整<br>
+  · 涉及盆底肌、漏尿的内容，<b>请法务/合规确认后再发</b>，医械类宣传有明确边界</p>
+  <p>抖抖 · 2026-10-29</p>
+</div>
+
+</div></body></html>

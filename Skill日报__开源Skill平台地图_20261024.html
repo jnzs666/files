@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>开源 Skill 平台地图 + 每日追踪方案</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;--pink:#ffb5c5;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.75;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:34px 0 12px;padding-left:12px;border-left:5px solid var(--pink);line-height:1.3}
+h3{font-size:16.5px;margin:20px 0 8px;color:#6a5b78}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.crit{background:#fff;border-left:6px solid var(--pink);border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 8px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:15px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}.purple{color:#7c6ab0;font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px;font-family:Consolas,monospace}
+pre{background:#2f2a35;color:#e8e2ef;border-radius:10px;padding:13px 16px;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:Consolas,monospace}
+pre .c{color:#9a8caf}
+.tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t-a{background:#e6f6ee;color:#2f8a63}.t-b{background:#e6efff;color:#2f5fa5}.t-c{background:#fff1e6;color:#a5641a}.t-d{background:#efeaf9;color:#6a55a8}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+.k{display:inline-block;background:#f2eef5;border-radius:6px;padding:0 6px;font-weight:600}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>开源 Skill 平台地图 + 每日追踪方案</h1>
+  <p>2026-10-24 ｜ 全部平台已实地核实（不是凭印象列）</p>
+  <p>结论先行：<b>不要每天开 8 个网站。真正的更新源头只有一个——GitHub。</b></p>
+</div>
+
+<!-- ============ 核心认知 ============ -->
+<h2>一、先讲一个关键事实，能省你大量时间</h2>
+
+<div class="crit bad">
+  <h3>这些"Skill 平台"，本质都是 GitHub 的爬虫</h3>
+  <p>SkillsMP 官网自己写得很直白：它只是<b>收录 GitHub 上公开的 SKILL.md 文件</b>，"不认证质量或安全性"。skills.sh 也是索引 GitHub 仓库后给你一条 <code>npx skills add</code> 命令。</p>
+  <div class="why">
+    <b>所以你每天刷 8 个聚合站，看到的其实是同一批 GitHub 仓库的二次加工。</b>
+    <p style="margin:8px 0 0">真正会"更新"的地方只有一个：<b>GitHub 仓库的 commit/push</b>。</p>
+  </div>
+  <div class="one">
+    "聚合站用来<b>发现</b>，GitHub 用来<b>追踪更新</b>。<br>
+    每天开 8 个网站是体力活，订阅 1 个源头才是机制。"
+  </div>
+</div>
+
+<div class="crit warn">
+  <h3>⚠️ 顺带提醒：各家报的收录量根本对不上，别拿它当参考</h3>
+  <table>
+    <tr><th style="width:190px">平台</th><th class="num" style="width:150px">官网今日显示</th><th>口径</th></tr>
+    <tr><td>SkillsMP</td><td class="num"><b>3,601,416</b></td><td>收录的 SKILL.md 文件数（一个仓库可能有几十个）</td></tr>
+    <tr><td>skills.sh</td><td class="num"><b>1,487,164</b></td><td>可安装条目</td></tr>
+    <tr><td>SkillHub</td><td class="num"><b>154,500</b></td><td>已发布 Skill（筛过的）</td></tr>
+    <tr><td>GitHub topic</td><td class="num"><b>36,245</b></td><td><b>仓库数</b>（这才是真实数量级）</td></tr>
+  </table>
+  <p class="src">四个数差 100 倍，不是谁错了，是<b>数的是不同东西</b>（文件 / 条目 / 已发布 / 仓库）。看数量级就够了，别比大小。</p>
+</div>
+
+<!-- ============ 平台地图 ============ -->
+<h2>二、平台地图（四类，按用途分）</h2>
+
+<h3><span class="tag t-a">A 类 · 热榜型</span> 看"什么在变热"——每天扫一眼就够</h3>
+<div class="crit ok">
+  <table>
+    <tr><th style="width:150px">平台</th><th style="width:90px">规模</th><th>它独有的东西</th><th style="width:110px">怎么用</th></tr>
+    <tr>
+      <td><b>skills.sh</b><br><span class="mx">Vercel 出品</span></td>
+      <td class="num">148.7 万</td>
+      <td>
+        <b>24 小时 Trending 榜</b>——这是全网最快的"风向标"<br>
+        分 All Time / Trending(24h) / Hot 三档<br>
+        一条命令装：<code>npx skills add owner/repo</code><br>
+        <span class="mx">今日 Top3：find-skills 400万装 / grill-me 140万 / agent-browser 120万</span>
+      </td>
+      <td class="green"><b>每天看这一个</b><br>https://skills.sh/trending</td>
+    </tr>
+  </table>
+</div>
+
+<h3><span class="tag t-b">B 类 · 聚合搜索</span> 找"某个具体能力"时用——不是天天用</h3>
+<div class="crit">
+  <table>
+    <tr><th style="width:150px">平台</th><th style="width:100px">规模</th><th>特点</th><th style="width:130px">适合什么时候</th></tr>
+    <tr>
+      <td><b>SkillsMP</b><br><span class="mx">skillsmp.com</span></td>
+      <td class="num">360 万</td>
+      <td>
+        量最大；<b>有 API</b>（可接自己程序）；<br>
+        有<b>实时社区流</b>——今天 10/24 已经能看到当天新发布的 skill；<br>
+        按 SOC 职业分类（23 组 / 867 细类）
+      </td>
+      <td>知道自己要找什么关键词<br><span class="mx">⚠ 只搜不装，回 GitHub 看源码</span></td>
+    </tr>
+    <tr>
+      <td><b>SkillHub</b><br><span class="mx">skillhub.club</span></td>
+      <td class="num">15.45 万</td>
+      <td>
+        按<b>工作流</b>组织（不是按关键词）；<br>
+        <b>S/A/B/C 五维评级</b>，可以直接只看 S 级；<br>
+        目录更新到今天（10/24）
+      </td>
+      <td>不知道装什么，只想"把活干完"<br><span class="mx">看 S 级就行</span></td>
+    </tr>
+  </table>
+  <p class="src">另外还有：ClawHub（OpenClaw 官方，5,700+，但 2026-01 出过 ClawHavoc 事件——341 个恶意 Skill 窃取 Cookie/SSH 密钥，现在加了三重扫描）、agentskills.me（人工精选）、AgenticSkills.io（Skills+MCP 双目录）。这些<b>不是必需</b>。</p>
+</div>
+
+<h3><span class="tag t-c">C 类 · 更新源头</span> 唯一真正"每天有新东西"的地方</h3>
+<div class="crit ok">
+  <p><b>GitHub topic: <code>agent-skills</code></b> —— 36,245 个仓库，可以按更新时间排序。</p>
+  <pre><span class="c"># 每天最新的更新（按 push 时间）</span>
+https://github.com/topics/agent-skills?o=desc&amp;s=updated
+
+<span class="c"># 今天新建的仓库</span>
+https://github.com/search?q=topic%3Aagent-skills+created%3A%3E2026-10-23&amp;type=repositories</pre>
+  <p style="margin-top:8px"><b>刚刚实测</b>：最近 24 小时内，星标 ≥50 且有过 push 的仓库 <b>277 个</b>。这个数量决定了——<b>你必须靠脚本筛，靠人看不完。</b></p>
+</div>
+
+<h3><span class="tag t-d">D 类 · 官方与精选</span> 优先级最高，先看这几个</h3>
+<div class="crit">
+  <table>
+    <tr><th style="width:250px">仓库</th><th class="num" style="width:110px">星标</th><th style="width:110px">最近更新</th><th>定位</th></tr>
+    <tr style="background:#f0fbf6">
+      <td><b>anthropics/skills</b></td><td class="num">183,347</td><td>2026-10-09</td>
+      <td><b>官方</b>。唯一可以"不审计就装"的来源</td>
+    </tr>
+    <tr>
+      <td><b>obra/superpowers</b></td><td class="num">304,321</td><td class="green">2026-10-23</td>
+      <td>社区最大技能框架，开发方法论</td>
+    </tr>
+    <tr>
+      <td><b>mattpocock/skills</b></td><td class="num">301,931</td><td>2026-10-22</td>
+      <td>工程师实用技能集（grill-me 就很出名）</td>
+    </tr>
+    <tr>
+      <td><b>ComposioHQ/awesome-claude-skills</b></td><td class="num">77,784</td><td>2026-09-18</td>
+      <td>分类最全的人工清单</td>
+    </tr>
+    <tr>
+      <td><b>sickn33/agentic-awesome-skills</b></td><td class="num">48,422</td><td class="green">2026-10-24</td>
+      <td>活跃度最高，<b>今天又更新了</b></td>
+    </tr>
+    <tr>
+      <td><b>VoltAgent/awesome-agent-skills</b></td><td class="num">36,246</td><td class="green">2026-10-23</td>
+      <td>1,000+ 精选，来自各家企业官方</td>
+    </tr>
+    <tr>
+      <td><b>vercel-labs/skills</b></td><td class="num">36,314</td><td>2026-10-19</td>
+      <td>npx skills 工具链本身</td>
+    </tr>
+  </table>
+  <p class="src">星标数据为 2026-10-24 13:47 实测值</p>
+</div>
+
+<!-- ============ 每日方案 ============ -->
+<h2>三、每日追踪方案（我已经跑通了）</h2>
+
+<div class="crit ok">
+  <h3>方案：一个脚本 + 每天 9 点自动推送</h3>
+  <p>不用你开 8 个网站。脚本每天自动抓这三件事，生成一份日报：</p>
+  <table>
+    <tr><th style="width:60px">序</th><th style="width:200px">抓什么</th><th>为什么是它</th></tr>
+    <tr><td>1</td><td><b>7 个必看源有没有动</b></td><td>只要看"今天动没动"，没动就跳过，不用细看</td></tr>
+    <tr><td>2</td><td><b>窗口内活跃更新的仓库</b></td><td>按 push 时间排序，星标 ≥50 过滤噪声</td></tr>
+    <tr><td>3</td><td><b>其中是新建的</b></td><td>新仓往往代表新玩法，最值得关注</td></tr>
+  </table>
+
+  <h3 style="margin-top:18px">脚本位置</h3>
+  <p><code>D:\个人知识库\02_模板与方法\skill_daily.py</code></p>
+
+  <h3>用法</h3>
+  <pre><span class="c"># 最近 24 小时</span>
+python skill_daily.py
+
+<span class="c"># 最近 48 小时</span>
+python skill_daily.py --hours 48
+
+<span class="c"># 存成文件（脚本会自动建目录）</span>
+python skill_daily.py --out "D:/个人知识库/03_输出报告/output/Skill日报/日报.md"
+
+<span class="c"># 有 GitHub token 就传进来，不受限流</span>
+python skill_daily.py --token ghp_xxxxx</pre>
+
+  <h3>已经跑出来的今天这份</h3>
+  <p><code>D:\个人知识库\03_输出报告\output\Skill日报\Skill日报_20261024.md</code></p>
+  <div class="why">
+    <b>今天的结果（真实抓的）：</b>
+    <ul style="margin:6px 0">
+      <li>7 个必看源里 <b>3 个今天动了</b>：obra/superpowers、VoltAgent、sickn33</li>
+      <li>24 小时内活跃更新 <b>277 个仓库</b>（星标≥50）</li>
+      <li>冒头的新仓：squirrelscan（网站 QA 工具，296★）、aipoch/open-science（科研工作台，5,355★）、mvschwarz/openrig（8,143★）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="crit warn">
+  <h3>⚠️ 一个技术坑，已经替你踩过了</h3>
+  <p>GitHub 未登录状态下限制很紧：</p>
+  <ul>
+    <li>普通接口：<b>60 次/小时</b></li>
+    <li>搜索接口：<b>10 次/分钟</b></li>
+  </ul>
+  <p><b>我第一版脚本发了 3 次搜索请求，直接 403 限流。</b>现在的版本已经压到<b>只发 1 次搜索</b>，三段内容都从同一份结果里切，并且带退避重试。</p>
+  <p><b>如果你想更稳</b>：去 GitHub 生成一个 Personal Access Token（不需要任何权限，只读公开仓库），传给脚本即可，配额变成 5000/小时。</p>
+</div>
+
+<!-- ============ 建议 ============ -->
+<h2>四、我的建议：分三层看，别平铺</h2>
+
+<div class="crit ask">
+  <table>
+    <tr><th style="width:110px">频率</th><th>看什么</th><th>花多久</th></tr>
+    <tr style="background:#f0fbf6">
+      <td><b>每天</b></td>
+      <td><b>就看我生成的这份日报</b>（7 个必看源动没动 + 活跃仓库 Top）+ 顺手点一下 <b>skills.sh/trending</b></td>
+      <td class="green">3 分钟</td>
+    </tr>
+    <tr>
+      <td><b>每周</b></td>
+      <td>翻一次 <b>SkillHub 的 S 级</b>（按工作流看），挑 1-2 个真正用得上的装</td>
+      <td>10 分钟</td>
+    </tr>
+    <tr>
+      <td><b>需要时</b></td>
+      <td>SkillsMP 搜关键词（<b>只搜不装</b>，找到后回 GitHub 看源码）</td>
+      <td>按需</td>
+    </tr>
+  </table>
+  <div class="one">
+    "三层里，<b>只有第一层需要每天做</b>。<br>
+    第二层每周一次，第三层用到才开——这样才可持续。"
+  </div>
+</div>
+
+<!-- ============ 安全 ============ -->
+<h2>五、装之前必须过的四道检查</h2>
+
+<div class="crit bad">
+  <p>2026 年 1 月的 <b>ClawHavoc 事件</b>是前车之鉴：341 个恶意 Skill 被分发，专门窃取 Cookie 和 SSH 密钥——<b>连官方商店都没挡住。</b></p>
+  <table>
+    <tr><th style="width:50px">#</th><th style="width:200px">查什么</th><th>怎么看</th></tr>
+    <tr><td>1</td><td><b>有没有往外发数据</b></td><td>在 SKILL.md 和脚本里搜 <code>curl</code> <code>wget</code> <code>requests.post</code> <code>fetch(</code></td></tr>
+    <tr><td>2</td><td><b>有没有读敏感路径</b></td><td>搜 <code>~/.ssh</code> <code>~/.aws</code> <code>.env</code> <code>os.environ</code> <code>credentials</code></td></tr>
+    <tr><td>3</td><td><b>有没有执行外部命令</b></td><td>搜 <code>subprocess</code> <code>os.system</code> <code>eval(</code> <code>exec(</code> <code>shell=True</code></td></tr>
+    <tr><td>4</td><td><b>仓库靠不靠谱</b></td><td>星标 &gt;50？3 个月内有 commit？Issues 里有没有安全投诉？</td></tr>
+  </table>
+  <p style="margin-top:8px"><b>这三件事绝对不做</b>：① 从 SkillsMP 搜索结果直接装 ② 只看 SkillHub 的 S 级就装（S 级评的是"写得好不好"，不是"有没有后门"）③ 没读 SKILL.md 就装。</p>
+  <p class="src">→ 这套检查我上次装 ppt-master 时就是这么过的（扫出 169.254.169.254 云元数据地址，查完发现是安全测试用例，才放行）。</p>
+</div>
+
+<div class="foot">
+  <p><b>数据核实时间</b>：2026-10-24 13:47–13:55（GMT+8）<br>
+  · skills.sh 首页实测：1,487,164 skills，有 All Time / Trending(24h) / Hot，Top1 find-skills 400万装<br>
+  · skillsmp.com 实测：3,601,416 SKILL.md，有 API 文档，社区流可见 10/24 当天发布<br>
+  · skillhub.club 实测：154.5K published，26 类，Catalog updated Oct 24 2026，有 S-Rank 筛选<br>
+  · GitHub API 实测：topic:agent-skills 共 36,245 个仓库；24h 内星标≥50 且活跃 277 个；7 个必看源星标与 push 日期逐一拉取</p>
+  <p><b>可信度说明</b>：本文所有数字均为当日实地抓取，非引用二手文章。网上关于"收录多少万"的说法差异极大（164万/180万/287万都有），是因为口径不同，<b>不可横向比较</b>。</p>
+  <p>抖抖 · 2026-10-24</p>
+</div>
+
+</div></body></html>
