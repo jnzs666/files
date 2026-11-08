@@ -132,8 +132,8 @@ details.drop .menu a i{font-style:normal;font-size:12px;color:var(--sub)}
   </div>
   <div class="themebar">
     <span class="lb">配色：</span>
-    <button class="tb on" data-t="pro" type="button"><span class="dot"></span>默认</button>
-    <button class="tb" data-t="ball" type="button"><span class="dot"></span>精灵球</button>
+    <button class="tb on" data-t="ball" type="button"><span class="dot"></span>精灵球</button>
+    <button class="tb" data-t="pro" type="button"><span class="dot"></span>默认</button>
     <button class="tb" data-t="pika" type="button"><span class="dot"></span>皮卡丘</button>
     <button class="tb" data-t="mix" type="button"><span class="dot"></span>混合</button>
     <span class="lb" style="margin-left:auto" id="curTheme"></span>
@@ -153,7 +153,7 @@ details.drop .menu a i{font-style:normal;font-size:12px;color:var(--sub)}
   var root=document.documentElement;
   var NAMES={pro:'默认·深蓝', ball:'精灵球·红白黑', pika:'皮卡丘·亮黄', mix:'混合·黄红'};
   var qs=new URLSearchParams(location.search).get('t');
-  var saved=qs || localStorage.getItem('lib-theme') || 'pro';
+  var saved=qs || localStorage.getItem('lib-theme') || 'ball';
   if(!NAMES[saved]) saved='pro';
   root.setAttribute('data-theme',saved);
 
