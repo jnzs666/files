@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>抖音项目 · 会上宣讲三件事</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.75;font-size:15.5px}
+.wrap{max-width:1000px;margin:0 auto;padding:28px 24px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:36px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.3}
+h3{font-size:16.5px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:9px 11px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:15px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:26px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 6px;font-size:16.5px}
+.script{background:#fff;border:1px dashed #d8bfff;border-radius:10px;padding:15px 19px;margin:10px 0;font-size:15px;line-height:1.95}
+.script b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:13px 17px;margin:12px 0;font-size:15.5px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+.badge{display:inline-block;width:36px;height:36px;line-height:36px;text-align:center;border-radius:50%;background:#ffb5c5;color:#fff;font-weight:700;font-size:18px;margin-right:9px;vertical-align:middle}
+.foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12.5px;color:var(--sub)}
+.flow{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12);font-size:14.5px;line-height:2.1}
+.flow b{color:#a5404f}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>抖音项目 · 会上宣讲三件事</h1>
+  <p>2026-10-22 ｜ <b>全部按 GSV（净销售额）口径</b>：GSV = GMV − 退款</p>
+  <p>数据源：9月经营分析会 抖音运营部《经营数据汇报-2026-09》官方口径</p>
+</div>
+
+<!-- ============ 口径 ============ -->
+<h2>零、先把口径统一（会上第一句话就说清）</h2>
+
+<div class="crit bad">
+  <p><b>我上一版用错了口径，这里更正：</b>我说的是 GMV，你要的是 <b>GSV</b>。</p>
+  <table>
+    <tr><th style="width:130px">口径</th><th class="num">9月抖音（4店）</th><th>说明</th></tr>
+    <tr><td>GMV</td><td class="num">51.14 万</td><td>成交总额（未扣退款）</td></tr>
+    <tr><td>退款</td><td class="num">16.06 万</td><td>退款率 31.41%</td></tr>
+    <tr class="tot"><td><b>GSV（净销售额）</b></td><td class="num"><b>35.08 万</b></td><td><b>这才是真正到手的钱</b></td></tr>
+  </table>
+  <div class="one">
+    "以后抖音只看 GSV，不看 GMV。<br>
+    <b>GMV 51 万听着不错，但 GSV 只有 35 万——31% 退了。</b>"
+  </div>
+</div>
+
+<!-- ============ 三件事总览 ============ -->
+<h2>一、三件事（一页看完）</h2>
+
+<div class="crit">
+  <table>
+    <tr><th style="width:50px">序</th><th style="width:170px">事</th><th style="width:150px">现在</th><th style="width:150px">目标</th><th>一句话</th></tr>
+    <tr style="background:#f0fbf6">
+      <td><b>1</b></td><td><b>GSV 单月破 40 万</b></td><td class="num">35.08 万</td><td class="num green"><b>40 万</b>（+14%）</td>
+      <td>不靠多卖，靠少退 + 提客单</td>
+    </tr>
+    <tr>
+      <td><b>2</b></td><td><b>达人：从量到质</b></td><td class="num">250 个出单<br>90% 月产出&lt;1000元</td><td>聚焦 <b>前 20 个</b></td>
+      <td>不是找更多人，是让对的人带对的货</td>
+    </tr>
+    <tr>
+      <td><b>3</b></td><td><b>内容：补强</b></td><td class="num">退款 31.4%<br>CTR 3.32%</td><td>退款 ≤25%<br>客单 70→90</td>
+      <td>内容不是"做得好看"，是"说得准"</td>
+    </tr>
+  </table>
+</div>
+
+<div class="flow">
+  <b>这三件事的关系，会上一定要讲清楚：</b><br>
+  <b>内容弱</b>（讲不清产品价值）→ 客户预期错位 → <b>退款 31.4%</b> → GSV 只有 35 万；<br>
+  而<b>达人只能带 42 元的巫毒带</b>（讲不出 847 元空气波的价值）→ <b>达人质量也卡在内容上</b>。<br>
+  <b>所以：内容是根，达人是手，GSV 40 万是果。</b>
+</div>
+
+<!-- ============ 第一件 ============ -->
+<h2><span class="badge">1</span> GSV 单月突破 40 万</h2>
+
+<div class="crit ok">
+  <div class="script">
+    <b>会上可以这么说：</b><br>
+    "9 月抖音 GSV <b>35.08 万</b>，离 40 万差 <b>4.92 万</b>。<br>
+    这 4.92 万，<b>不用靠多卖——靠把退款打下来，就能拿到。</b><br>
+    现在退款 31.4%。<b>退款降到 20%，GMV 一分钱不涨，GSV 就能到 40 万。</b>"
+  </div>
+</div>
+
+<div class="crit">
+  <h3>算给团队看（这张表最有说服力）</h3>
+  <table>
+    <tr><th style="width:200px">如果退款率降到</th><th class="num">需要 GMV</th><th class="num">比 9 月要多</th><th>判断</th></tr>
+    <tr><td>31.4%（不变）</td><td class="num">58.3 万</td><td class="num">+7.2 万</td><td class="red">要加投流加达人，钱也花得多</td></tr>
+    <tr><td>28%</td><td class="num">55.6 万</td><td class="num">+4.4 万</td><td>中</td></tr>
+    <tr><td>25%</td><td class="num">53.3 万</td><td class="num">+2.2 万</td><td class="green">轻</td></tr>
+    <tr style="background:#f0fbf6"><td><b>20%</b></td><td class="num green"><b>50.0 万</b></td><td class="num green"><b>−1.1 万（还能少）</b></td><td class="green"><b>最省：GMV不增，GSV到40万</b></td></tr>
+  </table>
+  <div class="one">
+    "要做 40 万 GSV，<b>最便宜的路不是多卖，是少退。</b>"
+  </div>
+</div>
+
+<div class="crit ok">
+  <h3>三条腿（会上讲路径）</h3>
+  <table>
+    <tr><th style="width:110px">腿</th><th>动作</th><th class="num">对 GSV 的贡献</th></tr>
+    <tr><td><b>① 少退</b></td><td>退款 31.4% → 25%</td><td class="num green">+3.3 万/月</td></tr>
+    <tr><td><b>② 提客单</b></td><td>客单 70 → 90 元<br><span class="mx">多卖高价品，不靠降价冲量</span></td><td class="num green">+约 8 万/月</td></tr>
+    <tr><td><b>③ 稳增长</b></td><td>GMV 自然增 10%（大促+内容）</td><td class="num">+3.5 万/月</td></tr>
+    <tr class="tot"><td colspan="2">合计</td><td class="num">≈ +14.8 万 → <b>GSV 约 50 万</b></td></tr>
+  </table>
+  <p class="src">→ 只做前两条腿，保守也能到 46 万左右，<b>40 万一定能过</b>。</p>
+</div>
+
+<!-- ============ 第二件 ============ -->
+<h2><span class="badge">2</span> 达人：从「数量」到「质量」</h2>
+
+<div class="crit bad">
+  <h3>先让团队看现在的"量"有多虚</h3>
+  <div class="big">
+    <div class="stat"><b>721</b><span>达人档案</span></div>
+    <div class="stat"><b>471</b><span>9月零出单（65%）</span></div>
+    <div class="stat"><b>250</b><span>9月有出单</span></div>
+    <div class="stat"><b>90%</b><span>月产出&lt;1000元</span></div>
+  </div>
+  <table>
+    <tr><th>集中度</th><th class="num">GSV 贡献占比</th></tr>
+    <tr><td>前 3 个达人</td><td class="num">27.7%</td></tr>
+    <tr><td>前 10 个达人</td><td class="num"><b>60.4%</b></td></tr>
+    <tr><td>前 20 个达人</td><td class="num">77.1%</td></tr>
+  </table>
+  <div class="one">
+    "250 个达人在卖，<b>226 个月产出不到 1000 块——等于白干。</b><br>
+    真正撑起抖音的，<b>就是前 10 到 20 个人。</b>"
+  </div>
+</div>
+
+<div class="crit bad">
+  <h3>更扎心的一个数：达人卖得最多的品，投放其实是亏的</h3>
+  <table>
+    <tr><th>达人第一大品</th><th class="num">卖出</th><th class="num">件数</th><th class="num">单价</th><th class="num">投放消耗</th><th class="num">净ROI</th></tr>
+    <tr style="background:#fff5f6">
+      <td><b>巫毒带</b></td><td class="num">5.30 万</td><td class="num">1,252</td><td class="num">42 元</td>
+      <td class="num">1.58 万</td><td class="num red"><b>3.96</b>（底线 5）</td>
+    </tr>
+  </table>
+  <p><b>9月投放整体</b>：消耗 5.08 万｜净成交 26.25 万｜<b>净 ROI 5.17（刚过线）</b>｜其中 <b>41.5% 的消耗花在 ROI&lt;5 的品上</b>。</p>
+</div>
+
+<div class="crit ok">
+  <h3>会上讲三个动作</h3>
+  <table>
+    <tr><th style="width:80px">动作</th><th>具体</th><th>一句话讲</th></tr>
+    <tr>
+      <td><b>砍</b></td><td><b>226 个低效达人，停止主动投入</b><br><span class="mx">不拉黑，只保留自然出单</span></td>
+      <td>"不再给 226 个人寄样、沟通、做素材"</td>
+    </tr>
+    <tr>
+      <td><b>提</b></td><td><b>前 20 个达人往高价品推</b><br><span class="mx">42元巫毒带 → 842-1444元空气波</span></td>
+      <td>"儿童空气波达人已经能卖 <b>1444 元/件</b>，说明卖得动"</td>
+    </tr>
+    <tr>
+      <td><b>换</b></td><td><b>找新爆品类达人</b><br><span class="mx">腰大肌品类 ROI 11.04~23.93</span></td>
+      <td>"腰大肌这个品内容好做、转化高，加大投入"</td>
+    </tr>
+  </table>
+  <div class="one">
+    "不再问'怎么找更多达人'。<br>
+    <b>250 人在卖，226 个白干——问题是这 226 个在稀释管理精力。</b>"
+  </div>
+</div>
+
+<!-- ============ 第三件 ============ -->
+<h2><span class="badge">3</span> 内容：从"很弱"到"说得准"</h2>
+
+<div class="crit">
+  <div class="script">
+    <b>会上可以说：</b><br>
+    "内容弱这件事，我不用感觉说——<b>三个数字就证明了：</b><br>
+    ① <b>退款 31.4%</b>：看到的内容和拿到的东西落差太大；<br>
+    ② <b>CTR 只有 3.32%</b>：内容抓不住人，而且分产品差 5 倍（1.33%~6.75%）；<br>
+    ③ <b>客单只有 70 元</b>：讲不出高价品的价值。"
+  </div>
+</div>
+
+<div class="crit ok">
+  <h3>内容分三层，别一把抓（会上派活）</h3>
+  <table>
+    <tr><th style="width:100px">层</th><th style="width:130px">谁做</th><th>干什么</th><th style="width:100px">解决</th></tr>
+    <tr>
+      <td><b>① 详情页</b><br><span class="mx">承接</span></td>
+      <td>美工 + 产品部</td>
+      <td>高退款品加「<b>适配/不适配</b>」对比图、真人使用视频、<b>空气波尺寸对照</b>（退款主因）</td>
+      <td class="green"><b>退款率</b></td>
+    </tr>
+    <tr>
+      <td><b>② 短视频</b><br><span class="mx">拉新</span></td>
+      <td>品牌运营部</td>
+      <td><b>拆解 CTR&gt;5% 的 4 个素材</b>提炼模板，按模板批量产<br><span class="mx">不是每天凭感觉做 10 条</span></td>
+      <td class="green"><b>CTR</b></td>
+    </tr>
+    <tr>
+      <td><b>③ 达人素材</b><br><span class="mx">转化</span></td>
+      <td>达人 BD</td>
+      <td>给达人<b>现成脚本+模板+禁用词</b>，重点教讲「<b>800 块凭什么值 800</b>」</td>
+      <td class="green"><b>客单价+退款</b></td>
+    </tr>
+  </table>
+</div>
+
+<div class="crit warn">
+  <h3>⚠ 会上必须纠正一个认知：内容不是"做得更好看"</h3>
+  <p><b>数据反差：</b>CTR 最高的是<b>髌骨分离器 6.75%</b>（一个小众品），而消耗最大的巫毒带只有 <b>2.70%</b>。</p>
+  <div class="one">
+    "内容的胜负不在制作水准，在<b>有没有说中痛点。</b><br>
+    先别花钱重拍——<b>把 CTR 前 4 名和后 4 名的素材各拆 5 条，找出差在哪。</b>"
+  </div>
+</div>
+
+<!-- ============ 收尾 ============ -->
+<h2>二、收尾话术（建议原话说）</h2>
+
+<div class="crit ask">
+  <div class="script" style="border-color:#cfc2ee;font-size:15.5px">
+    "抖音这三个月，我做三件事：<br><br>
+    <b>第一，GSV 从 35 万做到 40 万</b>——不靠多卖，靠把 31% 的退款打下来。<br>
+    <b>第二，达人从 250 个管到 20 个</b>——226 个月产出不到 1000 块，不再投入。<br>
+    <b>第三，内容从'很弱'改成'说得准'</b>——先拆 CTR 前四名，按模板产，不凭感觉拍。<br><br>
+    这三件里，<b>内容是根</b>。内容不准，退款就下不来，达人就只能带便宜货，GSV 就上不去。"
+  </div>
+</div>
+
+<!-- ============ 数字清单 ============ -->
+<h2>三、会上要记住的数字（建议只讲这 6 个）</h2>
+
+<div class="crit">
+  <table>
+    <tr><th style="width:60px">#</th><th style="width:200px">数字</th><th>讲什么</th></tr>
+    <tr><td>1</td><td class="num"><b>35.08 万 → 40 万</b></td><td>GSV 现状与目标，差 4.92 万（+14%）</td></tr>
+    <tr><td>2</td><td class="num"><b>31.4%</b></td><td>退款率——GMV 和 GSV 之间那道大口子</td></tr>
+    <tr><td>3</td><td class="num"><b>退款降到 20% → GSV 自动到 40 万</b></td><td>最省的路不是多卖</td></tr>
+    <tr><td>4</td><td class="num"><b>90%（226/250）</b></td><td>达人白干率</td></tr>
+    <tr><td>5</td><td class="num"><b>前 10 个 = 60.4%</b></td><td>真正的贡献者是谁</td></tr>
+    <tr><td>6</td><td class="num"><b>3.32%</b></td><td>CTR——内容的真实水平</td></tr>
+  </table>
+  <p class="src">⚠ 别在会上报太多数字，<b>6 个足够，多了记不住。</b></p>
+</div>
+
+<div class="foot">
+  <p><b>数据来源（GSV 口径，均为 9 月官方数据）</b>：<br>
+  · 《经营数据汇报-2026-09》officialMonthly：GMV 511,394.28 / 退款 160,612.40 / <b>GSV 350,781.88</b> / 退款率 31.41%<br>
+  · 达人：items 明细 ch=1 按 creatorIdx 聚合 —— 250个达人有出单合计 190,739 元；721档案中 471 个零出单；226 个（90%）月产出&lt;1000元；前10贡献60.4%<br>
+  · 投放：adProducts（2026-09，104产品）—— 消耗 50,828 / 净成交 262,547 / 净ROI 5.17 / CTR 3.32%；巫毒带消耗15,808 ROI 3.96；ROI&lt;5且消耗&gt;500 的5个产品合计占41.5%<br>
+  · 达人带货：巫毒带 53,030元/1,252件/单价42元；儿童空气波达人 1,444元/件</p>
+  <p><b>口径声明</b>：GSV = GMV − 退款（与本项目既定口径一致）。⚠ 数据文件中 stageOrders 的 refundAmount 字段仅记录部分退款（合计1.0万，退款率1.8%），与官方口径的16.06万不一致，<b>不可用于计算 GSV</b>，本表统一采用 officialMonthly 口径。</p>
+  <p>抖抖 · 2026-10-22</p>
+</div>
+
+</div></body></html>

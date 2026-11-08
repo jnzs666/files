@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>哪些能信 · 迁移信息审计总结</title>
+<style>
+  :root{
+    --bg:#fdf6f0; --ink:#5d4e6d; --sub:#9a8caf; --line:#f0e4f0;
+    --warn:#e2611e; --ok:#6ec49b; --bad:#f28a97; --head:#fbf5fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+       font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+       line-height:1.75;font-size:16px}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 80px}
+  .banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);
+          border-radius:16px;padding:28px 30px;margin-bottom:28px;
+          box-shadow:0 4px 18px rgba(180,160,200,.14)}
+  .banner h1{margin:0 0 8px;font-size:26px;letter-spacing:.5px}
+  .banner p{margin:4px 0;color:#6a5b78;font-size:14px}
+  h2{font-size:20px;margin:38px 0 14px;padding-left:12px;
+     border-left:5px solid #ffb5c5;line-height:1.2}
+  h3{font-size:17px;margin:24px 0 10px;color:#6a5b78}
+  .card{background:#fff;border-radius:12px;padding:18px 22px;margin:14px 0;
+        box-shadow:0 2px 12px rgba(180,160,200,.12)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px;
+        background:#fff;border-radius:10px;overflow:hidden;
+        box-shadow:0 2px 12px rgba(180,160,200,.10)}
+  th{background:var(--head);text-align:left;padding:11px 13px;font-weight:600;
+     border-bottom:1px solid var(--line)}
+  td{padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tag{display:inline-block;padding:1px 9px;border-radius:20px;font-size:13px;
+       font-weight:600;white-space:nowrap}
+  .t-ok{background:#e6f6ee;color:#2f8a63}
+  .t-warn{background:#fff1e6;color:#c25a12}
+  .t-bad{background:#ffe9ec;color:#c0384a}
+  .big{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}
+  .stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:16px 18px;
+        box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+  .stat b{display:block;font-size:30px;line-height:1.2}
+  .stat span{color:var(--sub);font-size:13px}
+  .crit{background:#fff;border-left:6px solid var(--warn);border-radius:10px;
+        padding:16px 20px;margin:14px 0;
+        box-shadow:0 2px 12px rgba(180,160,200,.12)}
+  .crit h3{margin:0 0 8px;color:var(--warn);font-size:17px}
+  .good{border-left-color:var(--ok)}
+  .good h3{color:#2f8a63}
+  code{background:#f6f0f7;padding:1px 6px;border-radius:5px;
+       font-family:Consolas,monospace;font-size:14px}
+  .red{color:#c0384a;font-weight:600}
+  .green{color:#2f8a63;font-weight:600}
+  ul{padding-left:22px;margin:8px 0}
+  li{margin:5px 0}
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+        color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="banner">
+    <h1>哪些能信</h1>
+    <p>迁移信息审计总结 · 2026年9月30日</p>
+    <p>起因：你发现"模型能力"那条记录是错的，问搬过来的东西会不会本身有问题</p>
+    <p><b>答案：会。查完的结果在下面。</b></p>
+  </div>
+
+  <div class="big">
+    <div class="stat"><b>175</b><span>查了这么多条</span></div>
+    <div class="stat"><b class="red">47</b><span>不对或过时</span></div>
+    <div class="stat"><b class="red">128</b><span>确认没问题</span></div>
+  </div>
+
+  <div class="card">
+    <b>一句话结论</b>：<br>
+    <span class="red">数字和原文基本可信</span>；
+    <span class="green">"记录下来的结论"大约三成已经过时</span>。
+  </div>
+
+  <h2>一、最要紧的五件事</h2>
+
+  <div class="crit">
+    <h3>① 我把代理的事说反了</h3>
+    <p>我之前跟你说"代码是走 SOCKS5 主路径"，还拿这个去否掉了另一份材料。结果 <b class="red">反了</b>。</p>
+    <p><b>实际</b>：默认走<b>直连（TUN）</b>，SOCKS5 才是要手动打开的兜底。</p>
+    <p><b>我为什么错</b>：被一句<b>写死的日志</b>骗了——那行字不管走哪条路都照打"via SOCKS5"。</p>
+    <p><b>风险</b>：照我错的说法去改配置，会把<b>能用的换成不能用的</b>。</p>
+    <p><span class="tag t-ok">已改正</span> 别按我先前的说法动代理。</p>
+  </div>
+
+  <div class="crit">
+    <h3>② 档案里那串库存数字，是 9 月 5 日的，不是现状</h3>
+    <table>
+      <tr><th>项目</th><th>档案里写的</th><th>9月30日实际</th></tr>
+      <tr><td>有效 SKU</td><td class="num">5965</td><td class="num red">2821</td></tr>
+      <tr><td>健康 SKU</td><td class="num">77</td><td class="num red">67</td></tr>
+      <tr><td>滞销</td><td class="num">2273 个 / ¥210万 / 40%</td><td class="num red">2089 个 / ¥168万 / 31%</td></tr>
+      <tr><td>积压</td><td class="num">476</td><td class="num red">497</td></tr>
+      <tr><td>零销量</td><td class="num">88%</td><td class="num red">74.8%</td></tr>
+    </table>
+    <p><b>当初没数错，是现在变了。</b>而且 9月29日起流水线改了口径（剔掉停售品），<b>老数和新数不能直接比</b>。</p>
+    <p style="background:#fff6e9;padding:10px 14px;border-radius:8px;margin-top:10px">
+      ⚠️ 按"呆滞"口径（滞销+积压）看，9月30日是 <b class="red">2586 个 SKU / ¥501万 / 92.95%</b>。<br>
+      档案只写"滞销 210 万"，<b>给人的印象差了一倍多</b>。
+    </p>
+  </div>
+
+  <div class="crit">
+    <h3>③ 26.6 模板说明有三处错，会直接害到月报</h3>
+    <table>
+      <tr><th>我写的</th><th>实际</th></tr>
+      <tr><td>"17 个小节"</td><td class="red">13 个</td></tr>
+      <tr><td>周表 W01–W18（18 周）</td><td class="red">W01–W23（23 周）</td></tr>
+      <tr><td>"倒序 6月→1月"</td><td class="red">6月提前 + 1→5月正序</td></tr>
+    </table>
+    <p><span class="tag t-ok">好消息</span> Sheet 名、所有起始行、字段名、行列数、各节样本值 —— <b>逐项核过，全对</b>。</p>
+  </div>
+
+  <div class="crit">
+    <h3>④ 8 月业绩有两本账，差 2 万多</h3>
+    <table>
+      <tr><th>来源</th><th>全平台</th><th>抖音</th></tr>
+      <tr><td>看板（档案用的这套）</td><td class="num">¥28.03 万</td><td class="num">¥23.15 万</td></tr>
+      <tr><td>正式月报 26.8</td><td class="num red">¥30.25 万</td><td class="num red">¥25.25 万</td></tr>
+    </table>
+    <p>另外措辞也错了：抖音是<b>合聚 + 运动两个店</b>，23 万是<b>两店合计</b>，不是"单店"。</p>
+    <p><span class="tag t-warn">需要你定</span> 哪本账为准？</p>
+  </div>
+
+  <div class="crit">
+    <h3>⑤ 净 ROI 那个数，出处和档位都不对</h3>
+    <ul>
+      <li><b>底线 5 成立</b> <span class="tag t-ok">对</span>，但<b>不在</b> <code>ROI计算.xlsx</code> 里（那表根本没有"净ROI"字样）</li>
+      <li><b>真出处</b>：<code>9月空气波作战表_v1_20260907.xlsx</code> ③每日复盘表</li>
+      <li><b>"安全区 6–7"不存在</b>。实际是三档：<b>&lt;4.5 砍 / 4.5–6 观察 / ≥6 放量</b>；全店守 ≥5.5</li>
+    </ul>
+  </div>
+
+  <h2>二、可信度地图</h2>
+
+  <h3>✅ 可以放心用</h3>
+  <table>
+    <tr><th>内容</th><th>依据</th></tr>
+    <tr><td>26.6 模板的结构（Sheet 名、起始行、字段名、行列数）</td><td>逐项打开原表核过</td></tr>
+    <tr><td>快照缺 9 天（09-10~14、09-19、09-25~27）</td><td>逐日数过</td></tr>
+    <tr><td>知识库档案最新是 v5</td><td>列目录确认</td></tr>
+    <tr><td>三平台四店（合聚/运动/微信小店/小红书）</td><td>原始导出文件 7 份齐全</td></tr>
+    <tr><td>净 ROI 底线 = 5</td><td>找到原始出处</td></tr>
+    <tr><td>起批量.xlsx = 5287 行、44.43% 停售、文件未被改动</td><td>实测</td></tr>
+    <tr><td>你的履历、能力自评、团队画像</td><td>你自己的档案 + 你自己的话</td></tr>
+    <tr><td>聊天原话</td><td>是原文</td></tr>
+  </table>
+
+  <h3>⚠️ 别当现状用，会过时</h3>
+  <table>
+    <tr><th>内容</th><th>问题</th></tr>
+    <tr><td>库存那串数字</td><td>基准日是 09-05，已过时</td></tr>
+    <tr><td>"滞销 40%"</td><td>现在 31%（滞销口径）／92.95%（呆滞口径）</td></tr>
+    <tr><td>空气波"8月抖音 ¥6.2万"</td><td><b>找不到依据</b>；月报是 ¥10.3万</td></tr>
+    <tr><td>动销率 37%→78%</td><td>只见于你 2025 版简历，系统里没这口径</td></tr>
+    <tr><td>供应链配色 3 色</td><td>应是 <b>4 色</b>（已改）</td></tr>
+    <tr><td>组织架构图配色</td><td>我写的"未定"是错的，原文你已明确"全部改成克莱因蓝"</td></tr>
+  </table>
+
+  <h3>❌ 已确认不存在／已停</h3>
+  <table>
+    <tr><th>内容</th><th>实际</th></tr>
+    <tr><td><code>GPT5Proxy</code> 计划任务</td><td><b>不存在</b>；代理自 09-22 起就没跑过</td></tr>
+    <tr><td>两个"咨询雷达"任务</td><td><b>09-10 和 09-24 已删除</b>，不是"忘了关"</td></tr>
+    <tr><td>供应链第⑨步"企微邮件"</td><td><b>流水线里根本没有邮件步骤</b></td></tr>
+  </table>
+
+  <h2>三、需要你拍板的四件事</h2>
+  <table>
+    <tr><th>#</th><th>问题</th></tr>
+    <tr><td>1</td><td><b>8 月业绩哪本账为准？</b>看板 ¥28 万，还是月报 ¥30.25 万</td></tr>
+    <tr><td>2</td><td><b>涨跌配色</b>：你的原话是"涨红跌绿"，但两套色板写的是"涨绿跌红"——哪个对？</td></tr>
+    <tr><td>3</td><td><b>组织架构两套</b>：7月版（全公司 80 人）和 9月版（总经办体系），哪套算数？</td></tr>
+    <tr><td>4</td><td><b><code>起批量.xlsx</code> 被写入了试算列</b>：这表你划的是"只读"，但里面混进了 9月9日建的计算列，指向的备份文件也<b>找不到了</b>。要不要清理？</td></tr>
+  </table>
+
+  <h2>四、我改了什么</h2>
+  <table>
+    <tr><th>已改</th><th>说明</th></tr>
+    <tr><td>供应链配色</td><td>3 色 → <b>4 色</b>（两处都改了）</td></tr>
+    <tr><td>加"说人话"规矩</td><td>你今天提的</td></tr>
+    <tr><td>代理章节</td><td><b>改正我说反的结论</b></td></tr>
+    <tr><td>计划任务的电源限制</td><td>原来"必须插电才跑"，<b>已改成电池下也跑</b></td></tr>
+    <tr><td>日志中文乱码</td><td><b>已修</b>（原来报错日志是乱码，没法看）</td></tr>
+  </table>
+
+  <h2>五、给你的三条使用建议</h2>
+  <div class="card good">
+    <ol>
+      <li><b>看到我给的数字，问一句"这是哪天的"</b> —— 大部分错就出在这里</li>
+      <li><b>我说"已核实"时你可以信；我说"记录里说"时要留个心眼</b></li>
+      <li><b>我的结论和你的记忆冲突时，以你的为准</b> —— 你有现场判断力，我没有</li>
+    </ol>
+  </div>
+
+  <div class="foot">
+    <p>这次审计最大的价值不是找出了 47 处错，<br>
+    而是建立了一个习惯：<b>每条信息都要问"谁说的、什么时候的、核过没有"</b>。</p>
+    <p>详细清单见同目录下三份分报告：<code>配置与环境.md</code>、<code>业务数据.md</code>、<code>提炼稿准确性.md</code></p>
+  </div>
+
+</div>
+</body>
+</html>

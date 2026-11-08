@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>聊天记录数据底稿</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 24px 64px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:24px 28px;margin-bottom:22px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 6px;font-size:24px}
+.banner p{margin:3px 0;color:#6a5b78;font-size:13px}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.25}
+h3{font-size:16px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:23px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:14px 18px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}
+.crit h3{margin:0 0 6px;font-size:16px}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:21px;margin:6px 0}li{margin:4px 0}ol{padding-left:22px;margin:6px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>聊天记录数据底稿</h1>
+  <p>2026-10-13 ｜ 从企微/微信文件缓存中挖出的数据表（此前未纳入分析的）</p>
+  <p>共扫描 5 个缓存账户目录、150+ 个表格文件，提取以下高价值数据</p>
+</div>
+
+<div class="big">
+  <div class="stat"><b>587 万</b><span>9月货品净销（全口径）</span></div>
+  <div class="stat"><b>53.6%</b><span>9月毛利率</span></div>
+  <div class="stat"><b>51.7%</b><span>产品经理9月达成</span></div>
+  <div class="stat"><b>5.97</b><span>抖音8月净ROI</span></div>
+</div>
+
+<h2>一、产品线净销与毛利（9月·1434 行货品级）</h2>
+<div class="card">
+  <p class="src">来源：<code>9月业绩及库存数据.xlsx</code> → 总体业绩数据（含货品编码/规格/销量/产品经理/分类/净销售金额/毛利/毛利率）</p>
+  <div class="crit ok">
+    <b>9月合计：净销售 ¥5,870,264 ｜ 毛利 ¥3,145,769 ｜ 毛利率 53.6%</b>
+    <p class="src" style="margin-top:6px">⚠️ 此数为"全口径货品净销"（含未分配产品经理的行），与下方"产品经理考核口径 167.96 万"不是同一口径 —— <b>两个数都对，用途不同</b>。</p>
+  </div>
+  <table>
+    <tr><th>产品线</th><th class="num">规格行数</th><th class="num">品数</th><th class="num">净销售(¥)</th><th class="num">毛利(¥)</th><th class="num">毛利率</th><th>判断</th></tr>
+    <tr><td><b>空气波</b></td><td class="num">52</td><td class="num">8</td><td class="num">1,534,135</td><td class="num">688,523</td><td class="num">44.9%</td><td>绝对主力（占 26%），但毛利率偏低</td></tr>
+    <tr><td><b>筋膜刀</b></td><td class="num">71</td><td class="num">26</td><td class="num">471,233</td><td class="num">240,298</td><td class="num">51.0%</td><td>第二大类，品多而散</td></tr>
+    <tr><td>其他产品</td><td class="num">339</td><td class="num">162</td><td class="num">436,503</td><td class="num">223,844</td><td class="num">51.3%</td><td>长尾（339 行/162 品）</td></tr>
+    <tr><td><b>生物压力反馈仪</b></td><td class="num">11</td><td class="num">4</td><td class="num">350,018</td><td class="num">320,661</td><td class="num green">91.6%</td><td><b>高毛利明星</b>（4 品做出 35 万）</td></tr>
+    <tr><td>球类</td><td class="num">100</td><td class="num">20</td><td class="num">309,269</td><td class="num">172,947</td><td class="num">55.9%</td><td>—</td></tr>
+    <tr><td>巫毒带</td><td class="num">16</td><td class="num">2</td><td class="num">293,314</td><td class="num">175,515</td><td class="num">59.8%</td><td><b>2 品做出 29 万</b>，效率高</td></tr>
+    <tr><td>模型教具</td><td class="num">75</td><td class="num">48</td><td class="num">178,165</td><td class="num">93,282</td><td class="num">52.4%</td><td>—</td></tr>
+    <tr><td><b>血流限制带 BFR</b></td><td class="num">11</td><td class="num">1</td><td class="num">168,893</td><td class="num">123,191</td><td class="num green">72.9%</td><td><b>单品 17 万、毛利 73%</b></td></tr>
+    <tr><td>红光类</td><td class="num">130</td><td class="num">57</td><td class="num">167,330</td><td class="num">75,822</td><td class="num">45.3%</td><td>品多利薄（130 行仅 16.7 万）</td></tr>
+    <tr><td>电刺激</td><td class="num">53</td><td class="num">26</td><td class="num">166,358</td><td class="num">84,078</td><td class="num">50.5%</td><td>—</td></tr>
+    <tr><td><b>脊柱侧弯尺</b></td><td class="num">15</td><td class="num">9</td><td class="num">159,380</td><td class="num">114,419</td><td class="num green">71.8%</td><td>高毛利</td></tr>
+    <tr><td>RRT</td><td class="num">14</td><td class="num">3</td><td class="num">145,174</td><td class="num">81,656</td><td class="num">56.2%</td><td>—</td></tr>
+    <tr><td>弹力带</td><td class="num">49</td><td class="num">10</td><td class="num">138,175</td><td class="num">82,578</td><td class="num">59.8%</td><td>—</td></tr>
+    <tr><td>DMS</td><td class="num">8</td><td class="num">4</td><td class="num">134,248</td><td class="num">54,220</td><td class="num">40.4%</td><td>毛利率偏低</td></tr>
+    <tr><td>泡沫轴</td><td class="num">71</td><td class="num">20</td><td class="num">107,442</td><td class="num">56,754</td><td class="num">52.8%</td><td>—</td></tr>
+    <tr><td>斜板</td><td class="num">16</td><td class="num">10</td><td class="num">96,145</td><td class="num">26,482</td><td class="num red">27.5%</td><td>毛利率垫底</td></tr>
+    <tr><td>冷疗</td><td class="num">14</td><td class="num">4</td><td class="num">90,797</td><td class="num">42,938</td><td class="num">47.3%</td><td>—</td></tr>
+  </table>
+  <div class="crit">
+    <h3>我读出的三条</h3>
+    <p><b>① 空气波是"量"的支柱，不是"利"的支柱</b>：占净销 26%，但毛利率 44.9% 低于大盘 53.6%。<b>翻番靠它冲量可以，但利润不能指望它。</b></p>
+    <p><b>② 真正的高毛利品是这些</b>：生物压力反馈仪（91.6%）、BFR（72.9%）、脊柱侧弯尺（71.8%）、巫毒带（59.8%）、弹力带（59.8%）。<span class="green">它们的共同点是"品少、值高、利厚"——正是产品线该发力的方向。</span></p>
+    <p><b>③ 低效品类要警惕</b>：红光类 130 行只做 16.7 万（品多利薄）；斜板毛利率仅 27.5%；"其他产品"339 行 162 品是典型长尾。</p>
+  </div>
+</div>
+
+<h2>二、产品经理 9 月业绩（考核口径）</h2>
+<div class="card">
+  <p class="src">来源：<code>9月业绩及库存数据.xlsx</code> → 产品经理业绩情况（含内贸/外贸/总完成/目标/完成率）</p>
+  <table>
+    <tr><th>产品经理</th><th class="num">内贸完成(¥)</th><th class="num">外贸完成(¥)</th><th class="num">总完成(¥)</th><th class="num">9月目标(¥)</th><th class="num">完成率</th></tr>
+    <tr><td><b>赵小贝</b></td><td class="num">1,141,333</td><td class="num">28,627</td><td class="num">1,169,960</td><td class="num">1,650,000</td><td class="num">70.9%</td></tr>
+    <tr><td>高广银</td><td class="num">74,220</td><td class="num">27,273</td><td class="num">101,493</td><td class="num">720,000</td><td class="num red">14.1%</td></tr>
+    <tr><td>杨涛</td><td class="num">187,369</td><td class="num">-5,464</td><td class="num">181,905</td><td class="num">410,000</td><td class="num">44.4%</td></tr>
+    <tr><td>闫栋林</td><td class="num">112,377</td><td class="num">—</td><td class="num">112,377</td><td class="num">260,000</td><td class="num">43.2%</td></tr>
+    <tr><td>胡俊鹏</td><td class="num">113,821</td><td class="num">—</td><td class="num">113,821</td><td class="num">210,000</td><td class="num">54.2%</td></tr>
+    <tr class="tot"><td>总计</td><td class="num">1,629,120</td><td class="num">50,436</td><td class="num">1,679,556</td><td class="num">3,250,000</td><td class="num">51.7%</td></tr>
+  </table>
+  <div class="crit warn">
+    <p><b>关键对比（两组数据放一起看）</b>：</p>
+    <ul>
+      <li><b>业绩口径</b>（本表）：赵小贝 116.996 万 = 5 人合计 167.96 万的 <b>69.6%</b>；</li>
+      <li><b>研发计划口径</b>（产品研发计划 422 条）：赵小贝 70 条 = 299 条的 <b>23%</b>（与前四人相当）；</li>
+      <li>➡️ <span class="red">计划大家平均分，业绩却压在一个人身上——"计划多 ≠ 产出高"再次被证实。</span></li>
+    </ul>
+    <p style="margin-top:6px"><b>高广银 14.1%</b>：目标 72 万（全部门第二高，占 22%），完成 10 万。这是连续第二个月垫底（半年报也是 12%）。<b>他这条线是最该动手术的。</b></p>
+  </div>
+</div>
+
+<h2>三、新品出量情况（9月新上 118 条）</h2>
+<div class="card">
+  <p class="src">来源：<code>9月业绩及库存数据.xlsx</code> → 9月新上产品数据（118 行）</p>
+  <table>
+    <tr><th>指标</th><th>值</th></tr>
+    <tr><td>9月新上产品条数</td><td class="num">118 条</td></tr>
+    <tr><td>销量</td><td class="num red">全部 #N/A（未出量）</td></tr>
+    <tr><td>涉及产品经理</td><td>高广银（拉绳腰带·红光类）、赵小贝（刮痧仪）、杨涛（大M刀8mm、呼吸气球配件）、闫栋林（EMS筋膜刀）</td></tr>
+    <tr><td>典型 SKU</td><td><code>T-hglsyd-260930-1/2</code>、<code>T-GSY-20260930-01/02</code>、<code>T-DMD-20260929-1/2/3</code>、<code>T-scddjmd-260930-01/02</code></td></tr>
+  </table>
+  <div class="crit bad">
+    <b>与 8 月数据一致</b>：8月建 41 SKU 仅 9 个有销量；9月新上 118 条<b>全部零销量</b>。<br>
+    <span class="red">这不是个别现象，是系统性的——新品上架 ≠ 新品出量。</span>
+  </div>
+</div>
+
+<h2>四、1-8 月全平台业绩总览</h2>
+<div class="card">
+  <p class="src">来源：<code>1-8月综合数据分析.xlsx</code> → ①店铺总览（4 Sheet：店铺总览/产品分析/达人分析/抖音店铺投放）</p>
+  <table>
+    <tr><th>月份</th><th class="num">总单量</th><th class="num">总销售额(¥)</th><th class="num">目标值(¥)</th><th class="num">完成度</th><th class="num">25年同期(¥)</th><th class="num">同比</th><th class="num">客单价</th></tr>
+    <tr><td>1月</td><td class="num">2,476</td><td class="num">159,371</td><td class="num">160,000</td><td class="num green">99.6%</td><td class="num">35,000</td><td class="num">4.55×</td><td class="num">64.4</td></tr>
+    <tr><td>2月</td><td class="num">1,338</td><td class="num">95,361</td><td class="num">160,000</td><td class="num">59.6%</td><td class="num">35,000</td><td class="num">2.72×</td><td class="num">71.3</td></tr>
+    <tr><td>3月</td><td class="num">2,222</td><td class="num">154,804</td><td class="num">220,000</td><td class="num">70.4%</td><td class="num">54,000</td><td class="num">2.87×</td><td class="num">69.7</td></tr>
+    <tr><td>4月</td><td class="num">2,780</td><td class="num">179,723</td><td class="num">340,000</td><td class="num red">52.9%</td><td class="num">57,000</td><td class="num">3.15×</td><td class="num">64.6</td></tr>
+    <tr><td>5月</td><td class="num">3,785</td><td class="num">269,400</td><td class="num">400,000</td><td class="num">67.3%</td><td class="num">125,000</td><td class="num">2.16×</td><td class="num">71.2</td></tr>
+    <tr><td>6月</td><td class="num">2,511</td><td class="num">144,957</td><td class="num">580,000</td><td class="num red">25.0%</td><td class="num">75,000</td><td class="num">1.93×</td><td class="num">57.7</td></tr>
+    <tr><td>7月</td><td class="num">2,512</td><td class="num">205,986</td><td class="num">580,000</td><td class="num red">35.5%</td><td class="num">75,000</td><td class="num">2.75×</td><td class="num">82.0</td></tr>
+  </table>
+  <p class="src">另有：产品分析（299行，TOP20 含抖音/视频号/小红书分渠道 + 带货达人数）、达人分析（168行，TOP20 含主平台/带货产品数/参与月数/TOP产品）、抖音投放（40行）</p>
+</div>
+
+<h2>五、抖音投放（8月·两店）</h2>
+<div class="card">
+  <p class="src">来源：<code>1-8月综合数据分析.xlsx</code> → ④抖音店铺投放</p>
+  <table>
+    <tr><th>店铺</th><th class="num">消耗(¥)</th><th class="num">支付ROI</th><th class="num">成交订单</th><th class="num">净成交(¥)</th><th class="num">净ROI</th><th class="num">1h退款率</th><th class="num">平台补贴(¥)</th></tr>
+    <tr><td>合聚</td><td class="num">1,804</td><td class="num">13.15</td><td class="num">158</td><td class="num">21,546</td><td class="num green">11.94</td><td class="num">9.17%</td><td class="num">197</td></tr>
+    <tr><td>运动</td><td class="num">32,446</td><td class="num">6.07</td><td class="num">1,532</td><td class="num">182,814</td><td class="num">5.63</td><td class="num">7.16%</td><td class="num">1,351</td></tr>
+    <tr class="tot"><td>合计</td><td class="num">34,249</td><td class="num">6.44</td><td class="num">1,690</td><td class="num">204,360</td><td class="num">5.97</td><td class="num">7.35%</td><td class="num">1,549</td></tr>
+  </table>
+  <p class="src">重点达人投放：DZ体能训练（绿色空气波）消耗 3,978 / 净成交 21,816 / 净ROI 5.48 / <b>预估综合ROI 3.81</b>（含 8% 佣金）</p>
+</div>
+
+<h2>六、人力与人效（8月）</h2>
+<div class="card">
+  <p class="src">来源：<code>8月.xlsx</code>（7 Sheet：工作汇总/计划/在职86行/离职102行/7月工资/人效年度汇总/绩效）</p>
+  <table>
+    <tr><th>部门</th><th class="num">7月薪资总额(¥)</th><th>说明</th></tr>
+    <tr><td>线上事业部</td><td class="num">213,742</td><td>最大部门</td></tr>
+    <tr><td>产品研发部</td><td class="num">186,454</td><td>—</td></tr>
+    <tr><td>课程事业部</td><td class="num">172,060</td><td>—</td></tr>
+    <tr><td>总经办</td><td class="num">48,581</td><td>—</td></tr>
+    <tr><td>内容运营部</td><td class="num">31,993</td><td>—</td></tr>
+    <tr><td>AI创新部</td><td class="num">21,915</td><td>—</td></tr>
+    <tr><td>财务与投融资部</td><td class="num">16,959</td><td>—</td></tr>
+    <tr><td>市场部</td><td class="num">10,838</td><td>—</td></tr>
+    <tr><td>人力发展部</td><td class="num">10,469</td><td>—</td></tr>
+  </table>
+  <p><b>人效口径（已有）</b>：1月线上事业部人均营收 <b>¥188,965</b>、元均人力成本营收 <b>20.0</b>；内容运营部人均营收 53,139、元均 7.80；课程事业部人均营收 35,145、元均 4.55。</p>
+  <p class="src">8月在职 86 人、离职 102 人次（含流动）</p>
+</div>
+
+<h2>七、外贸清仓与海外仓</h2>
+<div class="card">
+  <p class="src">来源：<code>2026外贸清理产品统计表.xlsx</code>（9.9数据统计/7月清仓/海外仓/9月重点清理）</p>
+  <table>
+    <tr><th>产品</th><th class="num">销量</th><th class="num">销售额(¥)</th><th class="num">退款(¥)</th><th class="num">毛利率</th></tr>
+    <tr><td>加热枕-颈椎专用枕-1</td><td class="num">1,050</td><td class="num">329,425</td><td class="num">-87,849</td><td class="num">5.1%</td></tr>
+    <tr><td>电动颈椎按摩枕</td><td class="num">1,048</td><td class="num">190,197</td><td class="num">-41,902</td><td class="num red">-26.7%</td></tr>
+    <tr><td>电动筋膜刀（白色）</td><td class="num">535</td><td class="num">151,903</td><td class="num">-23,672</td><td class="num">7.0%</td></tr>
+    <tr><td>电动智能拐杖</td><td class="num">143</td><td class="num">106,764</td><td class="num">-30,135</td><td class="num red">-60.5%</td></tr>
+    <tr><td>Mustools 电动筋膜刀五合一</td><td class="num">168</td><td class="num">83,175</td><td class="num">-15,197</td><td class="num">4.1%</td></tr>
+  </table>
+  <div class="crit bad">
+    <b>外贸清仓的真实成本</b>：多款主力清仓品<b>毛利率为负</b>（电动颈椎按摩枕 -26.7%、电动智能拐杖 -60.5%）。<span class="red">清仓在"回血"，但也在"割肉"</span>——这批货当初的选品判断可能就有问题。
+  </div>
+</div>
+
+<h2>八、其他发现的表（未展开，可后续深挖）</h2>
+<div class="card">
+  <table>
+    <tr><th style="width:220px">文件</th><th>内容</th></tr>
+    <tr><td><code>双只-空气波按摩仪六腔.xlsx</code></td><td>空气波新品 8 个 SKU（黑色/烟灰 × S/M 码 × 普通/加热），零售 ¥1280-1380、到手 ¥1088-1180 —— <b>空气波系列化的最新动作</b></td></tr>
+    <tr><td><code>01~05_品牌系列表.xlsx</code>（5张）</td><td>品牌商品事实表/素材内容表/投放明细/市场素材观察表/用户语料原话表 —— 品牌内容项目</td></tr>
+    <tr><td><code>三平台分析表（功能对比+性价比+汇报口径+打分）</code></td><td>三平台工具选型评估</td></tr>
+    <tr><td><code>2026年08月线下业绩表.xlsx</code></td><td><b>156MB 巨表</b> —— 线下业绩（策略原因待查，可能是明细级流水）</td></tr>
+    <tr><td><code>起批量.xlsx</code> / <code>备货清单.xlsx</code> / <code>9.30 库存成本.xlsx</code></td><td>采购与库存</td></tr>
+    <tr><td><code>报价单(2).xlsx</code></td><td>供应商报价（2.7MB）</td></tr>
+    <tr><td><code>供应链流程方案-终版.xlsx</code> / <code>采购仓储供应链信息管理SOP</code></td><td>供应链制度</td></tr>
+    <tr><td>微信侧：<code>货盘表111.xlsx</code> / <code>达人统计数据.xlsx</code></td><td>货盘与达人</td></tr>
+  </table>
+  <p class="src">另有大量薪资/考勤/绩效表（8月薪资表 8 个版本、8月考勤 5 个版本、8月绩效 3 个版本）—— 版本混乱本身是个问题。</p>
+</div>
+
+<div class="crit warn">
+  <h3>⚠️ 三个口径提醒（务必注意）</h3>
+  <ol>
+    <li><b>9月"净销 587 万" vs "产品经理考核 167.96 万"</b> —— 前者是货品全口径，后者是产品经理归属口径（含内贸+外贸）。<b>做翻番测算时要说清用哪个。</b></li>
+    <li><b>"双只-空气波"等新品表里价格 = 零售价，非成交价</b>。</li>
+    <li>缓存文件存在<b>多版本重复</b>（8月薪资表 8 版、考勤 5 版），引用时务必确认版本日期。</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <p><b>数据来源</b>：企微文件缓存 <code>D:/存储/WXWork/1688857660832071/Cache/File/2026-09~10/</code>（主号）+ 微信缓存。共扫描 150+ 表格，本底稿提取 8 组高价值数据。</p>
+  <p><b>用途</b>：为 27 年翻番规划补足"产品线/业绩/投放/人力/外贸"五个维度的事实基础。</p>
+  <p>抖抖 · 2026-10-13</p>
+</div>
+
+</div></body></html>

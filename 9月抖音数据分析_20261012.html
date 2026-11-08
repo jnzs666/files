@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抖音数据分析 · 2026年9月</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:#fdf6f0; color:#5d4e6d; padding:20px 24px; min-width:1200px; }
+.header { background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%); color:#5d4e6d; box-shadow:0 4px 20px rgba(180,160,200,.18); padding:20px 28px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:22px; font-weight:600; letter-spacing:1px; }
+.header .subtitle { font-size:13px; opacity:.8; margin-top:4px; }
+.header .date { font-size:13px; opacity:.85; }
+.section-title { font-size:16px; font-weight:600; color:#7c6a94; margin:24px 0 14px; padding-left:12px; border-left:4px solid #ffb5c5; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px; }
+.kpi-card { background:#fff; border-radius:10px; padding:16px 18px; box-shadow:0 2px 10px rgba(180,160,200,.12); position:relative; overflow:hidden; }
+.kpi-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--bar); }
+.kpi-label { font-size:13px; color:#9a8caf; margin-bottom:8px; }
+.kpi-value { font-size:24px; font-weight:700; color:#5d4e6d; line-height:1.2; }
+.kpi-sub { font-size:12px; color:#b4a7c4; margin-top:8px; }
+.charts-grid { display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-bottom:16px; }
+.charts-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.chart-box { background:#fff; border-radius:10px; padding:18px 20px; box-shadow:0 2px 10px rgba(180,160,200,.12); }
+.chart-title { font-size:15px; font-weight:600; margin-bottom:12px; color:#5d4e6d; padding-left:10px; border-left:3px solid #ffb5c5; }
+.chart-title .hint { font-size:11px; color:#b4a7c4; font-weight:400; }
+.chart-container { width:100%; height:330px; }
+.chart-container.tall { height:420px; }
+.table-wrap { max-height:400px; overflow-y:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#fbf5fb; color:#7c6a94; font-weight:600; text-align:left; padding:9px 10px; border-bottom:2px solid #f0e4f0; position:sticky; top:0; }
+td { padding:8px 10px; border-bottom:1px solid #f6ecf6; color:#6b5b7e; }
+tr:hover td { background:#fbf5fb; }
+td.name { font-weight:500; color:#5d4e6d; }
+.footer { text-align:center; margin-top:28px; color:#b4a7c4; font-size:12px; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="header">
+    <div>
+        <h1>🎬 抖音数据分析</h1>
+        <div class="subtitle">2026年9月1日 - 9月30日 ｜ 抖音1店 + 抖音2店 + 抖音3店</div>
+    </div>
+    <div class="date">数据更新：2026年10月</div>
+</div>
+
+<div class="section-title">📌 核心指标</div>
+<div class="kpi-grid"><div class="kpi-card" style="--bar:#a8d8ff"><div class="kpi-label">9月总销售额</div><div class="kpi-value">¥277,806</div><div class="kpi-sub">全部订单（含退款）</div></div><div class="kpi-card" style="--bar:#b8ead1"><div class="kpi-label">有效销售额</div><div class="kpi-value">¥152,445</div><div class="kpi-sub">有效单 2,235 单</div></div><div class="kpi-card" style="--bar:#d8bfff"><div class="kpi-label">总单量</div><div class="kpi-value">2,733</div><div class="kpi-sub">有效 2,235 / 退款 498</div></div><div class="kpi-card" style="--bar:#ffdca8"><div class="kpi-label">客单价</div><div class="kpi-value">¥68.21</div><div class="kpi-sub">有效订单口径</div></div><div class="kpi-card" style="--bar:#ffb3ba"><div class="kpi-label">退款率</div><div class="kpi-value">18.2%</div><div class="kpi-sub">退款额 ¥125,361</div></div><div class="kpi-card" style="--bar:#cfd8e3"><div class="kpi-label">带货达人</div><div class="kpi-value">187</div><div class="kpi-sub">产品 62 款</div></div><div class="kpi-card" style="--bar:#c7ceea"><div class="kpi-label">实际佣金支出</div><div class="kpi-value">¥15,118</div><div class="kpi-sub">佣金率≈9.9%</div></div><div class="kpi-card" style="--bar:#f6dfc4"><div class="kpi-label">销量（件）</div><div class="kpi-value">2,254</div><div class="kpi-sub">有效订单件数</div></div></div>
+
+<div class="section-title">📈 销售趋势</div>
+<div class="chart-box" style="margin-bottom:16px">
+    <div class="chart-title">每日销售额与单量 <span class="hint">（9月1日-30日）</span></div>
+    <div id="chart-daily" class="chart-container tall"></div>
+</div>
+
+<div class="charts-grid">
+    <div class="chart-box"><div class="chart-title">店铺销售额占比 <span class="hint">（含退款）</span></div><div id="chart-store" class="chart-container"></div></div>
+    <div class="chart-box"><div class="chart-title">订单状态分布 <span class="hint">（按单量）</span></div><div id="chart-status" class="chart-container"></div></div>
+</div>
+
+<div class="charts-grid-2">
+    <div class="chart-box"><div class="chart-title">达人带货TOP10 <span class="hint">（有效单·销售额）</span></div><div id="chart-daren" class="chart-container tall"></div></div>
+    <div class="chart-box"><div class="chart-title">产品TOP10 <span class="hint">（有效单·销售额）</span></div><div id="chart-prod" class="chart-container tall"></div></div>
+</div>
+
+<div class="section-title">📋 明细榜单</div>
+<div class="charts-grid-2">
+    <div class="chart-box">
+        <div class="chart-title">达人带货TOP10</div>
+        <div class="table-wrap"><table><thead><tr><th>#</th><th>达人</th><th>单量</th><th>销售额</th><th>带货产品数</th></tr></thead><tbody><tr><td>1</td><td class="name">DZ体能训练</td><td>263</td><td>¥26,906</td><td>6</td></tr><tr><td>2</td><td class="name">牛小酱</td><td>371</td><td>¥17,292</td><td>2</td></tr><tr><td>3</td><td class="name">陈仑PG13</td><td>55</td><td>¥14,584</td><td>8</td></tr><tr><td>4</td><td class="name">穿山电商联盟推广</td><td>225</td><td>¥14,334</td><td>31</td></tr><tr><td>5</td><td class="name">国家队医周老师</td><td>172</td><td>¥11,559</td><td>8</td></tr><tr><td>6</td><td class="name">Happy仔</td><td>4</td><td>¥5,776</td><td>1</td></tr><tr><td>7</td><td class="name">聂博之（线上线下力量举教学）</td><td>116</td><td>¥5,038</td><td>5</td></tr><tr><td>8</td><td class="name">老王体能康复(线上课1对1教辅)</td><td>58</td><td>¥4,313</td><td>1</td></tr><tr><td>9</td><td class="name">胡哥慧姐要加油（脑梗三次）</td><td>41</td><td>¥2,825</td><td>3</td></tr><tr><td>10</td><td class="name">忍者老马</td><td>57</td><td>¥2,783</td><td>1</td></tr></tbody></table></div>
+    </div>
+    <div class="chart-box">
+        <div class="chart-title">产品TOP10</div>
+        <div class="table-wrap"><table><thead><tr><th>#</th><th>产品</th><th>单量</th><th>销售额</th><th>带货达人数</th></tr></thead><tbody><tr><td>1</td><td class="name">Theratools筋膜弹力巫毒带肌肉防护训练家用运…</td><td>1,263</td><td>¥57,646</td><td>68</td></tr><tr><td>2</td><td class="name">Theratools空气压力波腿部按摩仪腿部训练气压…</td><td>31</td><td>¥27,661</td><td>8</td></tr><tr><td>3</td><td class="name">Theratools拔舌器舌肌训练器口腔面部运动辅助…</td><td>200</td><td>¥10,357</td><td>24</td></tr><tr><td>4</td><td class="name">Theratools颈椎枕头家用护颈枕睡觉支撑成人工…</td><td>90</td><td>¥6,489</td><td>12</td></tr><tr><td>5</td><td class="name">Theratools儿童空气压力波青少年腿部按摩器健…</td><td>4</td><td>¥5,776</td><td>1</td></tr><tr><td>6</td><td class="name">Theratools空气压力波腿部按摩仪腿部按摩气压…</td><td>7</td><td>¥5,376</td><td>3</td></tr><tr><td>7</td><td class="name">腰大肌按摩工具全身肌肉放松器家用健身舒缓不求人瑜伽辅…</td><td>120</td><td>¥5,040</td><td>4</td></tr><tr><td>8</td><td class="name">可拆卸腰大肌按摩器 自我肌肉按摩工具 肩颈脊柱全身肌…</td><td>17</td><td>¥3,041</td><td>4</td></tr><tr><td>9</td><td class="name">Theratools高弹加压训练带放松弹力居家肌肉力…</td><td>60</td><td>¥2,912</td><td>3</td></tr><tr><td>10</td><td class="name">家用气压腿部按摩仪 气压放松多模式气囊腿部训练器气压…</td><td>1</td><td>¥2,686</td><td>1</td></tr></tbody></table></div>
+    </div>
+</div>
+<div class="charts-grid-2">
+    <div class="chart-box">
+        <div class="chart-title">订单状态明细</div>
+        <div class="table-wrap"><table><thead><tr><th>状态</th><th>单量</th><th>金额</th></tr></thead><tbody><tr><td class="name">订单结算</td><td>1,256</td><td>¥87,212</td></tr><tr><td class="name">订单收货</td><td>953</td><td>¥61,667</td></tr><tr><td class="name">订单退货退款</td><td>498</td><td>¥125,361</td></tr><tr><td class="name">订单付款</td><td>26</td><td>¥3,566</td></tr></tbody></table></div>
+    </div>
+    <div class="chart-box">
+        <div class="chart-title">BD业绩分布 <span class="hint">（有效单）</span></div>
+        <div id="chart-bd" class="chart-container"></div>
+    </div>
+</div>
+
+<div class="footer">
+    数据来源：9.1-9.30 薪资.xlsx（抖音1/2/3店订单明细，达人带货口径）<br/>
+    口径说明：金额取「支付金额」；有效单=订单结算/收货/付款，退款单=订单退货退款 ｜ 抖抖出品
+</div>
+
+<script>
+var FONT = '-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif';
+var C = {coral:'#ff9aa2',mint:'#b5ead7',peach:'#ffb7b2',cream:'#ffdac1',lilac:'#c7ceea',sky:'#a0d2ff',pink:'#ffc8dd',olive:'#b8d8a8'};
+var PALETTE = ['#ff9aa2','#b5ead7','#ffb7b2','#ffdac1','#c7ceea','#a0d2ff','#ffc8dd','#d4b5ea','#f6dfc4','#cfd8e3'];
+var fmt = function(v){return '¥'+(v/10000).toFixed(2)+'万';};
+
+echarts.init(document.getElementById('chart-daily')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',axisPointer:{type:'cross'}},
+    legend:{data:['销售额','单量'],top:0,right:10,textStyle:{fontSize:12}},
+    grid:{left:70,right:60,top:45,bottom:40},
+    xAxis:{type:'category',data:["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],axisLabel:{color:'#9a8caf',fontSize:10},axisLine:{lineStyle:{color:'#eadcf0'}}},
+    yAxis:[
+        {type:'value',name:'销售额',nameTextStyle:{color:'#b4a7c4',fontSize:11},axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4',fontSize:10},splitLine:{lineStyle:{color:'#f6eef8'}}},
+        {type:'value',name:'单量',nameTextStyle:{color:'#b4a7c4',fontSize:11},axisLabel:{color:'#b4a7c4',fontSize:10},splitLine:{show:false}}
+    ],
+    series:[
+        {name:'销售额',type:'bar',data:[6789.0, 19075.0, 5077.0, 6781.0, 8232.0, 6969.0, 4025.0, 9999.0, 15228.0, 4907.0, 7360.0, 7249.0, 7397.0, 4694.0, 5186.0, 6806.0, 7511.0, 9208.0, 8431.0, 7126.0, 6699.0, 24776.0, 23860.0, 30164.0, 10761.0, 4428.0, 3262.0, 7165.0, 3359.0, 5283.0],itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#ffc8dd'},{offset:1,color:'#ffb7b2'}]),borderRadius:[4,4,0,0]},barWidth:'55%'},
+        {name:'单量',type:'line',yAxisIndex:1,smooth:true,data:[83, 121, 72, 77, 65, 83, 85, 78, 115, 76, 126, 134, 124, 98, 93, 144, 135, 112, 81, 85, 87, 90, 86, 83, 81, 61, 49, 86, 66, 57],itemStyle:{color:'#8bb8e8'},lineStyle:{width:2.5},symbol:'circle',symbolSize:5}
+    ]
+});
+
+echarts.init(document.getElementById('chart-store')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'item',formatter:function(p){return p.name+': ¥'+(p.value/10000).toFixed(2)+'万 ('+p.percent+'%)'}},
+    legend:{bottom:0,textStyle:{fontSize:12}},
+    color:['#ff9aa2','#b5ead7','#ffb7b2'],
+    series:[{type:'pie',radius:['42%','70%'],center:['50%','45%'],
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{d}%',fontSize:12,lineHeight:18},
+        labelLine:{length:8,length2:10},
+        data:[{"name": "抖音1店", "value": 261461.23}, {"name": "抖音2店", "value": 15872.31}, {"name": "抖音3店", "value": 472.0}]}]
+});
+
+echarts.init(document.getElementById('chart-status')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'item',formatter:function(p){return p.name+': '+p.value+'单 ('+p.percent+'%)'}},
+    legend:{bottom:0,textStyle:{fontSize:12}},
+    color:['#b5ead7','#a0d2ff','#ffb3ba','#ffdca8'],
+    series:[{type:'pie',radius:['42%','70%'],center:['50%','45%'],
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{d}%',fontSize:12,lineHeight:18},
+        labelLine:{length:8,length2:10},
+        data:[{"name": "订单结算", "value": 1256}, {"name": "订单收货", "value": 953}, {"name": "订单退货退款", "value": 498}, {"name": "订单付款", "value": 26}]}]
+});
+
+echarts.init(document.getElementById('chart-daren')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',valueFormatter:fmt},
+    grid:{left:175,right:75,top:10,bottom:30},
+    xAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    yAxis:{type:'category',data:["忍者老马", "胡哥慧姐要加油（脑梗三次）", "老王体能康复(线上课1对1教辅)", "聂博之（线上线下力量举教学）", "Happy仔", "国家队医周老师", "穿山电商联盟推广", "陈仑PG13", "牛小酱", "DZ体能训练"],axisLabel:{color:'#6b5b7e',fontSize:11},axisLine:{show:false},axisTick:{show:false}},
+    series:[{type:'bar',data:[2783.0, 2825.0, 4313.0, 5038.0, 5776.0, 11559.0, 14334.0, 14584.0, 17292.0, 26906.0],
+        itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#ffd3de'},{offset:1,color:'#ff9aa2'}]),borderRadius:[0,4,4,0]},
+        barWidth:'58%',
+        label:{show:true,position:'right',formatter:function(p){return '¥'+(p.value/10000).toFixed(1)+'万'},fontSize:11,color:'#9a8caf'}}]
+});
+
+echarts.init(document.getElementById('chart-prod')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',valueFormatter:fmt},
+    grid:{left:175,right:75,top:10,bottom:30},
+    xAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    yAxis:{type:'category',data:["家用气压腿部按摩仪 气压放松多模…", "Theratools高弹加压训练…", "可拆卸腰大肌按摩器 自我肌肉按摩…", "腰大肌按摩工具全身肌肉放松器家用…", "Theratools空气压力波腿…", "Theratools儿童空气压力…", "Theratools颈椎枕头家用…", "Theratools拔舌器舌肌训…", "Theratools空气压力波腿…", "Theratools筋膜弹力巫毒…"],axisLabel:{color:'#6b5b7e',fontSize:11},axisLine:{show:false},axisTick:{show:false}},
+    series:[{type:'bar',data:[2686.0, 2912.0, 3041.0, 5040.0, 5376.0, 5776.0, 6489.0, 10357.0, 27661.0, 57646.0],
+        itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#e5d4ff'},{offset:1,color:'#d0b8ff'}]),borderRadius:[0,4,4,0]},
+        barWidth:'58%',
+        label:{show:true,position:'right',formatter:function(p){return '¥'+(p.value/10000).toFixed(1)+'万'},fontSize:11,color:'#9a8caf'}}]
+});
+
+echarts.init(document.getElementById('chart-bd')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'item',formatter:function(p){return p.name+': ¥'+(p.value/10000).toFixed(2)+'万 ('+p.percent+'%)'}},
+    legend:{bottom:0,textStyle:{fontSize:12}},
+    color:['#a0d2ff','#b5ead7','#cfd8e3','#ffdca8'],
+    series:[{type:'pie',radius:['42%','70%'],center:['50%','45%'],
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{d}%',fontSize:12,lineHeight:18},
+        labelLine:{length:8,length2:10},
+        data:[{"name": "王子怡", "value": 107723.0}, {"name": "姚瑞迪", "value": 40423.0}, {"name": "未分配", "value": 4246.0}, {"name": "孙楷", "value": 52.0}]}]
+});
+
+window.addEventListener('resize',function(){
+    document.querySelectorAll('.chart-container').forEach(function(el){
+        var ch=echarts.getInstanceByDom(el); if(ch) ch.resize();
+    });
+});
+</script>
+</body>
+</html>

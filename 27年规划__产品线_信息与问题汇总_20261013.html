@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>产品线 · 信息与问题汇总</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 24px 64px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:24px 28px;margin-bottom:22px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 6px;font-size:24px}
+.banner p{margin:3px 0;color:#6a5b78;font-size:13px}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.25}
+h3{font-size:16px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:23px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:14px 18px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 6px;font-size:16px}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:21px;margin:6px 0}li{margin:4px 0}ol{padding-left:22px;margin:6px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px}
+.qn{display:inline-block;min-width:30px;font-weight:700;color:#7c6ab0}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>产品线 · 我掌握的信息 &amp; 我的问题</h1>
+  <p>2026-10-13 ｜ 用途：先对齐"我知道什么"，再定"还缺什么"</p>
+  <p>口径：翻番按 26 年<b>目标</b>、<b>暂不含课程事业部</b>（线上 7,200万 + 抖音 600万 = 7,800万 → 1.56亿）</p>
+</div>
+
+<div class="crit warn">
+  <h3>⚠ 使用说明</h3>
+  <p>本文分三块：<b>① 我掌握的信息</b>（你核对有无记错）；<b>② 我发现的问题</b>（矛盾与风险）；<b>③ 我需要你回答的</b>（缺口清单）。凡我推断的地方都标了"（推断）"。</p>
+</div>
+
+<h2>第一部分 · 我掌握的信息</h2>
+
+<div class="crit">
+  <h3>一、团队与分工</h3>
+  <table>
+    <tr><th style="width:110px">人</th><th>定位 / 现状</th></tr>
+    <tr><td><b>赵小贝</b></td><td>绝对主力。<b>空气波独享</b>；业绩占新品 75%（半年）、69.6%（9月）；已配实习生做基础品开发</td></tr>
+    <tr><td><b>杨涛</b></td><td>中坚。筋膜刀系、哑铃壶铃、TRX、体态棒</td></tr>
+    <tr><td><b>高广银</b></td><td>喜新奇品（红光/机器人/神经仪/教具）；<b>薪资第二高 → 目标锚定 72万（9月）、210万（半年）</b>；完成率连续垫底</td></tr>
+    <tr><td><b>闫栋林</b></td><td>2026-02-01 入职产品研发经理。椎类凳、贴布、眼视光学、肋木架</td></tr>
+    <tr><td><b>胡俊鹏</b></td><td><b>70% 精力在研发新品项目</b>，与牛延鑫共同负责公司研发类开发；铺货侧是大件（床/凳/椅）</td></tr>
+    <tr><td><b>牛延鑫</b></td><td>研发（与胡俊鹏同组）</td></tr>
+    <tr><td colspan="2" class="src">⚠ <b>两处更正</b>：① "闫培林" 实为 <b>"闫栋林"</b>；② 许亮已离职，人力归宇青统一负责。</td></tr>
+  </table>
+  <p><b>品类机制</b>：已从"谁都能开品"改为 <b>63 品类分区制</b>；空气波归赵小贝独享；<b>共用品类（DMS/BFR/冷疗/矫正镜等）所有产品经理都可以开发</b>（非"主责+协同"）。</p>
+</div>
+
+<div class="crit">
+  <h3>二、研发计划（企微《产品研发部工作流》422 条）</h3>
+  <table>
+    <tr><th>负责人</th><th class="num">条数</th><th class="num">占比</th><th>主要品类</th></tr>
+    <tr><td>闫栋林</td><td class="num">79</td><td class="num">19%</td><td>运动康复 32、物理因子 18、眼视光 6</td></tr>
+    <tr><td>高广银</td><td class="num">78</td><td class="num">18%</td><td>运动康复 47、物理因子 21、手法治疗 8</td></tr>
+    <tr><td>赵小贝</td><td class="num">70</td><td class="num">17%</td><td>运动康复 46、家庭康复 14</td></tr>
+    <tr><td>杨涛</td><td class="num">56</td><td class="num">13%</td><td>运动康复 18、家庭康复-腰 6</td></tr>
+    <tr><td>胡俊鹏</td><td class="num">16</td><td class="num">4%</td><td>运动康复 13（研发方向）</td></tr>
+    <tr><td class="orange">（未填负责人）</td><td class="num orange">123</td><td class="num orange">29%</td><td class="orange">近三成计划没落人</td></tr>
+    <tr class="tot"><td>合计</td><td class="num">422</td><td class="num">100%</td><td>—</td></tr>
+  </table>
+</div>
+
+<div class="crit">
+  <h3>三、产品库 VOC（332 条 × 82 个字段）</h3>
+  <p><b>类目结构</b>（产品分类字段）：</p>
+  <table>
+    <tr><th>类目</th><th class="num">条数</th><th class="num">占比</th><th>备注</th></tr>
+    <tr><td>运动康复</td><td class="num">152</td><td class="num">45.8%</td><td>第一大品类，多为低价耗材（筋膜刀/弹力带/球类）</td></tr>
+    <tr><td>家庭康复</td><td class="num">63</td><td class="num">19.0%</td><td>切成 9 细分：腰12/足11/头10/手8/胸6/腿4/膝4/颈3/踝1</td></tr>
+    <tr><td>物理因子</td><td class="num">47</td><td class="num">14.2%</td><td>空气波/冷热敷/电刺激</td></tr>
+    <tr><td>评估筛查</td><td class="num">28</td><td class="num">8.4%</td><td>量具/评估尺</td></tr>
+    <tr><td>手法治疗</td><td class="num">24</td><td class="num">7.2%</td><td>—</td></tr>
+    <tr><td>模型教具 / 矫形支具 / 感统</td><td class="num">10</td><td class="num">3.0%</td><td>—</td></tr>
+  </table>
+  <p><b>其他字段</b>：纯新品 223 / 老品优化新品 106；利润率 A(≥60%) 78、B(50-60%) 119、C(40-50%) 77、D(&lt;40%) 8；独家 是58/否136/空138；淘汰原因 仅填 2 条；BCG归类 仅填 9 条。</p>
+  <div class="crit ok">
+    <h3>🎯 【口径更正·最终】"通过" = 负责人初审通过 ∪ 赵小贝初审通过 = <span class="green">232 个</span></h3>
+    <p>男哥 10-14 两次口径澄清：① 核心闸口是 <b>「负责人初审」</b>（通过/淘汰/待定），只有初审通过的才算通过；② <b>「赵小贝初审」通过的也算</b>。合并后口径如下：</p>
+    <table>
+      <tr><th>口径</th><th class="num">条数</th><th class="num">占 333</th><th>说明</th></tr>
+      <tr><td>负责人初审 = 通过</td><td class="num">229</td><td class="num">68.8%</td><td>主体</td></tr>
+      <tr><td>赵小贝初审 = 通过</td><td class="num">3</td><td class="num">0.9%</td><td><b>这 3 条的负责人初审栏是空的 → 不重叠，净增</b></td></tr>
+      <tr class="tot"><td><b>★ 合并"通过"口径</b></td><td class="num">232</td><td class="num">69.7%</td><td><b>有效产品池</b></td></tr>
+    </table>
+    <p><b>其余状态</b>：淘汰 58（17.4%）｜ 待定 18（5.4%）｜ 未审 25（7.5%）</p>
+    <p><b>新增的 3 条（赵小贝初审）</b>：盆底肌模型（模型教具/老品优化/D级）｜ PT马鞍人体工学椅（矫形支具/老品优化/C级）｜ <b>复合弹力带（运动康复/老品优化/A级）</b></p>
+  </div>
+  <div class="crit bad">
+    <h3>⚠️ 更重要的发现：流程断在"初审通过 → 过会"</h3>
+    <p>232 个初审通过的产品里，<b>只有 33 个走到了过会</b>（另 1 个过会不通过，198 个未填）：</p>
+    <table>
+      <tr><th>过会结果</th><th class="num">条数</th><th>占通过池</th></tr>
+      <tr><td>过会通过</td><td class="num">33</td><td class="num">14.2%</td></tr>
+      <tr><td>过会不通过</td><td class="num">1</td><td class="num">0.4%</td></tr>
+      <tr><td class="red"><b>未填（停在初审之后）</b></td><td class="num red">198</td><td class="num red">85.3%</td></tr>
+    </table>
+    <p class="src">→ <b>85% 的"通过"产品，卡在初审之后没有进过会。</b>另有字段：「样品审核结果」（合格111/不合格5/空217）、「过会讨论意见」（18条）。</p>
+  </div>
+  <div class="crit">
+    <h3>初审通过池（232 个）的结构</h3>
+    <table>
+      <tr><th>维度</th><th>分布</th></tr>
+      <tr><td>产品类型</td><td>纯新品 <b>161</b> ｜ 老品优化新品 <b>69</b> ｜ 双标签 2</td></tr>
+      <tr><td>利润率等级</td><td>B(50-60%) <b>97</b> ｜ C(40-50%) 67 ｜ A(≥60%) 59 ｜ D(&lt;40%) 4 ｜ 空 5</td></tr>
+      <tr><td>产品分类</td><td>运动康复 <b>114</b>（49%）｜ 物理因子 32 ｜ 评估筛查 18 ｜ 手法治疗 18 ｜ 家庭康复（9细分合计 41）｜ 模型教具 7 ｜ 矫形支具 2</td></tr>
+      <tr><td>独家情况</td><td>非独家 132 ｜ 独家 <b>56</b> ｜ 空 44</td></tr>
+    </table>
+    <p class="src">→ 结构失衡依旧：<b>运动康复占一半，A 级（高毛利）产品只有 59 个（25%）</b>。</p>
+  </div>
+  <p class="src">表内还有：市场规模/增长率/份额、竞品分析、消费者痛点、起批量、交期、首批投入、成本/毛利/零售价、独家期、各店铺销售等字段。</p>
+</div>
+
+<div class="crit">
+  <h3>四、老品优化计划（62 条，8-12月）</h3>
+  <table>
+    <tr><th>优化类型</th><th class="num">约条数</th><th>代表</th></tr>
+    <tr><td>增加规格/尺寸/重量</td><td class="num">18</td><td>弹力带、弹力环、肌贴、筋膜膏、SPS螺旋绳</td></tr>
+    <tr><td>品质/体验升级</td><td class="num">12</td><td>富兰克林球实心款、精英款拔罐器、RRT三维聚能仪</td></tr>
+    <tr><td>优化包装</td><td class="num">6</td><td>富兰克林筋膜球、巫毒带</td></tr>
+    <tr><td><b>降成本/自己做</b></td><td class="num">5</td><td>黄铜筋膜刀五件套、<b>RRT（"优化成本，自己做"）</b></td></tr>
+    <tr><td><b>增加功能/电动化</b></td><td class="num">4</td><td><b>BFR 训练带（加电动功能+小程序控制）</b></td></tr>
+    <tr><td>换造型</td><td class="num">2</td><td>治帮脊柱侧弯尺</td></tr>
+  </table>
+  <p class="src">⚠ 该表的"优化人员"字段<b>全部为空</b>。</p>
+</div>
+
+<div class="crit">
+  <h3>五、业绩（三套口径，我都拿到了）</h3>
+  <p><b>① 半年报（新品业绩额）</b>：赵小贝 319.3万/105% ｜ 杨涛 70.6万/54% ｜ 高广银 24.2万/12% ｜ 闫栋林 4.8万/19% ｜ 胡俊鹏 4.5万（无目标）；合计约 423万/670万 = 63%</p>
+  <p><b>② 9 月考核口径（企微《9月业绩及库存数据》）</b>：</p>
+  <table>
+    <tr><th>产品经理</th><th class="num">内贸完成</th><th class="num">外贸完成</th><th class="num">总完成</th><th class="num">9月目标</th><th class="num">完成率</th></tr>
+    <tr><td>赵小贝</td><td class="num">1,141,333</td><td class="num">28,627</td><td class="num">1,169,960</td><td class="num">1,650,000</td><td class="num">70.9%</td></tr>
+    <tr><td>杨涛</td><td class="num">187,369</td><td class="num">-5,464</td><td class="num">181,905</td><td class="num">410,000</td><td class="num">44.4%</td></tr>
+    <tr><td>胡俊鹏</td><td class="num">113,821</td><td class="num">—</td><td class="num">113,821</td><td class="num">210,000</td><td class="num">54.2%</td></tr>
+    <tr><td>闫栋林</td><td class="num">112,377</td><td class="num">—</td><td class="num">112,377</td><td class="num">260,000</td><td class="num">43.2%</td></tr>
+    <tr><td>高广银</td><td class="num">74,220</td><td class="num">27,273</td><td class="num">101,493</td><td class="num">720,000</td><td class="num red">14.1%</td></tr>
+    <tr class="tot"><td>合计</td><td class="num">1,629,120</td><td class="num">50,436</td><td class="num">1,679,556</td><td class="num">3,250,000</td><td class="num">51.7%</td></tr>
+  </table>
+  <p><b>③ 9 月货品级全口径（1434 行）</b>：净销 <b>587.03 万</b> ｜ 毛利 <b>314.58 万</b> ｜ 毛利率 <b>53.6%</b></p>
+  <p class="src">⚠️ ②和③不是一回事：②是"产品经理归属口径"（含内贸+外贸=167.96万），③是"货品全口径"（587万）。做翻番测算必须说清用哪个。</p>
+</div>
+
+<div class="crit">
+  <h3>六、产品线净销与毛利（9 月，货品级）</h3>
+  <table>
+    <tr><th>产品线</th><th class="num">净销(¥)</th><th class="num">毛利率</th><th>判断</th></tr>
+    <tr><td><b>空气波</b></td><td class="num">1,534,135</td><td class="num">44.9%</td><td>占 26%，<b>量的支柱，不是利的支柱</b></td></tr>
+    <tr><td>筋膜刀</td><td class="num">471,233</td><td class="num">51.0%</td><td>26 个品，多而散</td></tr>
+    <tr><td>其他产品</td><td class="num">436,503</td><td class="num">51.3%</td><td>长尾（162 品）</td></tr>
+    <tr><td><b>生物压力反馈仪</b></td><td class="num">350,018</td><td class="num green">91.6%</td><td><b>高毛利明星</b>（4 品）</td></tr>
+    <tr><td>球类</td><td class="num">309,269</td><td class="num">55.9%</td><td>—</td></tr>
+    <tr><td>巫毒带</td><td class="num">293,314</td><td class="num green">59.8%</td><td>2 品做出 29 万</td></tr>
+    <tr><td>模型教具</td><td class="num">178,165</td><td class="num">52.4%</td><td>—</td></tr>
+    <tr><td><b>血流限制带 BFR</b></td><td class="num">168,893</td><td class="num green">72.9%</td><td>单品 17 万、毛利 73%</td></tr>
+    <tr><td>红光类</td><td class="num">167,330</td><td class="num">45.3%</td><td class="red">130 行/57 品只做 16.7 万</td></tr>
+    <tr><td>电刺激</td><td class="num">166,358</td><td class="num">50.5%</td><td>—</td></tr>
+    <tr><td><b>脊柱侧弯尺</b></td><td class="num">159,380</td><td class="num green">71.8%</td><td>高毛利</td></tr>
+    <tr><td>RRT</td><td class="num">145,174</td><td class="num">56.2%</td><td>—</td></tr>
+    <tr><td>弹力带</td><td class="num">138,175</td><td class="num">59.8%</td><td>—</td></tr>
+    <tr><td>DMS</td><td class="num">134,248</td><td class="num">40.4%</td><td>毛利率偏低</td></tr>
+    <tr><td>泡沫轴</td><td class="num">107,442</td><td class="num">52.8%</td><td>—</td></tr>
+    <tr><td>斜板</td><td class="num">96,145</td><td class="num red">27.5%</td><td class="red">毛利率垫底</td></tr>
+  </table>
+</div>
+
+<div class="crit ok">
+  <h3>七、空气波（全公司唯一被双渠道验证的品）</h3>
+  <ul>
+    <li><b>一类电商（淘天/京东/拼多多）</b>：8月净销 121.8 万，占全店净销 <b>27%</b>，全店增量第一</li>
+    <li><b>二类电商（抖音等）</b>：1-9月产品 TOP10 里 <b>5 个是空气波</b>（合计约 67.8 万）</li>
+    <li><b>系列化动作</b>：「双只-空气波按摩仪六腔」新品 8 个 SKU（黑/烟灰 × S/M × 普通/加热），零售 ¥1280-1380、到手 ¥1088-1180</li>
+    <li>企微《月度目标跟进表》里单列了「空气波项目」子表</li>
+    <li>26年公司级纪律：<b>空气波"集中资源优先开发，其他设想往后排"</b></li>
+  </ul>
+</div>
+
+<div class="crit bad">
+  <h3>八、新品出量（系统性零产出）</h3>
+  <ul>
+    <li><b>8 月</b>：新建 41 个 SKU，仅 9 个有销量 → 成功率 <b>21.9%</b></li>
+    <li><b>9 月</b>：新上产品 118 条，销量<b>全部为零</b>（#N/A）</li>
+  </ul>
+</div>
+
+<div class="crit">
+  <h3>九、库存 / 供应链（与产品直接相关）</h3>
+  <ul>
+    <li>9-30：有效 SKU <b>2,821</b> ｜ 库存货值 <b>538.7 万</b> ｜ 在途 <b>584.9 万</b></li>
+    <li>滞销（清仓口径）2,089 个 / ¥168 万 / 31% ｜ <b>呆滞口径（滞销+积压）2,586 个 / ¥501 万 / 92.95%</b></li>
+    <li>根因：<b>70% SKU 采购量低于起订量 → 被迫超采 → 积压</b>；供应商做货周期 <b>78 天</b></li>
+    <li>合规：多款产品因<b>外观专利</b>被投诉下架扣分（颈椎按摩器/木柄筋膜刀/电动筋膜刀）；质检报告不被平台认可</li>
+  </ul>
+</div>
+
+<div class="crit">
+  <h3>十、26 年既定的产品相关目标（公司级）</h3>
+  <ul>
+    <li><b>"打造 6 个同类目 TOP30 以上爆品（月销 5 万以上）"</b></li>
+    <li><b>"国内费比控制在 16% 以内"</b></li>
+    <li><b>"滞销品 12.31 前清完"</b></li>
+    <li>"每月库存数据分析（动销率 / 呆滞占比 / 周转率 / 安全库存覆盖率）"</li>
+  </ul>
+  <p class="src">→ 说明 27 年产品规划不是"从零想"，是"接着 26 年的账往下算"。</p>
+</div>
+
+<h2>第二部分 · 我发现的问题（矛盾与风险）</h2>
+
+<div class="crit bad">
+  <h3>问题 1 ｜ 两套口径打架：业绩额 vs 计划条数</h3>
+  <p>按<b>业绩额</b>：赵小贝占 75%（半年）/ 69.6%（9月）——极度单点依赖。</p>
+  <p>按<b>研发计划条数</b>：五人相当（19%/18%/17%/13%）——分散。</p>
+  <p>→ <b>计划大家平均分，业绩却压在一个人身上。这不是"谁不努力"，是"做了没产出"。</b></p>
+</div>
+
+<div class="crit bad">
+  <h3>问题 2 ｜ VOC 表"登记得挺全，但流程卡在'过会'这一步"（已修正）</h3>
+  <p><b>先更正我上一版的判断</b>：我说"VOC 表没人填"，不准确。实际分层看——</p>
+  <ul>
+    <li><b>登记与初审：填得很全</b>——产品名称 329/333、产品分类 319、目标人群 311、核心卖点 308、<b>负责人初审 305（92%）</b>。市场/竞品/成本/毛利这些字段填充率多在 60–85%。</li>
+    <li><b>真正卡住的是"过会"</b>——<b>232 个初审通过（含赵小贝初审）的产品，只有 33 个走到了过会，198 个停在原地。</b></li>
+    <li><b>失败经验仍然不留痕</b>——58 个淘汰产品里，<b>淘汰原因只填了 2 条</b>；BCG 归类只填了 9 条。</li>
+  </ul>
+  <p>→ 修正后的诊断：<b>不是"产品经理不填表"，是"填完初审之后就断了"</b>——产品开发流程在"初审通过 → 过会"这一段没有走下去。这比"没人填表"更具体、也更好治：<b>盯住"232 个通过初审的产品，为什么只有 33 个进了过会"。</b></p>
+</div>
+
+<div class="crit bad">
+  <h3>问题 3 ｜ 新品"上架 ≠ 出量"是系统性的</h3>
+  <p>8月 41建9销（22%）、9月 118 条全零。连续两个月，不是偶然。</p>
+  <p>→ <b>不是没东西可做（422 条计划躺着），是做出来的卖不动。</b></p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 4 ｜ 结构失衡：46% 压在低价运动康复</h3>
+  <p>运动康复 152 条（多为低价耗材），而"家庭康复"切成 9 个细分、每类只有个位数产品。<b>低价品撑不起 1.56 亿，必须往高价段走。</b></p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 5 ｜ 最赚钱的品，恰恰不在"重点"里</h3>
+  <p>9月数据显示，毛利率最高的不是空气波（44.9%），而是：<b>生物压力反馈仪 91.6%、BFR 72.9%、脊柱侧弯尺 71.8%、巫毒带/弹力带 59.8%</b>。</p>
+  <p>→ 公司资源全押在"冲量品"（空气波），<b>高毛利品的经营没被当成一条线来做</b>。</p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 6 ｜ 高广银这条线要动手术</h3>
+  <p>连续垫底（半年 12%、9月 14.1%），却拿着第二高的目标（9月 72万、半年 210万）。<b>"目标按薪资锚定" vs "实际产出"严重脱节。</b></p>
+</div>
+
+<h2>第三部分 · 我需要你回答的</h2>
+
+<div class="crit ask">
+  <h3>A 组 · 战略意图（最关键，决定后面怎么拆）</h3>
+  <ol>
+    <li><span class="qn">A1</span> <b>产品线的翻番目标是多少？</b>——电商整体 7,800万→1.56亿，其中<b>新品要贡献多少</b>？还是老品加量为主？</li>
+    <li><span class="qn">A2</span> <b>空气波明年要做到多少？</b>（一类 8月 121.8万/占27%；全年目标？翻番后目标？）</li>
+    <li><span class="qn">A3</span> <b>空气波的系列化方向定了吗？</b>——家用/专业/儿童/术后/上肢，先做哪几个？「六腔」新品是这一步吗？</li>
+    <li><span class="qn">A4</span> <b>高价段怎么走？</b>——赛德斯天猫店（2000元以上精品）就是"健恒"高端品牌的落地吗？规划多少 SKU、目标多少？</li>
+    <li><span class="qn">A5</span> <b>产品经理的考核口径改不改？</b>——现在只考"新品业绩额"，要不要加"开品成功率 / 毛利 / 迭代完成率"？</li>
+  </ol>
+</div>
+
+<div class="crit ask">
+  <h3>B 组 · 事实与机制（我得知道"现在到底怎么运转"）</h3>
+  <ol>
+    <li><span class="qn">B1</span> <b>自产走到哪了？</b>——老品优化里出现"自己做"（RRT）、"优化成本"，这条线现在什么进度、产能多少？</li>
+    <li><span class="qn">B2</span> <b>58 个独家品的独家期</b>到期节奏？到期会不会被同行抄（关系到产品线壁垒）？</li>
+    <li><span class="qn">B3</span> <b>开品流程是怎样的？</b>谁有立项权、过会谁参加、卡在哪一步？（VOC 填报率只有 15%，是流程本身没要求，还是要求了没执行？）</li>
+    <li><span class="qn">B4</span> <b>研发计划 422 条里 123 条没落人</b>——这批是谁在管？</li>
+    <li><span class="qn">B5</span> <b>产品经理的人数够不够？</b>——27年编制计划里产品部要增人吗？（赵小贝一个人扛 70%，是最大的组织风险）</li>
+  </ol>
+</div>
+
+<div class="crit ask">
+  <h3>C 组 · 我需要你确认的"我有没有记错"</h3>
+  <ol>
+    <li><span class="qn">C1</span> 「闫栋林」（不是闫培林）——对吗？</li>
+    <li><span class="qn">C2</span> 9月产品经理业绩（167.96万/51.7%）——是"新品口径"还是"全部产品口径"？（如果是全部，那它跟"9月货品净销 587万"的差在哪？）</li>
+    <li><span class="qn">C3</span> 半年报的"完成 423万"和 9月"167.96万"，是不是同一个考核体系下的数？</li>
+    <li><span class="qn">C4</span> 空气波在二类电商（抖音）的具体销量/目标——有数据吗？</li>
+    <li><span class="qn">C5</span> <b>「通过」口径我按"负责人初审=通过 ∪ 赵小贝初审=通过"（232 个）算</b>，对吗？</li>
+    <li><span class="qn">C6</span> <b>232 个初审通过的产品里，198 个没过会——是流程断了、还是本就不需要过会？</b>（这决定"有效产品池"到底多大）</li>
+  </ol>
+</div>
+
+<h2>第四部分 · 你回完这些，我能做什么</h2>
+<div class="card">
+  <ol>
+    <li>把 <b>1.56 亿（电商口径）</b>拆到<b>产品线 → 爆品 → 新品数量 → 月度</b>，看缺口在哪；</li>
+    <li>做一份 <b>「产品线 27 年作战地图」</b>：主攻线（空气波）、高毛利线（生物反馈/BFR/侧弯尺）、防御线（低价长尾）、清退线（低毛利 D 级）；</li>
+    <li>配一张<b>产品经理责任表</b>：每人扛什么品类、什么目标、怎么考核（含"开品门禁"机制）。</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <p><b>数据来源</b>：企微《产品研发部工作流》（产品研发计划422条 / 老品优化计划62条 / 产品追踪表VOC 332条×82列）｜企微《9月业绩及库存数据》｜本地《8月经营分析会》｜供应链流水线（9-30）</p>
+  <p><b>可信度</b>：类目/负责人/业绩等为表格原始统计（可信）；"计划多≠产出高""VOC填报率低"为抖抖推断（供参考）。</p>
+  <p>抖抖 · 2026-10-13</p>
+</div>
+
+</div></body></html>

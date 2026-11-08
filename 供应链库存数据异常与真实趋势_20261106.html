@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>供应链库存数据异常与真实趋势 · 2026-11-06</title>
+<style>
+:root{
+  --bg:#fdfbf6; --ink:#2e2a24; --sub:#7c7468; --line:#e6ddcb;
+  --gold:#FABD03; --caramel:#D97A0B; --brick:#E2611E; --olive:#8AA84A;
+  --head:#3d3428;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  font-size:15px;line-height:1.78}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 22px 70px}
+h1{font-size:23px;margin:0 0 4px}
+.meta{color:var(--sub);font-size:13px;margin-bottom:20px}
+h2{font-size:17.5px;margin:30px 0 10px;padding-left:11px;border-left:5px solid var(--gold)}
+h3{font-size:15px;margin:16px 0 6px;color:var(--caramel)}
+.lead{background:#fff8e6;border-left:5px solid var(--gold);border-radius:6px;padding:14px 18px;margin-bottom:20px;font-size:15.5px}
+.lead b{color:var(--brick)}
+table{width:100%;border-collapse:collapse;margin:10px 0 16px;background:#fff;font-size:13.5px;
+  box-shadow:0 1px 5px rgba(120,100,70,.08);border-radius:5px;overflow:hidden}
+th{background:#f5efe0;text-align:left;padding:7px 10px;font-weight:700;border-bottom:1px solid var(--line);color:#4a4030}
+td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.bad{background:#fdf0ec}
+tr.bad td{color:#a33b16;font-weight:700}
+tr.good{background:#f4f8ec}
+.case{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:12px 0}
+.case h3{margin:0 0 6px}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.t9{background:#fdeee8;color:#a33b16}
+.t6{background:#fff5d9;color:#8a6a10}
+.t10{background:#e9f2df;color:#4d6b22}
+.kv{background:#fff;border-left:3px solid var(--olive);padding:8px 14px;margin:7px 0;font-size:14.5px}
+.kv b{color:var(--brick)}
+.num{font-size:19px;font-weight:700;color:var(--brick)}
+ul,ol{padding-left:20px;margin:6px 0}li{margin:4px 0}
+.foot{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+code{background:#f3eddf;padding:1px 5px;border-radius:3px;font-size:12.5px}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>供应链库存数据：两个假信号，一个真趋势</h1>
+<div class="meta">2026-11-06 ｜ 数据源：<code>kpi_snapshots.csv</code> 27 天每日快照 ｜ 口径：旺店通 API 库存全量</div>
+
+<div class="lead">
+<b>一句话：</b>这个月的库存数据里有两个假信号 —— 09-29 突然多出 3.7 万件、10-09 突然少掉 3.2 万件。<b>把这两个点剔掉看，库存货值这一个月没降（489→513 万，还涨了 5%），呆滞率涨了 2.1 个点，销量掉了 20%。</b>
+</div>
+
+<h2>假信号一：09-29 那天多出 3.7 万件，第二天又消失</h2>
+
+<table>
+<tr><th>日期</th><th style="text-align:right">库存件数</th><th style="text-align:right">库存货值(万)</th><th>判断</th></tr>
+<tr><td>09-28</td><td class="n">165,877</td><td class="n">524.18</td><td>正常</td></tr>
+<tr class="bad"><td>09-29</td><td class="n">203,218</td><td class="n">527.20</td><td><b>+22.5%（+37,341 件）</b></td></tr>
+<tr><td>09-30</td><td class="n">170,805</td><td class="n">538.84</td><td>回落到正常</td></tr>
+</table>
+
+<p><b>为什么说是假信号：</b></p>
+<ul>
+<li>一天多出 3.7 万件，第二天又全没了。<b>一天卖不掉 3.7 万件</b>，也不可能凭空多出来。</li>
+<li>同期货值只从 524 万变到 527 万（+3 万）。<b>3.7 万件只值 3 万块，单价 0.8 元/件。</b></li>
+<li>SKU 数没变（2,709→2,738）。不是新商品，是同一批货的数量被重复算了。</li>
+</ul>
+
+<div class="kv"><b>结论：</b>09-29 那天的抓取重复统计了部分库存（可能是多仓聚合时重复计入）。<b>这一天不能当基线用。</b><span class="tag t9">把握九成</span></div>
+
+<h2>假信号二：10-09 掉 20%，但货值没动</h2>
+
+<table>
+<tr><th>日期</th><th style="text-align:right">库存件数</th><th style="text-align:right">库存货值(万)</th><th style="text-align:right">件数变化</th><th style="text-align:right">货值变化</th></tr>
+<tr><td>10-08</td><td class="n">163,349</td><td class="n">516.69</td><td class="n">—</td><td class="n">—</td></tr>
+<tr class="bad"><td>10-09</td><td class="n">131,005</td><td class="n">512.81</td><td class="n"><b>−19.8%</b></td><td class="n">−0.75%</td></tr>
+<tr class="good"><td>10-12</td><td class="n">129,246</td><td class="n">506.90</td><td class="n">稳定</td><td class="n">稳定</td></tr>
+</table>
+
+<p><b>为什么说是假信号：</b></p>
+<ul>
+<li>件数一天少 32,344 件，<b>货值只少 3.88 万</b>。</li>
+<li>算下来消失的货单价 <b>1.20 元/件</b> —— 这不是正常商品的价格。</li>
+<li>SKU 数几乎没变（2,742→2,737），说明不是商品下架，是<b>某类低值库存被剔出了统计口径</b>。</li>
+</ul>
+
+<div class="kv"><b>判断：</b>10-09 之后，包材、辅料、赠品一类的低值库存被排除在库存统计外。<span class="tag t6">把握六成</span><br><b>为什么只有六成：</b>我只是从"单价 1.2 元"反推，没看到抓取脚本的改动记录。要确认得看 10-08 和 10-09 两天的原始库存表，逐个比对少了哪些 SKU。</div>
+
+<h2>真趋势：货值没降，呆滞在涨，销量在掉</h2>
+
+<p>把件数放一边，<b>只看货值</b>（货值口径一直稳定在 489–548 万，没有断层）：</p>
+
+<table>
+<tr><th>日期</th><th style="text-align:right">库存货值(万)</th><th style="text-align:right">呆滞率</th><th style="text-align:right">周转天数</th><th style="text-align:right">近30天销量</th></tr>
+<tr><td>09-09</td><td class="n">489.03</td><td class="n">14.1%</td><td class="n">187.0</td><td class="n">24,471</td></tr>
+<tr><td>09-20</td><td class="n">548.29</td><td class="n">15.0%</td><td class="n">233.5</td><td class="n">21,534</td></tr>
+<tr><td>10-09</td><td class="n">512.81</td><td class="n">13.7%</td><td class="n">206.4</td><td class="n">19,039</td></tr>
+<tr class="bad"><td>10-28（最新）</td><td class="n">513.21</td><td class="n">16.2%</td><td class="n">198.3</td><td class="n">19,619</td></tr>
+</table>
+
+<h3>一个月的变化</h3>
+<div class="kv">库存货值：489.03 → 513.21 万，<b>涨了 24.18 万（+4.9%）</b><span class="tag t10">把握十成</span></div>
+<div class="kv">呆滞率：14.1% → 16.2%，<b>涨了 2.1 个百分点</b><span class="tag t10">把握十成</span></div>
+<div class="kv">周转天数：187 → 198.3 天，<b>慢了 11.3 天</b><span class="tag t10">把握十成</span></div>
+<div class="kv">近 30 天销量：24,471 → 19,619 件，<b>掉了 4,852 件（−19.8%）</b><span class="tag t10">把握十成</span></div>
+
+<div class="lead" style="margin-top:16px">
+<b>说白了：</b>这个月库存没清掉，销量在往下走，周转在变慢，呆滞还在涨。<b>方向是反的。</b>
+</div>
+
+<h2>这对看板意味着什么</h2>
+
+<div class="case">
+<h3>① 「现有库存量」这个指标暂时不能用</h3>
+<p>看板上现在显示 129,660 件。这个数跟 9 月的 17 万件<b>不可比</b>，因为中间换了口径。任何"库存降了多少"的说法，都会算错。</p>
+<p><b>处理建议：</b>要么在件数旁边标一个"口径变更于 10-09"，要么暂时把件数从 KPI 卡撤下来，只留货值。</p>
+</div>
+
+<div class="case">
+<h3>② 用 203,218 当基线的对比，结论是错的</h3>
+<p>如果拿 9 月 29 日那天的数对比，会算出"库存降了 36%"。<b>实际货值只降了 2.7%，而且比 9 月初还高。</b></p>
+</div>
+
+<div class="case">
+<h3>③ 呆滞有两个口径，会打架</h3>
+<p>看板写 16.2%（按货值算），供应链流水线那边是 92.95%（按 SKU 数算）。<b>两个数差 6 倍。</b>对外说的时候必须带口径，否则谁看都会问。</p>
+</div>
+
+<h2>建议做三件事</h2>
+
+<div class="kv"><b>1｜查清 10-09 到底少了什么</b>（优先级最高）<br>把 10-08 和 10-09 的原始库存表调出来，按 SKU 逐个比对，看少了哪一类。<b>在查清之前，库存件数这个指标不要对外用。</b></div>
+
+<div class="kv"><b>2｜给快照加异常标记</b><br>09-29 和 10-09 这两天在 <code>kpi_snapshots.csv</code> 里标出来（比如加一列"数据异常"），以后做环比自动跳过。<b>不然下次还会被带偏。</b></div>
+
+<div class="kv"><b>3｜把"货值 + 呆滞率"做成月度对比</b><br>这两个数最稳、最能说明问题。件数受口径影响大，优先级往后退。</div>
+
+<h2>附：完整快照数据（27 天）</h2>
+<table>
+<tr><th>日期</th><th style="text-align:right">库存件数</th><th style="text-align:right">货值(万)</th><th style="text-align:right">呆滞率</th><th style="text-align:right">SKU</th><th style="text-align:right">销量30</th><th style="text-align:right">周转</th></tr>
+<tr><td>2026-09-09</td><td class="n">152,515</td><td class="n">489.03</td><td class="n">14.1%</td><td class="n">2,674</td><td class="n">24,471</td><td class="n">187.0</td></tr>
+<tr><td>2026-09-15</td><td class="n">159,923</td><td class="n">495.26</td><td class="n">14.6%</td><td class="n">2,679</td><td class="n">24,988</td><td class="n">192.0</td></tr>
+<tr><td>2026-09-16</td><td class="n">158,897</td><td class="n">491.48</td><td class="n">14.5%</td><td class="n">2,666</td><td class="n">21,552</td><td class="n">221.2</td></tr>
+<tr><td>2026-09-17</td><td class="n">158,897</td><td class="n">491.48</td><td class="n">14.5%</td><td class="n">2,666</td><td class="n">21,552</td><td class="n">221.2</td></tr>
+<tr><td>2026-09-18</td><td class="n">158,064</td><td class="n">498.27</td><td class="n">15.2%</td><td class="n">2,673</td><td class="n">21,790</td><td class="n">217.6</td></tr>
+<tr><td>2026-09-20</td><td class="n">167,601</td><td class="n">548.29</td><td class="n">15.0%</td><td class="n">2,685</td><td class="n">21,534</td><td class="n">233.5</td></tr>
+<tr><td>2026-09-21</td><td class="n">166,569</td><td class="n">541.07</td><td class="n">15.8%</td><td class="n">2,699</td><td class="n">22,993</td><td class="n">217.3</td></tr>
+<tr><td>2026-09-22</td><td class="n">167,438</td><td class="n">549.24</td><td class="n">15.3%</td><td class="n">2,705</td><td class="n">22,811</td><td class="n">220.2</td></tr>
+<tr><td>2026-09-23</td><td class="n">164,881</td><td class="n">541.80</td><td class="n">14.7%</td><td class="n">2,690</td><td class="n">23,164</td><td class="n">213.5</td></tr>
+<tr><td>2026-09-24</td><td class="n">166,007</td><td class="n">539.09</td><td class="n">15.3%</td><td class="n">2,696</td><td class="n">23,164</td><td class="n">215.0</td></tr>
+<tr><td>2026-09-28</td><td class="n">165,877</td><td class="n">524.18</td><td class="n">15.1%</td><td class="n">2,709</td><td class="n">22,724</td><td class="n">219.0</td></tr>
+<tr class="bad"><td>2026-09-29 ⚠</td><td class="n">203,218</td><td class="n">527.20</td><td class="n">15.4%</td><td class="n">2,738</td><td class="n">22,482</td><td class="n">271.2</td></tr>
+<tr><td>2026-09-30</td><td class="n">170,805</td><td class="n">538.84</td><td class="n">15.0%</td><td class="n">2,727</td><td class="n">22,831</td><td class="n">224.4</td></tr>
+<tr><td>2026-10-08</td><td class="n">163,349</td><td class="n">516.69</td><td class="n">15.1%</td><td class="n">2,742</td><td class="n">19,650</td><td class="n">249.4</td></tr>
+<tr class="bad"><td>2026-10-09 ⚠</td><td class="n">131,005</td><td class="n">512.81</td><td class="n">13.7%</td><td class="n">2,737</td><td class="n">19,039</td><td class="n">206.4</td></tr>
+<tr><td>2026-10-12</td><td class="n">129,246</td><td class="n">506.90</td><td class="n">15.9%</td><td class="n">2,739</td><td class="n">18,655</td><td class="n">207.8</td></tr>
+<tr><td>2026-10-13</td><td class="n">129,568</td><td class="n">508.79</td><td class="n">15.6%</td><td class="n">2,732</td><td class="n">19,170</td><td class="n">202.8</td></tr>
+<tr><td>2026-10-14</td><td class="n">132,354</td><td class="n">534.79</td><td class="n">15.5%</td><td class="n">2,732</td><td class="n">19,490</td><td class="n">203.7</td></tr>
+<tr><td>2026-10-15</td><td class="n">130,396</td><td class="n">528.79</td><td class="n">14.3%</td><td class="n">2,725</td><td class="n">19,696</td><td class="n">198.6</td></tr>
+<tr><td>2026-10-16</td><td class="n">128,951</td><td class="n">523.87</td><td class="n">15.2%</td><td class="n">2,731</td><td class="n">19,352</td><td class="n">199.9</td></tr>
+<tr><td>2026-10-19</td><td class="n">125,825</td><td class="n">508.21</td><td class="n">15.6%</td><td class="n">2,737</td><td class="n">18,425</td><td class="n">204.9</td></tr>
+<tr><td>2026-10-20</td><td class="n">132,044</td><td class="n">532.68</td><td class="n">16.4%</td><td class="n">2,748</td><td class="n">18,760</td><td class="n">211.2</td></tr>
+<tr><td>2026-10-21</td><td class="n">130,574</td><td class="n">537.29</td><td class="n">16.4%</td><td class="n">2,747</td><td class="n">18,739</td><td class="n">209.0</td></tr>
+<tr><td>2026-10-22</td><td class="n">127,246</td><td class="n">519.45</td><td class="n">16.0%</td><td class="n">2,737</td><td class="n">18,635</td><td class="n">204.9</td></tr>
+<tr><td>2026-10-23</td><td class="n">128,780</td><td class="n">522.48</td><td class="n">16.6%</td><td class="n">2,736</td><td class="n">18,779</td><td class="n">205.7</td></tr>
+<tr><td>2026-10-24</td><td class="n">128,102</td><td class="n">516.83</td><td class="n">16.2%</td><td class="n">2,727</td><td class="n">18,819</td><td class="n">204.2</td></tr>
+<tr class="good"><td>2026-10-28（最新）</td><td class="n">129,660</td><td class="n">513.21</td><td class="n">16.2%</td><td class="n">2,743</td><td class="n">19,619</td><td class="n">198.3</td></tr>
+</table>
+
+<div class="foot">
+数据源：<code>D:\工作文件夹\供应链\测试数据\output\kpi_snapshots.csv</code>（27 天）<br>
+口径：旺店通 API 库存全量 + 销售出库 30 天明细 ｜ 货值单位：万元 ｜ 周转天数按 30 天销量折算<br>
+抖抖 · 2026-11-06
+</div>
+
+</div></body></html>

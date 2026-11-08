@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>产品线 · 数据修正 + 27年打法</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 24px 64px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:24px 28px;margin-bottom:22px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 6px;font-size:24px}
+.banner p{margin:3px 0;color:#6a5b78;font-size:13px}
+h2{font-size:19px;margin:32px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.25}
+h3{font-size:16px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+tr.hl td{background:#fffbee}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:23px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:14px 18px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 6px;font-size:16px}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:21px;margin:6px 0}li{margin:4px 0}ol{padding-left:22px;margin:6px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;font-weight:600}
+.t-ok{background:#e6f6ee;color:#2f8a63}.t-warn{background:#fff1e6;color:#c25a12}.t-bad{background:#ffe9ec;color:#c0384a}.t-gray{background:#f2eef5;color:#7a6b88}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>产品线 · 数据修正 + 27 年打法</h1>
+  <p>2026-10-14 ｜ 本版已改用「9月经营分析会」官方数据，修正此前口径错误</p>
+  <p>依据：企微《月度经营分析会》9月页 → 线上事业部「电商数据中台_多月份」+ 抖音「经营数据汇报-2026-09」+ 产品研发部各表</p>
+</div>
+
+<!-- ========== 一、数据修正 ========== -->
+<h2>一、先认错：我用错的数据（已修正）</h2>
+<div class="crit bad">
+  <p>我之前用的是「聊天缓存里的导出表 + 推算」，与经营分析会官方口径有偏差。主要三处：</p>
+  <table>
+    <tr><th>指标</th><th>我之前说的（错）</th><th>官方口径（对）</th><th>差因</th></tr>
+    <tr><td><b>一类电商月销售</b></td><td>7月426.9万 → 8月428.4万</td><td><b>那是 GMV</b>；<b>净销售额</b>是 7月437.9万 → 8月449.2万 → 9月461.4万</td><td>混淆了 GMV 与净销售额</td></tr>
+    <tr><td><b>空气波 9月净销</b></td><td>153.4 万</td><td><b>133.4 万</b></td><td>用了缓存表口径（含未归属行）</td></tr>
+    <tr><td><b>高毛利品趋势</b></td><td>"生物反馈 -35.9%、侧弯尺 -40%"（在跌）</td><td><b>BFR +51.1%、治帮侧弯尺 +49.2%、模型教具 +417%</b>（在涨）</td><td>用了「月销变动表」旧口径</td></tr>
+  </table>
+  <p>→ 结论：<b>一类电商其实在稳步增长（不是"停滞"），高毛利品也在涨（不是"萎缩"）。我之前的判断偏悲观，特此更正。</b></p>
+</div>
+
+<!-- ========== 二、准确家底 ========== -->
+<h2>二、准确家底（官方数据）</h2>
+
+<div class="crit ok">
+  <h3>① 一类电商（线上事业部）6-9 月完整 KPI ★核心</h3>
+  <p class="src">源：线上事业部提交《电商数据中台_多月份》（18-19 个店铺合计）</p>
+  <table>
+    <tr><th>月份</th><th class="num">净销售额</th><th class="num">GMV</th><th class="num">退款率</th><th class="num">毛利额</th><th class="num">毛利率</th><th class="num">净利</th><th class="num">净利率</th><th class="num">推广费</th><th class="num">费比</th></tr>
+    <tr><td>6月</td><td class="num">439.03 万</td><td class="num">430.73 万</td><td class="num">16.43%</td><td class="num">205.86 万</td><td class="num">47.79%</td><td class="num">112.40 万</td><td class="num">26.10%</td><td class="num">49.36 万</td><td class="num">11.46%</td></tr>
+    <tr><td>7月</td><td class="num">437.90 万</td><td class="num">426.91 万</td><td class="num">16.96%</td><td class="num">212.49 万</td><td class="num green">49.77%</td><td class="num">120.75 万</td><td class="num green">28.29%</td><td class="num">50.85 万</td><td class="num">11.91%</td></tr>
+    <tr><td>8月</td><td class="num">449.25 万</td><td class="num">428.39 万</td><td class="num">17.66%</td><td class="num">211.96 万</td><td class="num">49.48%</td><td class="num">108.97 万</td><td class="num">25.44%</td><td class="num">54.48 万</td><td class="num">12.72%</td></tr>
+    <tr class="hl"><td><b>9月</b></td><td class="num"><b>461.39 万</b></td><td class="num">457.80 万</td><td class="num">17.79%</td><td class="num">224.16 万</td><td class="num">48.96%</td><td class="num"><b>120.41 万</b></td><td class="num">26.30%</td><td class="num">56.05 万</td><td class="num">12.24%</td></tr>
+  </table>
+  <div class="crit">
+    <b>读三个信号：</b>
+    <ul>
+      <li><b>营收在涨</b>：净销售额 6月439万 → 9月461万，<b>逐月递增</b>（我此前"停滞"的判断是错的）</li>
+      <li><b>利润在回升</b>：净利率 8月25.44% → 9月26.30%（+0.86pp）；净利 120.4 万（年内第二高）</li>
+      <li><b>费比在升</b>：11.46% → 12.24%（涨 0.78pp），<b>推广越花越多</b>——这是"提高利润率"要盯的第一件事（目标 ≤16%，还有空间但趋势要警惕）</li>
+    </ul>
+  </div>
+  <p class="src">库存口径：9月 SKU 617 个 / 规格 1539 个 / 链接 2138 条 / 店铺 19 个</p>
+</div>
+
+<div class="crit ok">
+  <h3>② 一类电商 · 产品涨跌榜（8月→9月）—— 修正后的真相</h3>
+  <p><b>增长 TOP（真金白银）</b>：</p>
+  <table>
+    <tr><th>产品</th><th>类目</th><th class="num">8月</th><th class="num">9月</th><th class="num">增幅</th></tr>
+    <tr class="hl"><td><b>空气压力波</b></td><td>空气波</td><td class="num">121.77 万</td><td class="num"><b>133.39 万</b></td><td class="num green">+9.5%（+11.6万）</td></tr>
+    <tr><td>DMS深层肌肉刺激仪</td><td>DMS</td><td class="num">7.00 万</td><td class="num">9.20 万</td><td class="num green">+31.4%</td></tr>
+    <tr><td><b>BFR训练带（血流限制）</b></td><td>BFR</td><td class="num">3.12 万</td><td class="num">4.72 万</td><td class="num green">+51.1%</td></tr>
+    <tr><td>冷疗桶</td><td>冷疗</td><td class="num">3.95 万</td><td class="num">5.23 万</td><td class="num green">+32.4%</td></tr>
+    <tr><td><b>治帮脊柱侧弯尺</b></td><td>脊柱侧弯尺</td><td class="num">2.72 万</td><td class="num">4.06 万</td><td class="num green">+49.2%</td></tr>
+    <tr><td>Theratools筛查尺</td><td>脊柱侧弯尺</td><td class="num">4.37 万</td><td class="num">5.43 万</td><td class="num green">+24.1%</td></tr>
+    <tr><td>靶向放松仪 RRT</td><td>RRT</td><td class="num">13.02 万</td><td class="num">13.94 万</td><td class="num green">+7.1%</td></tr>
+  </table>
+  <p><b>下滑 TOP</b>：异形筋膜刀 -2.36万(-19.4%)、电动筋膜刀 -2.03万(-35.6%)、TENS/EMS多功能 -1.11万(-18.2%)、富兰克林筋膜球 -1.07万(-14.6%)、电动筋膜球 -1.05万(-55.6%)</p>
+  <div class="crit warn"><b>→ 关键结论</b>：<b>高毛利线（BFR / 侧弯尺 / 冷疗）在涨，只是基数小（3-5万级）；掉的是"老款筋膜刀 + 电动类 + 球类"。</b>这跟"高毛利品在萎缩"完全相反——<b>它们是"涨势好但没人给资源"</b>。</div>
+</div>
+
+<div class="crit">
+  <h3>③ 二类电商（抖音/视频号/小红书）9 月</h3>
+  <p class="src">源：抖音运营部《经营数据汇报-2026-09》（4 店：合聚、运动、视频号、小红书）</p>
+  <table>
+    <tr><th>店铺</th><th>平台</th><th class="num">GMV</th><th class="num">退款</th><th class="num">净</th></tr>
+    <tr><td>运动（Theratools运动器械旗舰店）</td><td>抖音</td><td class="num">40.96 万</td><td class="num">14.40 万</td><td class="num">26.56 万</td></tr>
+    <tr><td>视频号店铺（微信小店）</td><td>视频号</td><td class="num">5.94 万</td><td class="num">1.02 万</td><td class="num">4.92 万</td></tr>
+    <tr><td>小红书店铺</td><td>小红书</td><td class="num">2.33 万</td><td class="num">0.32 万</td><td class="num">2.01 万</td></tr>
+    <tr><td>合聚</td><td>抖音</td><td class="num">1.91 万</td><td class="num">0.33 万</td><td class="num">1.58 万</td></tr>
+    <tr class="tot"><td>合计</td><td>—</td><td class="num">51.14 万</td><td class="num">16.06 万</td><td class="num">35.08 万</td></tr>
+  </table>
+  <p class="src">⚠️ 我此前说"9月22.4万"——那是错的。<b>官方 9月 GMV 51.1万 / 净 35.1万。</b>（退款率 31.4%，比一类电商的 17.8% 高得多，二类电商退款问题更严重）</p>
+</div>
+
+<div class="crit warn">
+  <h3>④ 26 年新品业绩目标 2,800 万（含逐月分解）</h3>
+  <table>
+    <tr><th>产品经理</th><th class="num">全年目标</th><th class="num">上半年</th><th class="num">下半年</th><th>备注</th></tr>
+    <tr><td><b>赵小贝</b></td><td class="num">1,450 万</td><td class="num">305 万</td><td class="num">1,145 万</td><td>半年完成 319万（105%）</td></tr>
+    <tr><td><b>高广银</b></td><td class="num">600 万</td><td class="num">205 万</td><td class="num">395 万</td><td class="red">半年完成 24.2万（12%）</td></tr>
+    <tr><td>杨涛</td><td class="num">400 万</td><td class="num">130 万</td><td class="num">270 万</td><td>半年 70.6万（54%）</td></tr>
+    <tr><td>闫栋林</td><td class="num">200 万</td><td class="num">25 万</td><td class="num">175 万</td><td>半年 4.8万（19%）</td></tr>
+    <tr><td>牛延鑫+胡俊鹏</td><td class="num">150 万</td><td class="num">—</td><td class="num">—</td><td>研发线</td></tr>
+    <tr class="tot"><td>合计</td><td class="num">2,800 万</td><td class="num">≈670 万</td><td class="num">≈2,130 万</td><td>半年实际约 423万 = <b>63%</b></td></tr>
+  </table>
+</div>
+
+<div class="crit ok">
+  <h3>⑤ 团队已做的 27 年产品规划（V2 版）★这是你们的成果，不是空白</h3>
+  <p>《2027产品矩阵规划V2》已扫 4,148 个 SKU、对标 18 项公开检索，摊出 <b>15 个类目组、约 130 个类目</b>，并标注状态：</p>
+  <div class="big">
+    <div class="stat"><b>25</b><span>已成产品线</span></div>
+    <div class="stat"><b>27</b><span>有但未成线</span></div>
+    <div class="stat"><b>39</b><span>完全空白</span></div>
+    <div class="stat"><b>24</b><span>立项需求卡</span></div>
+  </div>
+  <p><b>已标 P0（27年必补）的类目</b>：</p>
+  <table>
+    <tr><th>类目组</th><th>P0 类目</th></tr>
+    <tr><td>① 物理因子</td><td>TENS+EMS+红光一体机、冲击波（便携款）</td></tr>
+    <tr><td>② 健康按摩/消费电子</td><td>颈部按摩仪、眼部按摩仪、头部按摩仪</td></tr>
+    <tr><td>③ 运动松解</td><td><b>筋膜枪（C端便携）</b>、弹力带套装</td></tr>
+    <tr><td>④ 护具/支具</td><td>关节护具系列、足部矫形（拇外翻/分趾/鞋垫）、医用级护具（械字号）</td></tr>
+    <tr><td>⑤ 适老护理</td><td>轮椅/电动轮椅、助行器/手杖/四脚拐</td></tr>
+    <tr><td>⑦ 手足精细</td><td>分趾器/足弓垫</td></tr>
+    <tr><td>⑩ 女性健康/产康</td><td>盆底肌修复仪、腹直肌修复仪、产后收腹带</td></tr>
+    <tr><td>⑫ 耗材与复购</td><td>电极片/导电凝胶矩阵</td></tr>
+  </table>
+  <p class="src">→ <b>这份 V2 就是你说的"产品怎么规划"的答案雏形——方向已经清楚，缺的是"选哪几个先做、做到什么目标"。</b></p>
+</div>
+
+<!-- ========== 三、问题 ========== -->
+<h2>三、修正后的真问题（就 4 条）</h2>
+
+<div class="crit bad">
+  <h3>问题 1 ｜ 新品目标 2800 万，完成率仅 63% —— 27 年目标不能简单"翻番"</h3>
+  <p>26年新品目标 2800 万，半年实际 423 万（63%）。若 27 年产品线也随整体翻番（→ 5600 万），<span class="red">等于要在"实际 1765 万"基础上做 3.2 倍</span>。这个数不现实，必须重新定基数。</p>
+</div>
+
+<div class="crit bad">
+  <h3>问题 2 ｜ 主力品"增收不等于增利"：空气波毛利率 44.9%（低于大盘 48.96%）</h3>
+  <p>空气波 9 月净销 133.4 万（占一类电商 29%），但毛利率低于全店均值；且<b>一类电商退款率 17.79%、二类电商高达 31.4%</b>。<b>靠它冲规模可以，但"翻番 + 提利润率"这两个目标，光靠空气波实现不了。</b></p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 3 ｜ 高毛利线"涨得好、没资源"</h3>
+  <p>BFR +51%、侧弯尺 +49%、冷疗 +32%、模型教具 +417% —— 均<b>高毛利且高增速</b>，但基数只有 3-5 万，占全店不足 3%。<b>没人给目标、没人给预算、没人给达人资源。</b>（这正是你说"可以单独做"的那块）</p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 4 ｜ 人：单点依赖 + 高广银错配</h3>
+  <ul>
+    <li>赵小贝扛全部门 70% 业绩 + 最重品类（空气波独享）</li>
+    <li>高广银半年 12%、9月 14.1%，却拿着第二高目标（600万）——<b>你说"年底业绩不行就优化"，那现在就要定"什么算不行、什么时候判"</b></li>
+    <li>产品池 232 个初审通过品，只有 33 个走到过会</li>
+  </ul>
+</div>
+
+<!-- ========== 四、打法 ========== -->
+<h2>四、27 年产品线打法（结合你的 5 条回答）</h2>
+
+<div class="crit">
+  <p><b>你的定调</b>：① 目标翻番 ② 营收翻番 + 提高利润率 ③ 空气波多方向 ④ 高毛利线可单独做 ⑤ 年底不行就优化</p>
+</div>
+
+<div class="crit ok">
+  <h3>打法一 ｜ 空气波：多方向，但按"三个方向"分头打</h3>
+  <p>不再是"一个品冲量"，拆成三条：</p>
+  <table>
+    <tr><th>方向</th><th>做什么</th><th>目标</th></tr>
+    <tr><td><b>A 冲量（守）</b></td><td>现有主力款（133万/月）保规模，靠达人矩阵扩量</td><td>冲 GMV，但要<B>守毛利率 ≥45%</B></td></tr>
+    <tr><td><b>B 系列化（攻）</b></td><td>V2 已列"补单肢便携款"——家用/单肢/术后/上肢多场景，拉高客单</td><td>把客单从千元级往 1500+ 抬，<b>抬毛利率</b></td></tr>
+    <tr><td><b>C 提利（转）</b></td><td>提配套复购（气密袖套、耗材）、减退款（详情页+客服+产品力）</td><td>把退款率从 31%（二类）往 20% 压</td></tr>
+  </table>
+  <p class="src">空气波已经是 V2 规划里"①物理因子 P1 补单肢便携款"——这条线方向清楚，重点是给系列化定 KPI（客单价、毛利率），别只考销量。</p>
+</div>
+
+<div class="crit ok">
+  <h3>打法二 ｜ 高毛利线：单独立"利润产品线"（你说可以单独做）</h3>
+  <ul>
+    <li><b>选品</b>：从数据里挑"高毛利+高增速"的——BFR(72.9%)、脊柱侧弯尺(71.8%)、生物压力反馈仪(91.6%)、巫毒带(59.8%)、冷疗</li>
+    <li><b>组织</b>：单独一条线，配专人 + 独立目标 + 预算（不混在铺货品类里，避免"自然长"）</li>
+    <li><b>逻辑</b>：这条线的使命是<b>"提利润率"</b>——营收翻番靠空气波，<b>利润率靠这条线</b>。两个目标分开扛</li>
+    <li><b>产品规划</b>：V2 里"⑬评估筛查/⑫耗材复购/④护具"都能承接（如侧弯尺→儿童侧弯矫形系列；BFR→耗材袖套复购）</li>
+  </ul>
+</div>
+
+<div class="crit ok">
+  <h3>打法三 ｜ 用 V2 的 P0 清单，补"空白高值类目"</h3>
+  <p>V2 已标 P0 的类目里，有几个"空白但市场明确"的，建议 27 年优先立项：</p>
+  <table>
+    <tr><th>类目</th><th>为什么优先</th></tr>
+    <tr><td><b>筋膜枪（C端便携）</b></td><td>全公司只有专业级 DMS，C 端便携完全空白——<b>与现有达人渠道天然匹配</b></td></tr>
+    <tr><td><b>女性健康/产康</b>（盆底肌/腹直肌/收腹带）</td><td>完全空白、高毛利、电商易起量</td></tr>
+    <tr><td><b>适老护理</b>（轮椅/助行器）</td><td>完全空白，但要注意器械资质与集采参数</td></tr>
+    <tr><td><b>关节护具（运动场景）</b></td><td>现有 152 条是通用款，未成"场景系列"</td></tr>
+    <tr><td><b>电极片/导电凝胶</b></td><td>耗材复购，跟现有电刺激产品天然配套</td></tr>
+  </table>
+</div>
+
+<div class="crit ok">
+  <h3>打法四 ｜ 流程闭环：让 232 个"通过品"真正走到上市</h3>
+  <ul>
+    <li><b>初审通过 = 立项</b>（占编、占预算），未过会不得上架</li>
+    <li><b>强制过会分档</b>：232 个通过品 → A 类重点做 / B 类排期 / C 类搁置</li>
+    <li>这一个动作直接治"9月新上118条零出量"（做了不出量）</li>
+  </ul>
+</div>
+
+<div class="crit ok">
+  <h3>打法五 ｜ 人：赵小贝减负 + 高广银定判据</h3>
+  <ul>
+    <li><b>赵小贝</b>：13 类里把低价值（软踏/瑜伽垫/球类）切出，聚焦"空气波系列化 + 高毛利线"</li>
+    <li><b>高广银</b>：既然你说"年底不行就优化"，<b>现在就定判据</b>——比如"Q4 新品完成率 < 40% 即启动调整"，白纸黑字，避免年底扯皮</li>
+    <li><b>123 条无主研发计划</b>：一次性分到人</li>
+  </ul>
+</div>
+
+<!-- ========== 五、要你定的 ========== -->
+<h2>五、还剩 3 个数要你定（定了我就能拆目标）</h2>
+<div class="crit ask">
+  <ol>
+    <li><b>产品线 27 年目标具体多少？</b>——若按整体翻番（1.56亿），产品线新品目标是不是"1,765万×2 ≈ 3,500万"？还是另有口径？</li>
+    <li><b>"提高利润率"要到什么水平？</b>——一类电商现在净利率 26.3%，27 年目标 28%？30%？（这决定高毛利线的目标量级）</li>
+    <li><b>高广银的"优化判据"</b>——什么指标、什么阈值、什么时点？</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <p><b>数据来源（均为9月经营分析会官方口径）</b>：线上事业部《电商数据中台_多月份》｜抖音运营部《经营数据汇报-2026-09》｜《2027产品矩阵规划V2》｜《产品研发部工作流》（研发计划/VOC/新品业绩指标）｜企微《月度经营分析会》9月页</p>
+  <p><b>修正说明</b>：本版已更正此前"月销售停滞""高毛利品下滑""二类电商9月22.4万"三处错误。</p>
+  <p>抖抖 · 2026-10-14</p>
+</div>
+
+</div></body></html>

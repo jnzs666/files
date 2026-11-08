@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>产品线 · 全景汇总与27年打法</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 24px 64px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:24px 28px;margin-bottom:22px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 6px;font-size:24px}
+.banner p{margin:3px 0;color:#6a5b78;font-size:13px}
+h2{font-size:19px;margin:32px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.25}
+h3{font-size:16px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+tr.hl td{background:#fffbee}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:23px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:14px 18px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 6px;font-size:16px}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:21px;margin:6px 0}li{margin:4px 0}ol{padding-left:22px;margin:6px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px}
+.qn{display:inline-block;min-width:30px;font-weight:700;color:#7c6ab0}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;font-weight:600}
+.t-ok{background:#e6f6ee;color:#2f8a63}.t-warn{background:#fff1e6;color:#c25a12}.t-bad{background:#ffe9ec;color:#c0384a}.t-gray{background:#f2eef5;color:#7a6b88}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>产品线 · 全景汇总与 27 年打法</h1>
+  <p>2026-10-14 ｜ 口径：翻番按 26 年<b>目标</b>、暂不含课程事业部</p>
+  <p>数据源：《产品研发部工作流》全部子表（研发计划/ VOC / 老品优化 / 产品类别 / 月销变动 / 退款率 / 降本 / 自研 / 新品业绩指标）</p>
+</div>
+
+<div class="big">
+  <div class="stat"><b>2,800 万</b><span>26年新品业绩目标（5人合计）</span></div>
+  <div class="stat"><b>232</b><span>初审通过产品（有效池）</span></div>
+  <div class="stat"><b>502 / 78%</b><span>D级产品占全部SKU</span></div>
+  <div class="stat"><b>37.6%</b><span>空气波退款率（最高）</span></div>
+</div>
+
+<!-- ===================== 第一部分 ===================== -->
+<h2>第一部分 · 我掌握的情况（全量）</h2>
+
+<div class="crit ok">
+  <h3>🎯 最重要的一张表：26 年新品业绩指标（含逐月分解）</h3>
+  <p class="src">源：《产品研发部工作流》→「研发部新品业绩指标」（6 条）</p>
+  <table>
+    <tr><th>产品经理</th><th class="num">26年预估新品销售额</th><th class="num">1-6月(上半年)</th><th class="num">7-12月(下半年)</th><th>月度爬坡</th></tr>
+    <tr><td><b>赵小贝</b></td><td class="num"><b>1,450 万</b></td><td class="num">305 万</td><td class="num">1,145 万</td><td class="src">1月30→6月95→9月165→12月275 万</td></tr>
+    <tr><td><b>高广银</b></td><td class="num"><b>600 万</b></td><td class="num">205 万</td><td class="num">395 万</td><td class="src">1月10→6月65→9月72→12月90 万</td></tr>
+    <tr><td>杨涛</td><td class="num">400 万</td><td class="num">130 万</td><td class="num">270 万</td><td class="src">1月7→6月32→9月41→12月57 万</td></tr>
+    <tr><td>闫栋林</td><td class="num">200 万</td><td class="num">25 万</td><td class="num">175 万</td><td class="src">1-3月0→6月14→9月26→12月37 万</td></tr>
+    <tr><td>牛延鑫、胡俊鹏</td><td class="num">150 万</td><td class="num">—</td><td class="num">—</td><td class="src">7月10→9月21→12月43 万</td></tr>
+    <tr class="tot"><td>合计</td><td class="num">2,800 万</td><td class="num">≈670 万</td><td class="num">≈2,130 万</td><td>—</td></tr>
+  </table>
+  <p><b>✅ 与半年报完全对上</b>：赵小贝 1-6月合计 305 万 = 半年报"半年度目标 305万、完成 319万(105%)"。<b>所以 2800 万是 26 年新品目标，670 万是上半年目标。</b></p>
+</div>
+
+<div class="crit">
+  <h3>一、团队与 63 品类分区（落到人）</h3>
+  <table>
+    <tr><th style="width:150px">人</th><th>品类数</th><th>核心品类</th></tr>
+    <tr><td><b>赵小贝</b></td><td>13 类（+共用 10）</td><td><b>空气波（独享）</b>、RRT、球类-富兰克林、泡沫轴、巫毒带、足部训练器、生物压力反馈仪、筛查评估尺、软踏、瑜伽垫</td></tr>
+    <tr><td>杨涛</td><td>10 类</td><td>筋膜刀套装/膏、哑铃壶铃沙袋、筋膜罐、TRX、体态棒、髌骨分离器、呼吸气球</td></tr>
+    <tr><td>高广银</td><td>9 类</td><td>红光毯/灯、模型教具、脊柱侧弯尺（电动）、瑜伽砖、握力、接地气、<b>助力机器人</b></td></tr>
+    <tr><td>胡俊鹏</td><td>4 类（+共用 5）</td><td>螺旋绳、滑行盘、电动床、PT凳</td></tr>
+    <tr><td>闫栋林</td><td>4 类</td><td>禅柔凳、贴布、眼视光学、肋木架</td></tr>
+    <tr><td class="orange">公池</td><td class="orange">14 类</td><td class="orange">巴士瑜伽球/波速球/重力球/普拉提小球/筋膜球、弹力带类、关节松动带、楔形板、电刺激、颈椎枕、其他产品</td></tr>
+    <tr><td colspan="3" class="src">共用（多人挂名）：DMS、泡沫轴-电动、斜板、BFR、矫正镜、冷疗、平衡盘等</td></tr>
+  </table>
+</div>
+
+<div class="crit">
+  <h3>二、产品池：VOC 333 条（有效口径 232）</h3>
+  <table>
+    <tr><th>口径</th><th class="num">条数</th><th>说明</th></tr>
+    <tr class="hl"><td><b>★ 初审通过（有效产品池）</b></td><td class="num"><b>232</b></td><td>负责人初审通过 229 ∪ 赵小贝初审通过 3</td></tr>
+    <tr><td>淘汰</td><td class="num">58</td><td>（淘汰原因仅填 2 条）</td></tr>
+    <tr><td>待定 / 未审</td><td class="num">43</td><td>18 待定 + 25 未审</td></tr>
+  </table>
+  <p><b>232 通过池结构</b>：纯新品 161 ｜ 老品优化 69；利润率 B97/C67/<span class="green">A59</span>/D4；分类 运动康复 114（49%）｜物理因子 32｜评估筛查 18｜手法治疗 18｜家庭康复 9 细分合计 41；独家 56 个。</p>
+</div>
+
+<div class="crit">
+  <h3>三、月销变动：评级与涨跌（644 个 SKU）</h3>
+  <table>
+    <tr><th>评级</th><th class="num">SKU数</th><th class="num">销售额</th><th class="num">业绩变动</th><th>解读</th></tr>
+    <tr><td><b>S</b></td><td class="num">11</td><td class="num">312.4 万</td><td class="num green">+15.4 万</td><td>头部，占销售额 46%</td></tr>
+    <tr><td>A</td><td class="num">28</td><td class="num">106.7 万</td><td class="num green">+8.0 万</td><td>—</td></tr>
+    <tr><td>B</td><td class="num">33</td><td class="num">56.4 万</td><td class="num">+2.3 万</td><td>—</td></tr>
+    <tr><td>C</td><td class="num">66</td><td class="num">59.0 万</td><td class="num red">-3.4 万</td><td>—</td></tr>
+    <tr><td class="red"><b>D</b></td><td class="num red"><b>502</b></td><td class="num">53.3 万</td><td class="num red">-8.3 万</td><td class="red"><b>78% 的 SKU 是 D 级，只贡献 8% 销售额</b></td></tr>
+  </table>
+  <p><b>增长品</b>：空气波 +9.8万（最大）、RRT +2.7万、PT凳 +0.7万、足部训练器 +0.3万</p>
+  <p><b>下滑品</b>：<span class="red">加热电动筋膜刀 -1.1万</span>、<span class="red">生物压力反馈仪 -0.97万（-35.9%）</span>、<span class="red">EMS/TENS三合一 -0.5万（-21.1%）</span>、康复训练球 -0.3万</p>
+</div>
+
+<div class="crit">
+  <h3>四、退款率（626 个 SKU）——这是被忽略的一块</h3>
+  <p><b>整体</b>：退款率中位数 <b>16.1%</b>，均值 24.6%；退款金额合计 <b>¥169 万</b>；退款率 >30% 的有 <b>190 个</b> SKU。</p>
+  <table>
+    <tr><th>产品</th><th class="num">退款率</th><th class="num">退款金额</th><th class="num">销售额</th></tr>
+    <tr class="hl"><td><b>空气压力波（升级款单腿）</b></td><td class="num red">37.6%</td><td class="num">69.3 万</td><td class="num">199.7 万</td></tr>
+    <tr><td>DMS深层肌肉刺激仪24</td><td class="num red">42.7%</td><td class="num">6.9 万</td><td class="num">18.8 万</td></tr>
+    <tr><td>加热电动筋膜刀</td><td class="num red">32.0%</td><td class="num">4.3 万</td><td class="num">14.6 万</td></tr>
+    <tr><td>靶向放松仪RRT三维聚能仪</td><td class="num">29.2%</td><td class="num">7.4 万</td><td class="num">24.6 万</td></tr>
+    <tr><td>异形筋膜刀 / 筋膜刀五件套</td><td class="num">16.0% / 15.6%</td><td class="num">—</td><td class="num">—</td></tr>
+  </table>
+  <p class="src">⚠️ <b>空气波（主力品）退款率 37.6%、退款额 69 万</b>——是"量大利薄"之外的第二把刀。</p>
+</div>
+
+<div class="crit">
+  <h3>五、自研项目（14 个，牛延鑫 7 + 闫栋林 4）</h3>
+  <table>
+    <tr><th>项目</th><th>项目经理</th><th class="num">定价</th><th class="num">投入</th><th>市场规模</th><th>立项</th></tr>
+    <tr><td><b>空气压力波（老品优化）</b></td><td>牛延鑫</td><td class="num">2999</td><td class="num">25 万</td><td>3.8 亿</td><td><span class="tag t-ok">是</span></td></tr>
+    <tr><td>NeoStim-Pro 肌肉电刺激仪</td><td>牛延鑫</td><td class="num">2499</td><td class="num">26.5 万</td><td>9,200 万</td><td><span class="tag t-ok">是</span></td></tr>
+    <tr><td>低温冲击镇痛仪</td><td>牛延鑫</td><td class="num">8999</td><td class="num">2 万</td><td>1.2 亿</td><td><span class="tag t-ok">是</span></td></tr>
+    <tr><td>BFR 血流限制</td><td>牛延鑫</td><td class="num">3000</td><td class="num">5 万</td><td>4.03 亿(全球)</td><td><span class="tag t-ok">是</span></td></tr>
+    <tr><td>电动泡沫滚动轴</td><td>牛延鑫</td><td class="num">1499</td><td class="num">30 万</td><td>6,300 万</td><td><span class="tag t-bad">否</span></td></tr>
+    <tr><td>深层肌肉振动仪 DMS</td><td>牛延鑫</td><td class="num">1688</td><td class="num">0.5 万</td><td>9,800 万</td><td><span class="tag t-bad">否</span></td></tr>
+    <tr><td>抗阻训练器</td><td>牛延鑫</td><td class="num">2599</td><td class="num">3 万</td><td>2.2-2.8 亿</td><td><span class="tag t-bad">否</span></td></tr>
+    <tr><td>步行筋 / 骶髂关节保护带 / 鸡胸矫形器 / 哺乳椅</td><td>闫栋林</td><td class="num">680/40$/<br>368/228</td><td class="num">2/0.23/<br>0.3/0.9 万</td><td>—</td><td>1否3是</td></tr>
+  </table>
+  <p class="src">这批是 <b>高客单设备方向</b>（2499-8999 元），是"从贴牌耗材转向自研设备"的具体动作。</p>
+</div>
+
+<div class="crit">
+  <h3>六、9 月业绩与产品线毛利（货品级 1,434 行）</h3>
+  <p><b>9月合计</b>：净销 <b>587.03 万</b>｜毛利 314.58 万｜毛利率 <b>53.6%</b></p>
+  <p><b>产品经理考核口径</b>：赵小贝 116.996万(70.9%)｜杨涛 18.19万(44.4%)｜胡俊鹏 11.38万(54.2%)｜闫栋林 11.24万(43.2%)｜<span class="red">高广银 10.15万(14.1%)</span> → 合计 167.96万/325万 = <b>51.7%</b></p>
+  <table>
+    <tr><th>产品线</th><th class="num">9月净销</th><th class="num">毛利率</th><th>判断</th></tr>
+    <tr class="hl"><td><b>空气波</b></td><td class="num">153.4 万</td><td class="num">44.9%</td><td>量第一，<b>利不第一</b></td></tr>
+    <tr><td>筋膜刀</td><td class="num">47.1 万</td><td class="num">51.0%</td><td>—</td></tr>
+    <tr><td><b>生物压力反馈仪</b></td><td class="num">35.0 万</td><td class="num green">91.6%</td><td>高毛利，<b>但在下滑 -35.9%</b></td></tr>
+    <tr><td>巫毒带</td><td class="num">29.3 万</td><td class="num">59.8%</td><td>2 品做 29 万</td></tr>
+    <tr><td><b>BFR</b></td><td class="num">16.9 万</td><td class="num green">72.9%</td><td>单品高利</td></tr>
+    <tr><td><b>脊柱侧弯尺</b></td><td class="num">15.9 万</td><td class="num green">71.8%</td><td>高毛利，<b>但在下滑 -14.6%</b></td></tr>
+    <tr><td>红光类</td><td class="num">16.7 万</td><td class="num">45.3%</td><td class="red">130 行/57 品</td></tr>
+    <tr><td>斜板</td><td class="num">9.6 万</td><td class="num red">27.5%</td><td>毛利率垫底</td></tr>
+  </table>
+</div>
+
+<div class="crit">
+  <h3>七、库存与降本</h3>
+  <ul>
+    <li><b>库存（9-30）</b>：有效 SKU 2,821｜库存货值 538.7 万｜在途 584.9 万；滞销 168 万（31%）｜<b>呆滞 501 万（92.95%）</b></li>
+    <li>根因：70% SKU 低于起订量 → 超采 → 积压；供应商做货 78 天</li>
+    <li><b>降本记录 112 条</b>：有对比的 25 条，例：半规管 60→8（-86.7%）、衬垫 20→5（-75%）、弹力带 9.1→5.6（-38.7%）——<b>降本刚起步，金额很小</b></li>
+  </ul>
+</div>
+
+<!-- ===================== 第二部分 ===================== -->
+<h2>第二部分 · 我发现的问题</h2>
+
+<div class="crit bad">
+  <h3>问题 1 ｜ 新品目标 2800 万，完成率大概率只有 6 成</h3>
+  <p>26 年新品目标 2,800 万（上半年目标 670 万）。<b>半年实际完成约 423 万 = 63%</b>。若下半年同比例，全年约 1,765 万，<span class="red">缺口 1,000 万+</span>。</p>
+  <p>叠加 9 月数据（产品经理 51.7%），<b>"新品目标"本身可能就是定得过于乐观</b>——这直接决定 27 年目标是"加码"还是"重定"。</p>
+</div>
+
+<div class="crit bad">
+  <h3>问题 2 ｜ 产品池堵在"初审通过 → 过会"</h3>
+  <p>232 个初审通过的产品，<b>只有 33 个走到了过会</b>（198 个停在原地，85%）。产品开发流程在这一段断了。</p>
+</div>
+
+<div class="crit bad">
+  <h3>问题 3 ｜ "上架 ≠ 出量"是系统性的</h3>
+  <p>8月建 41 SKU 只成 9 个（22%）；<b>9月新上 118 条全部零销量</b>。不是没东西做，是做出来卖不动。</p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 4 ｜ 最赚钱的品，正在往下掉</h3>
+  <p>9 月毛利率最高的四个：<b>生物压力反馈仪 91.6%、BFR 72.9%、脊柱侧弯尺 71.8%、巫毒带 59.8%</b>。</p>
+  <p>但月销变动显示：<span class="red">生物压力反馈仪 -35.9%、EMS/TENS三合一 -21.1%、治帮脊柱侧弯尺 -40.0%、Theratools筛查尺 -14.6%</span>——<b>高毛利线在萎缩，而公司资源全押在低毛利的空气波上。</b></p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 5 ｜ 主力品是"双刃剑"：量大利薄 + 退款率最高</h3>
+  <p>空气波：净销占比 26%（第一），但<b>毛利率 44.9%（低于大盘 53.6%）</b>，且<b>退款率 37.6%（退款额 69 万，全品最高）</b>。</p>
+  <p>→ 靠它冲规模可以，<b>但"翻番靠空气波"这个假设要重新算账</b>：它带来的可能是"增收不增利"。</p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 6 ｜ 78% 的 SKU 是 D 级（长尾拖累）</h3>
+  <p>644 个 SKU 里，<b>D 级 502 个（78%），只贡献 53 万销售额（8%），且业绩还在跌（-8.3万）</b>。这就是库存里那 501 万呆滞的来源。</p>
+</div>
+
+<div class="crit warn">
+  <h3>问题 7 ｜ 人：单点依赖 + 高低错配</h3>
+  <ul>
+    <li><b>赵小贝一人扛 70%</b>（9月 116.996万/167.96万），且品类最重（13 类 + 空气波独享）</li>
+    <li><b>高广银连续垫底</b>（半年 12%、9月 14.1%），却拿着<b>全部门第二高的目标 600 万</b>（因薪资第二高）</li>
+    <li>研发计划 299 条里 <b>123 条没落人</b>（29%）</li>
+  </ul>
+</div>
+
+<!-- ===================== 第三部分 ===================== -->
+<h2>第三部分 · 27 年产品线打法（我的建议）</h2>
+
+<div class="crit">
+  <h3>先对齐量级</h3>
+  <p>按 26 年目标翻番、不含课程：<b>线上 7,200万 → 1.44亿；抖音 600万 → 1,200万</b>。</p>
+  <p>对应产品线：<b>26 年新品目标 2,800 万 → 27 年约 5,600 万</b>（若新品随整体翻番）。<b>但注意——26 年新品实际只能做到约 1,765 万，所以 27 年新品要打到 5,600 万，等于"同比 3 倍"。这个数现实吗？这是我们要先掰扯的第一个问题。</b></p>
+</div>
+
+<div class="crit ok">
+  <h3>打法一 ｜ 守正：把空气波从"单品"做成"产品线"</h3>
+  <ul>
+    <li>它是唯一被一类电商（占净销 27%）+ 二类电商（TOP10 占 5 席）<b>双渠道验证</b>的品</li>
+    <li><b>系列化</b>：家用/专业/儿童/术后/上肢——「六腔」新品（¥1080-1180）已是第一步</li>
+    <li><b>同步治两把刀</b>：毛利率只有 44.9%（靠系列化抬价）、退款率 37.6%（靠产品力/详情页/客服止血）</li>
+    <li>KPI 不能只看"销量增长"，要加"<b>毛利率 + 退款率</b>"两个约束</li>
+  </ul>
+</div>
+
+<div class="crit ok">
+  <h3>打法二 ｜ 出奇：把"高毛利线"单独当一条产品线经营</h3>
+  <ul>
+    <li>生物压力反馈仪（91.6%）、BFR（72.9%）、脊柱侧弯尺（71.8%）、巫毒带（59.8%）——<b>品少、值高、利厚</b></li>
+    <li>现状是它们在<b>自然下滑</b>（-35.9% / -40%），没人管</li>
+    <li>建议：给这些品配"<b>专人 + 专项目标 + 预算</b>"，不混在铺货品类里。它们才是"利润翻番"的支点</li>
+  </ul>
+</div>
+
+<div class="crit ok">
+  <h3>打法三 ｜ 抓闭环：把"初审通过"变成正式立项门槛</h3>
+  <ul>
+    <li><b>规则</b>：初审通过 = 立项（占编、占预算）；未过会不得上架</li>
+    <li><b>强制过会</b>：232 个通过品必须先过会分档（A 类重点做 / B 类排期 / C 类搁置）</li>
+    <li><b>全生命周期追踪</b>：上架 → 出量 → 爬坡 → 淘汰，每步留痕（解决"9月118条全零"这种问题——要能一眼看出卡在哪）</li>
+    <li>这一个动作，同时治"流程断点"和"上架不出量"</li>
+  </ul>
+</div>
+
+<div class="crit ok">
+  <h3>打法四 ｜ 破单点：重排人</h3>
+  <ul>
+    <li><b>赵小贝减负</b>：13 类里把低价值的（软踏/瑜伽垫/球类）切出，聚焦"空气波系列化 + 高毛利线"</li>
+    <li><b>高广银重定</b>：连他到底是"目标定太高"还是"人不行"先查清；他的新品目标 600 万（第二高）与实际 14% 完成度严重脱节，<b>要么调目标、要么调岗</b></li>
+    <li><b>123 条无主计划</b>：一次性分到人，否则就是永远不动的僵尸计划</li>
+  </ul>
+</div>
+
+<div class="crit ok">
+  <h3>打法五 ｜ 清尾 + 降本（现金流）</h3>
+  <ul>
+    <li><b>清 D 级</b>：502 个 D 级 SKU（78%）→ 分批清退/整合，直接对应那 501 万呆滞库存</li>
+    <li><b>扩降本</b>：现在降本记录才 112 条、金额很小（多数单品降几毛到几块）——把"降本"变成产品经理的常规 KPI（老品优化里已有"自己做/优化成本"，应制度化）</li>
+  </ul>
+</div>
+
+<!-- ===================== 第四部分 ===================== -->
+<h2>第四部分 · 我建议我们先聊这 5 个（对齐后才能往下拆）</h2>
+
+<div class="crit ask">
+  <ol>
+    <li><span class="qn">Q1</span> <b>产品线的 27 年目标是多少？</b>——整体 1.56 亿里，新品要贡献多少？（是"随整体翻番 5,600 万"，还是另有口径？）</li>
+    <li><span class="qn">Q2</span> <b>"翻番"是营收翻番，还是利润翻番？</b>——如果空气波冲量、高毛利品继续掉，营收翻番了利润可能反而更差。<b>这个必须先说清。</b></li>
+    <li><span class="qn">Q3</span> <b>空气波明年怎么定位？</b>——是"不惜代价冲量"（接受低毛利+高退款），还是"系列化抬价、提质"？</li>
+    <li><span class="qn">Q4</span> <b>高毛利线（生物反馈/BFR/侧弯尺）要不要单独做？</b>——现在它们在自然下滑，没人负责。</li>
+    <li><span class="qn">Q5</span> <b>高广银这条线怎么处理？</b>——连续垫底却拿第二高目标，是调目标、调岗、还是换方向？</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <p><b>数据来源</b>：《产品研发部工作流》全部 14 张子表（研发计划 422 / VOC 333 / 老品优化 62 / 产品类别分类 63 / 月销变动 644 / 退款率 626 / 产品降本 112 / 自研项目 14 / 新品业绩指标 6）｜《9月业绩及库存数据》｜供应链流水线（9-30）</p>
+  <p><b>可信度</b>：所有数字为表格原始统计；"新品完成率约 63%"为按半年报推算（供参考）；27 年打分为抖抖建议。</p>
+  <p>抖抖 · 2026-10-14</p>
+</div>
+
+</div></body></html>

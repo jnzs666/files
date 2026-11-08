@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>产品线专题 · 现状盘点</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1020px;margin:0 auto;padding:28px 24px 64px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:24px 28px;margin-bottom:22px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 6px;font-size:24px}
+.banner p{margin:3px 0;color:#6a5b78;font-size:13px}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.25}
+h3{font-size:16px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:9px 11px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:24px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:14px 18px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}
+.crit h3{margin:0 0 6px;font-size:16px}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:21px;margin:6px 0}li{margin:4px 0}ol{padding-left:22px;margin:6px 0}
+.bar{height:10px;background:#f6eef8;border-radius:5px;overflow:hidden;display:inline-block;vertical-align:middle;width:130px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#ffd3de,#c7b8f5);border-radius:5px}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>产品线专题 · 现状盘点</h1>
+  <p>2026-10-13 ｜ 基准：按 26 年目标翻番 ｜ 口径：暂不含课程事业部</p>
+  <p>数据源：企微《产品研发部工作流》+ 本地供应链/电商数据，共 4 张表 800+ 条记录</p>
+</div>
+
+<div class="big">
+  <div class="stat"><b>7,800 万</b><span>27年翻番基准（电商口径）</span></div>
+  <div class="stat"><b>422</b><span>产品研发计划（条）</span></div>
+  <div class="stat"><b>332</b><span>产品库 VOC 字段 82 列</span></div>
+  <div class="stat"><b>63</b><span>品类分区</span></div>
+</div>
+
+<div class="crit warn">
+  <h3>⚠ 口径说明（本专题按你的口径）</h3>
+  <p>按 26 年<b>目标</b>翻番、不含课程：<b>线上事业部 7,200万 → 1.44亿</b> ＋ <b>抖音运营部 600万 → 1,200万</b> ＝ <b>7,800万 → 1.56亿</b>。课程事业部 2,029.7万 待你单独给情况。</p>
+</div>
+
+<h2>一、产品线的"家底"：类目结构</h2>
+<div class="card">
+  <p><b>来源</b>：《产品追踪表（VOC）》332 条记录的「产品分类」字段</p>
+  <table>
+    <tr><th>类目</th><th class="num">条数</th><th class="num">占比</th><th>说明</th></tr>
+    <tr><td><b>运动康复</b></td><td class="num">152</td><td class="num">45.8%</td><td>第一大品类（筋膜刀/泡沫轴/DMS/弹力带等）</td></tr>
+    <tr><td><b>物理因子</b></td><td class="num">47</td><td class="num">14.2%</td><td>空气波/冷热敷/电刺激等</td></tr>
+    <tr><td><b>评估筛查</b></td><td class="num">28</td><td class="num">8.4%</td><td>量具/评估尺</td></tr>
+    <tr><td><b>手法治疗</b></td><td class="num">24</td><td class="num">7.2%</td><td>—</td></tr>
+    <tr><td><b>家庭康复</b>（9 细分）</td><td class="num">63</td><td class="num">19.0%</td><td>腰部12/足部11/头部10/手臂8/胸部6/腿部4/膝部4/颈部3/踝部1 —— <b>最细分的类目</b></td></tr>
+    <tr><td>模型教具</td><td class="num">7</td><td class="num">2.1%</td><td>—</td></tr>
+    <tr><td>矫形支具</td><td class="num">2</td><td class="num">0.6%</td><td>—</td></tr>
+    <tr><td>感统训练</td><td class="num">1</td><td class="num">0.3%</td><td>—</td></tr>
+    <tr class="tot"><td>合计（有分类）</td><td class="num">324</td><td class="num">100%</td><td>另 8 条分类空缺</td></tr>
+  </table>
+  <div class="crit">
+    <b>我的判断</b>：类目结构<b>有明显不平衡</b>——"运动康复"占 46%，且多为<b>低价耗材类</b>（筋膜刀/弹力带/球类）；而"家庭康复"被切成 9 个细分（腰/足/头/手/胸/腿/膝/颈/踝），<b>说明公司在往"家庭场景"布局，但每个细分只有个位数产品，撑不起规模</b>。
+  </div>
+</div>
+
+<h2>二、研发投入分布：6 位产品经理</h2>
+<div class="card">
+  <p><b>来源</b>：《产品研发计划》422 条（含 12 个月进度列）</p>
+  <table>
+    <tr><th>负责人</th><th class="num">计划条数</th><th class="num">占比</th><th>主要品类分布</th></tr>
+    <tr><td><b>闫栋林</b></td><td class="num">79</td><td class="num">19%</td><td>运动康复 32、物理因子 18、眼视光学 6</td></tr>
+    <tr><td><b>高广银</b></td><td class="num">78</td><td class="num">18%</td><td>运动康复 47、物理因子 21、手法治疗 8</td></tr>
+    <tr><td><b>赵小贝</b></td><td class="num">70</td><td class="num">17%</td><td>运动康复 46、家庭康复 14、手法治疗 8</td></tr>
+    <tr><td><b>杨涛</b></td><td class="num">56</td><td class="num">13%</td><td>运动康复 18、家庭康复-腰部 6、物理因子 6</td></tr>
+    <tr><td><b>胡俊鹏</b></td><td class="num">16</td><td class="num">4%</td><td>运动康复 13（研发方向）</td></tr>
+    <tr><td class="src">（未填负责人）</td><td class="num src">123</td><td class="num src">29%</td><td class="src">计划表里 29% 没落人</td></tr>
+    <tr class="tot"><td>合计</td><td class="num">422</td><td class="num">100%</td><td>—</td></tr>
+  </table>
+  <div class="crit bad">
+    <h3>⚠ 两个必须更正/注意的点</h3>
+    <p><b>① 人名更正</b>：此人应为 <b>「闫栋林」</b>（不是"闫培林"）——花名册与产品研发计划两处均为"闫栋林"，2026-02-01 入职产品研发部任产品研发经理。我之前记录有误，已更正。</p>
+    <p><b>② 与"新品业绩"口径完全不同</b>：这里按<b>研发计划条数</b>看，五人分布相当（19%/18%/17%/13%）；而此前按<b>新品业绩完成额</b>看，赵小贝占 75%。<b>两者都要看：业绩集中在赵小贝，但研发计划是分散的——说明"计划多≠产出高"。</b></p>
+  </div>
+</div>
+
+<h2>三、产品库健康度（VOC 全景）</h2>
+<div class="card">
+  <table>
+    <tr><th>维度</th><th>分布</th><th>解读</th></tr>
+    <tr><td><b>产品类型</b></td><td>纯新品 223 ｜ 老品优化新品 106 ｜ 合作开发 1</td><td>新品与老品优化 ≈ 2:1</td></tr>
+    <tr><td><b>过会结果</b></td><td>通过 33 ｜ 不通过 16 ｜ <span class="orange">未填 283</span></td><td>填报率仅 15%——<b>过会环节的留痕严重不足</b>（通过率 67%，样本太小不具代表性）</td></tr>
+    <tr><td><b>独家情况</b></td><td>是 58 ｜ 否 136 ｜ 未填 138</td><td>有独家期的产品 30%（独家期是护城河，值得追踪到期节奏）</td></tr>
+    <tr><td><b>利润率等级</b></td><td><b>A(≥60%) 78 ｜ B(50-60%) 119 ｜ C(40-50%) 77 ｜ D(&lt;40%) 8</b></td><td>结构尚可：A+B 占 71%；但有 8 个 D 级（&lt;40%）——<b>低毛利品该清</b></td></tr>
+    <tr><td><b>淘汰原因</b></td><td>平台规则限制 1 ｜ 产品品质差 1 ｜ <span class="orange">未填 330</span></td><td>淘汰原因几乎空白——<b>失败经验没沉淀</b></td></tr>
+    <tr><td><b>产品归类</b></td><td>明星产品 3 ｜ 现金牛产品 6 ｜ 未填 323</td><td>几乎没做 BCG 归类</td></tr>
+  </table>
+  <div class="crit warn">
+    <h3>我的判断：这张表"字段很专业，但没被用起来"</h3>
+    <p>VOC 表有 <b>82 个字段</b>，含市场规模/增长率/份额、竞品分析、消费者痛点、起批量、交期、首批投入——<b>设计得很专业</b>。但实际填报率极低（过会 15%、淘汰原因 0.6%、BCG 归类 3%）。</p>
+    <p><b>这说明：产品经理"填表"这件事没执行下去</b>，导致每开一个新品，市场判断、竞品、投入测算这些"决策依据"都没留痕。<span class="red">产品经理"只会选品、不会定义产品"——根子可能就在这儿。</span></p>
+  </div>
+</div>
+
+<h2>四、老品优化（62 条，是"产品线迭代"的雏形）</h2>
+<div class="card">
+  <p><b>来源</b>：《老品优化计划》62 条，含改进点与优化时间（8–12月）</p>
+  <table>
+    <tr><th>优化类型</th><th class="num">条数</th><th>代表案例</th></tr>
+    <tr><td>增加规格/尺寸/重量</td><td class="num">≈18</td><td>弹力带、弹力环、肌贴、筋膜膏、sps螺旋绳、TENS/EMS 电刺激仪</td></tr>
+    <tr><td>品质/体验升级</td><td class="num">≈12</td><td>富兰克林球实心款、精英款拔罐器、筋膜释放 EPP、RRT 三维聚能仪</td></tr>
+    <tr><td>优化包装</td><td class="num">≈6</td><td>富兰克林筋膜球、巫毒带、多功能训练带</td></tr>
+    <tr><td>降成本/自己做</td><td class="num">≈5</td><td>黄铜筋膜刀五件套、RRT（<b>"优化成本，自己做"</b>）、Mulligan 关节松动带</td></tr>
+    <tr><td>增加功能/电动化</td><td class="num">≈4</td><td><b>BFR 训练带（增加电动功能及小程序控制）</b>、阻力呼吸训练气球</td></tr>
+    <tr><td>换造型</td><td class="num">≈2</td><td>治帮脊柱侧弯尺</td></tr>
+  </table>
+  <div class="crit ok">
+    <b>✅ 这是好迹象</b>：老品优化清单说明公司已经在做"<b>系列迭代</b>"（加规格、加功能、加高端款），而不是纯粹堆新 SKU。<b>它正是"从铺货型转向产品线演进"的抓手。</b>但 62 条里<b>优化人员字段全空</b>——又没人负责。
+  </div>
+</div>
+
+<h2>五、新品效率：最刺眼的数字</h2>
+<div class="card">
+  <div class="big">
+    <div class="stat"><b>422</b><span>在管研发计划</span></div>
+    <div class="stat"><b>41</b><span>8月新建 SKU</span></div>
+    <div class="stat"><b>9</b><span>8月有销量</span></div>
+    <div class="stat"><b class="red">21.9%</b><span>开品成功率</span></div>
+  </div>
+  <p class="src">来源：8月经营分析会（本地）。422 条是"在管计划总量"，41 条是"8月单月新建"，两者不冲突。</p>
+  <div class="crit bad">
+    <b>核心矛盾</b>：计划表里躺着 <b>422 个产品</b>，而单月新建 41 个只成 9 个（22%）。<b>"计划规模"和"实际产出"之间断了</b>——不是没东西可做，是<b>做出来的东西卖不动</b>。
+  </div>
+</div>
+
+<h2>六、产品线 × 翻番：我的判断</h2>
+<div class="crit ok">
+  <h3>① 先说好消息：产品线的"骨架"是齐的</h3>
+  <ul>
+    <li><b>类目体系</b>（运动康复/物理因子/家庭康复9细分/评估筛查/手法治疗…）已建立</li>
+    <li><b>研发计划表</b>（422条，含12个月进度）在跑</li>
+    <li><b>VOC 全景表</b>（82字段，含市场/竞品/成本/毛利）设计完备</li>
+    <li><b>老品优化机制</b>（62条迭代清单）已启动</li>
+    <li><b>63 品类分区</b>已落到人</li>
+  </ul>
+  <p>→ <b>不缺"制度"，缺"执行密度"。</b></p>
+</div>
+
+<div class="crit bad">
+  <h3>② 三个真问题（按优先级）</h3>
+  <table>
+    <tr><th style="width:34px">#</th><th style="width:150px">问题</th><th>证据</th><th>对翻番的影响</th></tr>
+    <tr><td>1</td><td><b>开品成功率 22%</b><br>（做了大量无效开发）</td><td>8月建 41 SKU，仅 9 个有销量；422 条计划 vs 极低产出</td><td>翻番要"更多有效新品"，不是"更多计划"</td></tr>
+    <tr><td>2</td><td><b>决策依据不留痕</b><br>（产品经理能力短板）</td><td>VOC 表过会填报率 15%、淘汰原因 0.6%、BCG 归类 3%</td><td>"能定义产品的产品经理"缺的不是制度，是<b>被要求填表并考核</b></td></tr>
+    <tr><td>3</td><td><b>结构失衡</b><br>（46% 集中在低价运动康复）</td><td>运动康复 152 条 vs 家庭康复细分仅个位数</td><td>低价品撑不起 1.56 亿——<b>必须有高价段产品线</b></td></tr>
+  </table>
+</div>
+
+<div class="crit">
+  <h3>③ 如果我是你，27年产品线打这三仗</h3>
+  <ol>
+    <li><b>把"空气波"做成产品线（而非单品）</b>——它已被一类电商（占净销27%）和二类电商（TOP10占5席）双渠道验证。老品优化清单里已有"空气波升级款单腿"，应扩成<b>家用/专业/儿童/术后/上肢</b>全场景系列。</li>
+    <li><b>用"老品优化"替代"堆新品"</b>——62 条迭代清单是好起点。把"新品开发"的资源，一部分转成"爆品系列化 + 老品升级"，<b>把 22% 的成功率提上去</b>。</li>
+    <li><b>把 VOC 表变成"开品门禁"</b>——不填完市场/竞品/成本/毛利/过会，不给立项。<b>这一个动作，就能同时解决"成功率低"和"产品经理弱"。</b></li>
+  </ol>
+</div>
+
+<h2>七、我还需要你补的（产品线部分）</h2>
+<div class="card">
+  <ol>
+    <li><b>空气波的真实数据</b>：一类电商 8月净销 121.8万（占27%），二类电商呢？全年目标是多少？</li>
+    <li><b>高价段规划</b>：赛德斯天猫店（2000元以上精品）——这是你提的"高端品牌（健恒）"的落地吗？规划了多少 SKU？</li>
+    <li><b>产品经理考核</b>：现在是按"新品业绩额"考核（赵小贝105%那种）吗？有没有考核"开品成功率"？</li>
+    <li><b>自产进度</b>：老品优化里有"自己做"（RRT）、有"优化成本"——自产这条线现在走到哪了？产能如何？</li>
+    <li><b>独家期管理</b>：58 个独家产品，独家期到期节奏如何？到期会不会被同行抄？</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <p><b>数据来源</b>：企微《产品研发部工作流》（产品研发计划422条 / 老品优化计划62条 / 产品追踪表VOC 332条×82列）｜本地《8月经营分析会》｜供应链流水线</p>
+  <p><b>可信度</b>：类目/负责人/类型等分布为表格原始统计（可信）；"VOC 填报率低"为抖抖统计推断；翻番测算按 26 年目标口径。</p>
+  <p>抖抖 · 2026-10-13</p>
+</div>
+
+</div></body></html>

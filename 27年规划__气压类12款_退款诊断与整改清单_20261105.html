@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>气压类 12 款退款诊断与整改清单</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1160px;margin:0 auto;padding:28px 20px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:34px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.3}
+h3{font-size:16.5px;margin:18px 0 8px;color:#6a5b78}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 8px;font-weight:600;border-bottom:1px solid var(--line);font-size:12.5px}
+td{padding:8px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 8px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:15px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}.purple{color:#7c6ab0;font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+.tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t-stop{background:#ffe9ec;color:#c0384a}.t-fix{background:#fff1e6;color:#a5641a}.t-tune{background:#e6efff;color:#2f5fa5}.t-keep{background:#e6f6ee;color:#2f8a63}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+.pn{font-weight:500;line-height:1.35}
+.pid{font-size:11px;color:#b4a7c4;font-family:Consolas,monospace}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi div{background:#fff;border-radius:10px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.kpi b{display:block;font-size:22px;line-height:1.3}
+.kpi span{font-size:12.5px;color:var(--sub)}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+<h1>气压类 12 款 · 退款诊断与整改清单</h1>
+<p>2026-11-05 ｜ 数据源：《9-10月商品经营利润总表》运动店 12 款 ｜ 口径：确认退款 + 状态推算退款 + 售后待定</p>
+<p>用途：直接发运营执行——<b class="red">停 2 款</b>、<b class="orange">整改 3 款</b>、<b>优化 3 款</b>、<b>保 4 款</b></p>
+</div>
+
+<h2>一、两个月合起来是什么样</h2>
+
+<div class="kpi">
+<div><b>59.4 万</b><span>支付金额</span></div>
+<div><b class="red">39.3 万</b><span>退款金额</span></div>
+<div><b class="red">66.1%</b><span>退款率</span></div>
+<div><b>20.6 万</b><span>净收入</span></div>
+<div><b>6.3 万</b><span>投放花费</span></div>
+<div><b class="orange">2.7 万</b><span>预估利润</span></div>
+</div>
+
+<div class="crit bad">
+<h3>退款率 66.1%，但这 <b>85% 是「发货前」退的</b></h3>
+<table>
+<tr><th style="width:170px">退款发生环节</th><th class="num" style="width:110px">金额</th><th class="num" style="width:100px">占比</th><th class="num" style="width:90px">单数</th><th>含义</th></tr>
+<tr style="background:#fff5f6">
+<td><b>发货前退款</b></td>
+<td class="num"><b>33.6 万</b></td>
+<td class="num"><b>86%</b></td>
+<td class="num">269 单</td>
+<td><b>下单后没等发货就退了</b>——客服够不到、物流还没参与</td></tr>
+<tr>
+<td>发货后退款</td>
+<td class="num">5.7 万</td>
+<td class="num">14%</td>
+<td class="num">45 单</td>
+<td>收到货后不满意——客服能救，但只占一小部分</td></tr>
+</table>
+<div class="why">
+<b>这一条决定了整改方向。</b>如果把力气花在"售后教客户怎么用"，只能影响 14% 的退款。
+<p style="margin:8px 0 0"><b>真正该改的是三件事：内容预期管理、履约时效、付款后立刻触达。</b></p>
+</div>
+</div>
+
+<div class="crit warn">
+<h3>退款的形态是「脉冲式」，不是均匀的</h3>
+<table>
+<tr><th style="width:170px">时段</th><th class="num" style="width:90px">下单</th><th class="num" style="width:90px">退款</th><th class="num" style="width:100px">退款率</th><th>特征</th></tr>
+<tr style="background:#fff5f6"><td><b>9/22 – 9/24</b></td><td class="num">59</td><td class="num">48</td><td class="num red"><b>81%</b></td><td>爆量期，主力款 54 单退 44 单</td></tr>
+<tr style="background:#fff5f6"><td><b>10/21 – 10/23</b></td><td class="num">54</td><td class="num">35</td><td class="num red"><b>65%</b></td><td>爆量期，小款出现 100% 全退</td></tr>
+<tr><td>9/27（平日）</td><td class="num">7</td><td class="num">1</td><td class="num green">14%</td><td>正常水平</td></tr>
+<tr><td>10/12（平日）</td><td class="num">5</td><td class="num">1</td><td class="num green">20%</td><td>正常水平</td></tr>
+</table>
+<div class="why">
+<b>平时只有 14–20%，爆量期飙到 65–94%。</b>说明问题不在产品本身不好卖，而在<b>放量的那一波，来的客户不是真需求</b>。
+<p style="margin:8px 0 0">而且这些退款单的<b>平台费、达人佣金全部为 0</b>——从未进入结算环节，纯粹是"下单即反悔"。</p>
+</div>
+<div class="one">
+"这不是'售后问题'，是<b>'获客质量问题'</b>。<br>
+刷到就买、买完就反悔的人，本来就不该被拉进来。"
+</div>
+</div>
+
+<h2>二、12 款逐款诊断</h2>
+
+<div class="crit">
+<table>
+<tr><th class="num" style="width:32px">#</th><th style="width:200px">商品</th><th class="num" style="width:66px">支付(万)</th><th class="num" style="width:66px">退款(万)</th><th class="num" style="width:62px">退款率</th><th class="num" style="width:88px">9月→10月</th><th class="num" style="width:62px">未发货占比</th><th class="num" style="width:64px">前/总单</th><th class="num" style="width:48px">后单</th><th class="num" style="width:62px">净收入</th><th class="num" style="width:62px">利润(万)</th><th style="width:58px">判定</th></tr>
+<tr>
+<td class="num">1</td>
+<td><div class="pn">空气压力波腿部按摩仪腿部训练气压</div><div class="pid">3803089020590883083</div></td>
+<td class="num">31.1</td>
+<td class="num">19.9</td>
+<td class="num"><b class="orange">64.0%</b></td>
+<td class="num">66% → 61%</td>
+<td class="num">85%</td>
+<td class="num">150/178</td>
+<td class="num">28</td>
+<td class="num">11.5</td>
+<td class="num">1.4</td>
+<td><span class="tag t-tune">优化</span></td>
+</tr><tr>
+<td class="num">2</td>
+<td><div class="pn">空气波腿部按摩仪运动后腿部放松肌</div><div class="pid">3841676460800737415</div></td>
+<td class="num">9.3</td>
+<td class="num">5.0</td>
+<td class="num"><b class="orange">53.7%</b></td>
+<td class="num">36% → 56%</td>
+<td class="num">81%</td>
+<td class="num">31/38</td>
+<td class="num">7</td>
+<td class="num">4.4</td>
+<td class="num">0.2</td>
+<td><span class="tag t-tune">优化</span></td>
+</tr><tr>
+<td class="num">3</td>
+<td><div class="pn">儿童空气压力波青少年腿部按摩器健</div><div class="pid">3790862494306795646</div></td>
+<td class="num">7.8</td>
+<td class="num">5.8</td>
+<td class="num"><b class="red">74.7%</b></td>
+<td class="num">58% → 83%</td>
+<td class="num">89%</td>
+<td class="num">32/36</td>
+<td class="num">4</td>
+<td class="num">2.0</td>
+<td class="num">0.3</td>
+<td><span class="tag t-fix">整改</span></td>
+</tr><tr>
+<td class="num">4</td>
+<td><div class="pn">家用气压腿部按摩仪 气压放松多模</div><div class="pid">3813324157421224355</div></td>
+<td class="num">3.6</td>
+<td class="num">2.8</td>
+<td class="num"><b class="red">79.0%</b></td>
+<td class="num">50% → 95%</td>
+<td class="num">89%</td>
+<td class="num">18/20</td>
+<td class="num">2</td>
+<td class="num">0.8</td>
+<td class="num">0.1</td>
+<td><span class="tag t-fix">整改</span></td>
+</tr><tr>
+<td class="num">5</td>
+<td><div class="pn">家用全自动气囊加压腿套 分层气压</div><div class="pid">3827428890335380851</div></td>
+<td class="num">2.3</td>
+<td class="num">2.3</td>
+<td class="num"><b class="red">100.0%</b></td>
+<td class="num">— → 100%</td>
+<td class="num">89%</td>
+<td class="num">8/9</td>
+<td class="num">1</td>
+<td class="num">0.0</td>
+<td class="num">0.1</td>
+<td><span class="tag t-stop">停售</span></td>
+</tr><tr>
+<td class="num">6</td>
+<td><div class="pn">空气压力波气压赛后放松运动设备舒</div><div class="pid">3762457317925322820</div></td>
+<td class="num">2.2</td>
+<td class="num">1.4</td>
+<td class="num"><b class="orange">63.0%</b></td>
+<td class="num">89% → 45%</td>
+<td class="num">86%</td>
+<td class="num">11/12</td>
+<td class="num">1</td>
+<td class="num">0.8</td>
+<td class="num">0.1</td>
+<td><span class="tag t-tune">优化</span></td>
+</tr><tr>
+<td class="num">7</td>
+<td><div class="pn">家用儿童多腔气囊气压腿部套装运动</div><div class="pid">3817001418225746317</div></td>
+<td class="num">1.0</td>
+<td class="num">0.4</td>
+<td class="num"><b class="green">41.5%</b></td>
+<td class="num">— → 42%</td>
+<td class="num">100%</td>
+<td class="num">3/3</td>
+<td class="num">0</td>
+<td class="num">0.6</td>
+<td class="num">0.2</td>
+<td><span class="tag t-keep">保</span></td>
+</tr><tr>
+<td class="num">8</td>
+<td><div class="pn">赛悦思腿部按摩仪运动后腿部放松肌</div><div class="pid">3848599204809277635</div></td>
+<td class="num">0.7</td>
+<td class="num">0.7</td>
+<td class="num"><b class="red">100.0%</b></td>
+<td class="num">— → 100%</td>
+<td class="num">54%</td>
+<td class="num">3/5</td>
+<td class="num">2</td>
+<td class="num">0.0</td>
+<td class="num">0.1</td>
+<td><span class="tag t-stop">停售</span></td>
+</tr><tr>
+<td class="num">9</td>
+<td><div class="pn">多腔气囊加压套装全自动气压套装</div><div class="pid">3811607246459240763</div></td>
+<td class="num">0.6</td>
+<td class="num">0.3</td>
+<td class="num"><b class="green">48.3%</b></td>
+<td class="num">17% → 66%</td>
+<td class="num">100%</td>
+<td class="num">3/3</td>
+<td class="num">0</td>
+<td class="num">0.3</td>
+<td class="num">0.1</td>
+<td><span class="tag t-keep">保</span></td>
+</tr><tr>
+<td class="num">10</td>
+<td><div class="pn">全自动气动加压气压裤家用气囊循环</div><div class="pid">3816309954395111908</div></td>
+<td class="num">0.4</td>
+<td class="num">0.2</td>
+<td class="num"><b class="orange">53.1%</b></td>
+<td class="num">0% → 60%</td>
+<td class="num">100%</td>
+<td class="num">5/5</td>
+<td class="num">0</td>
+<td class="num">0.2</td>
+<td class="num">0.0</td>
+<td><span class="tag t-tune">优化</span></td>
+</tr><tr>
+<td class="num">11</td>
+<td><div class="pn">【赛悦思】腿部可加热放松气压加压</div><div class="pid">3816314530674376855</div></td>
+<td class="num">0.3</td>
+<td class="num">0.3</td>
+<td class="num"><b class="red">80.1%</b></td>
+<td class="num">100% → 57%</td>
+<td class="num">100%</td>
+<td class="num">3/3</td>
+<td class="num">0</td>
+<td class="num">0.1</td>
+<td class="num">0.0</td>
+<td><span class="tag t-fix">整改</span></td>
+</tr><tr>
+<td class="num">12</td>
+<td><div class="pn">中老年腿部气压裤久坐腿部多功能按</div><div class="pid">3817004931475439708</div></td>
+<td class="num">0.3</td>
+<td class="num">0.3</td>
+<td class="num"><b class="red">100.0%</b></td>
+<td class="num">— → 100%</td>
+<td class="num">100%</td>
+<td class="num">2/2</td>
+<td class="num">0</td>
+<td class="num">0.0</td>
+<td class="num">0.0</td>
+<td><span class="tag t-stop">停售</span></td>
+</tr>
+<tr class="tot"><td></td><td>合计 12 款</td><td class="num">59.4</td><td class="num">39.3</td><td class="num">66.1%</td><td class="num">—</td><td class="num">86%</td><td class="num">269/314</td><td class="num">45</td><td class="num">20.6</td><td class="num">2.7</td><td>—</td></tr>
+</table>
+<p class="src">"前/总单"= 发货前退款单数 / 该款退款总单数；"后单"= 发货后退款单数。判定标准：≥95% 停售 ｜ 70–95% 整改 ｜ 50–70% 优化 ｜ &lt;50% 保</p>
+</div>
+
+<h2>三、四类处置动作</h2>
+
+<div class="crit bad">
+<h3><span class="tag t-stop">停售</span> 2 款 —— 100% 退款，纯亏损</h3>
+<table>
+<tr><th style="width:200px">商品</th><th class="num" style="width:90px">支付</th><th class="num" style="width:80px">退款率</th><th class="num" style="width:80px">未发货</th><th class="num" style="width:80px">利润</th><th>动作</th></tr>
+<tr><td><b>家用全自动气囊加压腿套 分层气压</b><div class="pid">3827428890335380851</div></td>
+<td class="num">2.3 万</td><td class="num red">100%</td><td class="num">89%</td><td class="num">0.06 万</td>
+<td rowspan="2"><b>立即下架</b><br>9 单全退、5 单全退，一分钱没留下<br><span class="mx">查完原因（是流量跑偏还是产品问题）再决定要不要重新上</span></td></tr>
+<tr><td><b>中老年腿部气压裤久坐腿部多功能按</b><div class="pid">3817004931475439708</div></td>
+<td class="num">0.3 万</td><td class="num red">100%</td><td class="num">100%</td><td class="num">0</td></tr>
+</table>
+</div>
+
+<div class="crit warn">
+<h3><span class="tag t-fix">整改</span> 3 款 —— 70–95%，还在放量，越放越亏</h3>
+<table>
+<tr><th style="width:200px">商品</th><th class="num" style="width:80px">支付</th><th class="num" style="width:76px">退款率</th><th class="num" style="width:76px">未发货</th><th>关键问题</th></tr>
+<tr><td><b>家用气压腿部按摩仪 气压放松多模</b><div class="pid">3813324157421224355</div></td>
+<td class="num">3.6 万</td><td class="num red">79.0%</td><td class="num">89%</td>
+<td><b>10 月退款率从 49.5% 跳到 94.6%</b>——10/21–23 三天 13 单全退。<b>放量方式有问题，先查那三天投的什么</b></td></tr>
+<tr><td><b>儿童空气压力波青少年腿部按摩器</b><div class="pid">3790862494306795646</div></td>
+<td class="num">7.8 万</td><td class="num red">74.7%</td><td class="num">89%</td>
+<td><b>9 月 57.7% → 10 月 82.9%</b>，同步恶化。儿童款客群模糊，可能是"家长买给自己孩子"的预期没对上</td></tr>
+<tr><td><b>赛悦思 腿部可加热放松气压加压</b><div class="pid">3816314530674376855</div></td>
+<td class="num">0.3 万</td><td class="num red">80.1%</td><td class="num">100%</td>
+<td>体量小但全退。加热功能是否实际有效？<b>先小范围验证再放</b></td></tr>
+</table>
+<div class="why"><b>整改的统一动作：</b>先暂停放量 → 拉这 3 款退款单的「支付到退款间隔时间」→ 按间隔定位病因（当天退=预期问题 / 3-5 天退=发货慢 / 7 天以上=产品问题）。<b>查清再决定是改内容还是改产品。</b></div>
+</div>
+
+<div class="crit">
+<h3><span class="tag t-tune">优化</span> 3 款 —— 50–70%，量最大，改善空间最大</h3>
+<table>
+<tr><th style="width:200px">商品</th><th class="num" style="width:80px">支付</th><th class="num" style="width:76px">退款率</th><th class="num" style="width:76px">未发货</th><th>为什么值得救</th></tr>
+<tr style="background:#f8fbff"><td><b>空气压力波腿部按摩仪腿部训练气压</b><div class="pid">3803089020590883083</div></td>
+<td class="num"><b>31.1 万</b></td><td class="num red">64.0%</td><td class="num">85%</td>
+<td><b>主力款，占 12 款支付额的 68%</b>。已是 9 月 65.5% → 10 月 61.2%，在往好的方向走。<b>它降 10 个点，等于救 3.1 万</b></td></tr>
+<tr><td><b>空气波腿部按摩仪运动后腿部放松肌</b><div class="pid">3841676460800737415</div></td>
+<td class="num">9.3 万</td><td class="num red">53.7%</td><td class="num">81%</td>
+<td>9 月 35.7% → 10 月 55.7%，<b>10 月放量到 8.4 万后恶化 20 个点</b>。说明放量渠道的质量在下降</td></tr>
+<tr><td><b>空气压力波气压赛后放松运动设备</b><div class="pid">3762457317925322820</div></td>
+<td class="num">2.2 万</td><td class="num red">63.0%</td><td class="num">86%</td>
+<td>9 月 89.1% → 10 月 45.3%，<b>大幅改善</b>。说明这款的调整方向是对的，可以复制经验到其他款</td></tr>
+</table>
+</div>
+
+<div class="crit ok">
+<h3><span class="tag t-keep">保</span> 4 款 —— 50% 以下或体量极小，先观察</h3>
+<p>多腔气囊加压套装（48.3%）、全自动气动加压气压裤（53.1%）、家用儿童多腔气囊（41.5%）、赛悦思腿部按摩仪（100% 但仅 0.7 万 / 5 单，样本太小参考价值低）</p>
+<p class="mx">这几款合计支付 2.7 万，占 12 款的 4%，先不动，把精力放在主力款上。</p>
+</div>
+
+<h2>四、执行动作清单（可直接派活）</h2>
+
+<div class="crit ask">
+<table>
+<tr><th class="num" style="width:34px">#</th><th style="width:120px">动作</th><th style="width:130px">对象</th><th>具体做什么</th><th style="width:96px">归谁</th><th style="width:76px">时间</th></tr>
+<tr style="background:#fff5f6"><td>1</td><td><b>下架</b></td><td>2 款 100% 退款</td>
+<td>3827428890335380851、3817004931475439708 立即停售，查清原因再议</td><td>运营</td><td>本周内</td></tr>
+<tr style="background:#fff5f6"><td>2</td><td><b>暂停放量</b></td><td>3 款整改款</td>
+<td>3813324157421224355、3790862494306795646、3816314530674376855<br>停止加大投放，只保自然流量</td><td>运营</td><td>本周内</td></tr>
+<tr style="background:#fff8e6"><td>3</td><td><b>拉时间差</b><br><span class="mx">最关键</span></td><td>9 月 + 10 月全部退款单</td>
+<td>对每笔退款单，算「支付时间 → 退款时间」的间隔天数列。<b>按 0-1 天 / 2-5 天 / 6 天以上 分三档统计金额</b></td><td>数据</td><td>3 天内</td></tr>
+<tr><td>4</td><td><b>算场次净产出</b></td><td>9/22–24、10/21–23 两个爆量期</td>
+<td>把这两波的投放归到具体达人/场次，算每场的<b>净产出 =（支付 − 退款）÷ 达人花费</b>。<b>低于 1 的场次拉黑</b></td><td>运营</td><td>1 周内</td></tr>
+<tr><td>5</td><td><b>付款后 2 小时触达</b></td><td>主力款 + 2 款优化款</td>
+<td>下单后 2 小时内联系客户：①确认需求 ②明确告知发货时间 ③给咨询入口<br><b>不是发券，是消除不确定性</b></td><td>客服</td><td>下周上线</td></tr>
+<tr><td>6</td><td><b>改预期</b></td><td>3 款整改款</td>
+<td>详情页和视频加「不适合谁」的说明；达人口播不许承诺"一次见效"<br><b>主动筛掉不适合的人，比事后退款便宜</b></td><td>内容+品牌</td><td>2 周内</td></tr>
+<tr><td>7</td><td><b>缩发货时效</b></td><td>全店</td>
+<td>查现在从付款到揽收的平均天数。目标压缩到 <b>48 小时以内</b></td><td>供应链</td><td>1 个月</td></tr>
+</table>
+</div>
+
+<h2>五、做完能到多少</h2>
+
+<div class="crit ok">
+<table>
+<tr><th style="width:200px">情景</th><th class="num" style="width:120px">退款率</th><th class="num" style="width:140px">两个月多留</th><th class="num" style="width:130px">年化</th><th>依据</th></tr>
+<tr><td>现在</td><td class="num">66.1%</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+<tr style="background:#f8fbff"><td>只做 1–2（停售+暂停放量）</td><td class="num">约 63%</td><td class="num">+1.8 万</td><td class="num">+10.7 万</td><td>去掉 100% 全退款，止血</td></tr>
+<tr style="background:#f0fbf6"><td><b>1–6 全做</b></td><td class="num green"><b>45%</b></td><td class="num green">+12.5 万</td><td class="num green">+75.2 万</td><td>降到 45%，参考同款已在改善的案例</td></tr>
+<tr><td>极端理想</td><td class="num">35%</td><td class="num">+18.5 万</td><td class="num">+110.9 万</td><td>接近运动店整体官方口径 35.2%</td></tr>
+</table>
+<div class="why">
+<b>为什么是 45% 而不是 35%？</b>因为 85% 的退款发生在发货前，而"下单即反悔"这件事<b>无法完全消除</b>——只能压低，不能归零。45% 是"把脉冲式暴涨压回正常水位"的合理目标。
+<p style="margin:8px 0 0"><b>而且这部分钱是纯利润</b>——不用多花一分推广费，退款少一万，利润多一万。</p>
+</div>
+<div class="one">
+"退款率从 66.1% 压到 45%，<br>
+两个月多留 12.5 万，<b>年化 75.2 万纯利润</b>。"
+</div>
+</div>
+
+<h2>六、必须先说清的口径</h2>
+
+<div class="crit warn">
+<table>
+<tr><th style="width:220px">口径</th><th class="num" style="width:110px">值</th><th>说明</th></tr>
+<tr><td>本表口径（商品利润总表）</td><td class="num"><b>66.1%</b></td>
+<td>确认退款 + 状态推算退款 + 售后待定。<b>其中"状态推算退款"占绝大部分</b>，是按订单状态推断、结算账单未最终确认的部分</td></tr>
+<tr><td>抖音官方月报（9月）</td><td class="num">35.2%</td><td>运动店官方口径：GMV 40.96 万 / 退款 14.40 万</td></tr>
+<tr><td>全平台官方（9月）</td><td class="num">31.41%</td><td>四个店合计 GMV 51.14 万 / 退款 16.06 万</td></tr>
+</table>
+<div class="why"><b>三个数差异很大，但方向一致——退款确实很高。</b>对外沟通时务必说清用哪个口径：<br>
+· 跟平台/财务对账 → 用官方口径<br>
+· 内部做经营决策（要不要继续投这个品）→ 用本表口径，因为它把"状态推算"和"售后待定"都算进来了，<b>更接近真实风险</b></div>
+</div>
+
+<div class="foot">
+<p><b>数据来源</b>：D:/存储/WXWork/1688857660832071/Cache/File/2026-11/9-10月商品经营利润总表.xlsx<br>
+· 商品明细 sheet（12 款 × 9/10 月）：支付金额、确认退款、状态推算退款、售后待定、净收入、已知投放、平均毛利预估利润<br>
+· 订单核算 sheet（584 行订单）：订单状态、售后状态、退款金额、支付时间，用于拆分发货前/后退款<br>
+· 范围：原 12 个商品 / 运动店；金额单位：元；按支付月份归属</p>
+<p><b>说明</b>：<br>
+· "发货前退款"判定标准 = 订单状态「已关闭」且退款金额 &gt; 0。已关闭但无退款金额的 82 单（未支付）未计入<br>
+· 预估利润取「平均毛利预估利润」列（col 28），为含估算的测算值，非财务终值<br>
+· 45% 目标为建议值，基于现有改善案例（3762457317925322820 从 89.1% 降到 45.3%）外推；实际可达性需执行后验证<br>
+· 退款间隔时间未在源数据中体现，需运营从平台后台补充（执行清单第 3 项）</p>
+<p>抖抖 · 2026-11-05</p>
+</div>
+
+</div></body></html>

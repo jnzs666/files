@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>数据看板体系 · 页面原型（全页面）</title><style>:root{--bg:#fdf6f0;--fg:#5d4e6d;--line:#f0e4f0;--accent:#ffb5c5;--card:#fff;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;padding:28px 34px;line-height:1.6;}
+h1{font-size:23px;font-weight:600;border-left:6px solid var(--accent);padding-left:14px;}
+.sub{color:#9a8caf;font-size:13px;margin-bottom:8px;}
+.page{background:var(--card);border-radius:14px;box-shadow:0 2px 10px rgba(180,160,200,.12);padding:20px 22px;margin:18px 0;}
+.ptitle{font-size:16px;font-weight:600;color:#7c6ab0;margin-bottom:12px;}
+.layer{font-size:12px;color:#9a8caf;margin:12px 0 6px;font-weight:500;}
+.kpirow{display:flex;flex-wrap:wrap;gap:8px;}
+.kpi{background:#fbf5fb;border:1px solid var(--line);border-radius:8px;padding:8px 12px;min-width:90px;text-align:center;}
+.kpi-n{font-size:12px;color:#7c6ab0;font-weight:600;}
+.kpi-d{font-size:11px;color:#9a8caf;}
+.kpi-v{font-size:16px;font-weight:600;margin-top:2px;color:#b4a7c4;}
+.grid{display:flex;flex-wrap:wrap;gap:8px;}
+.box{background:#fff;border:1px dashed #d8bfff;border-radius:8px;padding:10px 14px;min-width:150px;flex:1 1 30%;}
+.box-t{font-size:13px;color:#5d4e6d;font-weight:600;}
+.box-d{font-size:11px;color:#9a8caf;margin-top:2px;}
+.tbl{background:#fdf6f0;border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:150px;flex:1 1 40%;}
+table{border-collapse:collapse;width:100%;margin-top:6px;font-size:13px;}
+th{background:#fbf5fb;color:#5d4e6d;font-weight:600;text-align:left;}
+th,td{border:1px solid var(--line);padding:6px 10px;}
+.note{font-size:12px;color:#c99a3d;margin-top:8px;}
+</style></head><body>
+<h1>公司数据看板体系 · 页面原型</h1><div class="sub">每个页面：大致样子（KPI/图表/表格布局）+ 数据 + 算法 ｜ 技术可照此画界面</div>
+
+<section class="page"><div class="ptitle">① 老板驾驶舱 · 总览</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">GMV</div><div class="kpi-d">成交总额</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">GSV</div><div class="kpi-d">净销售额</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">退款率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">费比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">库存货值</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">滞销额+占比</div><div class="kpi-d">¥/%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">周转天数</div><div class="kpi-d">天</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">人力成本</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">人效</div><div class="kpi-d">元/元</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 热销产品榜</div><div class="box-d">TOP N 产品 GSV</div></div><div class="box"><div class="box-t">📊 单量/业绩实时</div><div class="box-d">昨日单量+业绩，日期可筛选</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 分端口入口</div><div class="box-d">营销/人力/供应链 卡片</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>GMV</td><td>成交总额(未扣退款)</td></tr><tr><td>GSV</td><td>销售收入=总付款−退款</td></tr><tr><td>退款率</td><td>退款金额÷GSV</td></tr><tr><td>费比</td><td>推广费÷GSV</td></tr><tr><td>周转天数</td><td>库存货值÷(近30天销售额÷30)</td></tr><tr><td>人效</td><td>人均营收/元均人力成本营收</td></tr></table><div class="note">单量/业绩与驾驶舱同步展示，支持按日期筛选</div>
+</section>
+
+<section class="page"><div class="ptitle">② 营销端 · 经营总览（销售概览）</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">GMV</div><div class="kpi-d">成交总额</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">GSV</div><div class="kpi-d">净销售额</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">退款率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">费比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">客单价</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">复购率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 平台销售排行榜</div><div class="box-d">柱状</div></div><div class="box"><div class="box-t">📊 店铺销售额统计</div><div class="box-d">TOP15</div></div><div class="box"><div class="box-t">📊 产品销售额统计</div><div class="box-d">柱状</div></div><div class="box"><div class="box-t">📊 退款核心</div><div class="box-d">逐店退款TOP10</div></div><div class="box"><div class="box-t">📊 品类销售</div><div class="box-d">柱状</div></div><div class="box"><div class="box-t">📊 推广费用</div><div class="box-d">逐店TOP10</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 销售明细表</div><div class="box-d">店铺/货品/链接</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>GMV</td><td>成交总额(未扣退款)</td></tr><tr><td>GSV</td><td>销售收入</td></tr><tr><td>退款率</td><td>退款金额÷GSV</td></tr><tr><td>费比</td><td>推广费÷GSV</td></tr><tr><td>客单价</td><td>GSV÷订单数</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">③ 营销端 · 产品概览</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">在销货品</div><div class="kpi-d">个数</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">货品总净销</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">货品总销(含退款)</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">货品毛利额</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">毛利率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">客单价</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 SABCD 产品分级</div><div class="box-d">分级销售</div></div><div class="box"><div class="box-t">📊 商品费比分层</div><div class="box-d">费比区间</div></div><div class="box"><div class="box-t">📊 商品排行</div><div class="box-d">销售额/净销/费比/毛利切换</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 货品明细</div><div class="box-d">货品级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>毛利额</td><td>GSV−货品成本</td></tr><tr><td>毛利率</td><td>毛利额÷GSV</td></tr><tr><td>客单价</td><td>GSV÷订单数</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">④ 营销端 · 链接分析</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">链接数</div><div class="kpi-d">个数</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">链接净销</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">链接推广费</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">链接退款</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">链接毛利率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 链接排行</div><div class="box-d">可切换</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 链接明细</div><div class="box-d">链接级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>链接毛利率</td><td>(净销−成本)÷净销</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑤ 营销端 · SKU 规格</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">SKU数</div><div class="kpi-d">个数</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">SKU净销</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">SKU总销</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">SKU毛利</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">SKU客单价</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 SKU退款率vs退货率 TOP10</div><div class="box-d">对比</div></div><div class="box"><div class="box-t">📊 SKU规格明细 TOP20</div><div class="box-d">表</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 规格明细</div><div class="box-d">SKU级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>SKU毛利</td><td>净销−货品成本</td></tr><tr><td>SKU客单价</td><td>净销÷订单数</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑥ 营销端 · 新品追踪</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">新品数</div><div class="kpi-d">个数</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">新品净销</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">新品退款率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 新品货品TOP10</div><div class="box-d">销售额/净销</div></div><div class="box"><div class="box-t">📊 新品占全店构成</div><div class="box-d">环形</div></div><div class="box"><div class="box-t">📊 新品vs老品</div><div class="box-d">关键指标对比</div></div><div class="box"><div class="box-t">📊 退款率阶段拆解</div><div class="box-d">三段=总退款率</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 新品货品清单</div><div class="box-d">含件数/成本/退款</div></div><div class="tbl"><div class="box-t">📋 新品规格清单</div><div class="box-d">SKU级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>新品净销</td><td>按上市7/15/30天</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑦ 营销端 · 推广分析</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">推广总花费</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">整体费比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">费比&gt;20%占比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 花费分层</div><div class="box-d">分布</div></div><div class="box"><div class="box-t">📊 费比分布</div><div class="box-d">分布</div></div><div class="box"><div class="box-t">📊 ROI分布</div><div class="box-d">分布</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 推广排行</div><div class="box-d">可切换</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>费比</td><td>推广费÷GSV</td></tr><tr><td>ROI</td><td>GSV÷推广费</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑧ 营销端 · 退款分析</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">退款金额</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">平均退款率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">失真数据</div><div class="kpi-d">个数</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 退款趋势</div><div class="box-d">各平台金额</div></div><div class="box"><div class="box-t">📊 异常产品(退款率&gt;100%)</div><div class="box-d">标注</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 退款明细</div><div class="box-d">产品/链接级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>退款率</td><td>退款金额÷GSV</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑨ 营销端 · 数据对比（上阶段对比）</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">本期/上期</div><div class="kpi-d">切换</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 月度对比</div><div class="box-d">柱=月 线=环比增速</div></div><div class="box"><div class="box-t">📊 增长TOP10/下滑TOP10</div><div class="box-d">榜单</div></div><div class="box"><div class="box-t">📊 退款对比</div><div class="box-d">柱=金额 线=退款率</div></div><div class="box"><div class="box-t">📊 费比对比</div><div class="box-d">柱=推广费 线=费比</div></div><div class="box"><div class="box-t">📊 名次变动TOP</div><div class="box-d">榜单</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 对比明细</div><div class="box-d">本期vs上期</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>环比增速</td><td>(本期−上期)÷上期</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑩ 营销端 · 达人（二类电商子模块，独立维度）</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">达人数量</div><div class="kpi-d">个数</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">达人GMV合计</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">达人贡献占比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 达人×产品矩阵</div><div class="box-d">达人/产品/消耗/佣金率/净ROI/综合ROI</div></div><div class="box"><div class="box-t">📊 四象限</div><div class="box-d">X投入 Y增长</div></div><div class="box"><div class="box-t">📊 达人成长曲线</div><div class="box-d">逐月GMV</div></div><div class="box"><div class="box-t">📊 生命周期</div><div class="box-d">冷启动/爬坡/成熟/衰退</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 达人明细</div><div class="box-d">达人×产品×月</div></div><div class="tbl"><div class="box-t">📋 达人上阶段对比</div><div class="box-d">本月vs上月</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>综合ROI</td><td>净成交÷(消耗+佣金)</td></tr><tr><td>成长速度</td><td>净销月环比增速(近3月平滑)</td></tr></table><div class="note">投流三平台(抖音/视频号/小红书)分开，字段一致</div>
+</section>
+
+<section class="page"><div class="ptitle">⑪ 人力端 · 总览</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">总人数</div><div class="kpi-d">个</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">编制缺口</div><div class="kpi-d">个</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">离职率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">人力成本</div><div class="kpi-d">¥总量</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">人力成本占比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">人效</div><div class="kpi-d">元/元</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 人力成本分部门</div><div class="box-d">柱状</div></div><div class="box"><div class="box-t">📊 人效趋势</div><div class="box-d">折线</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 离职数量+人员情况</div><div class="box-d">表</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>人均人力成本</td><td>部门人力总成本÷人数</td></tr><tr><td>人力成本占比</td><td>部门人力成本÷总成本</td></tr><tr><td>人均营收</td><td>部门营收÷人数</td></tr><tr><td>元均人力成本营收</td><td>部门营收÷人力成本</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑫ 人力端 · 人员结构</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">总人数</div><div class="kpi-d">个</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 部门分布</div><div class="box-d">占比</div></div><div class="box"><div class="box-t">📊 前中后台分布</div><div class="box-d">占比</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 —</div><div class="box-d">不做花名册明细</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>—</td><td>只挂总人数+汇总占比</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑬ 人力端 · 人效（可下钻）</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">人力成本</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">占比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">人效</div><div class="kpi-d">元/元</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 1-7月趋势</div><div class="box-d">折线</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 下钻</div><div class="box-d">总→部门→岗位→前中后台</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>人均营收</td><td>部门营收÷人数</td></tr><tr><td>元均人力成本营收</td><td>部门营收÷人力成本</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑭ 人力端 · 薪酬</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">人力总成本</div><div class="kpi-d">¥总量</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">分部门成本</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 分部门人力成本</div><div class="box-d">柱状</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 工资明细</div><div class="box-d">分部门</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>—</td><td>总量+分部门呈现</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑮ 人力端 · 离职率</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">离职数量</div><div class="kpi-d">个</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">离职率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 离职趋势</div><div class="box-d">折线</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 离职人员情况</div><div class="box-d">谁/部门/岗位/入职时长；离职原因人工阐述</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>离职率</td><td>离职人数÷平均在册(分母待定)</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑯ 人力端 · 绩效</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">部门/人员</div><div class="kpi-d">维度</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 每月累计绩效分值</div><div class="box-d">趋势</div></div><div class="box"><div class="box-t">📊 ABC等级</div><div class="box-d">分布</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 绩效明细</div><div class="box-d">部门/人员/累计分值/ABC</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>—</td><td>数据后续上传</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑰ 供应链端 · 仓储安全</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">库存货值</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">在途货值</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">健康度</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 库龄分布</div><div class="box-d">环形六桶</div></div><div class="box"><div class="box-t">📊 出入库</div><div class="box-d">近30天每日柱</div></div><div class="box"><div class="box-t">📊 ABC分类</div><div class="box-d">分级</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 库存明细</div><div class="box-d">SKU级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>库龄六桶</td><td>按入库时间分桶</td></tr><tr><td>ABC</td><td>按货值/销量分级</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑱ 供应链端 · 产品滞销</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">滞销SKU数</div><div class="kpi-d">个</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">滞销货值</div><div class="kpi-d">¥</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">滞销占比</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">周转天数</div><div class="kpi-d">天</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 滞销趋势</div><div class="box-d">每周清了多少</div></div><div class="box"><div class="box-t">📊 呆滞预警</div><div class="box-d">快变滞销提前报</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 滞销清单</div><div class="box-d">SKU级</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>滞销</td><td>近30天零销量</td></tr><tr><td>周转天数</td><td>库存货值÷(近30天销售额÷30)</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑲ 供应链端 · 供应商</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">供应周期</div><div class="kpi-d">天</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">MOQ达标</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">交期达成率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">到货率</div><div class="kpi-d">%</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 供应商排行</div><div class="box-d">周期/MOQ/交期</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 供应商明细</div><div class="box-d">表</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>供应周期</td><td>0周期回退39/90天封顶</td></tr><tr><td>交期达成率</td><td>数据源待确认</td></tr></table>
+</section>
+
+<section class="page"><div class="ptitle">⑳ 供应链端 · 采购</div>
+<div class="layer">KPI 区</div><div class="kpirow"><div class="kpi"><div class="kpi-n">待下单数</div><div class="kpi-d">个</div><div class="kpi-v">—</div></div><div class="kpi"><div class="kpi-n">建议采购量</div><div class="kpi-d">件</div><div class="kpi-v">—</div></div></div>
+<div class="layer">图表区</div><div class="grid"><div class="box"><div class="box-t">📊 待下单三组</div><div class="box-d">未下单/已下单追单/代发新品</div></div></div>
+<div class="layer">表格 / 明细</div><div class="grid"><div class="tbl"><div class="box-t">📋 采购清单</div><div class="box-d">MRP建议量</div></div></div>
+<div class="layer">算法</div><table><tr><th>数据</th><th>算法</th></tr><tr><td>MRP</td><td>需求−在途−库存</td></tr></table>
+</section>
+</body></html>

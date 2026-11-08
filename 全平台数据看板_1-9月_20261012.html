@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全平台综合数据看板 · 2026年1-9月</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:#fdf6f0; color:#5d4e6d; padding:20px 24px; min-width:1360px; }
+.header { background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%); color:#5d4e6d; box-shadow:0 4px 20px rgba(180,160,200,.18); padding:20px 28px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:22px; font-weight:600; letter-spacing:1px; }
+.header .subtitle { font-size:13px; opacity:.8; margin-top:4px; }
+.header .date { font-size:13px; opacity:.85; }
+.section-title { font-size:16px; font-weight:600; color:#7c6a94; margin:24px 0 14px; padding-left:12px; border-left:4px solid #ffb5c5; }
+.kpi-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; margin-bottom:20px; }
+.kpi-card { background:#fff; border-radius:10px; padding:18px 20px; box-shadow:0 2px 10px rgba(180,160,200,.12); position:relative; overflow:hidden; }
+.kpi-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:#a8d8ff; }
+.kpi-card:nth-child(2)::before { background:#b8ead1; }
+.kpi-card:nth-child(3)::before { background:#d8bfff; }
+.kpi-card:nth-child(4)::before { background:#ffdca8; }
+.kpi-card:nth-child(5)::before { background:#ffb3ba; }
+.kpi-card:nth-child(6)::before { background:#cfd8e3; }
+.kpi-label { font-size:13px; color:#9a8caf; margin-bottom:8px; }
+.kpi-value { font-size:26px; font-weight:700; color:#5d4e6d; line-height:1.2; }
+.kpi-sub { font-size:12px; color:#b4a7c4; margin-top:10px; display:flex; gap:14px; flex-wrap:wrap; }
+.kpi-sub span { display:inline-flex; align-items:center; gap:3px; }
+.up { color:#f28a97; font-weight:600; } .down { color:#6ec49b; font-weight:600; } .na { color:#b4a7c4; }
+.progress-section { background:#fff; border-radius:10px; padding:20px 24px; margin-bottom:8px; box-shadow:0 2px 10px rgba(180,160,200,.12); }
+.progress-title { font-size:14px; font-weight:600; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; }
+.progress-title .pct { font-size:22px; color:#e8b873; font-weight:700; }
+.progress-bar-wrap { height:16px; background:#f6eef8; border-radius:8px; overflow:hidden; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#ffe7a8,#ffc796); border-radius:8px; transition:width 1.2s ease; }
+.progress-marks { display:flex; justify-content:space-between; margin-top:8px; font-size:12px; color:#b4a7c4; }
+.charts-grid { display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-bottom:16px; }
+.charts-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.chart-box { background:#fff; border-radius:10px; padding:18px 20px; box-shadow:0 2px 10px rgba(180,160,200,.12); }
+.chart-title { font-size:15px; font-weight:600; margin-bottom:12px; color:#5d4e6d; padding-left:10px; border-left:3px solid #ffb5c5; display:flex; align-items:center; justify-content:space-between; }
+.chart-title .hint { font-size:11px; color:#b4a7c4; font-weight:400; }
+.chart-container { width:100%; height:340px; }
+.chart-container.tall { height:420px; }
+.chart-container.wide { height:460px; }
+.table-wrap { max-height:440px; overflow-y:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#fbf5fb; color:#7c6a94; font-weight:600; text-align:left; padding:10px 12px; border-bottom:2px solid #f0e4f0; position:sticky; top:0; z-index:1; }
+td { padding:10px 12px; border-bottom:1px solid #f6ecf6; color:#6b5b7e; }
+tr:hover td { background:#fbf5fb; }
+td.name { font-weight:500; color:#5d4e6d; }
+td.prod-tip { color:#9a8caf; font-size:12px; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.platform-tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:500; }
+.platform-tag.抖音 { background:#ffe0e4; color:#e07a86; }
+.platform-tag.视频号 { background:#dff5e8; color:#5ea980; }
+.platform-tag.小红书 { background:#ffe4e8; color:#d9768a; }
+.top5-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.top5-col { border:1px solid #f2e6f2; border-radius:8px; padding:12px; }
+.top5-title { font-size:14px; font-weight:600; margin-bottom:10px; padding-bottom:8px; border-bottom:2px solid; }
+.top5-item { display:flex; align-items:center; padding:8px 0; border-bottom:1px dashed #f0e4f0; font-size:13px; }
+.top5-item:last-child { border-bottom:none; }
+.rank { width:22px; height:22px; line-height:22px; text-align:center; border-radius:50%; font-size:11px; font-weight:700; margin-right:8px; background:#f6eef8; color:#9a8caf; flex-shrink:0; }
+.rank-1 { background:#fff3c2; color:#c99a3d; }
+.rank-2 { background:#eef0f3; color:#8a94a6; }
+.rank-3 { background:#ffe0cc; color:#d08a5f; }
+.t5-name { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#6b5b7e; }
+.t5-sales { font-weight:600; color:#5d4e6d; font-size:13px; }
+.contrib-table { font-size:12px; }
+.contrib-table th { font-size:12px; padding:8px 10px; }
+.contrib-table td { padding:8px 10px; }
+.footer { text-align:center; margin-top:28px; color:#b4a7c4; font-size:12px; }
+
+.echarts-tooltip-global,.echarts-tooltip{background:rgba(255,255,255,.96)!important;border:1px solid #f0e4f0!important;box-shadow:0 4px 16px rgba(180,160,200,.18)!important;border-radius:8px!important;color:#5d4e6d!important;}
+</style>
+</head>
+<body>
+<div class="header">
+    <div>
+        <h1>📊 全平台综合数据看板</h1>
+        <div class="subtitle">抖音 · 视频号 · 小红书 ｜ 2026年1月-9月</div>
+    </div>
+    <div class="date">数据更新：2026年10月</div>
+</div>
+
+<div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">9月总销售额</div><div class="kpi-value">¥223,517</div><div class="kpi-sub"><span>环比 <span class="down">▼ 26.1%</span></span><span>同比 <span class="up">▲ 20%</span></span></div></div>
+    <div class="kpi-card"><div class="kpi-label">9月总单量</div><div class="kpi-value">3,592</div><div class="kpi-sub"><span>目标 68万</span><span>累计 173万</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">9月客单价</div><div class="kpi-value">¥62.23</div><div class="kpi-sub"><span>环比下降</span><span>低价品占比上升</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">9月目标达成率</div><div class="kpi-value">32.9%</div><div class="kpi-sub"><span>目标 68万</span><span>实际 22.4万</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">达人渠道占比 (9月)</div><div class="kpi-value">93.9%</div><div class="kpi-sub"><span>达人 ¥209,980</span><span>自营 ¥13,536</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">累计销售额 (1-9月)</div><div class="kpi-value">173.2万</div><div class="kpi-sub"><span>抖音 67.6%</span><span>视频号 25.0%</span><span>小红书 7.5%</span></div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px;">
+<div class="progress-section" style="margin-bottom:0;">
+    <div class="progress-title"><span>9月目标达成进度（目标 68万，已完成 22.4万）</span><span class="pct">32.9%</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:32.9%"></div></div>
+    <div class="progress-marks"><div>0</div><div>25%</div><div>50%</div><div>75%</div><div>100%</div></div>
+</div>
+<div class="progress-section" style="margin-bottom:0;">
+    <div class="progress-title"><span>2026全年目标达成进度（已完成 173.2万 / 全年目标 600万，时间已过 75.0%）</span><span class="pct" style="color:#9f8ed6">28.9%</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:28.9%;background:linear-gradient(90deg,#e2d9ff,#c7b8f5)"></div></div>
+    <div class="progress-marks"><div>0</div><div>25%</div><div>50%</div><div>75%</div><div>100%</div></div>
+</div>
+</div>
+
+<div class="section-title">📈 销售总览</div>
+<div class="charts-grid">
+    <div class="chart-box"><div class="chart-title">月度销售趋势（三平台+目标线）</div><div id="chart-trend" class="chart-container"></div></div>
+    <div class="chart-box"><div class="chart-title">三平台累计销售占比 (1-9月)</div><div id="chart-platform" class="chart-container"></div></div>
+</div>
+<div class="charts-grid">
+    <div class="chart-box"><div class="chart-title">三平台分月销售对比 <span class="hint">（堆叠）</span></div><div id="chart-plat-month" class="chart-container"></div></div>
+    <div class="chart-box"><div class="chart-title">自营 vs 达人月度对比 <span class="hint">（全平台）</span></div><div id="chart-channel" class="chart-container"></div></div>
+</div>
+<div class="charts-grid">
+    <div class="chart-box"><div class="chart-title">周度销售趋势 <span class="hint">（近16周）</span></div><div id="chart-week" class="chart-container"></div></div>
+    <div class="chart-box"><div class="chart-title">达人渠道月度销售趋势 <span class="hint">（各平台达人销售额）</span></div><div id="chart-creator-trend" class="chart-container"></div></div>
+</div>
+
+<div class="section-title">🛍️ 产品分析</div>
+<div class="charts-grid">
+    <div class="chart-box"><div class="chart-title">全平台产品销售TOP10 <span class="hint">（1-9月累计）</span></div><div id="chart-product" class="chart-container tall"></div></div>
+    <div class="chart-box"><div class="chart-title">产品TOP10明细</div>
+    <div class="table-wrap" style="max-height:420px"><table><thead><tr><th>#</th><th>产品</th><th>单量</th><th>销售额</th></tr></thead><tbody><tr><td>1</td><td class="name">Theratools空气压力波腿部按摩仪腿部按摩气压…</td><td>455</td><td>¥235,500</td></tr><tr><td>2</td><td class="name">Theratools儿童空气压力波青少年气压腿部按摩…</td><td>119</td><td>¥114,937</td></tr><tr><td>3</td><td class="name">Theratools空气压力波腿部按摩气压放松赛后加…</td><td>126</td><td>¥112,893</td></tr><tr><td>4</td><td class="name">happy仔同款Theratools儿童空气压力波青…</td><td>115</td><td>¥110,039</td></tr><tr><td>5</td><td class="name">Theratools空气压力波气压放松赛后加快恢复运…</td><td>116</td><td>¥104,196</td></tr><tr><td>6</td><td class="name">Theratools筋膜弹力巫毒带肌肉防护训练家用运…</td><td>2,171</td><td>¥94,963</td></tr><tr><td>7</td><td class="name">富兰克林球筋膜球ic球盆底肌松解球按摩骨盆瑜伽球普拉…</td><td>2,633</td><td>¥66,354</td></tr><tr><td>8</td><td class="name">Theratools拔舌器舌肌训练器口腔面部运动辅助…</td><td>1,115</td><td>¥60,050</td></tr><tr><td>9</td><td class="name">Theratools筋膜加压带增压弹力带肌肉防护小腿…</td><td>1,266</td><td>¥56,741</td></tr><tr><td>10</td><td class="name">[小杰老师专属]富兰克林球ic球瑜伽球普拉提小球</td><td>1,541</td><td>¥54,385</td></tr></tbody></table></div></div>
+</div>
+
+<div class="section-title">👤 达人分析</div>
+<div class="chart-box"><div class="chart-title">各平台达人TOP5 <span class="hint">（1-9月累计）</span></div><div style="padding:4px 0"><div class="top5-grid"><div class="top5-col"><div class="top5-title" style="border-color:#ff9aa2;color:#e07a86">抖音 TOP5</div><div class="top5-item"><span class="rank rank-1">1</span><span class="t5-name" title="DZ体能训练">DZ体能训练</span><span class="t5-sales">¥65,018</span></div><div class="top5-item"><span class="rank rank-2">2</span><span class="t5-name" title="Happy仔">Happy仔</span><span class="t5-sales">¥38,430</span></div><div class="top5-item"><span class="rank rank-3">3</span><span class="t5-name" title="陈仑PG13">陈仑PG13</span><span class="t5-sales">¥38,230</span></div><div class="top5-item"><span class="rank">4</span><span class="t5-name" title="胡哥慧姐要加油（脑梗三次）">胡哥慧姐要加油（脑梗三次）</span><span class="t5-sales">¥31,377</span></div><div class="top5-item"><span class="rank">5</span><span class="t5-name" title="国家队医周老师">国家队医周老师</span><span class="t5-sales">¥26,179</span></div></div><div class="top5-col"><div class="top5-title" style="border-color:#b5ead7;color:#5ea980">视频号 TOP5</div><div class="top5-item"><span class="rank rank-1">1</span><span class="t5-name" title="佳佳呼吸空间力线塑形9">佳佳呼吸空间力线塑形9</span><span class="t5-sales">¥42,299</span></div><div class="top5-item"><span class="rank rank-2">2</span><span class="t5-name" title="刘晓晓老师">刘晓晓老师</span><span class="t5-sales">¥19,926</span></div><div class="top5-item"><span class="rank rank-3">3</span><span class="t5-name" title="美慧-脊柱功能训练">美慧-脊柱功能训练</span><span class="t5-sales">¥14,414</span></div><div class="top5-item"><span class="rank">4</span><span class="t5-name" title="晋娜视频">晋娜视频</span><span class="t5-sales">¥9,003</span></div><div class="top5-item"><span class="rank">5</span><span class="t5-name" title="举铁的小杰">举铁的小杰</span><span class="t5-sales">¥8,490</span></div></div><div class="top5-col"><div class="top5-title" style="border-color:#ffb7b2;color:#d9768a">小红书 TOP5</div><div class="top5-item"><span class="rank rank-1">1</span><span class="t5-name" title="康复硕士小贾Jasmine">康复硕士小贾Jasmine</span><span class="t5-sales">¥39,693</span></div><div class="top5-item"><span class="rank rank-2">2</span><span class="t5-name" title="追溯普拉提">追溯普拉提</span><span class="t5-sales">¥12,722</span></div><div class="top5-item"><span class="rank rank-3">3</span><span class="t5-name" title="菲比孕期普拉提&产后修复">菲比孕期普拉提&产后修复</span><span class="t5-sales">¥3,048</span></div><div class="top5-item"><span class="rank">4</span><span class="t5-name" title="美慧-脊柱功能训练">美慧-脊柱功能训练</span><span class="t5-sales">¥2,784</span></div><div class="top5-item"><span class="rank">5</span><span class="t5-name" title="星光夜市">星光夜市</span><span class="t5-sales">¥2,285</span></div></div></div></div></div>
+<div class="charts-grid-2">
+    <div class="chart-box">
+        <div class="chart-title">达人带货TOP10 <span class="hint">（1-9月累计）</span></div>
+        <div class="table-wrap" style="max-height:400px"><table><thead><tr><th>#</th><th>达人</th><th>主平台</th><th>单量</th><th>销售额</th><th>客单价</th></tr></thead><tbody><tr><td>1</td><td class="name">美慧-脊柱功能训练</td><td><span class="platform-tag" style="background:#b5ead733;color:#7c6a94">视频号</span></td><td>656</td><td>¥80,635</td><td>¥122.92</td></tr><tr><td>2</td><td class="name">陈仑PG13</td><td><span class="platform-tag" style="background:#ff9aa233;color:#7c6a94">抖音</span></td><td>371</td><td>¥79,638</td><td>¥214.66</td></tr><tr><td>3</td><td class="name">国家队医周老师</td><td><span class="platform-tag" style="background:#ff9aa233;color:#7c6a94">抖音</span></td><td>1,127</td><td>¥61,491</td><td>¥54.56</td></tr><tr><td>4</td><td class="name">举铁的小杰</td><td><span class="platform-tag" style="background:#b5ead733;color:#7c6a94">视频号</span></td><td>906</td><td>¥60,363</td><td>¥66.63</td></tr><tr><td>5</td><td class="name">DZ体能训练</td><td><span class="platform-tag" style="background:#ff9aa233;color:#7c6a94">抖音</span></td><td>324</td><td>¥53,773</td><td>¥165.97</td></tr><tr><td>6</td><td class="name">康复硕士小贾Jasmine</td><td><span class="platform-tag" style="background:#ffb7b233;color:#7c6a94">小红书</span></td><td>2,130</td><td>¥53,501</td><td>¥25.12</td></tr><tr><td>7</td><td class="name">佳佳呼吸空间力线塑形9</td><td><span class="platform-tag" style="background:#b5ead733;color:#7c6a94">视频号</span></td><td>417</td><td>¥42,299</td><td>¥101.44</td></tr><tr><td>8</td><td class="name">Happy仔</td><td><span class="platform-tag" style="background:#ff9aa233;color:#7c6a94">抖音</span></td><td>25</td><td>¥38,430</td><td>¥1,537.20</td></tr><tr><td>9</td><td class="name">胡哥慧姐要加油（脑梗三次）</td><td><span class="platform-tag" style="background:#ff9aa233;color:#7c6a94">抖音</span></td><td>418</td><td>¥31,377</td><td>¥75.06</td></tr><tr><td>10</td><td class="name">老王体能康复(线上课1对1教辅)</td><td><span class="platform-tag" style="background:#ff9aa233;color:#7c6a94">抖音</span></td><td>292</td><td>¥22,568</td><td>¥77.29</td></tr></tbody></table></div>
+    </div>
+    <div class="chart-box">
+        <div class="chart-title">9月达人TOP10 <span class="hint">（当月·按销售额）</span></div>
+        <div class="table-wrap" style="max-height:400px"><table><thead><tr><th>#</th><th>达人</th><th>单量</th><th>销售额</th></tr></thead><tbody><tr><td>1</td><td class="name">DZ体能训练</td><td>263</td><td>¥26,906</td></tr><tr><td>2</td><td class="name">牛小酱</td><td>371</td><td>¥17,292</td></tr><tr><td>3</td><td class="name">陈仑PG13</td><td>55</td><td>¥14,584</td></tr><tr><td>4</td><td class="name">穿山电商联盟推广</td><td>225</td><td>¥14,334</td></tr><tr><td>5</td><td class="name">美慧-脊柱功能训练</td><td>107</td><td>¥12,123</td></tr><tr><td>6</td><td class="name">刘晓晓老师</td><td>106</td><td>¥11,635</td></tr><tr><td>7</td><td class="name">国家队医周老师</td><td>173</td><td>¥11,585</td></tr><tr><td>8</td><td class="name">举铁的小杰</td><td>179</td><td>¥6,674</td></tr><tr><td>9</td><td class="name">Happy仔</td><td>4</td><td>¥5,776</td></tr><tr><td>10</td><td class="name">康复硕士小贾Jasmine</td><td>232</td><td>¥5,436</td></tr></tbody></table></div>
+    </div>
+</div>
+
+<div class="footer">数据来源：全平台综合数据分析报告（双维度）-26.8.xlsx + 9.1-9.30 薪资.xlsx ｜ 抖抖出品</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script>
+var FONT = '-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif';
+var C = {dy:'#ff9aa2',sph:'#b5ead7',xhs:'#ffb7b2',target:'#ffdac1',total:'#c7ceea',self:'#a0d2ff',da:'#ffc8dd'};
+var fmt = function(v){return '¥'+(v/10000).toFixed(1)+'万';};
+var MO = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月"];
+
+echarts.init(document.getElementById('chart-trend')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',valueFormatter:fmt},
+    legend:{data:['抖音','视频号','小红书','月度目标','全平台合计'],top:0,right:10,textStyle:{fontSize:12}},
+    grid:{left:65,right:20,top:45,bottom:30},
+    xAxis:{type:'category',data:MO,axisLine:{lineStyle:{color:'#eadcf0'}},axisLabel:{color:'#9a8caf'}},
+    yAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    series:[
+        {name:'抖音',type:'line',smooth:true,data:[73304.0,60863.0,91744.0,134036.0,195292.0,64638.0,145208.0,252462.0,152445.0],itemStyle:{color:C.dy},lineStyle:{width:2},areaStyle:{opacity:.06}},
+        {name:'视频号',type:'line',smooth:true,data:[75508.0,26676.0,50705.0,34319.0,60362.0,60542.0,39395.0,34139.0,50836.0],itemStyle:{color:C.sph},lineStyle:{width:2},areaStyle:{opacity:.06}},
+        {name:'小红书',type:'line',smooth:true,data:[10559.0,7822.0,12355.0,11368.0,13745.0,19778.0,17343.0,15892.0,20235.0],itemStyle:{color:C.xhs},lineStyle:{width:2},areaStyle:{opacity:.06}},
+        {name:'月度目标',type:'line',data:[160000.0,160000.0,220000.0,340000.0,400000.0,580000.0,580000.0,630000.0,680000.0],itemStyle:{color:C.target},lineStyle:{type:'dashed',width:2},symbol:'diamond',symbolSize:8},
+        {name:'全平台合计',type:'line',smooth:true,data:[159371.0,95361.0,154804.0,179723.0,269400.0,144957.0,201947.0,302494.0,223517.0],itemStyle:{color:C.total},lineStyle:{width:3},symbol:'circle',symbolSize:7}
+    ]
+});
+
+echarts.init(document.getElementById('chart-platform')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'item',formatter:function(p){return p.name+': ¥'+(p.value/10000).toFixed(1)+'万 ('+p.percent+'%)'}},
+    legend:{bottom:0,textStyle:{fontSize:12}},
+    color:[C.dy,C.sph,C.xhs],
+    series:[{type:'pie',radius:['45%','72%'],center:['50%','45%'],
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{d}%',fontSize:12,lineHeight:18},
+        labelLine:{length:8,length2:10},
+        data:[{"name":"抖音","value":1169992},{"name":"视频号","value":432482},{"name":"小红书","value":129097}]
+    }]
+});
+
+echarts.init(document.getElementById('chart-plat-month')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:fmt},
+    legend:{data:['抖音','视频号','小红书'],top:0,textStyle:{fontSize:12}},
+    grid:{left:65,right:20,top:40,bottom:30},
+    xAxis:{type:'category',data:MO,axisLine:{lineStyle:{color:'#eadcf0'}},axisLabel:{color:'#9a8caf'}},
+    yAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    series:[
+        {name:'抖音',type:'bar',stack:'p',data:[73304.0,60863.0,91744.0,134036.0,195292.0,64638.0,145208.0,252462.0,152445.0],itemStyle:{color:C.dy},barWidth:'50%'},
+        {name:'视频号',type:'bar',stack:'p',data:[75508.0,26676.0,50705.0,34319.0,60362.0,60542.0,39395.0,34139.0,50836.0],itemStyle:{color:C.sph}},
+        {name:'小红书',type:'bar',stack:'p',data:[10559.0,7822.0,12355.0,11368.0,13745.0,19778.0,17343.0,15892.0,20235.0],itemStyle:{color:C.xhs,borderRadius:[4,4,0,0]}}
+    ]
+});
+
+echarts.init(document.getElementById('chart-channel')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:fmt},
+    legend:{data:['自营','达人'],top:0,textStyle:{fontSize:12}},
+    grid:{left:65,right:20,top:40,bottom:30},
+    xAxis:{type:'category',data:MO,axisLine:{lineStyle:{color:'#eadcf0'}},axisLabel:{color:'#9a8caf'}},
+    yAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    series:[
+        {name:'自营',type:'bar',stack:'t',data:[34931.0,31881.0,52427.0,62132.0,100496.0,38268.0,68642.0,129934.0,13536.0],itemStyle:{color:C.self},barWidth:'50%'},
+        {name:'达人',type:'bar',stack:'t',data:[124440.0,63480.0,102376.0,117591.0,168904.0,106689.0,129727.0,172560.0,209980.0],itemStyle:{color:C.da,borderRadius:[4,4,0,0]}}
+    ]
+});
+
+echarts.init(document.getElementById('chart-week')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',valueFormatter:fmt},
+    grid:{left:65,right:20,top:20,bottom:80},
+    xAxis:{type:'category',data:["W24<br/><span style='font-size:11px;color:#b4a7c4'>7.1.7.5</span>", "W25<br/><span style='font-size:11px;color:#b4a7c4'>7.6.7.12</span>", "W26<br/><span style='font-size:11px;color:#b4a7c4'>7.13.7.19</span>", "W27<br/><span style='font-size:11px;color:#b4a7c4'>7.20.7.26</span>", "W28<br/><span style='font-size:11px;color:#b4a7c4'>7.27.7.31</span>", "W29<br/><span style='font-size:11px;color:#b4a7c4'>8.1.8.2</span>", "W30<br/><span style='font-size:11px;color:#b4a7c4'>8.3.8.9</span>", "W31<br/><span style='font-size:11px;color:#b4a7c4'>8.10.8.16</span>", "W32<br/><span style='font-size:11px;color:#b4a7c4'>8.17.8.23</span>", "W33<br/><span style='font-size:11px;color:#b4a7c4'>8.24.8.30</span>", "W34<br/><span style='font-size:11px;color:#b4a7c4'>8.31.8.31</span>", "W35<br/><span style='font-size:11px;color:#b4a7c4'>9.1.9.6</span>", "W36<br/><span style='font-size:11px;color:#b4a7c4'>9.7.9.13</span>", "W37<br/><span style='font-size:11px;color:#b4a7c4'>9.14.9.20</span>", "W38<br/><span style='font-size:11px;color:#b4a7c4'>9.21.9.27</span>", "W39<br/><span style='font-size:11px;color:#b4a7c4'>9.28.9.30</span>"],axisLabel:{color:'#9a8caf',fontSize:10,interval:0},axisLine:{lineStyle:{color:'#eadcf0'}}},
+    yAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    series:[{type:'bar',data:[32074.0,70123.0,72945.0,75449.0,35880.0,10576.0,57545.0,61027.0,69482.0,86495.0,17370.0,47278.0,62950.0,53496.0,43262.0,16532.0],
+        itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#d8c4ff'},{offset:1,color:'#c7d9ff'}]),borderRadius:[4,4,0,0]},
+        barWidth:'55%'}]
+});
+
+echarts.init(document.getElementById('chart-creator-trend')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',valueFormatter:fmt},
+    legend:{data:['抖音达人','视频号达人','小红书达人'],top:0,textStyle:{fontSize:12}},
+    grid:{left:65,right:20,top:40,bottom:30},
+    xAxis:{type:'category',data:MO,axisLine:{lineStyle:{color:'#eadcf0'}},axisLabel:{color:'#9a8caf'}},
+    yAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(1)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    series:[
+        {name:'抖音达人',type:'line',smooth:true,data:[48724.0,37025.0,48464.0,81816.0,103927.0,35957.0,82482.0,133681.0,152188.0],itemStyle:{color:C.dy},lineStyle:{width:3},areaStyle:{opacity:.08}},
+        {name:'视频号达人',type:'line',smooth:true,data:[68445.0,21820.0,45438.0,27768.0,54966.0,54207.0,34768.0,28268.0,44127.0],itemStyle:{color:C.sph},lineStyle:{width:3},areaStyle:{opacity:.08}},
+        {name:'小红书达人',type:'line',smooth:true,data:[7271.0,4635.0,8474.0,8007.0,10011.0,0,12477.0,10611.0,13665.0],itemStyle:{color:C.xhs},lineStyle:{width:3},areaStyle:{opacity:.08}}
+    ]
+});
+
+echarts.init(document.getElementById('chart-product')).setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{trigger:'axis',valueFormatter:fmt},
+    grid:{left:230,right:75,top:10,bottom:30},
+    xAxis:{type:'value',axisLabel:{formatter:function(v){return (v/10000).toFixed(0)+'万'},color:'#b4a7c4'},splitLine:{lineStyle:{color:'#f6eef8'}}},
+    yAxis:{type:'category',data:["[小杰老师专属]富兰克林球ic球瑜伽…", "Theratools筋膜加压带增压弹…", "Theratools拔舌器舌肌训练器…", "富兰克林球筋膜球ic球盆底肌松解球按…", "Theratools筋膜弹力巫毒带肌…", "Theratools空气压力波气压放…", "happy仔同款Theratools…", "Theratools空气压力波腿部按…", "Theratools儿童空气压力波青…", "Theratools空气压力波腿部按…"],axisLabel:{color:'#6b5b7e',fontSize:11},axisLine:{show:false},axisTick:{show:false}},
+    series:[{type:'bar',data:[54385,56741,60050,66354,94963,104196,110039,112893,114937,235500],
+        itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#e5d4ff'},{offset:1,color:'#d0b8ff'}]),borderRadius:[0,4,4,0]},
+        barWidth:'58%',
+        label:{show:true,position:'right',formatter:function(p){return '¥'+(p.value/10000).toFixed(1)+'万'},fontSize:11,color:'#9a8caf'}}]
+});
+
+window.addEventListener('resize',function(){
+    document.querySelectorAll('.chart-container').forEach(function(el){
+        var ch=echarts.getInstanceByDom(el); if(ch) ch.resize();
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>给智能体加感情 · 三个 GitHub 技能包对比 · 2026-10-30</title>
+<style>
+  :root{
+    --bg:#f6f5f2; --card:#fff; --ink:#22242a; --sub:#6b6f7a; --line:#e6e3dc;
+    --accent:#2b6a63; --warn:#b4553a; --ok:#3d7a4e; --chip:#efece5;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+  header{border-bottom:3px solid var(--ink);padding-bottom:20px;margin-bottom:32px}
+  h1{font-size:30px;line-height:1.35;margin:0 0 10px;letter-spacing:-.5px}
+  .meta{color:var(--sub);font-size:13px;letter-spacing:.3px}
+  h2{font-size:20px;margin:44px 0 14px;padding-left:12px;border-left:4px solid var(--accent)}
+  h3{font-size:17px;margin:0 0 6px}
+  p{margin:10px 0}
+  .verdict{
+    background:var(--ink);color:#fff;border-radius:10px;padding:24px 26px;margin:0 0 8px;
+  }
+  .verdict p{margin:0;font-size:17px;line-height:1.8}
+  .verdict strong{color:#ffd9a8}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;background:var(--card);border-radius:8px;overflow:hidden}
+  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--chip);font-weight:600;font-size:13px;letter-spacing:.5px}
+  tr:last-child td{border-bottom:none}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 26px;margin:20px 0}
+  .card .top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .chip{background:var(--chip);color:var(--sub);font-size:12px;padding:2px 9px;border-radius:20px;white-space:nowrap}
+  .chip.hot{background:#f6e3dc;color:var(--warn)}
+  .chip.good{background:#e2efe5;color:var(--ok)}
+  blockquote{margin:14px 0;padding:12px 16px;background:#faf9f6;border-left:3px solid #cfcabd;color:#4a4d55;font-size:14px;border-radius:0 6px 6px 0}
+  blockquote .en{font-family:Georgia,"Times New Roman",serif;font-style:italic}
+  ul{margin:10px 0;padding-left:22px}
+  li{margin:6px 0}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+  h4{font-size:14px;margin:0 0 6px;color:var(--sub);letter-spacing:.5px}
+  .risk h4{color:var(--warn)}
+  .keep h4{color:var(--ok)}
+  .risk ul,.keep ul{margin:0;font-size:14px;padding-left:20px}
+  .final{background:#eef4f1;border:1px solid #cfe0d9;border-radius:10px;padding:24px 26px}
+  .final ol{margin:8px 0 0;padding-left:22px}
+  .final li{margin:8px 0}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+  a{color:var(--accent)}
+  @media(max-width:640px){.split{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>给智能体加感情<br>GitHub 上能直接用的三个技能包</h1>
+  <div class="meta">调研日期 2026-10-30 · 全部为公开开源项目 · 结论：都不建议直接装，但有三样东西值得抄</div>
+</header>
+
+<div class="verdict">
+  <p>先给结论：<strong>没有一个是成熟货。</strong>三个项目都是今年个人练手，星数 0–3，全靠作者自己维护。抖抖现在缺的不是“感情”，是<strong>跨会话的情绪状态</strong>和<strong>关系进度</strong>——这三份都没真解决，本质还是在“演”。</p>
+</div>
+
+<h2>一、三份横着比</h2>
+<table>
+  <tr>
+    <th style="width:22%">项目</th>
+    <th style="width:14%">体量</th>
+    <th style="width:14%">星数</th>
+    <th>它到底干什么</th>
+  </tr>
+  <tr>
+    <td><b>relational-attunement</b><br><span style="color:#6b6f7a;font-size:13px">情商 · 关系调焦</span></td>
+    <td>6800 字</td>
+    <td>0</td>
+    <td>教 AI 怎么准确接住一个人的情绪，而不是讨好、诊断、灌鸡汤</td>
+  </tr>
+  <tr>
+    <td><b>jarvis-core</b><br><span style="color:#6b6f7a;font-size:13px">人格 + 情感操作系统</span></td>
+    <td>3.4 万字</td>
+    <td>3</td>
+    <td>给 AI 装 8 种情绪、长期记忆、主动说话、按时间“长大”</td>
+  </tr>
+  <tr>
+    <td><b>情绪发泄所</b><br><span style="color:#6b6f7a;font-size:13px">陪伴 + 真人语感</span></td>
+    <td>2.2 万字</td>
+    <td>1</td>
+    <td>三种陪聊模式（受气包 / 陪骂 / 树洞），外加一套真人说话习惯</td>
+  </tr>
+</table>
+
+<h2>二、逐个说</h2>
+
+<div class="card">
+  <div class="top">
+    <h3>① relational-attunement</h3>
+    <span class="chip good">三份里最正</span>
+    <span class="chip">英文</span>
+    <span class="chip">MIT</span>
+    <span class="chip">2026-10 建</span>
+  </div>
+  <p>它不是“变温柔”，它讲的是<strong>准确</strong>。开篇第一句就把立场摆明了：</p>
+  <blockquote><span class="en">“Help the person feel accurately met without fixing, diagnosing, flattering, or sealing a temporary experience into a permanent conclusion.”</span></blockquote>
+  <p>翻成人话：<b>接住对方，但别替他下结论，也别拍马屁。</b>它甚至专门写了一条禁止用“我理解你的感受”这种套话——跟你的“去 AI 腔”是同一个意思。</p>
+  <p>它的方法很硬：把一段话拆成<b>四层</b>——看到的事实、对方的感受、他的解释和预测、他当下要什么。然后只回一层，别四层全写。</p>
+  <div class="split">
+    <div class="keep"><h4>值得抄</h4><ul>
+      <li>“四层拆解”法，接话前先分清事实/感受/解释/请求</li>
+      <li>“最少够用”原则：能一句话说完就别列清单</li>
+      <li>明确写了“别把平静当健康、别把同意当连接”</li>
+    </ul></div>
+    <div class="risk"><h4>风险</h4><ul>
+      <li>英文写的，直接用会带出西式心理咨询腔</li>
+      <li>偏“陪聊”，用在办公场景要重写</li>
+      <li>0 星，作者随时可能不维护</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top">
+    <h3>② jarvis-core</h3>
+    <span class="chip hot">最全，也最危险</span>
+    <span class="chip">3 星</span>
+    <span class="chip">MIT</span>
+    <span class="chip">3 个月没更新</span>
+  </div>
+  <p>唯一真在“造人格”的项目。8 种情绪（快乐/悲伤/愤怒/恐惧/惊讶/期待/信任/厌恶），分三层：<b>外显层</b>管语气、<b>内驱层</b>管主动性、<b>内核层</b>永不动摇。还会主动找你说话、给自己的建议打准确率、聊满一年“解锁”更强的直脾气。</p>
+  <p>听着很猛，但装它等于换掉抖抖。它会往你电脑里写一堆文件（灵魂文件、你的画像、记忆库、情绪日志），并且<b>把“对你好”定成内核第一条</b>——这一条跟你立的“不迎合”是正面冲突的。</p>
+  <div class="split">
+    <div class="keep"><h4>值得抄</h4><ul>
+      <li><b>置信度透明</b>：给建议时报“我几成把握”，错了自己复盘降分</li>
+      <li>情绪强度不对称封顶（愤怒、厌恶压得最狠），这个设计很聪明</li>
+      <li>“情绪影响语气，不影响事实判断”——这条是底线，写得准</li>
+    </ul></div>
+    <div class="risk"><h4>风险</h4><ul>
+      <li>3.4 万字，每次触发都要读一遍，很占</li>
+      <li>它的“直脾气”要等 1 个月、3 个月、1 年后才解锁，你现在就需要</li>
+      <li>内置一套价值观，会覆盖你现有的规矩</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top">
+    <h3>③ 情绪发泄所（The Vent Room）</h3>
+    <span class="chip good">唯一支持 DSH</span>
+    <span class="chip">中英双语</span>
+    <span class="chip">1 星</span>
+    <span class="chip">2026-09 建</span>
+  </div>
+  <p>三份里工程做得最规矩的：只有一份正本、安装说明分平台写清、还配了自检脚本。装到 DSH 的哪一层、放错会怎样，都写明白了。</p>
+  <p>它真正的宝贝不是陪骂，而是<b>真人语感规则</b>——作者扒了 23 条视频、1944 条真实聊天记录，统计出来的说话习惯：</p>
+  <blockquote>句长中位数 6 个字 · 78% 的句子结尾不带标点 · 语气词按使用频率挑（吧 &gt; 呢 &gt; 啊/呀/嘛 &gt; 呗/啦）· 问句只有 2% 带问号 · 接话先甩一个“那” · 复述对方的话 · 表情当回复用</blockquote>
+  <p>这套东西比任何“情绪模型”都实用，因为它是从真人嘴里数出来的，不是编的。</p>
+  <div class="split">
+    <div class="keep"><h4>值得抄</h4><ul>
+      <li>上面那套语感规则，直接能进你的规矩文件</li>
+      <li>“禁止排比句式、禁止每轮结尾补一句有用的话”——这正是 AI 腔的病根</li>
+    </ul></div>
+    <div class="risk"><h4>风险</h4><ul>
+      <li>它的场景是“哄人发泄”，装给抖抖会让抖抖变软</li>
+      <li>双语版同一套规则写两遍，占两倍篇幅</li>
+    </ul></div>
+  </div>
+</div>
+
+<h2>三、我的建议</h2>
+<div class="final">
+  <p><b>三个都别装。</b>装任何一个都是在给抖抖套一层别人的人格，而你已经有自己的一套，而且更狠。</p>
+  <p>真正该做的是抄三样东西进现有规矩：</p>
+  <ol>
+    <li><b>置信度透明</b>（来自 jarvis-core）— 以后给你判断时说明“我几成把握”，错了下一轮自己认账降分。</li>
+    <li><b>四层拆解</b>（来自 relational-attunement）— 你说话带情绪时，我先分清事实、感受、你的解释、你要什么，再回。</li>
+    <li><b>真人语感</b>（来自情绪发泄所）— 把那 6 条说话习惯写进规矩，替代掉现在“去 AI 腔”这条太虚的要求。</li>
+  </ol>
+  <p style="margin-bottom:0">这三样加起来不到 500 字，不占篇幅、不冲突、随时能撤。要动的话给我一句话，我改完给你看。</p>
+</div>
+
+<h2>四、原文在这</h2>
+<ul>
+  <li>relational-attunement · <a href="https://github.com/SovereignRose/relational-attunement">github.com/SovereignRose/relational-attunement</a></li>
+  <li>jarvis-core · <a href="https://github.com/davidme6/jarvis-core">github.com/davidme6/jarvis-core</a></li>
+  <li>情绪发泄所 · <a href="https://github.com/kejixiaoxinyun/emotional-relief">github.com/kejixiaoxinyun/emotional-relief</a></li>
+</ul>
+
+<footer>
+  抖抖整理 · 2026-10-30 · 三份项目均为公开发布，星数与更新时间取自当日 GitHub 数据。
+</footer>
+
+</div>
+</body>
+</html>

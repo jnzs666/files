@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年9月薪资表检核报告 · 10.20-1版</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 20px 64px;
+    background: #f6f7f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #2b3038; font-size: 14px; line-height: 1.65;
+  }
+  .wrap { max-width: 1300px; margin: 0 auto; }
+  .card { background: #fff; border: 1px solid #e6e8ec; border-radius: 10px; padding: 24px 26px; margin-bottom: 18px; }
+  .hero { background: #fff; border: 1px solid #e6e8ec; border-radius: 10px; padding: 28px 26px 24px; margin-bottom: 18px; border-top: 4px solid #2f5d8a; }
+  .hero h1 { margin: 0 0 6px; font-size: 24px; font-weight: 700; color: #1b2430; }
+  .hero .sub { color: #6b7480; font-size: 12.5px; margin-bottom: 18px; line-height: 1.7; }
+  .hero .sub b { color: #2b3038; font-weight: 600; }
+  .kpis { display: flex; gap: 12px; flex-wrap: wrap; }
+  .kpi { flex: 1 1 175px; border: 1px solid #e6e8ec; border-radius: 8px; padding: 13px 15px; background: #fbfcfd; border-left: 3px solid #2f5d8a; }
+  .kpi .n { font-size: 25px; font-weight: 700; line-height: 1.2; }
+  .kpi .t { font-size: 12px; color: #6b7480; margin-top: 2px; }
+  .kpi.red { border-left-color: #c62828; } .kpi.red .n { color: #c62828; }
+  .kpi.amber { border-left-color: #b26a00; } .kpi.amber .n { color: #b26a00; }
+  .kpi.green { border-left-color: #1f7a45; } .kpi.green .n { color: #1f7a45; }
+
+  h2 { font-size: 17px; font-weight: 700; margin: 0 0 14px; color: #1b2430; padding-left: 11px; border-left: 3px solid #2f5d8a; }
+  h2 .idx { color: #8a929c; font-weight: 600; margin-right: 6px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th { background: #f2f4f7; color: #44505e; font-weight: 600; text-align: left; padding: 9px 9px; border-bottom: 2px solid #dfe3e8; white-space: nowrap; }
+  td { padding: 9px 9px; border-bottom: 1px solid #edf0f3; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; color: #4a5560; }
+  .neg { color: #c62828; font-weight: 700; }
+  .pos { color: #1f7a45; font-weight: 700; }
+  .scroll { overflow-x: auto; }
+  .sh { font-weight: 700; color: #2f5d8a; white-space: nowrap; }
+  .cell-s { font-size: 11px; color: #6b7480; font-family: ui-monospace, Consolas, monospace; }
+  tr.grp td { background: #f7f9fb; }
+
+  .callout { border-radius: 8px; padding: 13px 15px; font-size: 13px; margin: 14px 0 0; border: 1px solid; }
+  .callout.warn { background: #fdf6e9; border-color: #f0d9ac; color: #6b4a00; }
+  .callout.danger { background: #fcefef; border-color: #f0c4c4; color: #7d1c1c; }
+  .callout.info { background: #eef4fa; border-color: #c8dcee; color: #1e3d5c; }
+  .callout.ok { background: #eef7f1; border-color: #c2e0cd; color: #1a5334; }
+  .callout b { font-weight: 700; }
+
+  .final { background: #1b2430; color: #eef2f6; border-radius: 10px; padding: 24px 26px; }
+  .final h2 { color: #fff; border-left-color: #7fa9cc; margin-bottom: 10px; }
+  .final p { margin: 8px 0 0; font-size: 14px; line-height: 1.85; }
+  .final .hi { color: #ffd580; font-weight: 700; }
+  .final .hi2 { color: #9fd4b0; font-weight: 700; }
+  .foot { text-align: center; color: #98a0aa; font-size: 12px; margin-top: 24px; }
+  @media print { body { background:#fff; padding:0; } .card,.hero { border:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>2026 年 9 月薪资表 · 检核报告 <span style="font-size:14px;font-weight:600;color:#2f5d8a">10.20-1 版</span></h1>
+    <div class="sub">
+      检核对象：<b>2026年9月份薪资表2026.10.20-1.xlsx</b>（工资表 88 人）　|　与 10.20 版逐格对比：<b>公式改动 113 处、结果变化 9 处</b><br>
+      比对源表：基本薪资 / 考勤 / 绩效 / 奖金 / 社保原表 / 个税汇总表1　|　<b>原表只读，未修改任何单元格</b>
+    </div>
+    <div class="kpis">
+      <div class="kpi green"><div class="n">4</div><div class="t">✅ 本次已修好</div></div>
+      <div class="kpi red"><div class="n">2</div><div class="t">🔴 仍需改</div></div>
+      <div class="kpi amber"><div class="n">7</div><div class="t">🟡 建议核实</div></div>
+      <div class="kpi"><div class="n">9,915.89</div><div class="t">发不出去的工资（元）</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">一</span>本次已修好（重点看这个）</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr><th style="width:150px">位置</th><th style="width:300px">上次问题</th><th class="num" style="width:140px">修正后</th><th>核对结果</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>工资表 AZ 列</b><br><span class="cell-s">全表 88 行</span></td>
+          <td><b>应发公式漏「新品奖励」整列</b>（连续 3 版没改的模板缺陷）</td>
+          <td class="num">+350.00</td>
+          <td class="pos">✅ 公式已改为 <span class="mono">S−AI+AJ+…+AW+<b>AX</b>+AY</span>。4 人金额已生效：<br>魏积胜 32,821.86 → <b>32,961.86</b>（+140）<br>王林 11,739.46 → <b>11,809.46</b>（+70）<br>熊素珍 24,564.25 → <b>24,634.25</b>（+70）<br>于小龙 5,064.85 → <b>5,134.85</b>（+70）</td>
+        </tr>
+        <tr>
+          <td><b>奖金表 K / L 列</b><br><span class="sh">工资表</span> <span class="cell-s">AS / AT 列</span></td>
+          <td><b>奖金列名与内容错配</b><br>K 列叫「课程部负责人奖金」，但公式引的是「国际开发」文件；L 列叫「国际课程开发奖金」却是空的</td>
+          <td class="num">列名已互换</td>
+          <td class="pos">✅ K 列改为「<b>国际开发奖金</b>」、L 列改为「<b>课程部负责人奖金</b>」，工资表表头同步改。<br>核对：K35 张娟娟 <span class="mono">=[5]国际开发业绩张娟!G4</span> = 622.27、K37 赵占浩 <span class="mono">=[5]国际开发赵占浩!H5</span> = 4,909.12，<b>装的确实是国际开发奖金，现在名实相符</b>。我上次报的「赵占浩归错列」已解决</td>
+        </tr>
+        <tr>
+          <td><b>杨聪慧</b><br><span class="cell-s">AZ64 / S64 / U64</span></td>
+          <td>应发单元格是空的（全表唯一无公式）</td>
+          <td class="num">AZ64 = 0</td>
+          <td class="pos">✅ 已补上标准应发公式，S64 从 5,200 改为 0、U64 改为 0。<b>产假不发工资，应发归零，逻辑通了</b>。但实发仍是负数 → 见 🔴 #2</td>
+        </tr>
+        <tr>
+          <td><b>工资表 E 列</b><br><span class="cell-s">R41 / R42 / R43</span></td>
+          <td>李晓玲、王盟盟、王楠 部门与考勤表不一致</td>
+          <td class="num">改为「市场部」</td>
+          <td class="pos">✅ 已与考勤表对齐。但这三人基本薪资表仍写「课程事业部」，三张表还没完全统一 → 见 🟡 #3</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout ok">
+      <b>累计进度：前几轮报的 6 个 🔴 已解决 4 个</b>——离职人员折算（6,873.04）、实习生重复扣款（182.61）、洪扬个税（42.07）、新品奖励漏列（350）+ 赵占浩奖金归错列。<br>
+      <b>金额层面，算错的部分基本清零了。</b>剩下两个 🔴 都不是「算错」，而是「发不出去」。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">二</span>问题清单</h2>
+    <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30px">#</th><th style="width:44px">级别</th>
+          <th style="width:118px">表格 / 位置</th><th style="width:120px">涉及人员</th>
+          <th style="width:245px">问题</th>
+          <th class="num" style="width:105px">金额影响</th>
+          <th style="width:290px">建议核对 / 解决方案</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td class="neg">🔴</td>
+          <td><span class="sh">工资表</span><br><span class="cell-s">B 列（账号）<br>R32/72/73/74/75/91</span></td>
+          <td><b>张伟</b> 1,477.06<br><b>马少剑</b> 2,438.38<br><b>王优建</b> 4,675.23<br><b>王福宇</b> 633.04<br><b>武翰卿</b> 542.61<br><b>姜世龙</b> 149.57</td>
+          <td><b>发薪账号取不到，钱打不出去</b><br>B 列 VLOOKUP 全部 <span class="mono">#N/A</span>，「[4]Sheet1」账号表里没有这 6 个人。<b>连续 4 版未改</b></td>
+          <td class="num neg">6 人合计<br><b>9,915.89</b><br><span class="cell-s">无法代发</span></td>
+          <td><b>这是目前唯一的卡点。</b>去《[4]Sheet1》补录 6 人银行账号。<br>其中<b>张伟（在职病假）+ 马少剑（兼职）共 3,915.44 元必须发</b>；<br>其余 4 名离职人员共 6,000.45 元需单独走报销/转账。<br>剩余可正常代发金额：<b>613,724.55 元</b></td>
+        </tr>
+        <tr>
+          <td>2</td><td class="neg">🔴</td>
+          <td><span class="sh">工资表</span><br><span class="cell-s">BH64</span></td>
+          <td><b>杨聪慧</b><br>（产假）</td>
+          <td><b>实发 −402.94 是负数，发不出去</b><br>应发已归零（正确），但社保个人 402.94 没有工资可扣，直接形成负实发</td>
+          <td class="num neg"><b>−402.94</b></td>
+          <td>给她一个明确处理方式，三选一：<br>① 挂账到复岗首月一并扣（推荐）<br>② 公司先垫付，复岗后扣回<br>③ 本人转账补缴<br><b>金额不大但必须有备注，否则财务无法处理</b></td>
+        </tr>
+
+        <tr class="grp"><td colspan="7" style="font-weight:700;color:#b26a00;padding-top:14px">以下 7 项建议核实</td></tr>
+
+        <tr>
+          <td>3</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">基本薪资</span> <span class="cell-s">C 列</span><br><span class="sh">工资表</span> <span class="cell-s">E 列</span></td>
+          <td><b>李晓玲、王盟盟<br>王楠</b>（市场部/课程事业部）<br><b>陈昭任</b>（人力发展部/人力资源）<br><b>任欣琰</b>（内容运营部/线上事业部）</td>
+          <td><b>三张表的部门名称仍未统一（5 处）</b><br>工资表已改成「市场部」，但基本薪资表还写「课程事业部」</td>
+          <td class="num">无金额影响<br><span class="cell-s">影响部门成本归集</span></td>
+          <td>确定以哪张表为准。<b>「基本薪资」是所有 VLOOKUP 的源头</b>，建议改这张表，其余两表跟着取数，否则部门汇总永远对不上</td>
+        </tr>
+        <tr>
+          <td>4</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">工资表</span><br><span class="cell-s">BG33「其他」</span></td>
+          <td><b>王晶晶</b></td>
+          <td><b>6,199.50 元走工资发放，且公式是硬编码</b><br>式为 <span class="mono">=6110.5+89</span>，批注「8月份合作康知了回款，以及7月份郑俊隆格回款」</td>
+          <td class="num">6,199.50</td>
+          <td>两个问题：<br>① <b>「回款」性质像货款/合作分成，不是工资</b>——走工资表会抬高个税应纳税所得和社保基数<br>② 公式写死 <span class="mono">6110.5+89</span>，下月换人/换金额就得手改，容易出错。<br>建议改成引用明细表，或确认后单独走报销</td>
+        </tr>
+        <tr>
+          <td>5</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">工资表</span><br><span class="cell-s">AC64 / S64 / U64</span></td>
+          <td><b>杨聪慧</b></td>
+          <td><b>产假天数与考勤表不一致，且公式被覆盖成手填值</b><br>AC64 填 12，考勤表 M80 是 23（整月）；S64、U64 原为公式，现为手填 0</td>
+          <td class="num">无金额影响</td>
+          <td>AC64 改 23（9 月整月在产假）。<br>S64、U64 手填 0 结果虽对，但<b>公式被覆盖后不会随考勤表更新</b>，建议改回公式或加备注说明</td>
+        </tr>
+        <tr>
+          <td>6</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">基本薪资</span> <span class="cell-s">G 列</span><br><span class="sh">工资表</span> <span class="cell-s">Q78</span></td>
+          <td><b>王福宇、姜世龙</b><br><b>姚瑞迪</b></td>
+          <td><b>① 王福宇、姜世龙已离职，状态仍写「试用」</b>（同批武翰卿、王优建已改离职）<br><b>② 姚瑞迪绩效系数仍填 0</b>，得分 91.47 应 1.0</td>
+          <td class="num">均无金额影响</td>
+          <td>① G 列改「离职」，保持 6 人一致<br>② Q78 改 1.0 即可，<b>金额不变</b>（他 S78 走 <span class="mono">=O78</span> 直接取 4,700）。建议顺手把 S78 改回 <span class="mono">=J+K+L+R</span> 标准式</td>
+        </tr>
+        <tr>
+          <td>7</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">工资表</span> <span class="cell-s">AG 列 12 人</span><br><span class="sh">工资表</span> <span class="cell-s">AF 列 16 人次</span></td>
+          <td>贾鑫鑫、王晶晶<br>余腾飞、吴帆 等</td>
+          <td><b>① 迟到扣款 240 元科目用错</b>（制度定性是「乐捐」，乐捐列 BF=0）<br><b>② 缺卡扣 10 元/次，制度里没有这条</b></td>
+          <td class="num">240.00<br>160.00</td>
+          <td>① 240 元从 AG 移到 <b>BF 乐捐列</b>，账务口径才对得上福利基金<br>② 缺卡扣款：要么在考勤制度补条款并审批，要么取消。《薪酬制度》5.4 要求扣款须有「公司明文规定」</td>
+        </tr>
+        <tr>
+          <td>8</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">工资表</span><br><span class="cell-s">BA 列（10 人）</span></td>
+          <td>赵小贝 599.90<br>窦文祥 127.96 等</td>
+          <td><b>售后定责 875.39 元，4 份制度里没有专项条款</b><br>只有《奖惩制度》「造成损失须赔偿」的通用表述</td>
+          <td class="num">875.39</td>
+          <td>补齐 10 笔定责单 + 审批记录。制度要求「理清事实、取得证据、经公司讨论一致」</td>
+        </tr>
+        <tr>
+          <td>9</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">工资表</span> <span class="cell-s">Z32 病假</span><br><span class="sh">工资表</span> <span class="cell-s">AH 列公式</span></td>
+          <td><b>张伟</b><br>及全表 88 人</td>
+          <td><b>① 张伟病假 23 天，超月度 5 天上限</b>（制度：超出按事假）<br><b>② 考勤扣款仍有 4 种口径</b>：66 人标准式 / 16 人 <span class="mono">O/T×(T−U)</span> / 张伟含 <span class="mono">−M32</span> / 4 人手填 0</td>
+          <td class="num">待定</td>
+          <td>① 张伟整月病假，<b>若属长期医疗期则不适用该条款</b>，需确认性质<br>② 16 人那套把<b>年假、调休也算成缺勤</b>；本月恰好只有事假/离职所以对，<b>下月有人休年假就会多扣</b></td>
+        </tr>
+        <tr>
+          <td>10</td><td style="color:#b26a00;font-weight:700">🟡</td>
+          <td><span class="sh">工资表</span><br><span class="cell-s">AZ92 合计</span></td>
+          <td>合计行</td>
+          <td><b>应发合计公式从 SUM 改成了逐项加总</b><br>原 <span class="mono">=SUM(AZ4:AZ91)</span> → 现 <span class="mono">=S92−AI92+AJ92+…+AY92</span></td>
+          <td class="num">0.00<br><span class="cell-s">结果一致</span></td>
+          <td>两种写法当前结果相同（都是 663,006.18），<b>但逐项加总把范围写死了</b>，以后加人会漏。建议改回 <span class="mono">=SUM(AZ4:AZ91)</span>，或确认这是为了兼容空格才改的</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout warn">
+      <b>关于张娟娟的 622.27 元</b>（因奖金列表头互换引起）：她的公式是 <span class="mono">=[5]国际开发业绩张娟!G4</span>，
+      按新表头归入「国际开发奖金」是对的。但她的岗位是「课程开发组组长」，<b>拿的是国际开发业绩的钱</b>——
+      这是业务口径问题，不是错，建议顺便和业务确认一下归属是否正确。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">三</span>合计核对</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr><th style="width:170px">项目</th><th class="num" style="width:150px">表内合计 R92</th><th class="num" style="width:150px">明细逐行之和</th><th class="num" style="width:90px">差异</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><b>应发合计</b> AZ</td><td class="num">663,006.18</td><td class="num">663,006.18</td><td class="num pos">0.00</td><td>✅ 含新品奖励 350（上次 662,656.18）</td></tr>
+        <tr><td><b>实发合计</b> BH</td><td class="num">623,640.44</td><td class="num">623,640.44</td><td class="num pos">0.00</td><td>✅ 勾稽一致</td></tr>
+        <tr><td><b>社保个人</b> BC</td><td class="num">34,580.54</td><td class="num">34,580.54</td><td class="num pos">0.00</td><td>✅ 未变</td></tr>
+        <tr><td><b>社保单位</b> BD</td><td class="num">65,153.70</td><td class="num">65,153.70</td><td class="num pos">0.00</td><td>✅ 未变</td></tr>
+        <tr style="background:#eef7f1"><td><b>个税合计</b> BE</td><td class="num">10,384.96</td><td class="num">10,384.96</td><td class="num pos">0.00</td><td><b>✅ 与个税汇总表 10,384.96 完全一致</b></td></tr>
+        <tr><td>售后定责 BA</td><td class="num">875.39</td><td class="num">875.39</td><td class="num pos">0.00</td><td>✅ 一致</td></tr>
+        <tr><td><b>其他 BG</b></td><td class="num">6,475.15</td><td class="num">6,475.15</td><td class="num pos">0.00</td><td>✅ 3 笔（罗彦超 90、马本学 185.65、王晶晶 6,199.50）</td></tr>
+        <tr><td>考勤合计 AI</td><td class="num">47,247.10</td><td class="num">47,247.10</td><td class="num pos">0.00</td><td>✅ 一致</td></tr>
+        <tr><td>奖金明细合计</td><td class="num">—</td><td class="num">199,897.28</td><td class="num">—</td><td>✅ 已含新品奖励 350</td></tr>
+        <tr style="background:#fcefef"><td><b>实发 vs 银行代发</b></td><td class="num">623,640.44</td><td class="num">—</td><td class="num neg">无法核对</td><td><b>仍缺 9 月代发回单；另需扣掉 9,915.89 无法代发部分 → 实际可发 613,724.55</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="final">
+    <h2><span class="idx">四</span>结论</h2>
+    <p>
+      这版改得很到位——<span class="hi2">把连续三版没修的「应发漏新品奖励」补上了</span>（全表 88 行公式都加上了 AX，4 人共 350 元），
+      还把奖金表 K／L 两列的列名错配理顺了（我上次报的「赵占浩归错列」一并解决）。
+      加上杨聪慧应发补公式、部门名对齐，<span class="hi2">前几轮报的 6 个 🔴 已解决 4 个</span>。
+    </p>
+    <p>
+      <span class="hi">从「算得对不对」这个角度，这张表已经过关了</span>：
+      21 个金额列的「合计 = 明细逐行加总」<b>差异全部为 0</b>；个税合计与个税汇总表<b>一分不差</b>；
+      「绩效加两遍」「售后漏减」「离职照发」「新品奖励漏列」四个大坑全部踩平。应发 663,006.18、实发 623,640.44。
+    </p>
+    <p>
+      剩下的 2 个 🔴 <span class="hi">都不是算错，是「发不出去」</span>：
+      <b>6 人发薪账号 #N/A 合计 9,915.89 元</b>（这个已经连续四版没动，其中张伟、马少剑共 3,915.44 元是必须发的），
+      以及<b>杨聪慧实发 −402.94 的负数</b>需要给个挂账或垫付的处理方式。
+      这两件处理完，9 月薪资就可以实际发放了——<b>可正常代发金额 613,724.55 元</b>。
+    </p>
+    <p>
+      <span class="hi2">其他 7 项都是「不影响金额、但影响规范」的</span>：部门名三表不统一、王晶晶回款走工资且公式写死、
+      杨聪慧产假天数与考勤表不一致、两位离职状态没清、迟到/缺卡/售后定责缺制度依据、张伟病假超 5 天。
+      建议排进下月例行检查，不阻塞本次发放。
+    </p>
+  </div>
+
+  <div class="foot">
+    2026 年 9 月薪资表检核报告（10.20-1 版） · 全部数据处理在本机完成，未上传任何外部服务 · 原表以只读方式打开，未修改任何单元格
+  </div>
+
+</div>
+</body>
+</html>

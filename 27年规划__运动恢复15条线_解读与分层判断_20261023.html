@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>运动恢复 15 条线 · 解读与分层判断</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:34px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.3}
+h3{font-size:16.5px;margin:18px 0 8px;color:#6a5b78}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 8px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:15px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}.purple{color:#7c6ab0;font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+code{background:#f6f0f7;padding:1px 6px;border-radius:5px;font-size:12.5px}
+.tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}
+.t-go{background:#e6f6ee;color:#2f8a63}
+.t-try{background:#e6efff;color:#2f5fa5}
+.t-care{background:#fff1e6;color:#a5641a}
+.t-no{background:#ffe9ec;color:#c0384a}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+.tree{background:#fff;border-radius:12px;padding:18px 22px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12);font-size:13.5px;line-height:2.1}
+.tree .root{font-size:16px;font-weight:700;color:#a5404f;margin-bottom:8px}
+.tree .ln{padding-left:0}
+.tree .ln b{color:#5d4e6d}
+.tree .ln i{color:#9a8caf;font-style:normal;font-size:12.5px}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>运动恢复 15 条线 · 解读与分层判断</h1>
+  <p>2026-10-23 ｜ 基于男哥提供的思维导图（内部讨论稿）</p>
+  <p>结合：9月经营分析会官方数据（46类目净销/净利/利润率）× 外部竞品实测（倍益康等）</p>
+</div>
+
+<!-- ============ 一、我读到的结构 ============ -->
+<h2>一、我读到的结构（先确认我没看错）</h2>
+
+<div class="tree">
+  <div class="root">运动恢复（中心主题）</div>
+  <div class="ln">1. <b>气压靴</b> — 价格带 <b>2699 / 1499</b> ｜ 功能 → 第二代、第三代迭代</div>
+  <div class="ln">2. <b>RRT</b> — 怎么打、定价、功能、迭代</div>
+  <div class="ln">3. <b>筋膜枪</b> — <i>做不做？</i></div>
+  <div class="ln">4. <b>DMS</b> — 怎么打、专业款、<b>TO C</b></div>
+  <div class="ln">5. <b>泡沫轴</b> — 电动（什么品）｜ 普通（<i>什么品？</i> 价格带、功能）</div>
+  <div class="ln">6. <b>电动筋膜球</b> — <i>调研市场</i></div>
+  <div class="ln">7. <b>冷敷</b> — 喷雾、桶、冰浴桶 ｜ 市场、利润、销售额、研发周期</div>
+  <div class="ln">8. <b>热敷</b> — 红光（什么品、打法）｜ 电加热（什么品）</div>
+  <div class="ln">9. <b>电刺激</b> — （待展开）</div>
+  <div class="ln">10. <b>穿戴设备</b> — 手环、戒指</div>
+  <div class="ln">11. <b>带子</b> — 巫毒带、弹力带、弹力环 ｜ <b>控制品质降本、包装、视频教学</b></div>
+  <div class="ln">12. <b>瑜伽垫</b> — 绿途垫、<i>有一个不知道的瑜伽垫</i></div>
+  <div class="ln">13. <b>拉伸的</b> — 拉力器 ｜ <i>需求？撑不撑得住业绩</i></div>
+  <div class="ln">14. <b>筋膜刀</b> — （待展开）</div>
+  <div class="ln">15. <b>盒体类</b> — <b>资质</b>、马膏、冷喷、鼻贴</div>
+</div>
+
+<div class="crit ok">
+  <h3>先说三个让我眼前一亮的地方</h3>
+  <ol>
+    <li><b>"控制品质降本、包装、视频教学"</b>（带子这条线）——这三件事不是"选品"，是<b>做产品的真功夫</b>。很多人只会说"再上个新款"，这里想的是<b>降本、包装、教学</b>，方向很正。</li>
+    <li><b>"盒体类 → 资质放第一位"</b>——说明已经意识到马膏、冷喷的监管问题。<b>先想资质再想产品，这是对的顺序。</b></li>
+    <li><b>"需求？撑不撑得住业绩"</b>（拉伸器）——<b>这是整张图里最诚实的一句话。</b>说明自己知道有的品是凑数的。这种自省比"拍脑袋上新品"强得多。</li>
+  </ol>
+</div>
+
+<!-- ============ 二、核心判断 ============ -->
+<h2>二、我的核心判断：这是一张"讨论稿"，还不是"规划"</h2>
+
+<div class="crit warn">
+  <div class="why">
+    <b>为什么这么说——看那些问号和空白：</b>
+    <table>
+      <tr><th style="width:200px">图上的写法</th><th>说明什么</th></tr>
+      <tr><td><b>"做不做？"</b>（筋膜枪）</td><td>还没决策</td></tr>
+      <tr><td><b>"什么品？"</b>（泡沫轴普通款、热敷红光、热敷电加热）</td><td>连要做哪个具体品都还没定</td></tr>
+      <tr><td><b>"调研市场"</b>（电动筋膜球）</td><td>信息不足，需要外部数据</td></tr>
+      <tr><td><b>"有一个不知道的瑜伽垫"</b></td><td>自己的盘都没盘清</td></tr>
+      <tr><td><b>"需求？撑不撑得住业绩"</b>（拉伸器）</td><td>自己也不信</td></tr>
+      <tr><td><b>电刺激、筋膜刀只有名字，没子项</b></td><td>还没往下想</td></tr>
+    </table>
+    <p style="margin-top:8px"><b>15 条线里，真正有答案的只有 2 条</b>——气压靴（有明确价格带 + 二三代迭代路径）和 DMS（明确"专业款 + TO C"两条路）。<b>其余 13 条都停在"要做什么"的门口。</b></p>
+  </div>
+  <div class="one">
+    "这张图的价值不在'列了 15 条'，在<b>它诚实地暴露了 13 个还没想清的地方</b>。<br>
+    下一步不是把 15 条都做，是<b>先把这 13 个问号一个个回答掉</b>。"
+  </div>
+</div>
+
+<!-- ============ 三、分层判断 ============ -->
+<h2>三、15 条线，我按"该给多少资源"分五层</h2>
+
+<div class="crit">
+  <p class="src">判断依据 = 内部数据（9月一类电商类目净销/利润率/规格退款）× 外部实测（倍益康在售价、行业格局）× 能力匹配（械证/渠道/供应链）</p>
+
+  <h3><span class="tag t-go">第 1 层 · 押注</span> 两条，给主力资源</h3>
+  <table>
+    <tr><th style="width:110px">线</th><th>为什么是它</th><th style="width:180px">具体动作</th></tr>
+    <tr style="background:#f0fbf6">
+      <td><b>① 气压靴</b></td>
+      <td>
+        · 全公司<b>唯一被两个渠道同时验证</b>的品（一类电商 133.4万/月占 29%，抖音 TOP10 里 5 个是它）<br>
+        · 图里唯一有<b>明确价格带 + 二三代迭代</b>的线，说明已经想清了<br>
+        · <b>气泵技术可复用</b>，不是从零开发
+      </td>
+      <td>按 1499（入门）/ 2699（主力）双价格带打；第一代先验证，别急着谈二三代</td>
+    </tr>
+    <tr style="background:#f0fbf6">
+      <td><b>④ DMS</b></td>
+      <td>
+        · <b>利润率 49.3%（全盘最高）</b>，5 个 SKU 做 13.6 万<br>
+        · 全部是专业级（¥1799-41500），<b>C 端完全空白</b><br>
+        · 图里写的"专业款 + TO C"，<b>跟我上轮的判断完全一致</b>
+      </td>
+      <td>补 C 端款 ¥399-599，定位"<b>康复师同款·治疗级振幅</b>"，不做通用款</td>
+    </tr>
+  </table>
+
+  <h3><span class="tag t-go">第 2 层 · 利润</span> 四条，做深不加 SKU</h3>
+  <table>
+    <tr><th style="width:110px">线</th><th>内部实况</th><th style="width:190px">动作</th></tr>
+    <tr>
+      <td><b>⑪ 带子</b><br><span class="mx">巫毒带/弹力带/弹力环</span></td>
+      <td><b>巫毒带 4 个 SKU 做 17.1 万，利润率 42.9%</b>——全盘效率王（平均 4.3 万/SKU）<br>弹力带 12 万/41.0%</td>
+      <td>做规格矩阵（厚度×宽度×长度）<b>控 6-8 SKU</b>；组套装提客单；<b>按图里写的做降本、包装、视频教学</b></td>
+    </tr>
+    <tr>
+      <td><b>② RRT</b></td>
+      <td><b>2 个 SKU 做 14.0 万，利润率 37.0%</b>（平均 7 万/SKU，效率第一）</td>
+      <td>2→4-5 个 SKU，<b>加 ¥1500 入门款</b>拉新客群</td>
+    </tr>
+    <tr>
+      <td><b>⑧ 热敷</b><br><span class="mx">红光 / 电加热</span></td>
+      <td>红光类 <b>17.0 万/35.8%</b>（65 个 SKU，偏多）<br><span class="red">电加热（筋膜刀）在掉：加热电动筋膜刀 -1.1万(-12.9%)，退款率 32%</span></td>
+      <td>红光：<b>65 SKU 砍到 20 以内</b>，补 810/850nm 深层波长<br>电加热：<b>先查为什么掉</b>（是产品还是内容），再决定要不要继续投</td>
+    </tr>
+    <tr>
+      <td><b>⑨ 电刺激</b></td>
+      <td>15.2 万/27.6%，28 个 SKU——<b>有产能、有供应链，但利润率偏低</b></td>
+      <td>做"运动恢复"专属模式（赛后恢复/乳酸代谢/肌肉放松三个程序），<b>不新增硬件，只加模式</b></td>
+    </tr>
+  </table>
+
+  <h3><span class="tag t-try">第 3 层 · 补位</span> 三条，低成本试，看数据说话</h3>
+  <table>
+    <tr><th style="width:110px">线</th><th>为什么值得试</th><th style="width:190px">动作</th></tr>
+    <tr style="background:#f8fbff">
+      <td><b>⑦ 冷敷</b><br><span class="mx">喷雾/桶/冰浴桶</span></td>
+      <td>
+        <b>这里我要修正我上轮的判断。</b>我之前说"冷疗不走"，那是针对 Plunge 那种 <b>2-5 万的自动制冷冰浴</b>。但图里写的<b>喷雾、桶</b>是低成本产品，性质完全不同：<br>
+        · 冷疗类现存 5 个 SKU 做 <b>8.9 万/36.6%</b>，有基础<br>
+        · <b>冷喷是运动队标配</b>，真刚需<br>
+        · 客单低、易起量、能做套装件
+      </td>
+      <td>先做<b>冷喷喷雾</b>（最低成本试水）；桶做"套装件"不单推；<b>冰浴桶（大件）暂不做</b></td>
+    </tr>
+    <tr style="background:#f8fbff">
+      <td><b>⑮ 盒体类</b><br><span class="mx">马膏/冷喷/鼻贴</span></td>
+      <td>
+        · <b>低客单、高频、易复购</b>——这是它最大的价值<br>
+        · 马膏（肌肉酸痛）在运动人群是硬需求<br>
+        · <b>图里把"资质"放第一位，判断对了</b>
+      </td>
+      <td><b>先查资质</b>（马膏属外用膏剂/化妆品监管，冷喷看成分）；资质过关再上，<b>定位引流+复购</b>，别指望它扛业绩</td>
+    </tr>
+    <tr style="background:#f8fbff">
+      <td><b>⑫ 瑜伽垫</b></td>
+      <td>纯白牌红海（1688 批发几块钱），但<b>作为凑单/引流件有用</b></td>
+      <td>只留 <b>1-2 个 SKU</b>，做套装件，<b>不开发新款</b></td>
+    </tr>
+  </table>
+
+  <h3><span class="tag t-care">第 4 层 · 谨慎</span> 四条，红海，只做差异款</h3>
+  <table>
+    <tr><th style="width:110px">线</th><th>为什么谨慎（外部实测）</th><th style="width:190px">动作</th></tr>
+    <tr>
+      <td><b>③ 筋膜枪</b></td>
+      <td>中国约 113 亿，但"<b>同质化严重、价格战频发</b>"；买家共识"<b>便宜款也够用</b>"；高端被 Theragun/Hyperice 占、低价被白牌填满</td>
+      <td><b>图里问"做不做"——我的答案：做，但只做 1 款</b>，靠 DMS 专业背书"降维"，不做系列</td>
+    </tr>
+    <tr>
+      <td><b>⑤ 泡沫轴</b></td>
+      <td>普通款：1688 批发 7.7 元，红海<br>电动款：投放 ROI <b>5.36（达标）</b>，CTR 5.73%（高）</td>
+      <td><b>普通款砍 SKU</b>（现 20 个做 9.4 万，单 SKU 仅 4700 元）；<b>电动款可加投</b>（数据好）</td>
+    </tr>
+    <tr>
+      <td><b>⑥ 电动筋膜球</b></td>
+      <td>球类现有 <b>19 个 SKU 做 26.7 万</b>——SKU 已经不缺；且电动款体量小（1.9万/月）</td>
+      <td><b>不加 SKU，先砍</b>；"调研市场"先看现有 19 个哪个在出量</td>
+    </tr>
+    <tr>
+      <td><b>⑭ 筋膜刀</b></td>
+      <td>28 个 SKU 做 41.6 万，<b>利润率仅 26.8%</b>；异形筋膜刀 -19.4%、电动筋膜刀 -35.6%</td>
+      <td><b>砍到 12 个 SKU</b>；做<b>钛合金/黄铜高端款</b>提利润率；组专业套装</td>
+    </tr>
+  </table>
+
+  <h3><span class="tag t-no">第 5 层 · 不做</span> 三条，明确否掉</h3>
+  <table>
+    <tr><th style="width:110px">线</th><th>为什么不做</th></tr>
+    <tr style="background:#fff5f6">
+      <td><b>⑬ 拉伸器</b></td>
+      <td><b>图里自己都写了"需求？撑不撑得住业绩"</b>——这个直觉是对的。这类品客单低、同质化、复购弱，<b>撑不住业绩，别做</b></td>
+    </tr>
+    <tr style="background:#fff5f6">
+      <td><b>⑩ 穿戴设备</b><br><span class="mx">手环/戒指</span></td>
+      <td><b>这是完全不同的赛道。</b>手环/戒指是华为、小米、苹果、Oura 的地盘，CR5 极高、技术壁垒极深、研发投入以亿计。<b>我们进去毫无胜算</b>——这和"运动恢复"是两门生意，<b>要用消费电子的打法，不是康复打法。</b><br><span class="mx">若真要做，只能贴牌试水，且不能占产品线资源</span></td>
+    </tr>
+    <tr style="background:#fff5f6">
+      <td><b>⑦ 冰浴桶</b><br><span class="mx">（大件部分）</span></td>
+      <td>大件冷疗：客单 2-5 万、物流重、要安装、要售后、会漏水——<b>这不是电商逻辑</b>。<br><span class="mx">但冷喷、冷水桶（小件）可以试，见第 3 层</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============ 四、定价这块要提醒 ============ -->
+<h2>四、气压靴的价格带：1499 这个价要小心</h2>
+
+<div class="crit bad">
+  <h3>三个价格摆在一起看</h3>
+  <table>
+    <tr><th style="width:190px">产品</th><th class="num" style="width:130px">到手价</th><th>位置</th></tr>
+    <tr><td><b>倍益康 ACM-C1</b></td><td class="num"><b>¥1,950</b></td><td>中价段主力（原价 4299，国补后 1950）</td></tr>
+    <tr><td><b>倍益康 HACM-A1</b></td><td class="num">¥2,465–2,739</td><td>中价段偏上</td></tr>
+    <tr><td><b>倍益康 ACM PLUS 二代</b></td><td class="num">¥5,399</td><td>高价段</td></tr>
+    <tr style="background:#fffbee"><td><b>我们 · 图里定的</b></td><td class="num"><b>¥1,499 / ¥2,699</b></td><td>1499 在倍益康之下，2699 正撞它</td></tr>
+  </table>
+
+  <div class="why" style="margin-top:10px">
+    <b>两个提醒：</b>
+    <ol>
+      <li><b>1499 是对的，但要看配置。</b>卡在倍益康 1950 之下，是"性价比攻击"，这个策略没错。但如果 1499 款把腔数、续航、噪音砍太多，会变成"便宜货"，反而伤"康复"定位——<b>建议 1499 款至少保 4 腔 + 无线，只砍材质和附件。</b></li>
+      <li><b>2699 这个价会正面撞倍益康。</b>它 2465-2739 已经占了这一档，且<b>有品牌、有械证</b>。我们同价位要靠什么赢？<b>我的建议：要么把主力款定到 2299-2399（明显便宜一档），要么做到配置明显更强（8 腔/恒温/APP）</b>，不要卡在中间不上不下。</li>
+    </ol>
+  </div>
+  <div class="one">
+    "1499 打穿低价、2699 卡位中价——思路对。<br>
+    但 2699 <b>跟倍益康同一个价，就必须给一个'为什么买我们'的硬理由</b>，否则就是拿它的强项跟它比。"
+  </div>
+</div>
+
+<!-- ============ 五、图里缺的 ============ -->
+<h2>五、图里缺了一个东西：耗材与复购</h2>
+
+<div class="crit warn">
+  <p>15 条线里只有「盒体类」勉强算复购（马膏、冷喷、鼻贴），<b>但真正的耗材层是缺的</b>：</p>
+  <table>
+    <tr><th style="width:150px">该有的耗材</th><th>配套哪个产品</th><th>内部现状</th></tr>
+    <tr><td>电极片 / 导电凝胶</td><td>电刺激（15.2万/月）</td><td class="red">电极片仅 2 条、耦合剂 1 条——<b>几乎空白</b></td></tr>
+    <tr><td>气密袖套 / 气囊配件</td><td>气压靴、空气波（141万/月）</td><td class="red">未成矩阵</td></tr>
+    <tr><td>贴布 / 肌效贴</td><td>筋膜刀、护具</td><td>46 条，未整理成耗材线</td></tr>
+    <tr><td>按摩头（换配件）</td><td>DMS、筋膜枪</td><td>未做单卖</td></tr>
+  </table>
+  <div class="why">
+    <b>为什么耗材重要：</b>
+    <p>设备卖一次就完了，<b>耗材是"卖一次、赚三年"</b>。而且耗材<b>不需要新渠道、不需要新客群</b>——卖给已经买过设备的老人就行。</p>
+    <p>我们现在空气波月销 133 万、电刺激 15 万，<b>这些设备卖出去，配套耗材本该跟着复购</b>——但现在几乎没有。<b>这是一块"确定的、没人抢的"利润。</b></p>
+  </div>
+</div>
+
+<!-- ============ 六、组织 ============ -->
+<h2>六、最关键的问题：15 条线，5 个人怎么分？</h2>
+
+<div class="crit bad">
+  <div class="why">
+    <b>现在的盘子已经很散了：</b>
+    <table>
+      <tr><th style="width:120px">产品经理</th><th class="num" style="width:100px">现有品类</th><th>再加 15 条运动恢复线之后</th></tr>
+      <tr><td>赵小贝</td><td class="num">13 类</td><td class="red">已扛全部门 70% 业绩 + 空气波独享，再加会崩</td></tr>
+      <tr><td>杨涛</td><td class="num">10 类</td><td>还能承接</td></tr>
+      <tr><td>高广银</td><td class="num">9 类</td><td class="red">半年完成 12%，不能再加</td></tr>
+      <tr><td>胡俊鹏</td><td class="num">4 类</td><td>有空间</td></tr>
+      <tr><td>闫栋林</td><td class="num">4 类</td><td>有空间</td></tr>
+      <tr><td>公池</td><td class="num">14 类</td><td class="red">无主</td></tr>
+    </table>
+  </div>
+  <div class="one">
+    "15 条线不是 15 个任务，<b>是 3 条主线</b>。<br>
+    按 15 条分，5 个人每人 3 条，每条都做不深；按 3 条主线分，<b>每人扛得动一条，才能做透</b>。"
+  </div>
+</div>
+
+<div class="crit ok">
+  <h3>我的建议：15 条线归成 3 条主线</h3>
+  <table>
+    <tr><th style="width:150px">主线</th><th>包含哪些线</th><th>使命</th><th style="width:130px">建议归属</th></tr>
+    <tr style="background:#f0fbf6">
+      <td><b>A · 气压与冷热</b><br><span class="mx">恢复物理因子线</span></td>
+      <td>气压靴、RRT、冷敷、热敷、电刺激</td>
+      <td><b>营收主力</b>（现在这块已占一类电商 40%+）</td>
+      <td>赵小贝（减负后）<br>或新设专项</td>
+    </tr>
+    <tr style="background:#f8fbff">
+      <td><b>B · 松解工具</b><br><span class="mx">手法替代线</span></td>
+      <td>DMS、筋膜枪、泡沫轴、电动筋膜球、筋膜刀</td>
+      <td><b>利润层</b>（DMS 49.3%、RRT 37%）</td>
+      <td>杨涛</td>
+    </tr>
+    <tr style="background:#fdf6ff">
+      <td><b>C · 训练与消耗</b><br><span class="mx">高频复购线</span></td>
+      <td>带子、拉伸器、瑜伽垫、盒体类、<b>耗材</b></td>
+      <td><b>引流 + 复购</b>（低客单高频）</td>
+      <td>胡俊鹏 / 闫栋林</td>
+    </tr>
+  </table>
+  <p class="src">穿戴设备不进任何主线——它不属于运动恢复的产品语言，要单独评估。</p>
+</div>
+
+<!-- ============ 七、待定 ============ -->
+<h2>七、要你拍的四个（定了我就能出产品立项表）</h2>
+<div class="crit ask">
+  <ol>
+    <li><b>气压靴 2699 这个价，是跟倍益康正面撞，还是降到 2299-2399？</b>——如果 2699，必须给出"为什么买我们"的硬理由</li>
+    <li><b>1499 款的配置底线是什么？</b>——我建议至少保 4 腔 + 无线，只砍材质和附件，否则伤"康复"定位</li>
+    <li><b>穿戴设备（手环/戒指）到底动不动？</b>——我建议不做；如果做，只能贴牌试水，别占产品线资源</li>
+    <li><b>15 条线能不能归成 3 条主线、按主线分人？</b>——这决定后面谁对什么负责</li>
+  </ol>
+</div>
+
+<div class="foot">
+  <p><b>数据来源</b>：<br>
+  · 内部（9月经营分析会官方口径）：一类电商 46 类目净销/净利/利润率；巫毒带 4SKU/17.1万/42.9%；RRT 2SKU/14.0万/37.0%；DMS 5SKU/13.6万/49.3%；红光类 65SKU/17.0万/35.8%；筋膜刀 28SKU/41.6万/26.8%；球类 19SKU/26.7万；泡沫轴 20SKU/9.4万；冷疗 5SKU/8.9万/36.6%；电刺激 28SKU/15.2万/27.6%；空气波 133.4万/占29%<br>
+  · 外部（实测/财报）：倍益康 ACM-C1 ¥1950、HACM-A1 ¥2465-2739、ACM PLUS二代 ¥5399（天猫/京东国补后到手价）；倍益康 2026H1 毛利率 37.07%、净利率 -2.24%<br>
+  · 投放数据（9月）：电动泡沫轴投放 ROI 5.36、CTR 5.73%<br>
+  · 男哥提供的思维导图（运动恢复 15 条线）</p>
+  <p><b>说明</b>：本版对我上一轮"冷疗不走"的判断做了修正——原判断针对大件自动制冷冰浴，冷喷/小桶属低成本品，可试。</p>
+  <p>抖抖 · 2026-10-23</p>
+</div>
+
+</div></body></html>

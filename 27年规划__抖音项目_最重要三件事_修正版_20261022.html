@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>抖音项目 · 三件事（数据修正版）</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 22px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:34px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.3}
+h3{font-size:16.5px;margin:18px 0 8px;color:#6a5b78}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.big{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1 1 150px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 12px rgba(180,160,200,.12);text-align:center}
+.stat b{display:block;font-size:23px;line-height:1.25}
+.stat span{color:var(--sub);font-size:12.5px}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 6px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.act{background:#eefaf3;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #6ec49b}
+.act b{color:#2f7a5a}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14.8px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:4px 0}ol{padding-left:21px;margin:5px 0}
+.badge{display:inline-block;width:34px;height:34px;line-height:34px;text-align:center;border-radius:50%;background:#ffb5c5;color:#fff;font-weight:700;font-size:17px;margin-right:8px;vertical-align:middle}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+  <h1>抖音项目 · 三件事（数据修正版）</h1>
+  <p>2026-10-22 ｜ 男哥指出"自营6.1%是错的"，我回原始明细重算——确认是我错，且错得很大</p>
+  <p>数据源：《经营数据汇报-2026-09》内嵌原始订单明细（19,090 条 orders / 23,389 条 stageOrders）× 官方月报口径交叉验证</p>
+</div>
+
+<!-- ============ 纠错 ============ -->
+<h2>零、先纠正我自己的三个错</h2>
+
+<div class="crit bad">
+  <table>
+    <tr><th style="width:150px">指标</th><th style="width:130px">我之前说的</th><th style="width:150px">实际（多口径验证）</th><th>错在哪</th></tr>
+    <tr>
+      <td><b>自营占比</b></td>
+      <td class="num red">6.1%</td>
+      <td class="num green"><b>41.8%</b>（9月，订单明细口径）<br><b>40.9%</b>（9月，含退款订单口径）</td>
+      <td>用了旧记忆里没核实的数</td>
+    </tr>
+    <tr>
+      <td><b>达人（合作出单）</b></td>
+      <td class="num red">93.9%</td>
+      <td class="num green"><b>58.2%</b></td>
+      <td>同上，导致整套判断偏了</td>
+    </tr>
+    <tr>
+      <td>客单价</td>
+      <td class="num orange">62.23 元</td>
+      <td class="num"><b>70 元</b>（GMV÷订单数）<br>62 元是"净额÷订单数"口径</td>
+      <td>口径混用，不完全是错</td>
+    </tr>
+    <tr>
+      <td>退款率</td>
+      <td class="num green">31.4%</td>
+      <td class="num green"><b>31.41%</b> ✅</td>
+      <td><b>这个是对的</b></td>
+    </tr>
+  </table>
+  <div class="one">
+    "我把'自营 6.1%'当成了事实，实际是 41.8%。<br>
+    <b>这一条错，让整个'自营几乎空白、必须从0做起'的判断全部作废。</b>"
+  </div>
+</div>
+
+<!-- ============ 正确的图景 ============ -->
+<h2>一、重算后的真实图景（这才是抖音现在的样子）</h2>
+
+<div class="crit ok">
+  <h3>① 自营不是没做，是已经做到 4 成，而且在稳步爬升</h3>
+  <table>
+    <tr><th>月份</th><th class="num">GMV（明细）</th><th class="num">订单数</th><th class="num">客单价</th><th class="num">自营</th><th class="num">合作</th></tr>
+    <tr><td>4月</td><td class="num">16.3 万</td><td class="num">2,540</td><td class="num">64 元</td><td class="num">32.2%</td><td class="num">67.8%</td></tr>
+    <tr><td>5月</td><td class="num">24.3 万</td><td class="num">3,554</td><td class="num">68 元</td><td class="num">35.1%</td><td class="num">64.9%</td></tr>
+    <tr><td>6月</td><td class="num">14.5 万</td><td class="num">2,446</td><td class="num">59 元</td><td class="num">28.7%</td><td class="num">71.3%</td></tr>
+    <tr><td>7月</td><td class="num">19.4 万</td><td class="num">2,364</td><td class="num">82 元</td><td class="num">34.6%</td><td class="num">65.4%</td></tr>
+    <tr><td>8月</td><td class="num">28.0 万</td><td class="num">3,510</td><td class="num">80 元</td><td class="num">40.5%</td><td class="num">59.5%</td></tr>
+    <tr class="tot"><td><b>9月</b></td><td class="num"><b>32.8 万</b></td><td class="num"><b>4,676</b></td><td class="num">70 元</td><td class="num"><b>41.8%</b></td><td class="num">58.2%</td></tr>
+  </table>
+  <div class="why">
+    <b>这张表说明三件好事：</b>
+    <ol>
+      <li><b>GMV 在涨</b>：16.3万 → 32.8万（明细口径翻了一倍）</li>
+      <li><b>自营在爬</b>：32.2% → 41.8%，<b>六个月涨了近 10 个百分点</b></li>
+      <li><b>订单数在涨</b>：2,540 → 4,676（+84%）</li>
+    </ol>
+    <p><b>→ 抖音这条线，不是"没做起来"，是"正在做起来"。</b>这跟我上一版"单条腿走路"的判断完全相反。</p>
+  </div>
+</div>
+
+<div class="crit ok">
+  <h3>② 而且自营带的是更贵的货（这是最值钱的发现）</h3>
+  <table>
+    <tr><th>店铺（9月）</th><th class="num">GMV</th><th class="num">自营占比</th><th class="num">自营客单</th><th class="num">合作客单</th></tr>
+    <tr><td><b>运动（Theratools运动器械旗舰店）</b></td><td class="num"><b>46.3 万</b></td><td class="num">45.3%</td><td class="num green"><b>135 元</b></td><td class="num">102 元</td></tr>
+    <tr><td>视频号店铺</td><td class="num">5.8 万</td><td class="num">17.8%</td><td class="num green"><b>130 元</b></td><td class="num">67 元</td></tr>
+    <tr><td>合聚</td><td class="num">1.9 万</td><td class="num">17.8%</td><td class="num">47 元</td><td class="num">66 元</td></tr>
+    <tr><td>小红书店铺</td><td class="num">1.8 万</td><td class="num">28.1%</td><td class="num">38 元</td><td class="num">31 元</td></tr>
+  </table>
+  <p><b>自营客单 135 元 vs 合作客单 102 元</b>（运动店）——<b>自营能卖更贵的货</b>。</p>
+  <p class="src">这符合逻辑：自营能控话术、能讲清楚产品价值；达人为了转化率，倾向带便宜的品。</p>
+</div>
+
+<div class="crit warn">
+  <h3>③ 但真正的结构问题在这里：一店独大</h3>
+  <table>
+    <tr><th>店铺</th><th class="num">9月GMV</th><th class="num">占比</th><th>判断</th></tr>
+    <tr><td><b>运动店</b></td><td class="num">46.3 万</td><td class="num red"><b>81%</b></td><td class="red">一家店扛了八成</td></tr>
+    <tr><td>视频号店铺</td><td class="num">5.8 万</td><td class="num">10%</td><td>有起色</td></tr>
+    <tr><td>合聚</td><td class="num">1.9 万</td><td class="num">3%</td><td>几乎没量</td></tr>
+    <tr><td>小红书店铺</td><td class="num">1.8 万</td><td class="num">3%</td><td>几乎没量，客单仅 31-38 元</td></tr>
+  </table>
+  <p><b>真正的"单点依赖"不是'靠达人'，是'靠运动店'。</b></p>
+</div>
+
+<!-- ============ 三件事 ============ -->
+<h2>二、重排后的三件事</h2>
+
+<div class="crit bad">
+  <h2 style="border:none;padding:0;margin:0 0 8px;font-size:17px"><span class="badge">1</span> 退款率 31.41% —— 这件事没变，依然是第一</h2>
+  <div class="why">
+    <b>为什么它还是第一（这个数没错，而且最贵）：</b>
+    <ul>
+      <li>9月 GMV <b>51.14 万</b>，退款 <b>16.06 万</b>，净额只有 <b>35.08 万</b></li>
+      <li>对比一类电商 <b>17.79%</b> —— 抖音的退款率是它的 <b>1.8 倍</b></li>
+      <li><b>而且抖音退款还吃推广费</b>：投流花钱→出单→退款，<b>推广费是净损失</b>；一类电商没有这个问题</li>
+      <li>算笔账：<b>退款率 31.4% → 25%，同样 GMV 每月多拿 3.3 万净额</b>；降到 20% 则多 5.8 万/月</li>
+    </ul>
+  </div>
+  <div class="act">
+    <b>怎么做（先归因，再动手）：</b>
+    <ol>
+      <li><b>把 9 月退款单按"未发货退 / 已发货退 / 收货后退"拆开</b>
+        <ul>
+          <li>未发货退 → 冲动下单（达人话术诱导）→ <b>控达人话术</b></li>
+          <li>收货后退 → 预期落差（视频/详情页与实物不符）→ <b>改内容、改详情页</b></li>
+          <li>同一账号高频退 → 羊毛/刷单 → <b>拉黑</b></li>
+        </ul>
+      </li>
+      <li><b>按店铺拆</b>：运动店 46.3万 是大头，它的退款率决定全局。<b>先把这个店的退款率打下来</b></li>
+      <li><b>按渠道拆</b>：自营的退款可控（话术自己定），合作的难控（达人说啥你管不住）。<b>这条可能揭示"自营客单高但退款是否更低"</b>——值得单独查</li>
+    </ol>
+  </div>
+  <div class="one">"GMV 是面子，净额才是里子。31% 的退款率，等于每做三单白干一单。"</div>
+</div>
+
+<div class="crit warn">
+  <h2 style="border:none;padding:0;margin:0 0 8px;font-size:17px"><span class="badge">2</span> 破"一店独大"：把视频号做起来</h2>
+  <div class="why">
+    <b>为什么是视频号，不是小红书/合聚：</b>
+    <table>
+      <tr><th>店铺</th><th class="num">9月GMV</th><th>增速线索</th><th class="num">自营客单</th><th>判断</th></tr>
+      <tr style="background:#f0fbf6">
+        <td><b>视频号</b></td><td class="num">5.8 万</td><td>订单明细从 8月562行→9月895行（<b>+59%</b>）</td><td class="num green"><b>130 元</b></td>
+        <td class="green"><b>最有潜力：在涨 + 客单高</b></td>
+      </tr>
+      <tr><td>小红书</td><td class="num">1.8 万</td><td>订单 562行（持平）</td><td class="num">38 元</td><td class="orange">客单太低，不适合高价值品</td></tr>
+      <tr><td>合聚</td><td class="num">1.9 万</td><td>订单 333行（<b>下降</b>）</td><td class="num">47 元</td><td class="orange">在萎缩</td></tr>
+    </table>
+    <p><b>视频号的三个有利条件：</b></p>
+    <ul>
+      <li><b>在长</b>：订单量 +59%</li>
+      <li><b>客单高</b>：自营客单 130 元（仅次于运动店）</li>
+      <li><b>私域属性强</b>：视频号天然连通微信，<b>能做复购</b>——这是抖音做不到的</li>
+    </ul>
+  </div>
+  <div class="act">
+    <b>怎么做：</b>
+    <ol>
+      <li><b>把"视频号自营"单独设目标</b>：现在它自营只占 17.8%（运动店 45.3%），<b>自营做起来，客单能从 67 提到 130</b></li>
+      <li><b>内容复用</b>：抖音跑通的素材直接搬到视频号（成本最低）</li>
+      <li><b>做私域闭环</b>：视频号 → 企微 → 复购。这是抖音给不了的资产</li>
+    </ol>
+  </div>
+</div>
+
+<div class="crit ok">
+  <h2 style="border:none;padding:0;margin:0 0 8px;font-size:17px"><span class="badge">3</span> 自营：不是"从0做起"，是"从41%提到50%并做高客单"</h2>
+  <div class="why">
+    <b>判断完全变了：</b>
+    <p>我上一版说"自营6.1%，要从0开始"——<b>错。</b>实际自营已 41.8%，六个月从 32% 爬到 42%。</p>
+    <p><b>真正的机会不是"补空白"，是"自营客单更高，所以要扩"：</b></p>
+    <ul>
+      <li>运动店：自营客单 <b>135 元</b> vs 合作 <b>102 元</b> —— 高 32%</li>
+      <li>视频号：自营客单 <b>130 元</b> vs 合作 <b>67 元</b> —— 高 94%</li>
+      <li><b>同样一单，自营能多卖 30-90 元</b></li>
+    </ul>
+  </div>
+  <div class="act">
+    <b>怎么做：</b>
+    <table>
+      <tr><th style="width:120px">动作</th><th>内容</th><th>为什么</th></tr>
+      <tr><td><b>① 自营主推高价品</b></td><td>空气波（¥1080-1380）、DMS、生物压力反馈仪</td><td>自营能讲清价值，卖得动贵的</td></tr>
+      <tr><td><b>② 扩大自营占比</b></td><td>41.8% → 50%（年底）</td><td>自营客单高、退款可控、能沉淀粉丝</td></tr>
+      <tr><td><b>③ AI 提效</b></td><td>用已建的 AI 数字人库 + 日产 10 条投流视频，把自营产能拉起来</td><td>产能已具备（品牌运营部9月已实现）</td></tr>
+    </table>
+    <p class="src">⚠ 注意：不是"砍达人"。达人是量、自营是质，<b>两条腿都要</b>。目标是自营从 42% 到 50%，不是取代达人。</p>
+  </div>
+</div>
+
+<!-- ============ 修正后的反问 ============ -->
+<h2>三、修正后，我要改一个反问</h2>
+
+<div class="crit ask">
+  <p>上一版我问："抖音是增量渠道还是试验田？"</p>
+  <p><b>现在数据出来了，答案是：它已经在成为"增量渠道"的路上。</b></p>
+  <ul>
+    <li>GMV 明细口径 <b>16.3万 → 32.8万</b>（4月→9月，翻倍）</li>
+    <li>官方口径 9月 <b>51.1 万</b></li>
+    <li>自营占比 <b>32% → 42%</b></li>
+    <li>订单数 <b>2,540 → 4,676</b>（+84%）</li>
+  </ul>
+  <p><b>所以真正该问的是：</b></p>
+  <div class="one" style="font-size:16px;line-height:1.9">
+    "9 月这 51 万，<b>是怎么做出来的？能复制吗？</b><br><br>
+    如果 9 月的增长是<b>一次性的（某场大促、某个达人爆了）</b>——那明年还是不稳；<br>
+    如果它是<b>可复制的方法（自营+达人双轮、内容产能上来）</b>——那抖音明年可以定更高目标。"
+  </div>
+</div>
+
+<div class="crit">
+  <h3>我建议你先回答这个问题（这比定三件事更重要）</h3>
+  <table>
+    <tr><th style="width:200px">问题</th><th>为什么关键</th></tr>
+    <tr><td><b>9月 GMV 从月均 15 万跳到 51 万，发生了什么？</b></td><td>大促？达人集中爆发？自营起量？<b>这决定了明年能不能复制</b></td></tr>
+    <tr><td><b>运动店为什么能做到 46 万，其他三店只有 2-6 万？</b></td><td>是店铺权重？运营人力？货品结构？<b>这决定了能不能复制到其他店</b></td></tr>
+    <tr><td><b>自营 42% 是谁在做的？</b></td><td>是店播团队？还是自然流量+详情页转化？<b>这决定了能不能扩</b></td></tr>
+  </table>
+</div>
+
+<div class="foot">
+  <p><b>数据来源与口径</b>：<br>
+  · 《经营数据汇报-2026-09》内嵌原始明细：orders 19,090 条 [shopId, day, ch, mixed, amount, qty]、stageOrders 23,389 条 [shopId, day, ch, hasRefund, refundAmount, gross, included]、coverage、officialMonthly<br>
+  · 渠道代码：0=自营 / 1=合作出单 / 2=待确认（来自文件内 CH_CODES/CH_NAMES 定义）<br>
+  · 官方口径（9月）：GMV 511,394.28 / 退款 160,612.40 / 退款率 31.41%（合聚19,060.72 + 运动409,583.98 + 视频号59,447.89 + 小红书23,301.69）<br>
+  · 自营占比三个口径交叉验证一致：orders 明细 41.8% / stageOrders 含退款 40.9% / stageOrders 仅计入 41.8%</p>
+  <p><b>纠错声明</b>：本版更正上一版三处错误——①自营 6.1% → 实际 41.8%；②合作出单 93.9% → 实际 58.2%；③"自营几乎空白、需从0做起"的判断作废。</p>
+  <p>抖抖 · 2026-10-22</p>
+</div>
+
+</div></body></html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>27年六大战役 · 目标 / 节点 / 验收</title>
+<style>
+:root{--bg:#fdf6f0;--ink:#5d4e6d;--sub:#9a8caf;--line:#f0e4f0;--head:#fbf5fb;--warn:#c25a12;--ok:#2f8a63;--bad:#c0384a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.72;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 70px}
+.banner{background:linear-gradient(135deg,#ffd3de 0%,#d6e4ff 50%,#d6f5e3 100%);border-radius:16px;padding:26px 30px;margin-bottom:20px;box-shadow:0 4px 18px rgba(180,160,200,.14)}
+.banner h1{margin:0 0 8px;font-size:25px}
+.banner p{margin:4px 0;color:#6a5b78;font-size:13.5px}
+h2{font-size:20px;margin:36px 0 12px;padding-left:12px;border-left:5px solid #ffb5c5;line-height:1.3}
+h3{font-size:16.5px;margin:18px 0 8px;color:#6a5b78}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(180,160,200,.10)}
+th{background:var(--head);text-align:left;padding:8px 10px;font-weight:600;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.tot td{background:#f2eef5;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.crit{background:#fff;border-left:6px solid #ffb5c5;border-radius:10px;padding:15px 19px;margin:12px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.crit.warn{border-left-color:#e8b873}.crit.ok{border-left-color:#6ec49b}.crit.bad{border-left-color:#f28a97}.crit.ask{border-left-color:#b5a6f0;background:#fdfbff}
+.crit h3{margin:0 0 8px;font-size:16.5px}
+.why{background:#f7f3fb;border-radius:8px;padding:11px 15px;margin:8px 0;font-size:13.5px;border-left:4px solid #b5a6f0}
+.why b{color:#7c6ab0}
+.one{background:#fff0f2;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:15px;font-weight:600;color:#a5404f;border-left:5px solid #ff9aa2}
+.src{color:var(--sub);font-size:12.5px}
+.red{color:var(--bad);font-weight:600}.green{color:var(--ok);font-weight:600}.orange{color:var(--warn);font-weight:600}.purple{color:#7c6ab0;font-weight:600}
+ul{padding-left:20px;margin:5px 0}li{margin:5px 0}ol{padding-left:21px;margin:5px 0}
+.tag{display:inline-block;padding:1px 9px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}
+.t1{background:#e6f6ee;color:#2f8a63}.t2{background:#e6efff;color:#2f5fa5}.t3{background:#fff1e6;color:#a5641a}.t4{background:#ffe9ec;color:#c0384a}.t5{background:#efeaf9;color:#6a55a8}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+.mx{font-size:12px;color:var(--sub)}
+.chain{background:#fff;border-radius:12px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 12px rgba(180,160,200,.12)}
+.lv{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px dashed #f0e4f0}
+.lv:last-child{border-bottom:none}
+.lv .n{flex:0 0 44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
+.lv .c{flex:1}
+.lv .c b{font-size:14.5px}
+.lv .c p{margin:3px 0 0;font-size:13px;color:#6a5b78}
+.act{background:#fff;border-radius:12px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 12px rgba(180,160,200,.12);border-top:4px solid #ffb5c5}
+.act .hd{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.act .hd .no{background:#a5404f;color:#fff;width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.act .hd h3{margin:0;font-size:17px;color:#5d4e6d}
+.act .goal{background:#fff8e6;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:14px;border-left:4px solid #e8b873}
+.act .goal b{color:#9a7b1f}
+</style></head><body><div class="wrap">
+
+<div class="banner">
+<h1>27 年六大战役</h1>
+<p>2026-11-03 ｜ 目标 · 节点 · 验收标准 · 归谁</p>
+<p>六个重点不是并列的六件事，是<b>一条链</b>——顺序错了，做得越多亏得越多</p>
+</div>
+
+<!-- ========== 一、关系 ========== -->
+<h2>一、六条的关系：一条链，不是六条平行线</h2>
+
+<div class="crit bad">
+<h3>先纠正一个最容易犯的错</h3>
+<p style="font-size:13.5px">六件事如果同时全力推，结果一定是<b>六件都做了半截</b>。因为它们的资源需求重叠（都要人、要钱、要产品经理的精力），而且有严格的前后依赖。</p>
+<div class="one">
+"<b>不做 1 和 2，做 3—6 就是在放大错误。</b><br>
+产品不对，内容越好卖得越快、口碑崩得越快；<br>
+库存不清，卖得越多压得越多。"
+</div>
+</div>
+
+<div class="chain">
+<div class="lv"><div class="n" style="background:#c0384a">1</div><div class="c">
+<b>产品开发进度 —— 决定"卖什么"</b>
+<p>没有明确的开发节点，后面所有人都在等。4,148 个 SKU、开品成功率只有 21.9%，根子在这里。</p></div></div>
+<div class="lv"><div class="n" style="background:#c25a12">2</div><div class="c">
+<b>供应链瘦身 —— 决定"赚多少"</b>
+<p>SKU 不减、滞销不清，每卖一单都在占资金。这块不解决，规模越大现金越紧。</p></div></div>
+<div class="lv"><div class="n" style="background:#2f5fa5">4</div><div class="c">
+<b>内容量质 —— 决定"看得见"</b>
+<p>产品对了、库存轻了，才轮到流量。内容是把"对的产品"推到人面前的唯一方式。</p></div></div>
+<div class="lv"><div class="n" style="background:#6a55a8">5</div><div class="c">
+<b>品牌发力 —— 决定"卖多贵"</b>
+<p>内容解决看得见，品牌解决信得过。同样的货，有品牌能贵 5–10%。</p></div></div>
+<div class="lv"><div class="n" style="background:#2f8a63">3</div><div class="c">
+<b>气压靴出海 —— 新市场增量</b>
+<p>国内跑通了，才有能力出海。且<b>械证 6–12 个月，必须最早启动</b>——这是唯一"越早越值钱"的事。</p></div></div>
+<div class="lv"><div class="n" style="background:#7c6ab0">6</div><div class="c">
+<b>私域接入 —— 老客二转</b>
+<p>内容有了、品牌立了，私域才接得住人。没有内容和品牌，私域就是发券群。</p></div></div>
+</div>
+
+<div class="crit warn">
+<h3>换个说法：三条"止血"，三条"造血"</h3>
+<table>
+<tr><th style="width:110px">性质</th><th style="width:230px">哪几条</th><th>不做会怎样</th></tr>
+<tr style="background:#fff5f6"><td><b>止血</b><br><span class="mx">不做就继续失血</span></td><td>1 产品开发进度<br>2 供应链瘦身</td><td class="red">4,148 个 SKU 继续摊薄精力，501 万呆滞继续占资金，开品成功率停在 22%</td></tr>
+<tr style="background:#f8fbff"><td><b>放大</b><br><span class="mx">同样的货卖更多钱</span></td><td>4 内容量质<br>5 品牌发力</td><td class="orange">有好产品也卖不上价，继续拼价格</td></tr>
+<tr style="background:#f0fbf6"><td><b>造血</b><br><span class="mx">全新的增量</span></td><td>3 气压靴出海<br>6 私域接入</td><td class="green">只有国内存量，翻番没有来源</td></tr>
+</table>
+<div class="why"><b>资源分配建议：</b>止血 40% ｜ 放大 30% ｜ 造血 30%。<b>别把 27 年做成"六件事都开个头"。</b></div>
+</div>
+
+<!-- ========== 二、逐条拆 ========== -->
+<h2>二、逐条拆：目标 / 节点 / 验收 / 归谁</h2>
+
+<!-- 1 -->
+<div class="act">
+<div class="hd"><span class="no">1</span><h3>产品开发进度 —— 每个品有节点，不再"想做但没时间表"</h3></div>
+<div class="goal"><b>核心问题：</b>不是"开发太慢"，是<b>"没有节点"</b>。422 条研发计划里 123 条负责人空白（29%）、过会率只有 15%——<b>没人对进度负责，所以永远没有进度。</b></div>
+<table>
+<tr><th style="width:150px">要定什么</th><th>具体要求</th><th style="width:110px">节点</th></tr>
+<tr style="background:#fff5f6"><td><b>① 立项表</b></td>
+<td>每个品必须填齐 7 项：<b>负责人 / 目标客群 / 价格带 / 成本上限 / 上市节点 / 首单量 / 成功判据</b>。<br>填不齐不许立项——这条堵住"123 条无主计划"</td><td>26/12/15</td></tr>
+<tr><td><b>② 分级节点</b></td>
+<td>A 级品（押注）：<b>概念→样机→试产→上架→验证</b> 五个节点，每节点有交付物<br>B 级品（补位）：三节点<br>C 级品（试水）：两节点（样机、上架）</td><td>26/12/31</td></tr>
+<tr><td><b>③ 成功率考核</b></td>
+<td>产品经理 KPI 从"只看新品业绩额"→ 加 <b>利润率 + 退款率 + 开品成功率</b>三项<br><b>目标：成功率 22%→40%，新品完成率 63%→85%</b></td><td>27Q1 起</td></tr>
+<tr><td><b>④ 周会机制</b></td>
+<td>每周一次"节点过会"，<b>只看两件事：谁卡住了、卡在哪</b>。不许汇报"进展顺利"</td><td>27/1 起，每周</td></tr>
+</table>
+<div class="why"><b>验收标准（三选一即算没做到）：</b><br>
+① 27 年 6 月底前，A 级品 100% 有完整五节点记录<br>
+② 新上 SKU 有销量的比例 ≥40%（现在 21.9%）<br>
+③ 研发计划负责人空白率从 29% 降到 &lt;5%</div>
+</div>
+
+<!-- 2 -->
+<div class="act">
+<div class="hd"><span class="no">2</span><h3>供应链瘦身 —— 减 SKU、清滞销、降库存占用</h3></div>
+<div class="goal"><b>现状（口径必须先统一）：</b>滞销口径 <b>2,089 个 / ¥168 万 / 31%</b>；呆滞口径（滞销+积压）<b>2,586 个 / ¥501 万 / 92.95%</b>。库存货值 <b>538.7 万</b>，在途 <b>584.9 万</b>，有效 SKU <b>2,821 个</b>。<br><b>⚠ 两个口径差 3 倍，对上一律说清用哪个。</b></div>
+<table>
+<tr><th style="width:150px">做什么</th><th>具体</th><th class="num" style="width:120px">目标</th><th style="width:100px">节点</th></tr>
+<tr style="background:#fff5f6"><td><b>① 清滞销</b><br><span class="mx">最急</span></td>
+<td>26 年目标写的是"12.31 前清完"——<b>现在只剩不到 2 个月，必须先核实际进度</b>。没清完的部分转 27Q1 专项</td>
+<td class="num">168 万→0<br>（清仓口径）</td><td>26/12/31<br>27/3/31</td></tr>
+<tr><td><b>② 减 SKU</b></td>
+<td>4,148 → 分三步：先砍<b>零销量</b>（9 月新上 118 条全零销量）；再砍<b>月销 &lt;5,000 元</b>的长尾；最后合并同质规格</td>
+<td class="num"><b>4,148 → 1,800</b><br>（减 57%）</td><td>27/6/30</td></tr>
+<tr><td><b>③ 降库存占用</b></td>
+<td>"弱库存"的正确做法不是单纯砍，是<b>把库存结构从"铺货型"改成"爆品型"</b>：<br>· A 类品（出量）备足、B 类只备 1 个月、C 类不备货（接单采购）</td>
+<td class="num">538.7 万→<b>≤380 万</b><br>周转天数 −30%</td><td>27/12/31</td></tr>
+<tr><td><b>④ 呆滞 501 万</b></td>
+<td>这块 <b>ERP 校准前只能当参考</b>。先做一件事：<b>按"能不能卖"重新分层</b>，而不是按"多久没动"</td>
+<td class="num">501 万→<b>≤200 万</b></td><td>27/9/30</td></tr>
+</table>
+<div class="why"><b>验收标准：</b><br>
+① 27 年底库存货值 ≤380 万（现 538.7 万），<b>且销量不下滑</b>（这条是关键，纯砍库存容易砍掉能卖的）<br>
+② SKU 从 4,148 减到 1,800，<b>但销售额不减</b><br>
+③ 呆滞占比从 92.95% 口径降到 ≤40%</div>
+<div class="crit bad" style="margin-top:10px">
+<p style="font-size:13.5px;margin:0"><b>⚠ 一个必须先解决的前置问题：</b>滞销标记不准（ERP 未校准）。<b>标记不准就清库，会把还能卖的清了。</b>所以第 2 条的第一个动作不是清货，是<b>校准库存数据</b>——这件事 26Q4 就要做，不然 27 年整年都在错的数据上做决策。</p>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="act">
+<div class="hd"><span class="no">3</span><h3>气压靴出海 —— 唯一"越早越值钱"的事</h3></div>
+<div class="goal"><b>核心约束：</b>美国把它归 FDA Class II（<code>21 CFR 890.5650</code>，产品码 JOW/IRP），<b>必须 510(k)，不可豁免</b>。官费 <b>$26,067</b>（小企业 $6,517），周期 <b>3–6 个月</b>。<br><b>这条的时间成本最高——晚一个季度，27 年整年就废了。</b></div>
+<table>
+<tr><th style="width:150px">路径</th><th>怎么走</th><th class="num" style="width:110px">周期</th><th class="num" style="width:110px">成本</th></tr>
+<tr style="background:#f0fbf6"><td><b>① 借工厂现成 510(k)</b><br><span class="mx">推荐先走</span></td>
+<td>问代工厂有没有 JOW/IRP 类的 510(k) 可授权。<b>有的话 1–2 个月就能试水</b></td>
+<td class="num">1–2 月</td><td class="num">几万–十几万</td></tr>
+<tr><td>② 自己做 510(k)</td><td>长期方案，必须配美国代理人（US Agent）+ UDI + GUDID</td><td class="num">3–6 月</td><td class="num">$26,067 起</td></tr>
+<tr><td>③ 纯 wellness 定位</td><td class="red"><b>不建议</b>——气压靴形态太典型，类目审核一看就知道是 IPC 设备</td><td class="num">—</td><td class="num">—</td></tr>
+</table>
+<h3 style="margin-top:14px">三个硬门槛（不解决就别谈出海）</h3>
+<table>
+<tr><th style="width:160px">门槛</th><th>说明</th><th style="width:100px">谁去确认</th></tr>
+<tr><td class="red"><b>电压/插头</b></td><td>美国 110V/60Hz，现有 220V，<b>电机和泵都要改</b></td><td>供应链</td></tr>
+<tr><td class="red"><b>FCC 认证</b></td><td>带电子控制的部分需要</td><td>供应链</td></tr>
+<tr><td class="red"><b>产品竞争力</b></td><td>美国已有 Therabody/Normatec/AirRelax，主流 $200–800。<b>我们 1499–2699 元折 $210–380，靠价格打不进去</b>，得靠"专业康复背书"</td><td>产品+品牌</td></tr>
+</table>
+<div class="why"><b>验收标准：</b><br>
+① <b>26/12/31 前</b>：确认工厂是否有可借 510(k) + 电压/FCC 可行性结论（<b>这两条不确认，后面全是空谈</b>）<br>
+② 27/3/31 前：拿到 510(k) 或借证，Amazon 类目审核通过，首批上架<br>
+③ 27 年海外气压靴销售额 ≥<b>800 万</b>（外贸总目标 3,500 万的一环）</div>
+</div>
+
+<!-- 4 -->
+<div class="act">
+<div class="hd"><span class="no">4</span><h3>内容量质 —— "扩大"之前先定"什么是好内容"</h3></div>
+<div class="goal"><b>最容易走偏的一条：</b>一喊"内容发力"，团队就去做量——每天发 10 条，全是同质化的产品图。<b>量解决不了转化，只会摊薄预算。</b></div>
+<table>
+<tr><th style="width:150px">做什么</th><th>具体</th><th class="num" style="width:120px">27 目标</th></tr>
+<tr style="background:#fff5f6"><td><b>① 定内容标准</b><br><span class="mx">先于扩量</span></td>
+<td>三类内容必须区分清楚，<b>不能用同一套指标考核</b>：<br>· <b>种草</b>（认知）→ 看完播率、收藏<br>· <b>转化</b>（成交）→ ROI、CTR<br>· <b>服务</b>（复购/降退款）→ 使用率、二次咨询</td><td>26/12/31 定标准</td></tr>
+<tr><td><b>② 内容资产化</b></td>
+<td>不是"每天想新的"，是<b>建资产库</b>：产品使用教学（分场景）、真人案例、参数对比。<br>资产可复用，一次性投入长期用</td><td>27Q1 建库</td></tr>
+<tr><td><b>③ 量</b></td>
+<td>按店铺/品类分产量，<b>但设一个硬约束：单条内容的制作成本 ≤X 元，且必须能算清 ROI</b></td><td>月产 ≥<b>300 条</b></td></tr>
+<tr><td><b>④ 质</b></td>
+<td>用 9 月已验证的数据做标尺：<b>电动泡沫轴 ROI 5.36、CTR 5.73%</b>——低于这两个数的内容，先优化再放量</td><td>整体 ROI ≥<b>5.0</b></td></tr>
+</table>
+<div class="why"><b>验收标准：</b><br>
+① 27 年底，<b>内容带来的成交占比 ≥40%</b>（不是推广费占比，是成交归因）<br>
+② 单条内容平均 ROI ≥5.0（对标 9 月电动泡沫轴 5.36）<br>
+③ <b>使用教学类内容覆盖全部 A 级品</b>——这类内容一举两得：既做认知，又直接降低"不会用"导致的退款</div>
+</div>
+
+<!-- 5 -->
+<div class="act">
+<div class="hd"><span class="no">5</span><h3>品牌发力 —— 不是做视觉，是做证据</h3></div>
+<div class="goal"><b>先纠偏：</b>产品宣发、物料包装、UI 优化——这些是<b>执行</b>，不是品牌。器械行业的品牌化本质是<b>三样东西：械证 + 真实使用者 + 可验证的参数</b>。没有这三样，UI 做得再漂亮也是空壳。</div>
+<table>
+<tr><th style="width:150px">做什么</th><th>具体</th><th style="width:100px">节点</th></tr>
+<tr style="background:#fff5f6"><td><b>① 定品牌品</b><br><span class="mx">最多 2 个</span></td>
+<td><b>气压靴</b>（技术门槛高、可办二类械证、毛利 25.7% 偏低 → 做品牌为<b>提毛利</b>）<br><b>DMS</b>（毛利 49.3% 全盘最高、只有专业款 → 做品牌为<b>开 C 端</b>）<br><span class="red">不加第三个——3 个以上就是分散</span></td><td>26/11/30</td></tr>
+<tr><td><b>② 械证</b><br><span class="mx">地基</span></td>
+<td>气压靴二类医疗器械注册证，<b>周期 6–12 个月</b>。没有它，"专业级"就是空话</td><td class="red">26/12 启动</td></tr>
+<tr><td><b>③ 专业背书</b></td>
+<td><b>不找明星，找真实使用者</b>：康复师、运动队队医、术后康复患者。签 3–5 个真实案例，拍使用过程</td><td>27Q1–Q2</td></tr>
+<tr><td><b>④ 参数可视化</b></td>
+<td>把腔数、压力值（mmHg）、波形、噪音分贝做成<b>消费者看得懂的对比图</b><br>例："6 腔 vs 4 腔，压力分布差多少"——一张图胜过十句文案</td><td>27Q1</td></tr>
+<tr><td><b>⑤ UI / 物料</b></td>
+<td>这一层放在<b>③④之后</b>做。前面证据没有，UI 只能美化一个空话</td><td>27Q2–Q3</td></tr>
+</table>
+<div class="why"><b>验收标准：</b><br>
+① 27 年底，气压靴/DMS <b>同款能比竞品贵 5–10% 还卖得动</b>——这是品牌化唯一有效的验证方式<br>
+② 气压靴毛利率 25.7% → <b>≥35%</b><br>
+③ DMS C 端（399–599）月销 ≥<b>800 件</b></div>
+<div class="crit bad" style="margin-top:10px">
+<p style="font-size:13.5px;margin:0"><b>⚠ 顺序不能反：</b>械证 → 背书 → 参数 → <b>最后才是 UI/物料</b>。如果先做 UI 再补证据，等于花两次钱。<b>26Q4 不启动械证，27 年这条基本作废。</b></p>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="act">
+<div class="hd"><span class="no">6</span><h3>私域接入 · 产品二转 —— 接的是"已经有的人和货"</h3></div>
+<div class="goal"><b>关键前提：</b>私域能起来，靠的是<b>前面五条</b>——产品对（1）、有内容（4）、有品牌（5）。<b>前三条不成立，私域就是发券群。</b></div>
+<table>
+<tr><th style="width:150px">做什么</th><th>具体</th><th class="num" style="width:120px">27 目标</th></tr>
+<tr style="background:#fff5f6"><td><b>① 种子客户</b><br><span class="mx">别从抖音开始</span></td>
+<td><b>优先课程学员</b>（已付费、有学习需求、天然社群属性）→ 再是复购老客<br><span class="red">抖音客户退款率 31.4%，说明对产品认可度本身不高，拉进私域等于埋雷</span></td><td>首季 ≥800 好友</td></tr>
+<tr><td><b>② 加微机制</b></td>
+<td>加微理由<b>不是发券</b>，是持续价值：使用指导、康复知识、售后跟踪。<br><b>必须把"加微率"写进客服主管考核</b>（哪怕 5%），否则客服没动力</td><td>加微率 ≥25%</td></tr>
+<tr><td><b>③ 二转</b><br><span class="mx">核心目的</span></td>
+<td><b>器械 → 课程</b>：买空气波/气压靴的人，很多是康复师、教练、治疗师，正是运动康复师课程的客户（目标 562.4 万）<br><b>课程 → 器械</b>：学员回去要练、要教学，天然需要器械</td><td>器械→课程转化 ≥<b>200 单</b></td></tr>
+<tr><td><b>④ 复购/耗材</b></td>
+<td>耗材线现在<b>几乎空白</b>（电极片仅 2 条 SKU、耦合剂 1 条）。这是"卖一次赚三年"的生意，<b>且不用新渠道新客群</b></td><td>耗材月销 <b>30 万</b></td></tr>
+</table>
+<div class="why"><b>验收标准：</b><br>
+① 27 年底私域 GMV ≥<b>1,500 万</b>（占线上 1.09 亿的 14%）<br>
+② 加微率 ≥25%、首单转化 ≥15%<br>
+③ <b>器械→课程转化 ≥200 单</b>（这条是本条真正的价值——现在两块业务完全割裂）</div>
+</div>
+
+<!-- ========== 三、时间轴 ========== -->
+<h2>三、时间轴：哪个月该干什么</h2>
+
+<div class="crit">
+<table>
+<tr><th style="width:90px">时间</th><th>必须完成的动作</th><th style="width:130px">为什么这个时间</th></tr>
+<tr style="background:#fff5f6">
+<td><b>26Q4</b><br><span class="mx">11–12月<br>最关键</span></td>
+<td>
+① <b>核对滞销清理实际进度</b>（26 年目标 12.31 到期）<br>
+② <b>启动库存数据校准</b>（滞销标记不准，不校准清库必错）<br>
+③ <b>确认气压靴工厂 510(k) + 电压/FCC 可行性</b><br>
+④ <b>批气压靴二类械证、启动</b><br>
+⑤ 定品牌品（气压靴 + DMS）、定内容标准<br>
+⑥ 立项表模板 + 研发节点分级
+</td>
+<td class="red"><b>4 件事都是长周期</b>（械证 6–12 月、510(k) 3–6 月、库存校准 2 月、清滞销 1 月）<br><b>晚一个季度，27 年整年作废</b></td></tr>
+<tr>
+<td><b>27Q1</b></td>
+<td>
+· 库存数据校准完成，开始真清库<br>
+· 气压靴 510(k) 落地 + Amazon 类目审核<br>
+· 内容资产库建成，开始跑量<br>
+· 参数可视化素材完成<br>
+· 私域负责人到岗，做摸底+方案
+</td><td>为 618 蓄力</td></tr>
+<tr>
+<td><b>27Q2</b></td>
+<td>
+· SKU 减到 1,800<br>
+· 气压靴海外首单上线<br>
+· 专业背书案例落地（3–5 个）<br>
+· 私域单点试点跑通
+</td><td>618 大促验证</td></tr>
+<tr>
+<td><b>27Q3</b></td>
+<td>
+· 品牌溢价兑现（同款提价 5–10%）<br>
+· 私域全线推开<br>
+· 耗材线上量<br>
+· 呆滞降到 ≤200 万
+</td><td>双十一前完成</td></tr>
+<tr>
+<td><b>27Q4</b></td>
+<td>· 库存 ≤380 万、周转 −30%<br>· 全年复盘，定 28 年</td><td>—</td></tr>
+</table>
+</div>
+
+<!-- ========== 四、加总 ========== -->
+<h2>四、六条怎么加总成业绩</h2>
+
+<div class="crit ok">
+<table>
+<tr><th style="width:44px">#</th><th style="width:220px">战役</th><th class="num" style="width:150px">对业绩的贡献</th><th>逻辑</th></tr>
+<tr><td>1</td><td>产品开发进度</td><td class="num green">+2,000 万</td><td>新品目标 2,800 万；成功率 22%→40%，同样的投入多出一倍产出</td></tr>
+<tr><td>2</td><td>供应链瘦身</td><td class="num purple">不是营收<br>是现金和利润</td><td>库存占用 −160 万、呆滞 −300 万；<b>省下的是真金白银，不是 GMV</b></td></tr>
+<tr><td>3</td><td>气压靴出海</td><td class="num green">+800 万</td><td>新增海外渠道，不抢国内存量</td></tr>
+<tr><td>4</td><td>内容量质</td><td class="num green">+3,000 万</td><td>ROI 从不到 4 提到 5.0，同样的推广费多出 25% 成交；且内容带来自然流量</td></tr>
+<tr><td>5</td><td>品牌发力</td><td class="num green">+1,500 万</td><td>同款提价 5–10%，折算到 1.09 亿是 550–1,090 万；加上 C 端 DMS 新增</td></tr>
+<tr><td>6</td><td>私域接入二转</td><td class="num green">+1,500 万</td><td>私域 GMV，其中器械→课程转化 200 单</td></tr>
+<tr class="tot"><td colspan="2">合计增量</td><td class="num">+8,800 万</td><td>26 年线上 7,200 万 → 27 年 <b>1.6 亿</b></td></tr>
+</table>
+<div class="why">
+<b>但要打个折。</b>
+<p style="margin:8px 0 0">六条之间<b>有重叠</b>：内容（4）和私域（6）抢同一批客户的注意力；品牌（5）的提价会压低一部分销量；产品（1）的新品也可能进私域卖。</p>
+<p style="margin:8px 0 0">按经验<b>去重 30%</b> → 实际增量约 <b>6,160 万</b> → 线上 <b>1.34 亿</b>，对 1.44 亿目标<b>差 1,000 万</b>。</p>
+</div>
+<div class="one">
+"六条全做到，能摸到 1.34–1.44 亿。<br>
+<b>但这是'全做到'——任何一条掉链子，就会落在 1.1 亿左右。</b>"
+</div>
+</div>
+
+<!-- ========== 五、拍板 ========== -->
+<h2>五、要你拍板的六件事</h2>
+
+<div class="crit ask">
+<table>
+<tr><th style="width:44px">#</th><th style="width:290px">拍什么</th><th>为什么急</th></tr>
+<tr><td>1</td><td><b>滞销清理的真实进度是多少？</b></td><td class="red">26 年目标是 12.31 清完，现在只剩 2 个月。<b>先知道实际到哪了，才能定 27 年怎么接</b></td></tr>
+<tr><td>2</td><td><b>库存数据校准谁来干、什么时候完成？</b></td><td class="red"><b>不校准就清库，一定清错</b>——把能卖的清了、该清的留着</td></tr>
+<tr><td>3</td><td><b>气压靴二类械证，26Q4 批不批预算？</b></td><td class="red">周期 6–12 个月，<b>这是最急的一条</b></td></tr>
+<tr><td>4</td><td><b>工厂有没有可借的美国 510(k)？电压能不能改成 110V？</b></td><td>这两条不确认，出海整条作废</td></tr>
+<tr><td>5</td><td><b>品牌品就定气压靴 + DMS 两个？</b></td><td>加第三个就分散，先打透两个</td></tr>
+<tr><td>6</td><td><b>六条各归谁？</b></td><td>你现在分管产品+供应链，1、2 归你；<b>3 归外贸、4/5 归品牌部、6 归新招私域负责人</b>——但要明确谁对"整体翻番"负责</td></tr>
+</table>
+</div>
+
+<div class="crit warn">
+<h3>最后一个提醒：六条里最容易被拖的三件</h3>
+<ol style="font-size:13.5px">
+<li style="margin-bottom:8px"><b>库存数据校准</b>——不产生业绩，没人愿意干，但它是第 2 条的地基。<b>建议直接指定人+定死日期</b></li>
+<li style="margin-bottom:8px"><b>械证</b>——6–12 个月看不到结果，中途容易被砍预算。<b>建议一次性批足，别分期</b></li>
+<li><b>参数可视化</b>——看着像"设计活"，其实是品牌的核心。要产品部给真实参数，不能品牌部自己编</li>
+</ol>
+</div>
+
+<div class="foot">
+<p><b>数据来源</b>：<br>
+· 库存与滞销：9-30 库存快照 —— 有效 SKU 2,821｜库存货值 538.7 万｜在途 584.9 万｜滞销 2,089 个/¥168 万/31%｜呆滞 2,586 个/¥501 万/92.95%<br>
+· 产品线：《产品研发部工作流》4,148 SKU｜研发计划 422 条（123 条无负责人，29%）｜过会率 15%｜8 月新建 41 个 SKU 仅 9 个出量（21.9%）｜新品目标 2,800 万<br>
+· 业绩：26 年线上事业部 7,200 万（内贸 5,450+外贸 1,750）｜一类电商 9 月净销 461.39 万/退款 17.79%｜二类 GSV 35.08 万/退款 31.41%<br>
+· 投放：9 月电动泡沫轴 ROI 5.36、CTR 5.73%<br>
+· 课程：26 年目标 2,029.7 万（线下课 787.7/运动康复师课 562.4/工具销售 530/脑科学课 149.6）<br>
+· FDA 与 Amazon：Amazon Seller Central 医疗器械政策｜21 CFR 890.5650｜FDA 510(k) K251531（AIR COMPRESSION BOOTS，OTC，临时缓解轻微肌肉酸痛）｜GUDID 同类产品标注 "Device Exempt from Premarket Submission: No"</p>
+<p><b>测算说明</b>：<br>
+· 各战役贡献为<b>按现有基数推算的估算值</b>，非财务承诺；去重 30% 为经验系数，未做敏感性分析<br>
+· 27 年新品 2,800 万是《产品研发部工作流》既有目标，非本稿新定<br>
+· 私域 1,500 万为建议目标，需按实际客户基数调整<br>
+· SKU 从 4,148 减到 1,800 的可行性与"销售额不减"的假设，需产品部与运营共同确认</p>
+<p>抖抖 · 2026-11-03</p>
+</div>
+
+</div></body></html>
