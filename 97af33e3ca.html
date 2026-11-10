@@ -54,6 +54,20 @@ ul.plain li b{font-weight:600}
 .tail{margin-top:40px;font-size:14px;color:var(--sub);line-height:1.85;max-width:860px}
 .tail b{color:var(--ink)}
 
+.sub{font-size:12.5px;color:var(--muted);margin:18px 0 6px}
+.rowmap{
+  background:#fff;border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;font-size:14px;line-height:2.3;color:var(--sub);max-width:960px;
+}
+.seg{
+  display:inline-block;background:#f6f3f0;border:1px solid var(--line);border-radius:3px;
+  padding:1px 7px;margin:2px;font-size:13px;color:var(--ink);white-space:nowrap;
+}
+.gat{
+  display:inline-block;border:1px dashed var(--red);color:var(--red);border-radius:3px;
+  padding:1px 7px;margin:2px;font-size:13px;white-space:nowrap;
+}
+
 @media(max-width:760px){
   .page{padding:36px 18px 70px}
   h1{font-size:23px}
@@ -73,39 +87,69 @@ ul.plain li b{font-weight:600}
     <b>说明。</b>你给的链接需要登录企业微信才能打开，我这边只拿到页面标题，没看到你现有表单的字段。下面这套是按已定稿的流程 SOP（V1.0）搭的通用结构，你跟现有的对一遍，缺什么补什么。
   </div>
 
-  <h2>一、先定一条原则</h2>
-  <p class="note">八段活 × 五道门，塞进一张表会变成几十个字段，没人维护得动。正确做法是分三层。</p>
+  <h2>一、先说结构</h2>
+  <p class="note">要的是两层：一层横向汇总，一层纵向明细。</p>
   <ul class="plain">
-    <li><b>项目层</b>——一个产品一行，看全景和状态。</li>
-    <li><b>阶段层</b>——一个项目的每个阶段一行，管进度和门禁。</li>
-    <li><b>记录层</b>——文件、评审、证照、经营数据各一张，挂在阶段或项目下。</li>
+    <li><b>总控表（横向）</b>——一个产品一行，八段五门全铺开。开会就看这一张。</li>
+    <li><b>明细表（纵向）</b>——一个产品的每个阶段一行，管日期、负责人、交付物、判定线。</li>
+    <li><b>记录表</b>——文件、评审、证照、经营数据，挂在阶段或项目下。</li>
   </ul>
-  <p class="note">三层之间用「关联」字段连起来。总表里放一个「阶段进度」字段，自动统计子表完成情况，不用手填。</p>
+  <p class="note">两张表用「关联」连起来。总控表看结论，点进关联记录看过程。不要指望一张表既当汇总又当台账，二十多个状态字段谁也维护不住。</p>
 
   <h2>二、六张表</h2>
-  <p class="note">前两张是骨架，先搭。表四（门禁评审）是重点，其余后补。</p>
+  <p class="note">表 1 是要的总控表，表 2 是对应的明细。其余四张后补。</p>
 
-  <h3>表 1　项目总表<span>一行 = 一个产品</span></h3>
+  <h3>表 1　产品总控表<span>一行 = 一个产品，横向铺开八段五门</span></h3>
+  <p class="note">这张是要的汇总表。开会只看这一张，从左往右扫一遍，产品走到哪、卡在哪、还剩多久，全在眼里。</p>
+
+  <p class="sub">列的顺序（从左往右）</p>
+  <div class="rowmap">
+    项目编号 · 产品名称 · 品类 · 开发方式 · 产品经理 · 立项日 ·
+    <span class="seg">P1 立项</span> <span class="gat">G1</span>
+    <span class="seg">P2 定义</span> <span class="gat">G2</span>
+    <span class="seg">P3 打样</span> <span class="gat">G3</span>
+    <span class="seg">P4 资质</span>
+    <span class="seg">P5 量产</span> <span class="gat">G4</span>
+    <span class="seg">P6 包装</span>
+    <span class="seg">P7 上市</span> <span class="gat">G5</span>
+    <span class="seg">P8 运营</span> ·
+    当前阶段 · 目标上市日 · 距上市 · 成本达成率 · 当前卡点 · 风险等级
+  </div>
+
+  <p class="sub">字段清单</p>
   <table>
-    <tr><th>字段名</th><th>类型</th><th>说明</th></tr>
-    <tr><td class="f">项目编号</td><td class="t">自动编号</td><td>建议格式 PM-年-序号，如 PM-2026-001</td></tr>
-    <tr><td class="f">产品名称</td><td class="t">文本</td><td>与证照或合同一致，不用简称</td></tr>
+    <tr><th>字段名</th><th>类型</th><th>填什么</th></tr>
+    <tr><td class="f">项目编号</td><td class="t">自动编号</td><td>PM-年-序号，如 PM-2026-001</td></tr>
+    <tr><td class="f">产品名称</td><td class="t">文本</td><td>与证照或合同一致</td></tr>
     <tr><td class="f">品类</td><td class="t">单选</td><td>普通消费品 / 小家电 / 化妆品 / 食品 / 二类器械 / 三类器械</td></tr>
     <tr><td class="f">开发方式</td><td class="t">单选</td><td>自研 / OEM / 外购整机</td></tr>
-    <tr><td class="f">当前阶段</td><td class="t">单选</td><td>P1 至 P8，看板按这个分列</td></tr>
-    <tr><td class="f">当前状态</td><td class="t">单选</td><td>进行中 / 阻塞 / 暂停 / 终止 / 已上市 / 已退市</td></tr>
-    <tr><td class="f">阶段进度</td><td class="t">进度</td><td>自动统计表 2 已完成行数占比，不手填</td></tr>
-    <tr><td class="f">产品经理</td><td class="t">人员</td><td>一人，写主责</td></tr>
-    <tr><td class="f">立项日期</td><td class="t">日期</td><td>过 G1 的日期</td></tr>
+    <tr><td class="f">产品经理</td><td class="t">人员</td><td>一人，主责</td></tr>
+    <tr><td class="f">立项日</td><td class="t">日期</td><td>过 G1 那天</td></tr>
+    <tr><td class="f">P1 立项</td><td class="t">单选</td><td rowspan="2">每段一格：未开始 / 进行中 / 已完成 / 阻塞 / 不适用</td></tr>
+    <tr><td class="f">P2 定义</td><td class="t">单选</td></tr>
+    <tr><td class="f">P3 打样</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">P4 资质</td><td class="t">单选</td><td>同上。这一段没独立门禁</td></tr>
+    <tr><td class="f">P5 量产</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">P6 包装</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">P7 上市</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">P8 运营</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">G1 立项门</td><td class="t">单选</td><td rowspan="2">未开 / 已过 / 未过。列名保留 G 前缀，或给这几列加底色，与八段分开</td></tr>
+    <tr><td class="f">G2 方案门</td><td class="t">单选</td></tr>
+    <tr><td class="f">G3 送检门</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">G4 量产门</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">G5 上市门</td><td class="t">单选</td><td>同上</td></tr>
+    <tr><td class="f">当前阶段</td><td class="t">公式</td><td>取第一个不是「已完成」的段，结果显示 P3</td></tr>
     <tr><td class="f">目标上市日</td><td class="t">日期</td><td>倒排的锚点，改这个要重排全表</td></tr>
-    <tr><td class="f">目标成本</td><td class="t">数字</td><td>元，G2 冻结时定</td></tr>
-    <tr><td class="f">当前成本</td><td class="t">数字</td><td>元，随 BOM 更新</td></tr>
-    <tr><td class="f">成本达成率</td><td class="t">公式</td><td>目标成本 / 当前成本，看是否高于 105%</td></tr>
-    <tr><td class="f">已过门禁</td><td class="t">多选</td><td>G1 至 G5，勾选已过的</td></tr>
-    <tr><td class="f">当前卡点</td><td class="t">文本</td><td>一句话说清现在卡在谁那儿</td></tr>
+    <tr><td class="f">距上市</td><td class="t">公式</td><td>目标上市日减今天，负数标红</td></tr>
+    <tr><td class="f">成本达成率</td><td class="t">公式</td><td>目标成本 / 实际成本，高于 105% 标红</td></tr>
+    <tr><td class="f">当前卡点</td><td class="t">文本</td><td>一句话：卡在谁那儿、卡几天</td></tr>
+    <tr><td class="f">风险等级</td><td class="t">单选</td><td>高 / 中 / 低。高＝门禁未过且距上市不足 60 天</td></tr>
     <tr><td class="f">备注</td><td class="t">文本</td><td></td></tr>
   </table>
-  <p class="note"><b>视图建议：</b>看板按「当前阶段」分列，一眼看出堆积在哪一段；甘特按「目标上市日」排；表格视图按「当前状态」筛选阻塞项，周会就用这张。</p>
+
+  <p class="note"><b>嫌宽就先砍到五列。</b>只保留 G1 到 G5 加「当前阶段」，八段的细节点进明细表看。宽度和可读性只能二选一，先窄后宽。</p>
+
+  <p class="note"><b>三套视图：</b>全列表格（冻结左侧基础列）；按「当前阶段」分组，看堆积在哪一段；筛选「G 列有未过」或「风险 = 高」，直接当周会议程。</p>
 
   <h3>表 2　阶段任务表<span>一行 = 一个项目的某个阶段</span></h3>
   <table>
