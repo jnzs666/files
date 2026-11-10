@@ -16,28 +16,24 @@
   --rule:#d3ccc4;
   --th:#f2eeea;
   --red:#d32f10;
-  --serif:"Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif;
-  --sans:"Microsoft YaHei","PingFang SC","Noto Sans SC","Hiragino Sans GB",sans-serif;
-  --mono:"Cascadia Mono","Consolas","SF Mono",monospace;
+  --font:"Microsoft YaHei","PingFang SC","Noto Sans SC","Hiragino Sans GB",sans-serif;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:16px;line-height:1.85;
+  font-family:var(--font);font-size:16px;line-height:1.85;
+  font-variant-numeric:tabular-nums;
   -webkit-font-smoothing:antialiased;
 }
 .page{max-width:1060px;margin:0 auto;padding:64px 40px 96px}
 
 .kicker{
-  font-family:var(--mono);font-size:12.5px;color:var(--muted);
-  letter-spacing:.04em;display:flex;gap:10px;align-items:center;margin-bottom:24px;flex-wrap:wrap;
+  font-size:13px;color:var(--muted);
+  display:flex;gap:10px;align-items:center;margin-bottom:24px;flex-wrap:wrap;
 }
 .kicker .dot{width:3px;height:3px;border-radius:50%;background:var(--rule)}
-h1{
-  font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.35;
-  margin:0 0 16px;letter-spacing:0;
-}
+h1{font-size:34px;font-weight:600;line-height:1.35;margin:0 0 16px;letter-spacing:0}
 .dek{font-size:15.5px;line-height:1.85;color:var(--sub);max-width:780px;margin:0 0 48px}
 
 .claim{
@@ -48,114 +44,83 @@ h1{
   content:"";position:absolute;left:-1px;top:22px;bottom:22px;width:2px;
   background:var(--red);border-radius:2px;
 }
-.claim .label{
-  font-family:var(--mono);font-size:12.5px;color:var(--red);
-  letter-spacing:.06em;display:block;margin-bottom:10px;
-}
-.claim p{font-family:var(--serif);font-size:17px;line-height:1.95;font-weight:600;margin:0}
+.claim .label{font-size:13px;color:var(--red);display:block;margin-bottom:10px}
+.claim p{font-size:17px;line-height:1.95;font-weight:600;margin:0}
 
 section{margin:0 0 80px}
 h2{
-  font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.5;
+  font-size:22px;font-weight:600;line-height:1.5;
   margin:0 0 12px;display:flex;align-items:baseline;gap:12px;
   border-left:4px solid var(--red);padding-left:14px;
 }
-h2 .num{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-weight:400;letter-spacing:.04em}
-.h2note{font-size:15px;color:var(--sub);margin:0 0 32px;max-width:760px;padding-left:18px}
+h2 .num{font-size:13px;color:var(--muted);font-weight:400}
+.h2note{font-size:15px;color:var(--sub);margin:0 0 32px;max-width:780px;padding-left:18px}
 h3{font-size:17px;font-weight:600;margin:0 0 8px;line-height:1.6}
-p{margin:0 0 16px;max-width:760px}
+p{margin:0 0 16px;max-width:780px}
 p:last-child{margin-bottom:0}
 b{font-weight:600}
 
-/* 映射表 */
 .tbl{width:100%;border-collapse:collapse;margin:20px 0 8px;font-size:14.5px;line-height:1.75;border-top:1px solid var(--rule)}
 .tbl th{
   text-align:left;vertical-align:bottom;padding:10px 14px 10px 0;
-  font-weight:500;font-size:13px;color:var(--sub);background:var(--th);
-  border-bottom:1px solid var(--rule);white-space:nowrap;letter-spacing:.03em;
+  font-weight:600;font-size:13px;color:var(--sub);background:var(--th);
+  border-bottom:1px solid var(--rule);letter-spacing:.02em;
 }
 .tbl th:first-child{padding-left:14px}
 .tbl td{padding:14px 14px 14px 0;vertical-align:top;border-bottom:1px solid var(--line)}
 .tbl td:first-child{padding-left:14px}
 .tbl tr:last-child td{border-bottom:none}
-.tbl .c1{font-family:var(--mono);font-size:13px;color:var(--red);white-space:nowrap;width:56px}
+.tbl .c1{font-size:13px;color:var(--red);white-space:nowrap;width:56px;font-weight:600}
 .tbl .stage-name{font-weight:600;white-space:nowrap}
 .tbl .src{color:var(--sub);font-size:13.5px;white-space:nowrap}
 
-/* 流程条 */
 .flow{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:8px 0 6px}
-.flow .box{
-  background:var(--card);border:1px solid var(--line);border-radius:6px;
-  padding:14px 10px 16px;min-height:96px;
-}
-.flow .box .n{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:block;margin-bottom:6px}
+.flow .box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 10px 16px;min-height:96px}
+.flow .box .n{font-size:13px;color:var(--muted);display:block;margin-bottom:6px;font-weight:600}
 .flow .box .t{font-size:13.5px;font-weight:600;line-height:1.55}
 .gates{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:0 0 14px}
-.gates .g{
-  font-family:var(--mono);font-size:12px;color:var(--red);
-  text-align:center;position:relative;padding-top:10px;
-}
-.gates .g::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--red);opacity:.45;
-}
-.gates .g span{display:block;color:var(--muted);font-size:11.5px;letter-spacing:0}
-.cap{font-size:13.5px;color:var(--muted);margin:0 0 40px;line-height:1.75;max-width:760px}
+.gates .g{font-size:12.5px;color:var(--red);text-align:center;position:relative;padding-top:10px;font-weight:600}
+.gates .g::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--red);opacity:.45}
+.cap{font-size:13.5px;color:var(--muted);margin:0 0 40px;line-height:1.75;max-width:780px}
 
-/* 三行法 */
 .rule3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 8px}
 .rule3 .r{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
-.rule3 .r .k{font-family:var(--mono);font-size:12.5px;color:var(--red);display:block;margin-bottom:8px;letter-spacing:.04em}
+.rule3 .r .k{font-size:13px;color:var(--red);display:block;margin-bottom:8px;font-weight:600}
 .rule3 .r .v{font-size:15px;font-weight:600;margin-bottom:6px}
 .rule3 .r .d{font-size:13.5px;color:var(--sub);line-height:1.75}
 
-/* 阶段卡 */
 .stage{border-top:1px solid var(--rule);padding-top:28px;margin-top:36px}
 .stage:first-of-type{margin-top:0}
 .stage .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
-.stage .sn{font-family:var(--mono);font-size:13px;color:var(--red);letter-spacing:.04em}
+.stage .sn{font-size:13px;color:var(--red);font-weight:600;letter-spacing:.02em}
 .stage .src{font-size:13px;color:var(--muted);margin-left:auto}
-.g3{display:grid;grid-template-columns:0.95fr 1fr 1.5fr;gap:28px}
-.colh{
-  font-family:var(--mono);font-size:12.5px;color:var(--muted);
-  letter-spacing:.05em;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);
-}
+.g3{display:grid;grid-template-columns:0.95fr 1fr 1.55fr;gap:28px}
+.colh{font-size:12.5px;color:var(--muted);margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .stage ul{margin:0;padding:0;list-style:none}
 .stage li{font-size:14.5px;line-height:1.8;padding-left:14px;position:relative;margin-bottom:6px}
 .stage li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:1px;background:var(--rule)}
 .crit li::before{background:var(--red);width:6px}
-.crit li b{font-variant-numeric:tabular-nums}
-.pit{
-  margin-top:18px;font-size:14px;line-height:1.8;color:var(--sub);
-  border-left:2px solid var(--line);padding-left:14px;
-}
+.pit{margin-top:18px;font-size:14px;line-height:1.8;color:var(--sub);border-left:2px solid var(--line);padding-left:14px}
 .pit b{color:var(--ink)}
 
-/* 门禁表 */
 .gate-tbl td{font-size:14.5px}
-.pill{
-  display:inline-block;font-family:var(--mono);font-size:12px;color:var(--red);
-  border:1px solid var(--line);border-radius:3px;padding:0 5px;margin-right:4px;
-}
+.rev td:first-child{font-size:13.5px;color:var(--ink);white-space:nowrap;width:96px;font-weight:600}
 
-/* 倒排 */
-.rev td:first-child{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;width:92px}
-
-/* 优先级 */
 .pri{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 8px}
 .pri .p{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px}
-.pri .p .rank{font-family:var(--mono);font-size:12.5px;color:var(--red);letter-spacing:.06em}
+.pri .p .rank{font-size:12.5px;color:var(--red);font-weight:600}
 .pri .p .h{font-size:16px;font-weight:600;margin:6px 0 10px;line-height:1.6}
 .pri .p .b{font-size:14px;color:var(--sub);line-height:1.8}
 
 .note{
   background:var(--wash);border-radius:6px;padding:22px 24px;margin:28px 0 0;
-  font-size:14.5px;line-height:1.85;color:var(--sub);max-width:860px;
+  font-size:14.5px;line-height:1.85;color:var(--sub);max-width:880px;
 }
 .note b{color:var(--ink)}
 
 @media(max-width:900px){
   .page{padding:40px 20px 72px}
-  h1{font-size:28px}
+  h1{font-size:26px}
   .flow{grid-template-columns:repeat(4,1fr)}
   .gates{display:none}
   .g3{grid-template-columns:1fr;gap:22px}
@@ -172,51 +137,51 @@ b{font-weight:600}
     <span>2026-11-10</span>
   </div>
 
-  <h1>产品经理的一条链，不是六件事</h1>
-  <p class="dek">把简历里那六条工作内容拆成八个阶段、五道门禁，每一段都给一条能签字的判定线。</p>
+  <h1>产品经理工作流程与环节标准</h1>
+  <p class="dek">从一份产品经理简历反推出来的通用流程。去掉具体品类之后，剩下八个阶段、五道门禁，每一段都有能签字的判定线。</p>
 
   <div class="claim">
     <span class="label">先说结论</span>
-    <p>这六条写的是同一条链上的八段活儿。现在真正缺的不是"做什么"——做什么都写全了；缺的是"做到什么程度算过关"。每一段都停在"做完了"，没有一条线能让人签字放行，所以进度只能靠问，质量只能靠运气。</p>
+    <p>产品经理的活看着杂，其实是一条链上的八段。写岗位要求时最容易只写"做什么"，漏掉"做到什么程度算过关"。八段都能干活、却都没有判定线，结果就是进度靠问、质量靠运气。</p>
   </div>
 
   <section>
     <h2><span class="num">01</span>六条对八段</h2>
-    <p class="h2note">简历的六条是按"谁在干什么"排的，不是按流程排的。第二、三条里各自塞了两个阶段，拆开才看得清卡点在哪。</p>
+    <p class="h2note">简历上的六条是按"谁在干什么"写的，不是按流程写的。第二、三条里各自塞了两个阶段，拆开才看得清卡点在哪。</p>
 
     <table class="tbl">
       <thead>
         <tr><th>段</th><th>阶段</th><th>对应简历</th><th>这一段真正要交出来的东西</th></tr>
       </thead>
       <tbody>
-        <tr><td class="c1">P1</td><td class="stage-name">品类洞察与立项</td><td class="src">第 1 条</td><td>一个能讲清楚"为什么是我们做、做哪一段价格带"的立项报告</td></tr>
+        <tr><td class="c1">P1</td><td class="stage-name">品类洞察与立项</td><td class="src">第 1 条</td><td>讲清"为什么是我们做、打哪一段"的立项报告</td></tr>
         <tr><td class="c1">P2</td><td class="stage-name">产品定义与方案</td><td class="src">第 2 条前半</td><td>冻结的规格书、逐件到料的成本表、选定的供应商</td></tr>
-        <tr><td class="c1">P3</td><td class="stage-name">打样验证</td><td class="src">第 2 条后半</td><td>TO / T1 / T2 三轮样机加测试报告</td></tr>
-        <tr><td class="c1">P4</td><td class="stage-name">注册取证</td><td class="src">第 3 条前半</td><td>二类医疗器械注册证，且证上型号=量产型号</td></tr>
-        <tr><td class="c1">P5</td><td class="stage-name">量产与入仓</td><td class="src">第 3 条后半</td><td>首批合格大货进仓，批记录齐全</td></tr>
-        <tr><td class="c1">P6</td><td class="stage-name">包装与合规物料</td><td class="src">第 4 条</td><td>说明书、标签、包装、广审图四件套全过</td></tr>
+        <tr><td class="c1">P3</td><td class="stage-name">打样验证</td><td class="src">第 2 条后半</td><td>三轮样机加测试报告，一轮都不能省</td></tr>
+        <tr><td class="c1">P4</td><td class="stage-name">资质与合规</td><td class="src">第 3 条前半</td><td>该拿的证拿到，且证上型号=量产型号</td></tr>
+        <tr><td class="c1">P5</td><td class="stage-name">量产与入仓</td><td class="src">第 3 条后半</td><td>首批合格大货进仓，批记录齐</td></tr>
+        <tr><td class="c1">P6</td><td class="stage-name">包装与合规物料</td><td class="src">第 4 条</td><td>包装、说明书、标签、宣传物料全过审</td></tr>
         <tr><td class="c1">P7</td><td class="stage-name">上市与营销</td><td class="src">第 5 条</td><td>能上架、能卖、能算账的一套物料和节奏</td></tr>
-        <tr><td class="c1">P8</td><td class="stage-name">上市后运营与迭代</td><td class="src">第 6 条</td><td>月度经营账 + 明确的改 / 降 / 换 / 停结论</td></tr>
+        <tr><td class="c1">P8</td><td class="stage-name">上市后运营与迭代</td><td class="src">第 6 条</td><td>月度经营账加明确的改 / 降 / 换 / 停结论</td></tr>
       </tbody>
     </table>
   </section>
 
   <section>
     <h2><span class="num">02</span>什么叫"标准"</h2>
-    <p class="h2note">这一段是全文的方法论，后面八段每段都按这个格式写。没有格式的标准，最后都会变成"差不多了"。</p>
+    <p class="h2note">这是全文的方法论，后面八段都按这个格式写。没有格式的标准，最后都会变成"差不多了"。</p>
 
-    <p>很多人说的"标准"，其实是工作量清单：做了竞品分析、打了样、送了检。这不叫标准，这叫动作。标准必须能回答三个问题，缺一个就签不了字。</p>
+    <p>很多人嘴里的"标准"其实是工作量清单：做了竞品分析、打了样、送了检。这不叫标准，这叫动作。标准必须能回答三个问题，缺一个就签不了字。</p>
 
     <div class="rule3">
       <div class="r">
         <span class="k">第一行</span>
         <div class="v">交付物是什么</div>
-        <div class="d">一个具体文件或实物，有名字、有页数、有版本号。不能是"一份报告"，要能点开。</div>
+        <div class="d">一个具体文件或实物，有名字、有版本号。不能写"一份报告"，要能点开。</div>
       </div>
       <div class="r">
         <span class="k">第二行</span>
         <div class="v">判定线是多少</div>
-        <div class="d">一个数字，或者一个"是/否"。够不够、过没过，别人拿表一对就知道，不用问做的人。</div>
+        <div class="d">一个数字，或者一个"是/否"。别人拿表一对就知道过没过，不用问做的人。</div>
       </div>
       <div class="r">
         <span class="k">第三行</span>
@@ -226,56 +191,46 @@ b{font-weight:600}
     </div>
 
     <div class="note">
-      <b>为什么非要这么死板。</b>产品经理最大的权力不是"决定做什么"，是"宣布上一段过关了"。没有门禁的流程，最后一定变成：样机还差一口气就送检，证还没下来就备货，包装还没审就印刷。三件事里任何一件，代价都是几万到几十万，而且全是自己扛。
+      <b>为什么非要这么死板。</b>产品经理最大的权力不是"决定做什么"，是"宣布上一段过关了"。没有门禁的流程，最后一定变成：样机还差一口气就送检、证还没下来就备货、包装还没审就开印。这三件事任何一件，代价都是几万到几十万，而且全是自己扛。
     </div>
   </section>
 
   <section>
     <h2><span class="num">03</span>流程总图</h2>
-    <p class="h2note">八段之间插五道门。门的意义是：上一段没过，下一段的钱一分不花。</p>
+    <p class="h2note">八段之间插五道门。门的意义只有一句：上一段没过，下一段的钱一分不花。</p>
 
     <div class="flow">
       <div class="box"><span class="n">P1</span><div class="t">品类洞察<br>与立项</div></div>
       <div class="box"><span class="n">P2</span><div class="t">产品定义<br>与方案</div></div>
       <div class="box"><span class="n">P3</span><div class="t">打样<br>验证</div></div>
-      <div class="box"><span class="n">P4</span><div class="t">注册<br>取证</div></div>
+      <div class="box"><span class="n">P4</span><div class="t">资质<br>与合规</div></div>
       <div class="box"><span class="n">P5</span><div class="t">量产<br>与入仓</div></div>
       <div class="box"><span class="n">P6</span><div class="t">包装与<br>合规物料</div></div>
       <div class="box"><span class="n">P7</span><div class="t">上市<br>与营销</div></div>
       <div class="box"><span class="n">P8</span><div class="t">运营<br>与迭代</div></div>
     </div>
     <div class="gates">
-      <div class="g">G1</div>
-      <div class="g">G2</div>
-      <div class="g">G3</div>
-      <div class="g">G4</div>
-      <div class="g">G5</div>
-      <div class="g"></div>
-      <div class="g"></div>
-      <div class="g"></div>
+      <div class="g">G1</div><div class="g">G2</div><div class="g">G3</div>
+      <div class="g">G4</div><div class="g">G5</div>
+      <div class="g"></div><div class="g"></div><div class="g"></div>
     </div>
-    <p class="cap">G1 立项门 · G2 方案冻结门 · G3 送检门 · G4 量产放行门 · G5 上市放行门。倒计时按 G3 和 G5 两个节点抓，其余按周跟。</p>
+    <p class="cap">G1 立项门 · G2 方案冻结门 · G3 送检门 · G4 量产放行门 · G5 上市放行门。</p>
   </section>
 
   <section>
     <h2><span class="num">04</span>八段的标准</h2>
-    <p class="h2note">每段三块：做什么、交什么、判定线。判定线里的数字是行业通行的参考值，公司口径不同就按实际校准，但"要有数字"这条不能改。</p>
+    <p class="h2note">每段三块：做什么、交什么、判定线。判定线里的数字是通行参考值，公司口径不同可以校准，但"要有数字"这条不能改。</p>
 
-    <!-- P1 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P1</span>
-        <h3>品类洞察与立项</h3>
-        <span class="src">简历第 1 条</span>
-      </div>
+      <div class="head"><span class="sn">P1</span><h3>品类洞察与立项</h3><span class="src">简历第 1 条</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
           <ul>
-            <li>扫价格带，找出谁在哪个价格带占位、靠什么占住</li>
-            <li>扒差评，把抱怨翻译成需求，再翻译成产品参数</li>
-            <li>算账：BOM 预估、定价、毛利、盈亏平衡月销</li>
-            <li>写风险：注册、专利、供应链、平台合规各一条对策</li>
+            <li>扫价格带，看谁在哪个段位占位、靠什么占住</li>
+            <li>扒差评，把抱怨翻译成需求，再翻译成参数</li>
+            <li>算账：成本预估、定价、毛利、盈亏平衡</li>
+            <li>写风险：资质、专利、供应链、平台合规各一条对策</li>
           </ul>
         </div>
         <div>
@@ -290,33 +245,28 @@ b{font-weight:600}
         <div>
           <div class="colh">判定线</div>
           <ul class="crit">
-            <li>竞品 <b>≥15 个 SKU</b>，覆盖 <b>≥4 个价格带</b>，每个价格带至少 3 个，说明谁在守门</li>
-            <li>用户评价样本 <b>≥2000 条</b>，重点竞品每个 TOP3 SKU 抓 <b>≥300 条</b></li>
-            <li>差评归因 <b>≥8 类</b>，每类给占比，并标注"我们能改 / 改不了"</li>
-            <li>机会点 <b>≥5 条</b>，按"规模 × 我方能力 × 竞争强度"排序，每条答一句"为什么是我们"</li>
-            <li>测算误差 <b>≤10%</b>：BOM、定价、毛利、回本月销四个数都要有</li>
+            <li>竞品 <b>≥15 个 SKU</b>，覆盖 <b>≥4 个价格带</b>，每带至少 3 个，说明谁在守门</li>
+            <li>用户评价样本 <b>≥2000 条</b>，重点竞品每个 TOP3 SKU <b>≥300 条</b></li>
+            <li>差评归因 <b>≥8 类</b>，每类给占比，并标"我们能改 / 改不了"</li>
+            <li>机会点 <b>≥5 条</b>，按"规模 × 能力 × 竞争"排序，每条答一句"为什么是我们"</li>
+            <li>测算四件套齐全：成本、定价、毛利、回本月销，误差 <b>≤10%</b></li>
             <li>每个结论都能指到数据源，指不到的整段删掉</li>
           </ul>
         </div>
       </div>
-      <div class="pit"><b>坑：</b>这一段的报告最容易写成"市场很大、增长很快"。那等于没写。有用的只有一句：这个价格带现在谁在赚、赚多少、我们凭什么挤进去。</div>
+      <div class="pit"><b>坑：</b>这一段的报告最容易写成"市场很大、增长很快"。那等于没写。有用的只有一句：这个段位现在谁在赚、赚多少、我们凭什么挤进去。</div>
     </div>
 
-    <!-- P2 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P2</span>
-        <h3>产品定义与方案</h3>
-        <span class="src">简历第 2 条前半</span>
-      </div>
+      <div class="head"><span class="sn">P2</span><h3>产品定义与方案</h3><span class="src">简历第 2 条前半</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
           <ul>
             <li>自研还是 OEM，先定这个，再谈别的</li>
-            <li>写死规格：测量方式、量程、精度、袖带范围、记忆、供电、蓝牙</li>
-            <li>和结构师过干涉点、装配顺序、拆件</li>
-            <li>供应商比价、验厂、问"有没有给同行做同款"</li>
+            <li>写死规格：性能、使用条件、寿命、安全、标识五类</li>
+            <li>和结构/工艺过干涉点、装配顺序、拆件</li>
+            <li>供应商比价、验厂，问"有没有给同行做同款"</li>
           </ul>
         </div>
         <div>
@@ -325,127 +275,112 @@ b{font-weight:600}
             <li>《产品规格书》PRD（带版本号）</li>
             <li>BOM 成本表（逐件到料）</li>
             <li>供应商评估表（≥3 家）</li>
-            <li>3D 模型、爆炸图、关键干涉点清单</li>
+            <li>结构方案或工艺方案，含关键风险点清单</li>
           </ul>
         </div>
         <div>
           <div class="colh">判定线</div>
           <ul class="crit">
-            <li>规格书里"待定"字样 <b>= 0</b>。关键器件（泵、阀、传感器、芯片）型号写死</li>
-            <li>量程 <b>0–299 mmHg</b>、示值误差 <b>≤±3 mmHg</b>、臂围适配范围写明上下限</li>
-            <li>BOM 项数 100% 列全，<b>不许有"其他/杂项"兜底行</b></li>
-            <li>实际 BOM <b>≤ 目标成本 ×1.05</b>，超标要写降价路径和时点</li>
+            <li>规格书里"待定"字样 <b>= 0</b>；关键器件或关键原料型号写死</li>
+            <li>规格书五类齐全：性能指标、使用条件、寿命、安全项、标识要求，<b>缺一不可</b></li>
+            <li>BOM 项数 100% 列全，<b>不许有"其他 / 杂项"兜底行</b></li>
+            <li>实际成本 <b>≤ 目标成本 ×1.05</b>，超标要写降价路径和时点</li>
             <li>供应商 <b>≥3 家</b>比价，评估 6 项：资质、产能、良率、账期、配合度、是否给同行代工</li>
-            <li>关键器件无独家依赖，或写明备选二供</li>
+            <li>关键件无独家依赖，或写明备选二供</li>
           </ul>
         </div>
       </div>
-      <div class="pit"><b>坑：</b>规格书里留一句"以实物为准"，后面所有验收都会吵。这一段的成本是笔算出来的，不是估出来的；估出来的数，量产必超。</div>
+      <div class="pit"><b>坑：</b>规格书里留一句"以实物为准"，后面所有验收都会吵。成本要笔算出来，不是估出来；估出来的数，量产必超。</div>
     </div>
 
-    <!-- P3 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P3</span>
-        <h3>打样验证</h3>
-        <span class="src">简历第 2 条后半</span>
-      </div>
+      <div class="head"><span class="sn">P3</span><h3>打样验证</h3><span class="src">简历第 2 条后半</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
           <ul>
-            <li>TO 手工样机：先看装不装得上、像不像、丝印读不读得清</li>
-            <li>T1 开模首件：看模具、公差、气路漏不漏</li>
-            <li>T2 小批试产：看一致性、可靠性、跌落</li>
+            <li>第一轮手工样：看装不装得上、像不像、字读不读得清</li>
+            <li>第二轮开模首件：看模具、公差、装配</li>
+            <li>第三轮小批试产：看一致性、可靠性、跌落</li>
             <li>每轮出报告，不通过不许进下一轮</li>
           </ul>
         </div>
         <div>
           <div class="colh">交付物</div>
           <ul>
-            <li>样机：TO <b>≥5 台</b>、T1 <b>≥10 台</b>、T2 <b>≥30 台</b></li>
+            <li>三轮样机：手工 <b>≥5 台</b>、开模首件 <b>≥10 台</b>、小批 <b>≥30 台</b></li>
             <li>《样机测试报告》三轮</li>
             <li>问题清单（问题 / 责任方 / 关闭时间）</li>
-            <li>打样排期表与物料到料跟踪</li>
+            <li>打样排期与物料到料跟踪</li>
           </ul>
         </div>
         <div>
           <div class="colh">判定线</div>
           <ul class="crit">
-            <li>气密：加压 <b>280 mmHg</b>，静置 <b>60 秒</b> 压降 <b>≤3 mmHg</b></li>
-            <li>示值：全量程与标准压力计比对，偏差 <b>≤±3 mmHg</b></li>
-            <li>一致性：同批 30 台测同一标准压力，<b>极差 ≤2 mmHg</b></li>
-            <li>装配：一次装配合格率 <b>≥95%</b></li>
-            <li>寿命：<b>≥10000 次</b>充放气后仍满足示值精度</li>
-            <li>T2 样机必须是<b>量产工艺</b>做的，手工件不许送检</li>
+            <li>每个关键指标都有测试方法，<b>无空白项</b></li>
+            <li>关键指标 <b>100% 达标</b>，不接受"基本达标"</li>
+            <li>同批一致性：离散度 <b>≤ 标称公差的一半</b></li>
+            <li>一次装配合格率 <b>≥95%</b></li>
+            <li>寿命测试按品类定次数（如按键、折叠、充放 ≥1 万次），没定不许放行</li>
+            <li>小批样机必须是<b>量产工艺</b>做的，手工件不许送检</li>
           </ul>
         </div>
       </div>
-      <div class="pit"><b>坑：</b>三个致命错位。一是拿 TO 手工件去送检，检出来合格、量产不合格；二是只做功能测试不做一致性，30 台里 5 台飘；三是问题清单不闭环，同一个问题从 T1 拖到量产。</div>
+      <div class="pit"><b>坑：</b>三个致命错位。一是拿手工件去送检，检出来合格、量产不合格；二是只做功能测试不做一致性，30 台里 5 台飘；三是问题清单不闭环，同一个问题从第二轮拖到量产。</div>
     </div>
 
-    <!-- P4 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P4</span>
-        <h3>注册取证</h3>
-        <span class="src">简历第 3 条前半</span>
-      </div>
+      <div class="head"><span class="sn">P4</span><h3>资质与合规</h3><span class="src">简历第 3 条前半</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
           <ul>
-            <li>写产品技术要求（PTR），每个指标配检验方法</li>
-            <li>送有资质的机构做注册检验</li>
-            <li>临床评价：电子血压计在免临床评价目录内，走同品种比对</li>
-            <li>体系核查准备，配合现场检查</li>
+            <li>先判断这个品类要什么证，别做完才知道</li>
+            <li>备资料：技术要求、检验、评价资料（如适用）</li>
+            <li>送检、送审、配合体系核查</li>
+            <li>变更管理：哪些改动要重新申报</li>
           </ul>
         </div>
         <div>
           <div class="colh">交付物</div>
           <ul>
-            <li>PTR 定稿版</li>
-            <li>注册检验报告</li>
-            <li>临床评价资料（同品种比对表）</li>
-            <li>注册证</li>
+            <li>证照或检测报告</li>
+            <li>产品技术要求 / 执行标准</li>
+            <li>申报资料台账（谁交、什么时候交）</li>
+            <li>合规结论一页纸</li>
           </ul>
         </div>
         <div>
           <div class="colh">判定线</div>
           <ul class="crit">
-            <li>注册证上的型号规格与量产型号 <b>100% 一致</b>，一个丝印颜色都不能差</li>
-            <li>PTR 每一项性能指标都有对应检验方法，<b>无空白项</b></li>
-            <li>说明书内容与注册证、PTR 三方一致，逐条比对留痕</li>
-            <li>周期按 <b>6–10 个月</b>排：检验 8–12 周、技术审评 60 工作日、审批 20 工作日，另加体系核查</li>
-            <li>任何影响安全有效的变更走变更注册，不影响的内控变更留档备查</li>
+            <li>证上载明的型号规格与量产型号 <b>100% 一致</b></li>
+            <li>申报资料里每个性能指标都有对应检验方法，<b>无空白项</b></li>
+            <li>说明书 ↔ 证照 ↔ 技术要求 <b>三方逐条比对，零冲突</b></li>
+            <li>周期按品类先算，倒排进上市计划（见第 06 节）</li>
+            <li>任何影响安全或合规目的的变更走变更程序，其余留档备查</li>
           </ul>
         </div>
       </div>
-      <div class="pit"><b>坑：</b>证下来之后改外观、换供应商、换袖带材质，都可能是变更注册。钱和时间都在这儿。所以在 P2 就要把"这个型号三年内不改什么"想清楚。具体目录和审评口径以当地审评机构现行要求为准。</div>
+      <div class="pit"><b>坑：</b>证下来之后改外观、换供应商、换材质，都可能是重新申报。钱和时间都在这儿。所以方案冻结时就要把"三年内不改什么"想清楚。</div>
     </div>
 
-    <!-- P5 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P5</span>
-        <h3>量产与入仓</h3>
-        <span class="src">简历第 3 条后半</span>
-      </div>
+      <div class="head"><span class="sn">P5</span><h3>量产与入仓</h3><span class="src">简历第 3 条后半</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
           <ul>
             <li>试产三批，摸清良率和工艺上限</li>
-            <li>定检验标准：外观、气密、示值、功能、电气安全、标识</li>
+            <li>定检验标准：来料、过程、出厂三层</li>
             <li>排产计划跟采购、物控对齐，盯齐套</li>
-            <li>首批大货全检，后续按抽检方案走</li>
+            <li>首批全检，后续按抽检方案走</li>
           </ul>
         </div>
         <div>
           <div class="colh">交付物</div>
           <ul>
             <li>试产报告（3 批 × ≥100 台）</li>
-            <li>进料 / 过程 / 出厂三份检验标准</li>
+            <li>三层检验标准</li>
             <li>批记录（可追溯到料和工位）</li>
             <li>入库单与验收单</li>
           </ul>
@@ -457,28 +392,23 @@ b{font-weight:600}
             <li>关键指标过程能力 <b>Cpk ≥1.33</b></li>
             <li>物料齐套率 <b>100%</b> 才下单，不许"边到边做"</li>
             <li>首批入仓日 <b>≤ 上市日 -15 天</b></li>
-            <li>袖带 / 臂筒类软材必须锁供应商锁批次，换批留首件对比</li>
+            <li>换了供应商或批次，留首件对比再投产</li>
           </ul>
         </div>
       </div>
-      <div class="pit"><b>坑：</b>量产崩的地方九成在软材料。同一张图纸，换个批次的袖带，气密就差一截。所以软材要做首件对比，别只看图纸。</div>
+      <div class="pit"><b>坑：</b>量产崩的地方九成在"软"的部分——软材料、涂层、装配手感。同一张图纸换个批次就变样，所以要做首件对比，别只看图纸。</div>
     </div>
 
-    <!-- P6 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P6</span>
-        <h3>包装与合规物料</h3>
-        <span class="src">简历第 4 条</span>
-      </div>
+      <div class="head"><span class="sn">P6</span><h3>包装与合规物料</h3><span class="src">简历第 4 条</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
           <ul>
-            <li>包装结构、说明书、使用指南、标签一起做，别分开做</li>
-            <li>法务 / 法规逐条过文案</li>
+            <li>包装、说明书、标签、宣传物料一起做，别分开做</li>
+            <li>法务或法规逐条过文案</li>
             <li>打样三轮内定稿，每轮留修改对照</li>
-            <li>广告素材先送审，拿到批文再投</li>
+            <li>要送审的素材先送审，拿到批文再投</li>
           </ul>
         </div>
         <div>
@@ -486,31 +416,26 @@ b{font-weight:600}
           <ul>
             <li>包装结构稿、印刷稿</li>
             <li>说明书、使用指南、标签定稿</li>
-            <li>广审图与广告审查批准文号</li>
+            <li>宣传素材审查批文（如适用）</li>
             <li>三方一致性比对表</li>
           </ul>
         </div>
         <div>
           <div class="colh">判定线</div>
           <ul class="crit">
-            <li>标签必含 <b>7 项</b>：注册证号、生产许可证号、型号规格、生产日期 / 批号、失效日期、生产企业、禁忌与注意事项</li>
-            <li>说明书 ↔ 注册证 ↔ PTR <b>逐条比对，零冲突</b></li>
-            <li>功效宣称 <b>100% 在注册证核准范围内</b>，不出现"治疗""降压""替代药物"</li>
-            <li>广审：有批准文号，投放素材与批准样件一致，改一个字都要重审</li>
+            <li>标签缺项 <b>= 0</b>，按品类清单逐项打勾（见第 06 节）</li>
+            <li>说明书 ↔ 证照 ↔ 技术要求 <b>逐条比对，零冲突</b></li>
+            <li>功效或性能宣称 <b>100% 在核准范围内</b>，不越界</li>
+            <li>需要审查的广告素材：有批文，且投放件与批准件一致，改一个字都要重审</li>
             <li>包装打样 <b>≤3 轮</b>定稿，每轮出《修改对照表》</li>
           </ul>
         </div>
       </div>
-      <div class="pit"><b>坑：</b>械字号电商被罚，八成不是产品有问题，是详情页和直播话术超出注册范围。"辅助监测"和"治疗高血压"之间那条线，得有人天天守。</div>
+      <div class="pit"><b>坑：</b>被罚八成不是产品有问题，是详情页和直播话术超出核准范围。"辅助""监测"和"治疗"之间那条线，得有人天天守。</div>
     </div>
 
-    <!-- P7 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P7</span>
-        <h3>上市与营销</h3>
-        <span class="src">简历第 5 条</span>
-      </div>
+      <div class="head"><span class="sn">P7</span><h3>上市与营销</h3><span class="src">简历第 5 条</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
@@ -525,17 +450,17 @@ b{font-weight:600}
           <div class="colh">交付物</div>
           <ul>
             <li>上市方案（含倒排表）</li>
-            <li>详情页、主图、短视频、拍摄脚本</li>
+            <li>详情页、主图、短视频、脚本</li>
             <li>平台资质包</li>
-            <li>销售 / 客服培训材料</li>
+            <li>销售与客服培训材料</li>
           </ul>
         </div>
         <div>
           <div class="colh">判定线</div>
           <ul class="crit">
             <li>首发备货 <b>≥ 首月预测 ×1.5</b></li>
-            <li>详情页卖点 <b>≤5 条</b>，每条对应一个可验证的产品参数</li>
-            <li>资质齐全 <b>100%</b>：注册证、经营许可或备案、授权链</li>
+            <li>详情页卖点 <b>≤5 条</b>，每条对应一个可验证的参数</li>
+            <li>资质齐全 <b>100%</b>：证照、经营许可或备案、授权链</li>
             <li>上市首周日更三个数：日销、退货率、差评关键词</li>
             <li>上市 30 天复盘：目标达成率、获客成本、<b>退货率 ≤5%</b></li>
           </ul>
@@ -544,13 +469,8 @@ b{font-weight:600}
       <div class="pit"><b>坑：</b>证没到手先投流、先备货。资金压死事小，无证销售事大。上市日应该由 G5 这道门定，不是由投放预算定。</div>
     </div>
 
-    <!-- P8 -->
     <div class="stage">
-      <div class="head">
-        <span class="sn">P8</span>
-        <h3>上市后运营与迭代</h3>
-        <span class="src">简历第 6 条</span>
-      </div>
+      <div class="head"><span class="sn">P8</span><h3>上市后运营与迭代</h3><span class="src">简历第 6 条</span></div>
       <div class="g3">
         <div>
           <div class="colh">要做的动作</div>
@@ -566,7 +486,7 @@ b{font-weight:600}
           <ul>
             <li>月度产品经营表</li>
             <li>差评 TOP5 归因与整改单</li>
-            <li>迭代 / 退市决策单</li>
+            <li>迭代或退市决策单</li>
           </ul>
         </div>
         <div>
@@ -576,7 +496,7 @@ b{font-weight:600}
             <li>单条差评占 TOP5 的 <b>&gt;20%</b> → 立项解决</li>
             <li>竞品同规格价格低于我方 <b>&gt;15%</b> → 出降本或调整方案</li>
             <li>月销连续 <b>3 个月</b> 下滑 <b>&gt;20%</b> → 换代或退市评估</li>
-            <li>月度经营表在次月 <b>10 日前</b>出，能下钻到 SKU</li>
+            <li>月度经营表次月 <b>10 日前</b>出，能下钻到 SKU</li>
           </ul>
         </div>
       </div>
@@ -593,31 +513,11 @@ b{font-weight:600}
         <tr><th>门</th><th>卡在哪</th><th>过门条件（全绿）</th><th>谁签字</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="c1">G1</td><td>立项前</td>
-          <td>有机会点排序、有盈亏测算、有"为什么是我们"、风险有对策</td>
-          <td>产品负责人 + 分管领导</td>
-        </tr>
-        <tr>
-          <td class="c1">G2</td><td>开模前</td>
-          <td>规格书零待定、BOM 逐件到料、成本达标、供应商≥3 家</td>
-          <td>产品负责人 + 供应链</td>
-        </tr>
-        <tr>
-          <td class="c1">G3</td><td>送检前</td>
-          <td>T2 样机全项过、一致性达标、量产工艺做的样</td>
-          <td>产品 + 质量 + 法规</td>
-        </tr>
-        <tr>
-          <td class="c1">G4</td><td>大货前</td>
-          <td>注册证到手、三批试产合格、检验标准落地</td>
-          <td>产品 + 质量 + 供应链</td>
-        </tr>
-        <tr>
-          <td class="c1">G5</td><td>上架前</td>
-          <td>包装物料过审、广审有文号、资质齐、备货到位</td>
-          <td>产品 + 电商 + 法规</td>
-        </tr>
+        <tr><td class="c1">G1</td><td>立项前</td><td>机会点排序、盈亏测算、"为什么是我们"、风险有对策</td><td>产品负责人 + 分管领导</td></tr>
+        <tr><td class="c1">G2</td><td>开模或下单前</td><td>规格书零待定、BOM 逐件、成本达标、供应商≥3 家</td><td>产品负责人 + 供应链</td></tr>
+        <tr><td class="c1">G3</td><td>送检前</td><td>三轮样机全项过、一致性达标、量产工艺做的样</td><td>产品 + 质量 + 法规</td></tr>
+        <tr><td class="c1">G4</td><td>大货前</td><td>证照到手、三批试产合格、检验标准落地</td><td>产品 + 质量 + 供应链</td></tr>
+        <tr><td class="c1">G5</td><td>上架前</td><td>包装物料过审、素材有批文、资质齐、备货到位</td><td>产品 + 电商 + 法规</td></tr>
       </tbody>
     </table>
 
@@ -627,44 +527,79 @@ b{font-weight:600}
   </section>
 
   <section>
-    <h2><span class="num">06</span>按上市日倒排</h2>
-    <p class="h2note">以目标上市日记作 T。这张表的意义是把"注册等不起"这件事提前摊开——证是硬约束，营销再猛也得等它。</p>
+    <h2><span class="num">06</span>按品类查：要什么证、多久</h2>
+    <p class="h2note">这张表是通用流程里唯一随品类变的东西。选品的时候先查这一栏，周期算不进去的品类别碰。</p>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>品类</th><th>通常要什么</th><th>大概多久</th><th>关键卡点</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="stage-name">普通消费品</td><td>第三方检测报告（按国标）</td><td>2–4 周</td><td>执行标准选错，平台抽查下架</td></tr>
+        <tr><td class="stage-name">小家电 / 电子</td><td>3C 强制认证（目录内）</td><td>1–3 个月</td><td>目录判断错，卖一半被要求下架</td></tr>
+        <tr><td class="stage-name">化妆品</td><td>备案或注册 + 检测</td><td>1–3 个月</td><td>功效宣称超范围，备案驳回</td></tr>
+        <tr><td class="stage-name">食品</td><td>生产许可（工厂）+ 执行标准</td><td>2–4 个月</td><td>代工厂资质不覆盖你的品类</td></tr>
+        <tr><td class="stage-name">二类医疗器械</td><td>注册证</td><td>6–10 个月</td><td>发补一次，多两三个月</td></tr>
+        <tr><td class="stage-name">三类医疗器械</td><td>注册证 + 临床</td><td>12–24 个月</td><td>临床机构排期，不可控</td></tr>
+      </tbody>
+    </table>
+
+    <p class="cap">周期是常规区间，实际看审评排期和你资料的质量。具体以现行法规和当地受理口径为准。</p>
+
+    <h3 style="margin-top:36px">标签必填项，按品类对</h3>
+    <table class="tbl">
+      <thead>
+        <tr><th>品类</th><th>必填（通用项之外还要加）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="stage-name">所有品类</td><td>品名、型号规格、生产者名称地址、执行标准、生产日期或批号、有效期（如适用）</td></tr>
+        <tr><td class="stage-name">医疗器械</td><td>注册证编号、生产许可证编号、禁忌与注意事项</td></tr>
+        <tr><td class="stage-name">食品</td><td>SC 编号、配料表、营养成分表、过敏原提示、贮存条件</td></tr>
+        <tr><td class="stage-name">电子电器</td><td>3C 标志、额定电压功率、警示语</td></tr>
+        <tr><td class="stage-name">化妆品</td><td>备案编号、全成分、使用期限、生产企业许可证号</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>按上市日倒排</h2>
+    <p class="h2note">以目标上市日记作 T。这张表的意义是把"证等不起"提前摊开——证是硬约束，营销再猛也得等它。</p>
 
     <table class="tbl rev">
       <thead>
         <tr><th>节点</th><th>要发生的事</th><th>谁在等谁</th></tr>
       </thead>
       <tbody>
-        <tr><td>T-12 月</td><td>PTR 定稿、T2 样机就绪、送注册检验</td><td>结构 / 供应商等规格冻结</td></tr>
-        <tr><td>T-10 月</td><td>注册检验完成，出报告</td><td>检验机构排期是变量</td></tr>
-        <tr><td>T-8 月</td><td>提交注册申报</td><td>资料质量决定要不要发补</td></tr>
-        <tr><td>T-6 月</td><td>技术审评，可能发补</td><td>发补一次加 2–3 个月</td></tr>
+        <tr><td>T-12 月</td><td>规格冻结，小批样机就绪，送检</td><td>结构 / 供应商等规格冻结</td></tr>
+        <tr><td>T-10 月</td><td>检验完成，出报告</td><td>检验机构排期是变量</td></tr>
+        <tr><td>T-8 月</td><td>提交申报</td><td>资料质量决定要不要发补</td></tr>
+        <tr><td>T-6 月</td><td>审评，可能发补</td><td>发补一次加 2–3 个月</td></tr>
         <tr><td>T-5 月</td><td>拿证</td><td>拿证日才敢约大货</td></tr>
-        <tr><td>T-4 月</td><td>备料、试产三批</td><td>齐套率是变量</td></tr>
-        <tr><td>T-3 月</td><td>包装定稿、广审送审</td><td>广审周期另算</td></tr>
+        <tr><td>T-4 月</td><td>备料，试产三批</td><td>齐套率是变量</td></tr>
+        <tr><td>T-3 月</td><td>包装定稿，素材送审</td><td>审查周期另算</td></tr>
         <tr><td>T-2 月</td><td>大货生产</td><td>产线排期</td></tr>
         <tr><td>T-1 月</td><td>入仓、详情页、素材就位</td><td>电商设计排期</td></tr>
         <tr><td>T</td><td>上市</td><td>—</td></tr>
       </tbody>
     </table>
 
-    <p class="cap">如果只剩 8 个月，说明这条路走不通，要么换已注册的 OEM 产品贴牌，要么把上市日往后推。硬赶的结果是备货压仓、证没下来不能卖。</p>
+    <p class="cap">这张表按二类器械的节奏排的。普通消费品把前面六个月砍掉，直接从 T-5 起算。如果算下来时间不够，说明这个品不该现在做，不是去压缩流程。</p>
   </section>
 
   <section>
-    <h2><span class="num">07</span>先补哪三件</h2>
+    <h2><span class="num">08</span>先补哪三件</h2>
     <p class="h2note">八段全铺开太重。按"投入小、拦错多"排，先做这三件，一个月内能落地。</p>
 
     <div class="pri">
       <div class="p">
         <div class="rank">第一件</div>
-        <div class="h">G3 送检门的一张验收表</div>
-        <div class="b">气密、示值、一致性、寿命四个数，加上"样机是量产工艺做的"这一句。这张表挡住的是最贵的一次错——送检通过但量产做不出来。</div>
+        <div class="h">G3 送检门的一页表</div>
+        <div class="b">关键指标全项达标、一致性达标、样机是量产工艺做的，三行字。挡住的是最贵的一次错——送检通过但量产做不出来。</div>
       </div>
       <div class="p">
         <div class="rank">第二件</div>
         <div class="h">G5 上市门的合规清单</div>
-        <div class="b">7 项标签要素、说明书三方比对、广审文号、平台资质。械字号被罚基本都在这四类，一条一条打勾就能挡住大半。</div>
+        <div class="b">按品类列标签必填项、三方比对、素材批文、平台资质。这一块出事，罚的比赚的多。</div>
       </div>
       <div class="p">
         <div class="rank">第三件</div>
@@ -674,17 +609,17 @@ b{font-weight:600}
     </div>
 
     <div class="note">
-      <b>顺序理由。</b>G1 和 G2 决定"做不做、怎么做"，但在已有产品线里，这两道门早就过了，现在补也补不回当初的判断。真正天天出事的是送检和上架这两头——一头烧钱，一头挨罚。先把这两头焊死，再回头补立项。
+      <b>顺序理由。</b>G1 和 G2 决定"做不做、怎么做"，但在已有产品线里这两道门早就过了，现在补也补不回当初的判断。真正天天出事的是送检和上架这两头——一头烧钱，一头挨罚。先把两头焊死，再回头补立项。
     </div>
   </section>
 
   <section>
-    <h2><span class="num">08</span>拿不准的三处</h2>
-    <p class="h2note">这份东西的骨架按硬件产品通用流程搭，三处需要你按公司实际校准。</p>
+    <h2><span class="num">09</span>拿不准的三处</h2>
+    <p class="h2note">骨架按硬件产品通用流程搭，三处要按你们实际校准。</p>
 
-    <p><b>一是注册周期的具体月数。</b>6–10 个月是按常规排的，实际受当地审评排期和有没有发补影响很大，发补一次就是 2–3 个月。这一项七成把握，具体得问你们的注册代理或法规同事。</p>
-    <p><b>二是判定线里的数字。</b>气密、示值、一致性这些是行业通行值，但每家公司内控标准不一样，有的更严。八成把握，落到文件里之前对一遍你们现行的检验规范。</p>
-    <p><b>三是签字人。</b>门禁签给谁，取决于你们现在产品、质量、法规三条线归谁管。我不清楚现行分工，这块留空，你定了填进去。</p>
+    <p><b>一是各品类的资质周期。</b>第 06 节那几个区间是常规值，实际受排期和发补影响很大。这一项七成把握，落到制度里之前对一遍现行法规和你们的法规同事。</p>
+    <p><b>二是判定线里的数字。</b>占比、样本量、合格率这些是通行值，每家公司内控标准不一样。八成把握，对一遍你们现行的检验和审批标准。</p>
+    <p><b>三是签字人。</b>门禁签给谁，取决于产品、质量、供应链三条线现在归谁管。这块我留空，你定了填进去。</p>
   </section>
 
 </div>
