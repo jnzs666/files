@@ -118,6 +118,17 @@ b{font-weight:600}
 }
 .note b{color:var(--ink)}
 
+.tname{font-size:16px;font-weight:600;margin:36px 0 2px;line-height:1.6}
+.tmeta{font-size:13px;color:var(--muted);margin:0 0 8px}
+.tpl{width:100%;border-collapse:collapse;margin:0 0 6px;font-size:14px;border:1px solid var(--line)}
+.tpl th{
+  background:var(--th);font-weight:600;font-size:13px;padding:8px 10px;
+  border:1px solid var(--line);text-align:left;color:var(--sub);
+}
+.tpl td{padding:8px 10px;border:1px solid var(--line);color:var(--sub);line-height:1.7}
+.tpl td:first-child{width:130px;color:var(--ink);font-weight:600}
+.tpl td.fill{color:var(--muted)}
+
 @media(max-width:900px){
   .page{padding:40px 20px 72px}
   h1{font-size:26px}
@@ -614,7 +625,111 @@ b{font-weight:600}
   </section>
 
   <section>
-    <h2><span class="num">09</span>拿不准的三处</h2>
+    <h2><span class="num">09</span>附表：八张表，直接用</h2>
+    <p class="h2note">前面八段提到的每一份交付物，落到纸上就是一张表。这里给的是表格骨架——列名和必填项，谁填谁签。一张表一页纸，打印出来就能用。</p>
+
+    <div class="tname">表 1 · 门禁签字单</div>
+    <p class="tmeta">五道门共用一张，每道门填一份。产品经理填，签字人核。</p>
+    <table class="tpl">
+      <tr><td>门号</td><td class="fill">G1 立项 / G2 方案冻结 / G3 送检 / G4 量产放行 / G5 上市放行</td></tr>
+      <tr><td>项目与型号</td><td class="fill">写全称，跟证照或合同一致，别用简称</td></tr>
+      <tr><td>卡点</td><td class="fill">这一道门卡在哪一步、卡的是谁的钱</td></tr>
+      <tr><td>过门条件</td><td class="fill">把上一段的判定线原样抄过来，一条一行，逐条勾</td></tr>
+      <tr><td>未过项</td><td class="fill">一条一项，写清差多少、谁负责补</td></tr>
+      <tr><td>补件与截止日</td><td class="fill">没有截止日的补件等于没写</td></tr>
+      <tr><td>签字</td><td class="fill">产品 / 质量 / 法规 / 供应链，按门定；代签无效</td></tr>
+      <tr><td>日期</td><td class="fill">签字当天，不放空</td></tr>
+    </table>
+
+    <div class="tname">表 2 · 品类立项报告</div>
+    <p class="tmeta">P1 交付物。九节，每节不超过一页。没有数据源的那节直接删。</p>
+    <table class="tpl">
+      <tr><td>一句话结论</td><td class="fill">做 / 不做 / 待补数据，三选一，写在第一页最上面</td></tr>
+      <tr><td>价格带分布</td><td class="fill">≥4 个价格带，每带 ≥3 个竞品：谁在守、靠什么守</td></tr>
+      <tr><td>竞品矩阵</td><td class="fill">型号 / 价格 / 主打卖点 / 差评率 / 月销，≥15 行</td></tr>
+      <tr><td>差评归因</td><td class="fill">≥8 类，每类给占比和"我们能改 / 改不了"</td></tr>
+      <tr><td>人群与购买链</td><td class="fill">≥3 类人群，每类写：谁提议、谁掏钱、谁在用</td></tr>
+      <tr><td>机会点排序</td><td class="fill">规模 × 能力匹配 × 竞争强度；每条附一句"为什么是我们"</td></tr>
+      <tr><td>成本与盈亏</td><td class="fill">成本预估 / 定价 / 毛利 / 回本月销，四个数，误差 ≤10%</td></tr>
+      <tr><td>风险与对策</td><td class="fill">资质、专利、供应链、平台合规，各一条对策</td></tr>
+      <tr><td>结论与下一步</td><td class="fill">过 G1 还是打回，打回要写清补什么</td></tr>
+    </table>
+
+    <div class="tname">表 3 · 产品规格书</div>
+    <p class="tmeta">P2 交付物。八块，缺一块不许冻结。</p>
+    <table class="tpl">
+      <tr><td>封面</td><td class="fill">产品名 / 型号 / 版本号 / 日期 / 编制与审核人</td></tr>
+      <tr><td>性能指标</td><td class="fill">项目 / 指标值 / 测试方法 / 判定标准，四列缺一不可</td></tr>
+      <tr><td>使用条件</td><td class="fill">环境温湿度 / 电源要求 / 适用人群 / 禁忌或不适用</td></tr>
+      <tr><td>寿命</td><td class="fill">使用次数或年限 + 怎么判定的（不做寿命定义的产品不算定义清楚）</td></tr>
+      <tr><td>安全项</td><td class="fill">按品类列：电气、机械、化学、生物，有什么列什么</td></tr>
+      <tr><td>标识要求</td><td class="fill">标签位置 / 内容 / 耐久性（水洗、摩擦后还读得出）</td></tr>
+      <tr><td>关键件清单</td><td class="fill">名称 / 型号 / 供应商 / 备选二供，写死，不留"待定"</td></tr>
+      <tr><td>成本对照</td><td class="fill">目标成本 / 实际 BOM / 达成率（≤105% 才过）</td></tr>
+    </table>
+
+    <div class="tname">表 4 · 样机测试报告</div>
+    <p class="tmeta">P3 交付物，三轮各一份。这是 G3 签字唯一的依据。</p>
+    <table class="tpl">
+      <tr><td>封面</td><td class="fill">轮次（手工 / 开模首件 / 小批试产）/ 样机数量 / 日期 / 测试人</td></tr>
+      <tr><td>测试项</td><td class="fill">项目 / 方法 / 标准 / 实测值 / 单台结论，一台一行</td></tr>
+      <tr><td>一致性</td><td class="fill">样本数 / 极差或标准差 / 判定（≤ 标称公差一半）</td></tr>
+      <tr><td>装配</td><td class="fill">投装台数 / 一次合格数 / 合格率（≥95%）</td></tr>
+      <tr><td>寿命</td><td class="fill">测试次数 / 后测结果 / 判定</td></tr>
+      <tr><td>问题清单</td><td class="fill">编号 / 问题 / 影响 / 责任方 / 关闭日 / 状态</td></tr>
+      <tr><td>结论</td><td class="fill">通过 / 不通过 / 有条件通过（条件必须写成可验收的句子）</td></tr>
+    </table>
+
+    <div class="tname">表 5 · 资质合规台账</div>
+    <p class="tmeta">P4 交付物。一张表管全项目所有证照，G4 过门时看这张。</p>
+    <table class="tpl">
+      <tr><td>资质名称</td><td class="fill">注册证 / 3C / 备案 / 检测报告 / 生产许可，按品类列全</td></tr>
+      <tr><td>是否需要</td><td class="fill">是 / 否 / 待确认；"待确认"要写谁去确认、什么时候回</td></tr>
+      <tr><td>办理方</td><td class="fill">自己办 / 工厂办 / 代理办，写具体人和电话</td></tr>
+      <tr><td>启动与预计完成</td><td class="fill">起止日期，倒排进上市计划</td></tr>
+      <tr><td>实际完成</td><td class="fill">拖了就写拖几天、影响哪个节点</td></tr>
+      <tr><td>关联节点</td><td class="fill">这张证卡住的是备料、生产还是上架</td></tr>
+    </table>
+
+    <div class="tname">表 6 · 三方一致性比对</div>
+    <p class="tmeta">P6 交付物。说明书、证照（或执行标准）、宣传物料三者逐条比。</p>
+    <table class="tpl">
+      <tr><td>条目</td><td class="fill">品名、型号、成分或参数、功效表述、适用人群、注意事项，一行一条</td></tr>
+      <tr><td>说明书怎么写</td><td class="fill">原文照抄，不概括</td></tr>
+      <tr><td>证照或标准怎么写</td><td class="fill">原文照抄</td></tr>
+      <tr><td>是否一致</td><td class="fill">一致 / 不一致 / 需改写</td></tr>
+      <tr><td>处理</td><td class="fill">怎么改、谁改、改完谁复核</td></tr>
+    </table>
+
+    <div class="tname">表 7 · 上市倒排与放行单</div>
+    <p class="tmeta">P7 交付物。这张表是 G5 的附件，倒排到周，不是到月。</p>
+    <table class="tpl">
+      <tr><td>节点</td><td class="fill">拿证 / 备料 / 试产 / 大货 / 入仓 / 物料过审 / 上架</td></tr>
+      <tr><td>计划日</td><td class="fill">具体到哪天，写"月中"等于没写</td></tr>
+      <tr><td>责任人</td><td class="fill">一个人名，不写部门</td></tr>
+      <tr><td>状态</td><td class="fill">未开始 / 进行中 / 已完成 / 延期（延期写原因和补救）</td></tr>
+      <tr><td>阻塞点</td><td class="fill">现在卡在谁那儿，卡了几天</td></tr>
+    </table>
+
+    <div class="tname">表 8 · 月度产品经营表</div>
+    <p class="tmeta">P8 交付物。每月一张，能下钻到 SKU，每个异常必须跟一个动作。</p>
+    <table class="tpl">
+      <tr><td>月份</td><td class="fill">自然月，次月 10 日前出</td></tr>
+      <tr><td>SKU</td><td class="fill">到单品，不合并</td></tr>
+      <tr><td>销量 / 收入</td><td class="fill">件数 / 金额，跟财务口径对齐</td></tr>
+      <tr><td>毛利 / 毛利率</td><td class="fill">算上运费和退货损耗，别用毛估的</td></tr>
+      <tr><td>退货率</td><td class="fill">&gt;5% 连续两个月触发整改</td></tr>
+      <tr><td>差评 TOP3</td><td class="fill">原话摘录，别自己总结成"质量一般"</td></tr>
+      <tr><td>结论动作</td><td class="fill">改 / 降 / 换 / 停，四选一，加责任人和完成日</td></tr>
+    </table>
+
+    <div class="note">
+      <b>这八张表怎么用。</b>不用一次全铺开。每个项目开工，把表 1 到表 8 打成一个包，按阶段取用；谁填谁签，签完归档。半年后回头看，哪一段最常卡、哪张表填得最敷衍，就是你们流程最薄的地方。
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>拿不准的三处</h2>
     <p class="h2note">骨架按硬件产品通用流程搭，三处要按你们实际校准。</p>
 
     <p><b>一是各品类的资质周期。</b>第 06 节那几个区间是常规值，实际受排期和发补影响很大。这一项七成把握，落到制度里之前对一遍现行法规和你们的法规同事。</p>
