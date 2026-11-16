@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>品 · 渠 · 人 · 钱 —— 年度目标怎么从产品一路落到预算</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:40px 24px 72px}
+
+/* 头部 */
+.hd{border-left:4px solid var(--red);padding:0 0 0 20px;margin-bottom:40px}
+.hd h1{margin:0 0 12px;font-size:28px;line-height:1.35;font-weight:700;letter-spacing:.2px}
+.hd .sub{margin:0 0 16px;font-size:15px;color:var(--sub)}
+.hd .meta{margin:0;font-size:13px;color:var(--sub);line-height:1.9}
+
+/* 章节标题 */
+h2{font-size:22px;font-weight:700;margin:56px 0 20px;padding-left:16px;border-left:4px solid var(--red);line-height:1.4}
+h3{font-size:15px;font-weight:700;margin:0 0 8px}
+p{margin:0 0 16px}
+
+/* 结论块 */
+.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:4px;padding:24px;margin-bottom:32px}
+.lead p{margin:0 0 12px;font-size:15px}
+.lead p:last-child{margin-bottom:0}
+.lead .big{font-size:18px;font-weight:700;line-height:1.6;margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+
+/* 步骤链 */
+.chain{list-style:none;margin:0 0 48px;padding:0}
+.chain li{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px dashed var(--line)}
+.chain li:last-child{border-bottom:none}
+.chain .no{flex:0 0 36px;height:36px;background:var(--red);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px}
+.chain .tx{flex:1;padding-top:4px}
+.chain .tx b{display:block;font-size:15px;margin-bottom:4px}
+.chain .tx span{font-size:14px;color:var(--sub)}
+
+/* 每步卡片 */
+.step{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:28px;margin-bottom:24px}
+.step-hd{display:flex;align-items:center;gap:12px;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.step-hd .no{flex:0 0 40px;height:40px;background:var(--red);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px}
+.step-hd .tt{flex:1}
+.step-hd h3{margin:0;font-size:18px;line-height:1.4;font-weight:700}
+.step-hd .en{font-size:13px;color:var(--sub);margin-top:2px}
+
+/* 三段固定结构 */
+.seg{margin-bottom:20px}
+.seg:last-child{margin-bottom:0}
+.seg-tag{display:inline-block;font-size:13px;font-weight:700;margin-bottom:8px;padding:2px 8px;border-radius:2px}
+.tag-case{background:var(--soft);color:var(--sub)}
+.tag-meth{background:#fbeae7;color:var(--red)}
+.tag-apply{background:#eef3ee;color:#3f6b4a}
+.seg-case{padding-left:16px;border-left:3px solid var(--line)}
+.seg-case p{font-size:14px;margin-bottom:12px}
+.seg-case p:last-child{margin-bottom:0}
+.seg-meth{padding-left:16px;border-left:3px solid var(--red)}
+.seg-meth ol{margin:0;padding-left:20px}
+.seg-meth li{margin-bottom:8px;font-size:14px}
+.seg-meth li:last-child{margin-bottom:0}
+.seg-apply{background:#f7f9f7;border-radius:4px;padding:16px 20px;font-size:14px}
+.seg-apply p{margin:0}
+.seg-apply b{color:#2d4f36}
+
+/* 数据条 */
+.stats{display:flex;flex-wrap:wrap;gap:16px;margin:20px 0}
+.stat{flex:1 1 140px;background:var(--soft);border-radius:4px;padding:16px}
+.stat b{display:block;font-size:22px;font-weight:700;line-height:1.3;margin-bottom:4px}
+.stat span{font-size:13px;color:var(--sub);line-height:1.6;display:block}
+.stat.bad b{color:var(--red)}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:var(--head);text-align:left;padding:10px 12px;font-weight:700;border-bottom:2px solid var(--line);border-top:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:1px solid var(--line)}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* 提示条 */
+.note{background:var(--soft);border-radius:4px;padding:16px 20px;margin:20px 0;font-size:14px;color:#4a4641}
+.note b{color:var(--ink)}
+
+/* 自检 */
+.check{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:8px 28px 28px;margin-top:24px}
+.check ol{list-style:none;counter-reset:c;padding:0;margin:0}
+.check li{counter-increment:c;padding:16px 0 16px 44px;position:relative;border-bottom:1px dashed var(--line);font-size:15px}
+.check li:last-child{border-bottom:none}
+.check li::before{content:counter(c);position:absolute;left:0;top:16px;width:28px;height:28px;background:var(--soft);color:var(--red);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px}
+.check li b{display:block;margin-bottom:2px}
+.check li span{font-size:13px;color:var(--sub)}
+
+/* 页脚 */
+.foot{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:2}
+.foot b{color:var(--ink)}
+
+@media(max-width:640px){
+  .wrap{padding:28px 16px 56px}
+  .hd h1{font-size:22px}
+  h2{font-size:18px}
+  .step{padding:20px}
+  .step-hd h3{font-size:15px}
+  .stat{flex:1 1 100%}
+  table{font-size:13px}
+  th,td{padding:8px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ 头部 ============ -->
+<div class="hd">
+  <h1>品 · 渠 · 人 · 钱<br>年度目标怎么从产品一路落到预算</h1>
+  <p class="sub">一套可复制的顺序，和一个正在跑的实例</p>
+  <p class="meta">案例来源：一家做康复与运动恢复的消费品公司（全渠道，约 84 人）<br>整理时间：2026 年 11 月 ｜ 用途：内部分享 / 同行交流</p>
+</div>
+
+<!-- ============ 结论 ============ -->
+<div class="lead">
+  <p class="big">年度规划最容易错的一步，是起点。一上来就分指标，后面的编制和预算全是补丁。</p>
+  <p>正确顺序只有一条：<b>先定打什么（品）→ 再定怎么卖（渠）→ 再定几个人（人）→ 最后定花多少钱（钱）。</b></p>
+  <p>品选错，后面全白干；渠选错，钱烧得快；人配错，目标落不了；钱没纪律，赚的留不住。</p>
+  <p>这份文件用一家公司的真实两年给你看：26 年按老办法定目标，错在哪；27 年换顺序重做，怎么落。</p>
+</div>
+
+<!-- ============ 链条总览 ============ -->
+<h2>先看全貌：五个环节，一条链</h2>
+
+<ul class="chain">
+  <li>
+    <div class="no">0</div>
+    <div class="tx"><b>起点：目标数从哪来</b><span>三个基线交出来，不靠拍脑袋加百分比</span></div>
+  </li>
+  <li>
+    <div class="no">1</div>
+    <div class="tx"><b>品：打哪个，打多大</b><span>先定能出数的基底，资源按级配</span></div>
+  </li>
+  <li>
+    <div class="no">2</div>
+    <div class="tx"><b>渠：怎么卖，卖给谁</b><span>渠道选对了才谈投多少，ROI 分层管</span></div>
+  </li>
+  <li>
+    <div class="no">3</div>
+    <div class="tx"><b>人：几个人，什么岗</b><span>编制按人均产出倒推，不按去年惯例给</span></div>
+  </li>
+  <li>
+    <div class="no">4</div>
+    <div class="tx"><b>钱：花多少，卡在哪</b><span>预算倒推，三个校验守住，库存也是钱</span></div>
+  </li>
+</ul>
+
+<div class="note">
+<b>为什么顺序不能反：</b>先定编制再定品，会出现"人已经招了，只能给他们找活干"；先定预算再定渠道，会变成"去年投多少今年加 10%"；先定目标再定品，就是 26 年犯的错。
+</div>
+
+<!-- ============ 第 0 步 ============ -->
+<h2>第 0 步 · 目标数从哪来</h2>
+
+<div class="step">
+  <div class="step-hd">
+    <div class="no">0</div>
+    <div class="tt"><h3>先承认一件事：大部分目标是"倒着编"的</h3><div class="en">起点错了，后面全在补</div></div>
+  </div>
+
+  <div class="seg seg-case">
+    <span class="seg-tag tag-case">我们的案例</span>
+    <p>26 年我们定了两个数：一类电商（天猫、京东、拼多多这一块）7200 万，二类电商（抖音、视频号、小红书）600 万。</p>
+    <p>到 9 月，二类电商累计做了 <b>173 万</b>，完成率 <b>28.9%</b>，而时间已经过了 75%。一类电商上半年完成 90.6%，7 月、8 月单月同比只有 +0.3%。</p>
+    <p>回头看，600 万这个数是怎么来的？找不到推演过程。它更接近"去年多少、今年加一点"的结果，而不是"这个渠道现在能打多大"的答案。</p>
+    <p>更麻烦的是连带的：目标定虚了，编制和预算也跟着虚。人按 600 万的量配了，钱按 600 万的量花了，结果只做出三分之一。</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat bad"><b>28.9%</b><span>二类电商 1–9 月完成率</span></div>
+    <div class="stat"><b>+0.3%</b><span>一类电商 7→8 月环比</span></div>
+    <div class="stat"><b>92.95%</b><span>库存呆滞占比</span></div>
+    <div class="stat"><b>21.9%</b><span>新开 SKU 有销量的比例</span></div>
+  </div>
+
+  <div class="seg seg-meth">
+    <span class="seg-tag tag-meth">抽出来的方法</span>
+    <ol>
+      <li><b>目标由三个基线交汇得出，不能只用一个。</b>历史基线看趋势（用近三年，别用最好那一年）；能力基线看现有产品、渠道、人实际能打多少；行业基线看大盘和对手。</li>
+      <li><b>三个数对不上，说明有一头是假的。</b>比如"大盘在涨、我们持平、目标翻番"，这三个不能同时成立。</li>
+      <li><b>先算能打多少，再看要多少。</b>中间的缺口才是明年真正要攻的事，也是编制和预算该投的地方。</li>
+      <li><b>目标要分三档：保底、考核、挑战。</b>只给一个数，年底只能两种结果——完成了，或者编一个完成了。</li>
+    </ol>
+  </div>
+
+  <div class="seg seg-apply">
+    <span class="seg-tag tag-apply">换个公司怎么用</span>
+    <p>不用一开始就推翻老板定的数。<b>把老板的数当"要多少"，自己另算一个"能打多少"，两个数摆在一起开会。</b>差多少、差在哪、要补什么资源，一次说清。这比年底交不出数时再解释有用得多。</p>
+  </div>
+</div>
+
+<!-- ============ 第 1 步 ============ -->
+<h2>第 1 步 · 品：打哪个，打多大</h2>
+
+<div class="step">
+  <div class="step-hd">
+    <div class="no">1</div>
+    <div class="tt"><h3>资源撒得越均匀，越像一个没有重点的公司</h3><div class="en">品定成败</div></div>
+  </div>
+
+  <div class="seg seg-case">
+    <span class="seg-tag tag-case">我们的案例</span>
+    <p>我们有 4,148 个 SKU。有效在售 2,821 个。按"滞销 + 积压"口径算，呆滞占比 <b>92.95%</b>，压住的货值 <b>501 万</b>。</p>
+    <p>8 月新开 41 个 SKU，到月底只有 9 个有销量，成功率 <b>21.9%</b>。5 个产品经理，其中一个人承担了 75% 的新品。</p>
+    <p>反过来看另一头：一个叫"空气压力波"的品类，占了 8 月净销额的 <b>27%</b>，环比 +7.1%，是全店增量第一。在抖音，销量前十的产品里有五个是它。</p>
+    <p>这两组数是同一件事的两面：<b>我们把资源摊在 4 千个 SKU 上，等于没有重点；而唯一被两个渠道同时验证过的品，没有被集中投。</b></p>
+    <p>27 年的决定很直接：把空气波定为主力基底，集中资源做系列化（家用、专业、儿童、术后、上肢等），其他设想往后排。</p>
+  </div>
+
+  <div class="seg seg-meth">
+    <span class="seg-tag tag-meth">抽出来的方法</span>
+    <ol>
+      <li><b>基底只有一条标准：能出数、能复购、能赚钱。</b>三个都占才叫基底，占一个叫机会，一个都不占叫库存。</li>
+      <li><b>品分三级，资源按级配。</b>主力（押注，给人和钱）、培育（小投入验证）、淘汰（清掉，不再进货）。三级的名额要写死，比如主力不超过 3 个。</li>
+      <li><b>聚焦不是形容词，是数量。</b>"我们要聚焦"是口号；"SKU 从 4 千砍到 800，主力品占资源 60%"才是聚焦。</li>
+      <li><b>每个品要有四个数：卖多少、赚多少、退多少、压多少。</b>缺一个，这个品的账就算不清。</li>
+      <li><b>砍 SKU 的目的不是省钱，是把人从杂事里放出来。</b>4 千个品的选品、上架、详情、售后，占掉的是本该用来打磨主力品的精力。</li>
+    </ol>
+  </div>
+
+  <div class="seg seg-apply">
+    <span class="seg-tag tag-apply">换个公司怎么用</span>
+    <p>如果你们公司产品是固定的（不能改、不能砍），这一步换成"<b>选客户和选场景</b>"：同样一批货，哪个客群、哪个使用场景最出量，就把资源压在那里。<b>基底不一定是产品，也可以是某个客群或某个场景。</b></p>
+  </div>
+</div>
+
+<!-- ============ 第 2 步 ============ -->
+<h2>第 2 步 · 渠：怎么卖，卖给谁</h2>
+
+<div class="step">
+  <div class="step-hd">
+    <div class="no">2</div>
+    <div class="tt"><h3>渠道跑通的标志，是离开某一个人还能出量</h3><div class="en">渠定规模</div></div>
+  </div>
+
+  <div class="seg seg-case">
+    <span class="seg-tag tag-case">我们的案例</span>
+    <p>二类电商的渠道结构：达人带货占 <b>93.9%</b>，自营（店播 + 自己内容）只占 <b>6.1%</b>。</p>
+    <p>这意味着什么：达人一停，量就停。我们没有自己的出量能力，等于把命脉交给了别人。有效合作的达人不到 20 个，集中度很高。</p>
+    <p>平台结构也不均衡：抖音 67.6%、视频号 25.0%、小红书 7.5%。后两个平台基本没投流，是空着的。</p>
+    <p>投放上我们有过血的教训。净 ROI 定过一条底线 5，然后全店看一个均值。问题是均值会骗人：有的链接 ROI 8 在放量，有的 3 在烧钱，平均下来 5.5，看起来挺好。后来改成三层管：<b>低于 4.5 直接砍，4.5 到 6 观察并限量，6 以上才放量。</b></p>
+    <p>27 年的打法：达人矩阵扩量（从 20 个往 50 个走）、自营店播补课、视频号和小红书从"没投"变成"投得起"。</p>
+  </div>
+
+  <div class="seg seg-meth">
+    <span class="seg-tag tag-meth">抽出来的方法</span>
+    <ol>
+      <li><b>选渠道只问三个问题：谁在这卖、怎么卖、算不算得过来。</b>三个答不清，这个渠道明年先别加钱。</li>
+      <li><b>单点依赖就是风险。</b>一个达人、一个链接、一个平台、一个客户超过 50%，就要在规划里写"拆依赖"的动作和节点。</li>
+      <li><b>ROI 要分层看，均值是假指标。</b>分层的目的是让"砍、观察、放量"有明确动作，不是做一张好看的报表。</li>
+      <li><b>先定用哪个品打这个渠道，再定投多少。</b>品不对，投得越多亏得越快。</li>
+      <li><b>新渠道给验证预算，不给规模预算。</b>跑通了才加钱，跑不通就止损，这个决定要在年初就写清楚。</li>
+    </ol>
+  </div>
+
+  <div class="seg seg-apply">
+    <span class="seg-tag tag-apply">换个公司怎么用</span>
+    <p>如果你们渠道已经固定、不需要拓，这一步换成"<b>提量</b>"：同样这些渠道，客单价、复购率、转化率、连带率，哪个还有空间。量从存量里挖，靠的是把每一环的数字拆开看，不是加投放。</p>
+  </div>
+</div>
+
+<!-- ============ 第 3 步 ============ -->
+<h2>第 3 步 · 人：几个人，什么岗</h2>
+
+<div class="step">
+  <div class="step-hd">
+    <div class="no">3</div>
+    <div class="tt"><h3>编制是算出来的，不是争出来的</h3><div class="en">人定速度</div></div>
+  </div>
+
+  <div class="seg seg-case">
+    <span class="seg-tag tag-case">我们的案例</span>
+    <p>全公司约 84 人，按前中后台分：前台 41 人、中台 35 人、后台 8 人。</p>
+    <p>过去几年，编制基本是"业务提需求、HR 核人头、老板批"。结果是：目标涨了编制跟着涨，目标掉了编制降不下来。因为编制一旦变成"岗位"，就很难收回去。</p>
+    <p>27 年换成先算账：目标 → 需要多少产出 → 现在人均产出多少 → 差多少人。人均产出用的是去年实际数，不是理想数。</p>
+    <p>同时看到两个结构问题：一是后台只占 8 人，但流程和报表的活大量压在中台；二是一个产品经理扛了 75% 的新品，他一个人请假，新品线就停。</p>
+    <p>这两件事都指向同一个结论：<b>编制问题表面是人数，底下是结构。</b></p>
+  </div>
+
+  <div class="seg seg-meth">
+    <span class="seg-tag tag-meth">抽出来的方法</span>
+    <ol>
+      <li><b>编制 = 目标 ÷ 人均产出。</b>人均产出用实际值，不用行业标杆，也不用理想值。算出来的人数是"底线人数"，不是"舒适人数"。</li>
+      <li><b>先保关键岗，再压辅助岗。</b>关键岗是离开这个人业务就停的岗。关键岗空缺比人数超编更危险。</li>
+      <li><b>一个人扛超过 50% 就是风险。</b>不能因为"他能干"就不拆。规划里要写清拆的节点和接的人。</li>
+      <li><b>人效不达标，先查品和渠，再查人。</b>品没选对、渠没跑通，换多少人都不够。</li>
+      <li><b>编制要和目标一起月度对账。</b>目标往下调，编制和薪酬包要跟着往下调。只调目标不调编制，是管理上的空转。</li>
+    </ol>
+  </div>
+
+  <div class="seg seg-apply">
+    <span class="seg-tag tag-apply">换个公司怎么用</span>
+    <p>如果你们连人均产出都没算过，先别急着定编制。<b>拿最近 12 个月的数据，按部门算三个数：人均营收、人力成本占收入比、每万元人力成本产出多少营收。</b>这三个数一出来，哪个部门该加人、哪个该减，不用争。</p>
+  </div>
+</div>
+
+<!-- ============ 第 4 步 ============ -->
+<h2>第 4 步 · 钱：花多少，卡在哪</h2>
+
+<div class="step">
+  <div class="step-hd">
+    <div class="no">4</div>
+    <div class="tt"><h3>增收不增利，是规划里最容易漏掉的一条</h3><div class="en">钱定纪律</div></div>
+  </div>
+
+  <div class="seg seg-case">
+    <span class="seg-tag tag-case">我们的案例</span>
+    <p>8 月净利率 25.4%，环比掉了 2.85 个百分点。原因不复杂：推广费、仓储物流费、平台固定费涨得比收入快，物流费单月涨了 35.6%。</p>
+    <p>同时，仓库里躺着 501 万呆滞货值，在途还有 585 万。这些钱不产生收入，但占着现金。</p>
+    <p>所以 27 年的规划里，除了营收翻番，还有一条并行约束：<b>费用率不能突破红线。</b>营收翻番、净利率掉一半，翻番等于白干。</p>
+    <p>预算这块我们改成倒推：先定要出多少量 → 再算需要多少投入 → 看投产出比能不能过线 → 过线才给钱。</p>
+  </div>
+
+  <div class="seg seg-meth">
+    <span class="seg-tag tag-meth">抽出来的方法</span>
+    <ol>
+      <li><b>预算倒推，不按去年加成。</b>"去年花 1000 万今年花 1100 万"是最贵的懒惰。应该从"要出多少量、每单位量要花多少"往回算。</li>
+      <li><b>人力预算单独算一条链：目标 → 人数 → 薪酬包 → 占收入比。</b>这条链要能对上账，不然人力成本永远是被动的。</li>
+      <li><b>三个校验守住预算：</b>人效不低于去年、薪酬占收入比在区间内、投产出比过线。三条都过才放行。</li>
+      <li><b>库存也是预算。</b>压货就是占现金。滞销和呆滞要单列一个清库目标，和营收目标并列。</li>
+      <li><b>预算要留一笔"验证钱"。</b>新方向、新渠道、新品，用小钱试，试成了再加。不预留这笔钱，公司就永远只能守老业务。</li>
+    </ol>
+  </div>
+
+  <div class="seg seg-apply">
+    <span class="seg-tag tag-apply">换个公司怎么用</span>
+    <p>如果是服务型或项目型公司，没有库存这一项，就换成"<b>人天利用率</b>"：预算的核心变成"多少人在多少天里产出多少可计费工作量"。逻辑一样，都是拿产出往回算投入。</p>
+  </div>
+</div>
+
+<!-- ============ 分岔 ============ -->
+<h2>公司情况不同，路怎么选</h2>
+
+<p>上面这条链是通用骨架。具体投在哪，取决于一件事：<b>明年的增量从哪来。</b>三条路，前提、投法、坑都不一样。</p>
+
+<table>
+  <tr>
+    <th style="width:16%">增量来源</th>
+    <th style="width:24%">前提条件</th>
+    <th style="width:28%">人和钱往哪投</th>
+    <th style="width:32%">主要风险</th>
+  </tr>
+  <tr>
+    <td><b>拓渠道</b><br><span style="color:var(--sub);font-size:13px">产品固定，渠道可加</span></td>
+    <td>产品已验证、有复购、价格带撑得住新渠道</td>
+    <td>渠道团队 + 渠道启动费 + 平台运营。先配 1 到 2 个能独立开渠道的人</td>
+    <td>渠道之间打价格战、窜货、同一个客户被重复算两遍</td>
+  </tr>
+  <tr>
+    <td><b>拓量</b><br><span style="color:var(--sub);font-size:13px">渠道固定，量还能涨</span></td>
+    <td>渠道已跑通，转化率、客单价、复购率能算清</td>
+    <td>流量预算 + 销售人效提升。重点投在转化和复购，不投在拉新</td>
+    <td>ROI 边际递减，投到后面每一块钱都更贵；只看 GMV 不看利润</td>
+  </tr>
+  <tr>
+    <td><b>拓新品</b><br><span style="color:var(--sub);font-size:13px">老品见顶</span></td>
+    <td>老品确实没空间了，且公司有开发和验证能力</td>
+    <td>研发和开品 + 测试预算 + 小批量试产。产品经理是关键岗</td>
+    <td>周期长、成功率低、试错成本变成库存；团队容易"一年开十个头"</td>
+  </tr>
+</table>
+
+<div class="note">
+<b>三类可以叠加，但一年只能主打一类。</b>同时打三类，结果是三类都只打了半截——资源需求重叠，而前后有依赖。我们 27 年选的是"拓新品 + 拓渠道"组合，主打新品，渠道做承接，因为老品的量已经到顶，光靠现有渠道提量顶不起翻番。
+</div>
+
+<!-- ============ HR 落点 ============ -->
+<h2>HR 在这条链上的位置</h2>
+
+<p>很多同行会说：产品策略定不了，渠道打法也轮不到 HR 说话。这话没错。<b>但这条链上有一件事只有 HR 能做：让每一环对得上。</b></p>
+
+<table>
+  <tr>
+    <th style="width:22%">环节</th>
+    <th style="width:38%">HR 的动作</th>
+    <th style="width:40%">判断标准</th>
+  </tr>
+  <tr>
+    <td><b>品</b></td>
+    <td>盯主力品的人力投入是否真的压过去了</td>
+    <td>主力品团队的编制增速，快于其他团队</td>
+  </tr>
+  <tr>
+    <td><b>渠</b></td>
+    <td>看清渠道靠谁出量，有没有单点依赖</td>
+    <td>没有一个人的离职能让渠道停摆</td>
+  </tr>
+  <tr>
+    <td><b>人</b></td>
+    <td>编制按产出倒推，人效月度对账</td>
+    <td>人均产出不低于去年，关键岗不缺人</td>
+  </tr>
+  <tr>
+    <td><b>钱</b></td>
+    <td>薪酬包跟着目标走，目标变钱跟着变</td>
+    <td>人力成本占收入比在区间内，且可解释</td>
+  </tr>
+</table>
+
+<div class="note">
+<b>一句话记住 HR 的位置：不替业务定方向，让这条路对得上。</b>
+</div>
+
+<!-- ============ 自检 ============ -->
+<h2>带走这份自检表</h2>
+
+<p>年底做规划时，拿这六个问题问一遍。答不出来的，就是明年的坑。</p>
+
+<div class="check">
+  <ol>
+    <li><b>目标数是几个基线推出来的？</b><span>说不清来源的数，年底一定对不上。</span></li>
+    <li><b>明年打哪个品、哪类客户、哪个场景，说得出名字吗？</b><span>说不出名字，等于没选。</span></li>
+    <li><b>渠道靠什么出量，换个达人、换个链接、换个人还出得来吗？</b><span>出不来，就是单点依赖，要写拆的节点。</span></li>
+    <li><b>编制是按人头惯例给的，还是按人均产出倒推的？</b><span>按惯例给的编制，降不下来。</span></li>
+    <li><b>人力预算占收入比是多少，这个数谁在管？</b><span>没人管的数，年底一定超。</span></li>
+    <li><b>偏差超过多少触发动作，谁来叫停？</b><span>没有触发线，复盘会就变成汇报会。</span></li>
+  </ol>
+</div>
+
+<!-- ============ 页脚 ============ -->
+<div class="foot">
+  <b>关于这份材料</b><br>
+  案例数据取自 2026 年 10 月至 11 月的内部经营盘点，已做相对化处理，保留结构与比例。对外分享前，请按需再核一遍脱敏尺度。<br><br>
+  <b>核心结论</b><br>
+  年度目标规划的顺序是：品 → 渠 → 人 → 钱。品定成败，渠定规模，人定速度，钱定纪律。<br>
+  顺序错了，后面每一个环节都在给前面打补丁。<br><br>
+  2026 年 11 月
+</div>
+
+</div>
+</body>
+</html>
