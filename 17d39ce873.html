@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>健衡康复 · 新同学入职手册</title>
+<style>
+:root{
+  --bg:#f6f3ed;
+  --card:#ffffff;
+  --ink:#243230;
+  --ink2:#5d6a67;
+  --ink3:#8d9793;
+  --line:#e7e1d6;
+  --brand:#2f6f68;
+  --brand2:#4a9d8f;
+  --brand-soft:#eaf2ef;
+  --accent:#c9752f;
+  --accent-soft:#fbeee0;
+  --warn:#b3432c;
+  --warn-soft:#fbebe7;
+  --gold:#a9822c;
+  --gold-soft:#faf3e0;
+  --shadow:0 2px 10px rgba(80,70,50,.05), 0 12px 30px rgba(80,70,50,.05);
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;
+  -webkit-font-smoothing:antialiased;font-size:15px;
+}
+a{color:var(--brand);text-decoration:none}
+/* progress */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--brand);z-index:99;transition:width .1s linear}
+
+.layout{display:flex;align-items:flex-start;max-width:1360px;margin:0 auto}
+
+/* ---------- sidebar ---------- */
+.sidebar{
+  width:236px;flex:0 0 236px;position:sticky;top:0;height:100vh;
+  padding:34px 18px 30px 26px;overflow-y:auto;
+  border-right:1px solid var(--line);
+}
+.sidebar::-webkit-scrollbar{width:0}
+.brandline{display:flex;align-items:center;gap:9px;margin-bottom:22px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--brand);flex:0 0 auto}
+.brandline b{font-size:14px;letter-spacing:.4px}
+.brandline span{font-size:11px;color:var(--ink3);margin-left:auto}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{
+  display:block;font-size:13px;color:var(--ink2);padding:6px 10px;border-radius:8px;
+  border-left:2px solid transparent;transition:.15s;
+}
+.nav a:hover{background:#fff;color:var(--ink)}
+.nav a.on{background:#fff;color:var(--brand);font-weight:600;border-left-color:var(--brand);box-shadow:0 1px 4px rgba(80,70,50,.06)}
+.nav .grp{font-size:11px;color:var(--ink3);letter-spacing:1px;margin:14px 0 4px 10px}
+
+/* ---------- main ---------- */
+main{flex:1;min-width:0;padding:0 46px 90px}
+.hero{padding:58px 0 40px;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:2px;color:var(--brand);font-weight:600;margin-bottom:16px}
+h1{font-size:40px;line-height:1.25;letter-spacing:-.5px;font-weight:700;margin-bottom:16px}
+h1 em{font-style:normal;color:var(--brand)}
+.lede{font-size:16px;color:var(--ink2);max-width:660px;margin-bottom:26px}
+.meta{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  font-size:12px;color:var(--ink2);background:#fff;border:1px solid var(--line);
+  padding:5px 12px;border-radius:20px;
+}
+.chip b{color:var(--ink);font-weight:600}
+
+/* section */
+section{padding-top:56px;scroll-margin-top:20px}
+.sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.secno{
+  font-size:12px;font-weight:700;color:#fff;background:var(--brand);
+  min-width:26px;height:22px;border-radius:6px;display:inline-flex;
+  align-items:center;justify-content:center;letter-spacing:.5px;
+}
+h2{font-size:23px;letter-spacing:-.2px;font-weight:700}
+.sub{font-size:14px;color:var(--ink2);margin-bottom:24px;max-width:720px}
+h3{font-size:15.5px;font-weight:600;margin:26px 0 12px;color:var(--ink)}
+
+/* number grid */
+.numgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:12px}
+.num{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 16px 14px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.num::after{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--brand-soft)}
+.num .big{font-size:27px;font-weight:700;color:var(--brand);line-height:1.15;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.num .big small{font-size:13px;font-weight:600;margin-left:2px;color:var(--brand2)}
+.num .lab{font-size:13px;font-weight:600;margin-top:6px}
+.num .desc{font-size:12px;color:var(--ink3);line-height:1.55;margin-top:3px}
+
+/* cards */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;box-shadow:var(--shadow);
+}
+.card h4{font-size:14px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.card p{font-size:13.5px;color:var(--ink2);line-height:1.7}
+.card .tag{font-size:11px;padding:1px 7px;border-radius:10px;background:var(--brand-soft);color:var(--brand);font-weight:600}
+.card ul{margin:6px 0 0 16px;font-size:13.5px;color:var(--ink2)}
+.card li{margin-bottom:3px}
+
+/* table */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);font-size:13.5px;margin:10px 0 6px}
+.tbl th{background:#f1efe8;text-align:left;font-weight:600;font-size:12.5px;color:var(--ink2);
+  padding:11px 14px;border-bottom:1px solid var(--line);letter-spacing:.3px}
+.tbl td{padding:11px 14px;border-bottom:1px solid #f0ece3;vertical-align:top;color:var(--ink2)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#fbfaf6}
+.tbl td:first-child{color:var(--ink);font-weight:600}
+.tbl .em{color:var(--brand);font-weight:600}
+.tbl .rd{color:var(--warn);font-weight:600}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tblwrap .tbl{min-width:540px}
+
+/* callouts */
+.tip{
+  background:var(--brand-soft);border-left:3px solid var(--brand2);border-radius:0 10px 10px 0;
+  padding:13px 16px;font-size:13.5px;color:#2c4b46;margin:14px 0;
+}
+.tip b{color:var(--brand)}
+.warn{
+  background:var(--warn-soft);border-left:3px solid var(--warn);border-radius:0 10px 10px 0;
+  padding:13px 16px;font-size:13.5px;color:#7d3020;margin:14px 0;
+}
+.warn b{color:var(--warn)}
+.note{
+  background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
+  padding:13px 16px;font-size:13.5px;color:#6b5316;margin:14px 0;
+}
+
+/* redline list */
+.redline{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:6px}
+.rl{
+  background:#fff;border:1px solid #f0d9d3;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;color:#5e3227;
+}
+.rl b{color:var(--warn)}
+
+/* timeline */
+.tl{position:relative;margin:8px 0 0 6px;padding-left:26px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tli{position:relative;padding-bottom:18px}
+.tli::before{content:"";position:absolute;left:-25px;top:6px;width:9px;height:9px;border-radius:50%;
+  background:#fff;border:2px solid var(--brand2)}
+.tli .when{font-size:12px;color:var(--brand);font-weight:700;letter-spacing:.3px}
+.tli .what{font-size:14px;font-weight:600;margin-top:1px}
+.tli .exp{font-size:13px;color:var(--ink2)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:10px;margin-top:8px}
+.steps-3{grid-template-columns:repeat(3,1fr)}
+.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;box-shadow:var(--shadow)}
+.step .n{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:1px}
+.step .t{font-size:13.5px;font-weight:600;margin:3px 0 3px}
+.step .d{font-size:12.5px;color:var(--ink2);line-height:1.6}
+
+/* details */
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0;margin:10px 0;box-shadow:var(--shadow)}
+details summary{
+  cursor:pointer;padding:12px 16px;font-size:13.5px;font-weight:600;color:var(--ink);
+  list-style:none;display:flex;align-items:center;gap:8px;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";color:var(--brand);font-weight:700;width:12px}
+details[open] summary::before{content:"−"}
+details .body{padding:0 16px 15px;font-size:13.5px;color:var(--ink2);border-top:1px solid #f2eee6;margin-top:0;padding-top:12px}
+details .body li{margin-left:18px;margin-bottom:4px}
+details .body > li{display:list-item;list-style:disc}
+
+/* footer */
+footer{margin-top:66px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink3)}
+footer b{color:var(--ink2)}
+
+/* to top */
+#top{
+  position:fixed;right:26px;bottom:26px;width:40px;height:40px;border-radius:50%;
+  background:#fff;border:1px solid var(--line);color:var(--brand);font-size:17px;
+  cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.2s;z-index:50;
+}
+#top.show{opacity:1;pointer-events:auto}
+
+@media (max-width:1080px){
+  .layout{display:block}
+  .sidebar{width:100%;flex:none;height:auto;position:sticky;top:0;z-index:40;background:var(--bg);
+    border-right:none;border-bottom:1px solid var(--line);padding:10px 16px;overflow-x:auto;white-space:nowrap}
+  .brandline{margin-bottom:8px}
+  .nav{flex-direction:row;gap:4px;display:inline-flex}
+  .nav .grp{display:none}
+  .nav a{border-left:none;border-bottom:2px solid transparent;border-radius:0;padding:5px 9px;font-size:12.5px}
+  .nav a.on{border-left:none;border-bottom-color:var(--brand);box-shadow:none;background:transparent}
+  main{padding:0 18px 70px}
+  h1{font-size:29px}
+  .hero{padding:34px 0 26px}
+  section{padding-top:38px;scroll-margin-top:96px}
+  .grid2,.grid3,.redline{grid-template-columns:1fr}
+  .numgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .steps{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .steps-3{grid-template-columns:repeat(2,1fr)}
+}
+@media print{
+  .sidebar,#top,#bar{display:none}
+  main{padding:0}
+  body{background:#fff}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="brandline">
+    <span class="dot"></span><b>健衡康复</b><span>v1.0</span>
+  </div>
+  <nav class="nav" id="nav">
+    <a href="#s0">速览 · 12 个数字</a>
+    <a href="#s1">我们是谁</a>
+    <a href="#s2">第一天要带什么</a>
+    <a href="#s3">考勤与打卡</a>
+    <a href="#s4">请假与加班</a>
+    <a href="#s5">薪资与绩效</a>
+    <a href="#s6">福利清单</a>
+    <a href="#s7">试用期与转正</a>
+    <a href="#s8">红线与奖惩</a>
+    <a href="#s9">雷锋积分</a>
+    <a href="#s10">荣誉与评优</a>
+    <a href="#s11">九段秘书</a>
+    <a href="#s12">速查 · 常见问题</a>
+    <a href="#s13">制度原文与待确认</a>
+  </nav>
+</aside>
+
+<main>
+  <header class="hero">
+    <div class="kicker">健衡医疗 · 人力发展部</div>
+    <h1>新同学<em>入职手册</em></h1>
+    <p class="lede">把一套培训课件加六份管理制度，压缩成一页页你真正会用到的内容。上班第一天打开这一份就够，不用翻九个文件。</p>
+    <div class="meta">
+      <span class="chip">依据 <b>6 份现行制度</b> + 入职培训课件</span>
+      <span class="chip">覆盖 <b>考勤 / 薪酬 / 福利 / 奖惩 / 积分</b></span>
+      <span class="chip">整理日期 <b>2026-11</b></span>
+    </div>
+  </header>
+
+  <!-- ============ 00 ============ -->
+  <section id="s0">
+    <div class="sechead"><span class="secno">00</span><h2>速览 · 12 个数字</h2></div>
+    <p class="sub">先记住这 12 个数字，第一周基本不会踩坑。后面每一节都是这 12 个数字的展开。</p>
+
+    <div class="numgrid">
+      <div class="num"><div class="big">8:50<small>上班</small></div><div class="lab">上午 8:50–11:50</div><div class="desc">下午 13:30–18:00，每天 7.5 小时</div></div>
+      <div class="num"><div class="big">2<small>次打卡</small></div><div class="lab">企业微信打卡</div><div class="desc">上午上班、下午下班各一次，是核算薪资的依据</div></div>
+      <div class="num"><div class="big">3<small>次补卡</small></div><div class="lab">每月免费额度</div><div class="desc">个人原因漏打卡，每月 3 次以内可补</div></div>
+      <div class="num"><div class="big">20<small>日</small></div><div class="lab">每月发薪日</div><div class="desc">发上个月工资，遇节假日提前</div></div>
+      <div class="num"><div class="big">3<small>个月</small></div><div class="lab">试用期</div><div class="desc">入职首 3 天为试岗期</div></div>
+      <div class="num"><div class="big">80<small>分</small></div><div class="lab">转正及格线</div><div class="desc">70–80 分延期转正，70 分以下不予转正</div></div>
+      <div class="num"><div class="big">3<small>个月</small></div><div class="lab">社保起缴点</div><div class="desc">入职满 3 个月并转正后缴纳五险</div></div>
+      <div class="num"><div class="big">1.2<small>系数</small></div><div class="lab">最高绩效系数</div><div class="desc">A=1.2 / B=1.0 / C=0.8 / D=0.6 / E=0.4</div></div>
+      <div class="num"><div class="big">16<small>薪</small></div><div class="lab">年终奖上限</div><div class="desc">公司目标完成 140% 及以上触发</div></div>
+      <div class="num"><div class="big">500<small>元</small></div><div class="lab">季度积分冠军</div><div class="desc">第 2 名 200 元，第 3 名 100 元</div></div>
+      <div class="num"><div class="big">7<small>天</small></div><div class="lab">婚假</div><div class="desc">产假 98 天、陪产假 3 天；丧假直系 3 天、旁系 1 天</div></div>
+      <div class="num"><div class="big">3<small>天</small></div><div class="lab">连续旷工辞退线</div><div class="desc">连续旷工 3 天或年累计 5 天，视为严重违纪</div></div>
+    </div>
+
+    <div class="tip"><b>一句话记住整个体系：</b>公司管你三件事——<b>时间</b>（考勤）、<b>结果</b>（绩效与奖惩）、<b>态度</b>（价值观与积分）。这三件事都做好了，钱和成长是自然结果。</div>
+  </section>
+
+  <!-- ============ 01 ============ -->
+  <section id="s1">
+    <div class="sechead"><span class="secno">01</span><h2>我们是谁</h2></div>
+    <p class="sub">介绍公司只用一分钟讲完，剩下的你在工作里会慢慢懂。</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>基本情况</h4>
+        <p>健衡康复成立于 <b>2015 年 12 月 21 日</b>，总部位于郑州高新区巨正创业中心，是中国领先的康复产业综合服务商。</p>
+      </div>
+      <div class="card">
+        <h4>我们靠什么吃饭</h4>
+        <p>以线下门诊为支点，整合「技术 + 产品」「线上 + 线下」资源，为基层医疗机构提供整体解决方案。</p>
+      </div>
+    </div>
+
+    <h3>四大业务板块</h3>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div class="t">康复技术培训</div><div class="d">国内最大的康复技术培训平台之一</div></div>
+      <div class="step"><div class="n">02</div><div class="t">康复图书出版</div><div class="d">版权代理与专业内容出版</div></div>
+      <div class="step"><div class="n">03</div><div class="t">医疗服务</div><div class="d">自营康复门诊及医生集团</div></div>
+      <div class="step"><div class="n">04</div><div class="t">产品与供应链</div><div class="d">研发生产专业康复医疗运动用品，布局国内外电商平台</div></div>
+    </div>
+
+    <h3>使命与愿景</h3>
+    <div class="grid2">
+      <div class="card" style="background:var(--brand-soft);border-color:#d8e8e3">
+        <h4>使命</h4>
+        <p style="color:#2c4b46;font-size:15px">让人类更有活力，满怀希望。</p>
+      </div>
+      <div class="card" style="background:var(--accent-soft);border-color:#f0ddc8">
+        <h4>愿景</h4>
+        <p style="color:#7a4a1e;font-size:15px">帮助全球 100 万康复从业者，提升诊疗能力和服务效率，影响 2 亿人的生活方式。</p>
+      </div>
+    </div>
+
+    <div class="note">课件里的「集团构成」「品牌矩阵」「组织架构」是图示页，本手册不重复，请配合原课件第 6–8 页查看。</div>
+  </section>
+
+  <!-- ============ 02 ============ -->
+  <section id="s2">
+    <div class="sechead"><span class="secno">02</span><h2>第一天要带什么</h2></div>
+    <p class="sub">报到当天上午 8:50 到岗，先把资料交齐，剩下的流程人力会带你走。</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>入职资料 <span class="tag">缺一不可</span></h4>
+        <ul>
+          <li>身份证、毕业证、学位证、其他资格证书复印件</li>
+          <li>离职证明原件</li>
+          <li>本人实名银行卡 1 张（录用通知中指定为平安银行储蓄卡）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>入职登记表要填什么</h4>
+        <p>基本信息、银行账户、婚育状况、紧急联系人、专业资格证书。生日请注明农历或阳历，现住址精确到楼栋单元房号。</p>
+      </div>
+    </div>
+
+    <h3>这些变化要主动申报</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:32%">事项</th><th>什么时候报</th></tr></thead>
+      <tbody>
+        <tr><td>姓名、家庭住址、联系电话变更</td><td>发生变化后及时报备人力发展部</td></tr>
+        <tr><td>婚姻状况变动、怀孕情况</td><td>及时报备（涉及假期与福利资格）</td></tr>
+        <tr><td>紧急联系人信息</td><td>入职时提供，变更后更新</td></tr>
+        <tr><td>培训结业、进修毕业</td><td>取得证明后提交</td></tr>
+        <tr><td>薪资银行卡变更</td><td>须在发薪日前一日申报</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="warn"><b>诚信是硬条件。</b>公司会对所提供信息进行核查。一旦发现虚假或隐瞒，视情节终止试用或解除劳动合同。</div>
+  </section>
+
+  <!-- ============ 03 ============ -->
+  <section id="s3">
+    <div class="sechead"><span class="secno">03</span><h2>考勤与打卡</h2></div>
+    <p class="sub">这是新人最容易出问题的一块，规则不多，但每一条都直接对应钱。</p>
+
+    <h3>工作时间与休息</h3>
+    <div class="grid3">
+      <div class="card"><h4>每日工时</h4><p>上午 <b>8:50–11:50</b><br>下午 <b>13:30–18:00</b><br>每天 7.5 小时</p></div>
+      <div class="card"><h4>休息制度</h4><p>月度单双轮休，<b>每月第一周为单休</b><br>以公司当月日历通知为准</p></div>
+      <div class="card"><h4>特殊岗位</h4><p>电商客服、生产组、仓储组实行轮休调休，每月 25 日由部门出次月排班</p></div>
+    </div>
+
+    <h3>打卡三条规则</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:20%">场景</th><th>怎么做</th><th style="width:26%">要点</th></tr></thead>
+      <tbody>
+        <tr><td>正常打卡</td><td>企业微信，每日上下班各一次，共两次</td><td>打卡记录是核算出勤与薪资的依据</td></tr>
+        <tr><td>外勤</td><td>提前 1 个工作日在企业微信提交《外出申请》，到目的地打外勤卡并上传现场有标识物的照片</td><td>私车公用按高德/百度打车同里程费用报销</td></tr>
+        <tr><td>忘打卡</td><td>当天在企业微信提交《补卡申请》，由直接上级核实</td><td>个人原因每月 3 次以内免费补</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="warn"><b>代打卡是零容忍项。</b>严禁委托他人或代替他人打卡。一经发现，<b>双方立即辞退，且不支付任何经济补偿</b>。</div>
+
+    <h3>迟到、早退、旷工</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:18%">情形</th><th>处理</th></tr></thead>
+      <tbody>
+        <tr><td>迟到 ≤15 分钟</td><td>每次乐捐 <span class="em">10 元</span></td></tr>
+        <tr><td>迟到 15–30 分钟</td><td>每次乐捐 <span class="em">20 元</span></td></tr>
+        <tr><td>迟到 &gt;30 分钟</td><td>视为旷工 0.5 天，并计入乐捐</td></tr>
+        <tr><td>月度累计迟到超 5 次</td><td>按奖惩制度给予<b>警告</b>处分</td></tr>
+        <tr><td>月度累计迟到超 7 次</td><td>按奖惩制度给予<b>记过</b>处分</td></tr>
+        <tr><td>早退</td><td>未经批准提前离岗，按奖惩制度处理（课件口径：按事假 0.5 天）</td></tr>
+        <tr><td>旷工 1–3 天</td><td>按奖惩制度给予<b>记过</b>处分</td></tr>
+        <tr><td>连续旷工 3 天 / 年累计 5 天</td><td class="rd">视为严重违反规章制度，解除劳动合同</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="tip">乐捐款全额进入公司福利基金，由财务核算后交人力发展部管理，用于团队建设与同学福利——不是罚款收入。</div>
+
+    <details>
+      <summary>三种情况都算旷工</summary>
+      <div class="body">
+        <li>未办请假手续，或请假未获批准而擅自缺勤</li>
+        <li>假期届满未申请续假，或续假未获批准而未能到岗</li>
+        <li>以虚假理由（含开具虚假证明）骗取假期</li>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section id="s4">
+    <div class="sechead"><span class="secno">04</span><h2>请假与加班</h2></div>
+    <p class="sub">记住两件事：所有假期都要提前在企业微信走审批；加班默认换调休，不折现。</p>
+
+    <h3>假期一览</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:16%">假期</th><th style="width:16%">天数</th><th>薪资与条件</th></tr></thead>
+      <tbody>
+        <tr><td>年假</td><td>5 / 10 / 15 天</td><td>满 1 年不满 10 年 5 天（部门负责人 7 天）；满 10 年不满 20 年 10 天；满 20 年 15 天。入职满一年后按当年剩余日历天数折算，最小 0.5 天，一年内休完不累计</td></tr>
+        <tr><td>事假</td><td>全年累计 ≤30 天</td><td><span class="rd">无薪</span>，按日工资基数扣除</td></tr>
+        <tr><td>病假</td><td>月度连续 ≤5 天<br>全年 ≤30 天</td><td>按基础工资 <span class="em">80%</span> 发放；需区级及以上医院证明，无证明按事假处理；超出部分按事假核算</td></tr>
+        <tr><td>婚假</td><td>7 天</td><td>带薪，一次性休完不可拆；需结婚证复印件</td></tr>
+        <tr><td>产假</td><td>98 天</td><td>难产 +15 天，多胞胎每多 1 个婴儿 +15 天；怀孕未满 4 个月流产 15 天，满 4 个月流产 42 天</td></tr>
+        <tr><td>陪产假</td><td>3 天</td><td>男同学配偶生育，一次性休完；需结婚证、出生证明</td></tr>
+        <tr><td>哺乳假</td><td>每天 1 小时</td><td>子女不满 1 周岁，可晚到 1 小时或早走 1 小时，不可累计、不可中途离岗</td></tr>
+        <tr><td>丧假</td><td>3 天 / 1 天</td><td>直系亲属（配偶、子女、父母、配偶父母）3 天；旁系（祖父母、外祖父母、亲兄弟姐妹）1 天，均带薪</td></tr>
+        <tr><td>调休</td><td>按加班时长</td><td>加班与调休 <b>1:1</b>，自加班之日起 <b>1 年内有效</b>，逾期作废不折现</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>请假提前多久提</h3>
+    <div class="grid3">
+      <div class="card"><h4>3 天以内</h4><p>提前 <b>1 天</b>申请</p></div>
+      <div class="card"><h4>3–7 天</h4><p>提前 <b>3 天</b>申请</p></div>
+      <div class="card"><h4>7 天以上</h4><p>提前 <b>7 天</b>申请</p></div>
+    </div>
+
+    <h3>谁来批</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:34%">情形</th><th>审批链</th></tr></thead>
+      <tbody>
+        <tr><td>1–3 天（含）</td><td>本人企微发起 → 部门负责人 → 人力发展部（审批并备案）</td></tr>
+        <tr><td>3 天以上</td><td>部门负责人 → 人力发展部 → 总经办 → 人力发展部备案</td></tr>
+        <tr><td>病假</td><td>部门负责人 → 人力发展部 → 提交证明 → 人力审核；通过按病假计薪，未通过按事假处理</td></tr>
+        <tr><td>部门负责人本人请假</td><td>需经常务副总批准</td></tr>
+        <tr><td>突发情况</td><td>上班开始后 <b>1 小时内</b>电话通知直接上级，返岗首个工作日内补办手续，否则按旷工处理</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>加班</h3>
+    <div class="grid2">
+      <div class="card">
+        <h4>怎么算有效加班</h4>
+        <ul>
+          <li>公司不鼓励加班，提倡工作时间内完成本职</li>
+          <li>需提前 1 个工作日在企业微信提交《加班申请》，写明事由、内容、时长</li>
+          <li>必须有对应的打卡记录</li>
+          <li>未申请、未获批、无打卡记录，均不认定为加班</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>怎么补偿</h4>
+        <ul>
+          <li>以 <b>0.5 天</b>为最小单位，按 1:1 折算调休</li>
+          <li>零散、非连续的加班时长不累计</li>
+          <li>加班至 <b>20:00</b> 后，20 元用餐补贴</li>
+          <li>加班至 <b>22:00</b> 后，返家打车按实际金额报销</li>
+        </ul>
+      </div>
+    </div>
+
+    <details>
+      <summary>提交调休申请时，必须写清这 5 项</summary>
+      <div class="body">
+        <li>休息的具体时间（日期 + 时段）</li>
+        <li>调休原因</li>
+        <li>调的是哪一天/哪几天的加班</li>
+        <li>附上加班当天的打卡截图或加班申请单</li>
+        <li>还剩几天未休</li>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 05 ============ -->
+  <section id="s5">
+    <div class="sechead"><span class="secno">05</span><h2>薪资与绩效</h2></div>
+    <p class="sub">你的收入被拆成固定和浮动两部分，搞清楚哪部分由你决定，比记住数字更重要。</p>
+
+    <h3>薪资结构</h3>
+    <div class="card" style="text-align:center;padding:22px">
+      <p style="font-size:16px;color:var(--ink);font-weight:600;letter-spacing:.3px">
+        基础工资<span style="color:var(--ink3)">（底薪 + 岗位工资）</span>
+        ＋ 补贴 ＋ 绩效工资 ＋ 提成 ＋ 奖金 ± 其他
+      </p>
+    </div>
+
+    <h3>补贴与绩效占比（按职级）</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th>职级</th><th>餐费补贴</th><th>交通补贴</th><th>绩效占工资比例</th></tr></thead>
+      <tbody>
+        <tr><td>专员 / 组长</td><td>100 元</td><td>100 元</td><td>10%</td></tr>
+        <tr><td>主管</td><td>200 元</td><td>200 元</td><td>15%</td></tr>
+        <tr><td>经理</td><td>300 元</td><td>300 元</td><td>20%</td></tr>
+        <tr><td>总监</td><td>400 元</td><td>400 元</td><td>30%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="tip">职级工资中已包含餐补与交补。绩效工资 = 绩效基数 × 考核系数，系数 A 1.2 / B 1.0 / C 0.8 / D 0.6 / E 0.4。</div>
+
+    <h3>发薪时间轴</h3>
+    <div class="tl">
+      <div class="tli"><div class="when">每月 3 个工作日前</div><div class="what">提交核算资料</div><div class="exp">本人把绩效、提成、奖金等资料交给部门直接领导审核</div></div>
+      <div class="tli"><div class="when">每月 5 个工作日前</div><div class="what">部门汇总到人力</div><div class="exp">部门负责人审核后提交人力发展部汇总核查</div></div>
+      <div class="tli"><div class="when">每月 6 个工作日前</div><div class="what">转交财务核算</div><div class="exp">人力核查后交财务部</div></div>
+      <div class="tli"><div class="when">每月 17 日前</div><div class="what">薪资核算完成</div><div class="exp">财务出数并同步上级审核</div></div>
+      <div class="tli"><div class="when">每月 20 日</div><div class="what">发放上月工资</div><div class="exp">银行转账；遇节假日提前至前一个工作日；企微邮件通知工资条</div></div>
+    </div>
+
+    <h3>新人相关的三个薪资规则</h3>
+    <div class="grid3">
+      <div class="card"><h4>试用期工资</h4><p>不低于转正后核定工资的 <b>80%</b>，且不低于当地最低工资标准</p></div>
+      <div class="card"><h4>社保</h4><p>入职满 <b>3 个月</b>并转正后缴纳五险（养老、医疗、失业、工伤、生育）</p></div>
+      <div class="card"><h4>实习生</h4><p>日薪制：入门 100 元 / 进阶 150 元 / 优秀 200 元，按月评估调档，单次最多调一档</p></div>
+    </div>
+
+    <details>
+      <summary>绩效流程与申诉（5 步走完）</summary>
+      <div class="body">
+        <li><b>第 5 个工作日：</b>考核人完成绩效面谈与辅导</li>
+        <li><b>第 6 个工作日：</b>各部门完成上月评价与当月指标，签字后提交人力</li>
+        <li><b>第 7 个工作日：</b>对考核有异议可到人力申诉，5 个工作日内给书面答复</li>
+        <li><b>第 10 个工作日：</b>人力组织部门级绩效分析，汇总总分上报总经理审批</li>
+        <li><b>每月 20 日：</b>财务核算绩效工资并随工资发放</li>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 06 ============ -->
+  <section id="s6">
+    <div class="sechead"><span class="secno">06</span><h2>福利清单</h2></div>
+    <p class="sub">分两层看：一层是你入职这个月就能用上的，一层是随时间慢慢积累的。年终奖单独列在下面。</p>
+
+    <div class="grid3">
+      <div class="card"><h4>休息福利</h4><p>每天 7.5 小时、单双休、法定节假日正常休；春节假期比国家规定更长</p></div>
+      <div class="card"><h4>节日福利</h4><p>春节、端午、中秋每节 100–300 元福利物品；女神节女性提前 2 小时下班 + 50 元礼品</p></div>
+      <div class="card"><h4>生日福利</h4><p>当天提前 2 小时下班；每月第二周最后工作日集体生日会；生日礼品 + 鲜花 90 元/人</p></div>
+      <div class="card"><h4>团建福利</h4><p>每季度 1 次，1–2 天，全天带薪；人均 100–200 元，超支团队 AA</p></div>
+      <div class="card"><h4>健康福利</h4><p>五险；积分兑换自有康复训练工具；购买公司产品按内部价，走企微申购审批</p></div>
+      <div class="card"><h4>学习福利</h4><p>线上课程按需申请报销；线下课程骨干个人 50%、部门负责人个人 30%；部门负责人每月可报销一本书</p></div>
+      <div class="card"><h4>关怀福利</h4><p>结婚、生育、直系亲属丧事给予关怀津贴：经理级及以上 800 元，其他同学 500 元（公司不提倡宴请）</p></div>
+      <div class="card"><h4>工龄福利</h4><p>入职满一年，年终按入职年份发放不同工龄礼物</p></div>
+      <div class="card"><h4>形象照</h4><p>当年度新入职且转正的同学，公司安排形象照拍摄及相框</p></div>
+      <div class="card"><h4>爱心福利</h4><p>公司设爱心捐款平台，对遇到困难的同学视情况帮扶</p></div>
+      <div class="card"><h4>股东福利</h4><p>转正后持续表现优异或业绩突出，可获不同持股平台入股资格并参与分红</p></div>
+      <div class="card"><h4>下午茶</h4><p>公司不定期安排（详见课件与内部通知）</p></div>
+    </div>
+
+    <h3>年终奖（13–16 薪）</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th>公司业绩目标完成度</th><th>发放标准</th></tr></thead>
+      <tbody>
+        <tr><td>90%（含）以上</td><td>十三薪</td></tr>
+        <tr><td>100%</td><td>十四薪</td></tr>
+        <tr><td>120%（含）以上</td><td>十五薪</td></tr>
+        <tr><td>140%（含）以上</td><td class="em">十六薪</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="tip">适用对象：已转正且非业绩提成人员。以月平均工资为基础，目标每完成一级多发一次。人力、财务对公司整体目标负责；产品研发中后台对产品板块业绩负责；其他同学对本部门目标负责。</div>
+  </section>
+
+  <!-- ============ 07 ============ -->
+  <section id="s7">
+    <div class="sechead"><span class="secno">07</span><h2>试用期与转正</h2></div>
+    <p class="sub">3 个月很短，节奏卡在 4 个时间点上。别把它当"考察期"过。</p>
+
+    <div class="tl">
+      <div class="tli"><div class="when">入职第 1–3 天</div><div class="what">试岗期</div><div class="exp">试岗通过后，才会明确具体的转正目标</div></div>
+      <div class="tli"><div class="when">入职初期</div><div class="what">签《试用期目标确认单》</div><div class="exp">直接上级与你沟通制定目标，务必看清并签字确认——这是后面评分的依据</div></div>
+      <div class="tli"><div class="when">试用期结束前 15 天</div><div class="what">收到转正通知</div><div class="exp">人力发展部通知你提交转正申请</div></div>
+      <div class="tli"><div class="when">试用期满前 7 天</div><div class="what">评估结果确定</div><div class="exp">直接上级 + 人力发展部 + 分管领导共同评分</div></div>
+    </div>
+
+    <h3>评分结果怎么用</h3>
+    <div class="grid3">
+      <div class="card" style="border-left:3px solid #4a9d8f"><h4>80 分及以上</h4><p>予以转正</p></div>
+      <div class="card" style="border-left:3px solid #a9822c"><h4>70–80 分</h4><p>延期转正，观察改进</p></div>
+      <div class="card" style="border-left:3px solid #b3432c"><h4>70 分以下</h4><p>不予转正，终止试用</p></div>
+    </div>
+
+    <div class="tip"><b>表现优异者可申请提前转正。</b>提前转正的关键不是"表现积极"，而是《试用期目标确认单》上的目标提前达成——所以目标一定要定得清楚、可量化。</div>
+  </section>
+
+  <!-- ============ 08 ============ -->
+  <section id="s8">
+    <div class="sechead"><span class="secno">08</span><h2>红线与奖惩</h2></div>
+    <p class="sub">这一节建议认真读完。以下行为没有"初犯从轻"的空间。</p>
+
+    <h3>八条红线（触碰即解除劳动合同）</h3>
+    <div class="redline">
+      <div class="rl"><b>代打卡</b>：委托他人或替他人打卡，双方立即辞退，无经济补偿</div>
+      <div class="rl"><b>连续旷工 3 天</b>或年度累计旷工 5 天</div>
+      <div class="rl"><b>收受红包礼品</b>：向客户或学员收取任何形式红包、礼品未上报</div>
+      <div class="rl"><b>泄露或倒卖数据</b>：客户资料、核心机密被窃取、泄露、倒卖</div>
+      <div class="rl"><b>兼职牟利</b>：接私单、兼职或收受外部款项</div>
+      <div class="rl"><b>资料造假</b>：伪造学历、资历、病假单、身份或原始单据</div>
+      <div class="rl"><b>拉帮结派</b>：搞小团伙、对抗公司制度、以权谋私</div>
+      <div class="rl"><b>触犯刑法</b>：被追究刑事责任，或盗窃、暴力威胁同事</div>
+    </div>
+
+    <h3>处分阶梯</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:16%">处分</th><th>后果</th></tr></thead>
+      <tbody>
+        <tr><td>警告</td><td>全公司通报批评，<b>绩效扣 20%</b>；造成损失需赔偿</td></tr>
+        <tr><td>记过</td><td>全公司通报批评，<b>绩效扣 30%</b>，扣发当年度奖金，取消当年全部评优资格</td></tr>
+        <tr><td>降职降薪</td><td>工资相应下调，视情况扣发当月及年度奖金</td></tr>
+        <tr><td>辞退</td><td class="rd">解除劳动合同，通报批评，扣除当月全部绩效奖金；造成损失依法追责</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">连带责任：同学受处分时，其直接上级按责任大小一并处罚。记过以上处分的，记入本人档案。</div>
+
+    <h3>做得好有什么奖</h3>
+    <div class="grid2">
+      <div class="card">
+        <h4>日常奖 · I 类</h4>
+        <p>全公司通报表扬 + 奖品/奖金 <b>500 元</b> + 当月绩效 <b>加 10 分</b><br>
+        典型情形：节约成本或挽回损失 1000–5 万元、举荐培养人才成绩显著、获客户书面表扬、客户满意度满分、提出流程优化被采纳、工作效率提升 20% 等</p>
+      </div>
+      <div class="card">
+        <h4>日常奖 · II 类</h4>
+        <p>全公司通报表扬 + 奖品/奖金 <b>1000 元</b> + 当月绩效 <b>加 20 分</b><br>
+        典型情形：超额完成或完成临时重要任务、避免或挽回损失 5 万元以上、创新工作方法并在全公司推广有显著效果</p>
+      </div>
+      <div class="card">
+        <h4>项目奖</h4>
+        <p>为完成公司指定特定工作并取得显著效益；或通过申报获得政府项目奖补资金、专项减免；或获得社会、政府、行业专业奖项为公司争取重大荣誉</p>
+      </div>
+      <div class="card">
+        <h4>特殊贡献奖</h4>
+        <p>防止重大及以上安全事故、避免损失 10 万元以上、提升经济效益 10 万元以上，经公司负责人会议研究给予荣誉及物质奖励</p>
+      </div>
+    </div>
+
+    <details>
+      <summary>对处分有异议怎么办</summary>
+      <div class="body">
+        <li>收到奖惩通知 <b>5 个工作日内</b>，向做出决定的组织提出书面申诉</li>
+        <li>对结果仍有异议，<b>3 个工作日内</b>向领导小组二次申诉，逾期视为同意</li>
+        <li>公司未改变原决定前，仍按原决定执行</li>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 09 ============ -->
+  <section id="s9">
+    <div class="sechead"><span class="secno">09</span><h2>雷锋积分</h2></div>
+    <p class="sub">一句话理解：本职工作之外，你多做的好事都会被记分，分数能换钱、换假、换东西。</p>
+
+    <div class="grid2">
+      <div class="card" style="background:var(--gold-soft);border-color:#efe1bd">
+        <h4>核心逻辑</h4>
+        <p style="color:#6b5316">本职范围内的事不加分。<b>加分只认三类事：</b>帮了同事、传了口碑、为公司省了钱或挣了资源。分数按季度清零，所以是一个"季度赛"。</p>
+      </div>
+      <div class="card">
+        <h4>怎么提报</h4>
+        <p>自荐或他荐都行，到「<b>健衡加油群</b>」揭发/自荐，举报私信效率与服务部。每月 5 日前提交上月积分数据，部门汇总后报效率服务部。加分必须说明"做了什么 + 符合哪一条"。</p>
+      </div>
+    </div>
+
+    <h3>常见加分项</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:34%">行为</th><th style="width:20%">分值</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>积极协作、帮同事做好人好事</td><td>3 分 / 次</td><td>工作与生活都算</td></tr>
+        <tr><td>践行公司六条价值观的小事迹</td><td>3 分 / 次</td><td>可自荐或由部门负责人推荐</td></tr>
+        <tr><td>推荐人才</td><td>3 / 5 / 10 分</td><td>面试不合适 3 分，成功入职 5 分，成功转正 10 分</td></tr>
+        <tr><td>建言献策被采纳</td><td>3 分 / 条</td><td>—</td></tr>
+        <tr><td>本人上镜拍短视频</td><td>3 分 / 次</td><td>个人账号：月度 25 条内 1 分/条，超出 2 分/条</td></tr>
+        <tr><td>官方号互动（健衡学园 / Theratools）</td><td>5 分 / 月</td><td>月初 3 个工作日内完成全部点赞、转发、推荐</td></tr>
+        <tr><td>邀请康复同行点赞推荐视频号</td><td>2 分 / 次 / 人</td><td>—</td></tr>
+        <tr><td>本人上镜直播 / 助播</td><td>3 分 / 2 分 每场</td><td>—</td></tr>
+        <tr><td>朋友圈转发</td><td>1 分 / 0.5 分 每条</td><td>企业微信朋友圈 1 分；公司/个人微信发招生信息、推广视频 0.5 分</td></tr>
+        <tr><td>教学相长 · 学习分享</td><td>2 分 / 次</td><td>好书推荐、读书感悟、办公软件技能、专业话术均可</td></tr>
+        <tr><td>业余时间在公司自我提升</td><td>2 分 / 小时</td><td>工作时间以外的学习考勤</td></tr>
+        <tr><td>老同学带新同学</td><td>3–5 分 / 人</td><td>新同学快速上手或快速转正</td></tr>
+        <tr><td>内训讲师</td><td>5 分 / 场</td><td>签到超过 5 人</td></tr>
+        <tr><td>为团队开源节流</td><td>2–5 分 / 人</td><td>推荐讲师、课程、客户、选题、案例等，被采纳取上限</td></tr>
+        <tr><td>当月全勤 / 无迟到早退</td><td>各 2 分</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>常见扣分项</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:52%">行为</th><th>分值</th></tr></thead>
+      <tbody>
+        <tr><td>下班前未关闭所属区域电器、设备电源及门窗</td><td class="rd">−2 分 / 次</td></tr>
+        <tr><td>上班迟到、早退</td><td class="rd">−2 分 / 次</td></tr>
+        <tr><td>公司号/企业微信应转发内容过期未转发</td><td class="rd">−2 分 / 次</td></tr>
+        <tr><td>被涉及、被告知的事项未回复「收到」</td><td class="rd">−1 分 / 次</td></tr>
+        <tr><td>上班时间提交季度积分兑换</td><td class="rd">−2 分 / 次</td></tr>
+        <tr><td>工作电话不通、微信不回，未及时反馈</td><td class="rd">−2 分 / 次</td></tr>
+        <tr><td>卫生抽查不达标 / 表现优秀</td><td>±1–3 分 / 次</td></tr>
+        <tr><td>大周会、年会、述职会等集体会议表现</td><td>±1–4 分 / 次</td></tr>
+        <tr><td>违背六大价值观的事项</td><td class="rd">−1–5 分 / 次</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>分数能换什么</h3>
+    <div class="grid3">
+      <div class="card"><h4>换假</h4><p><b>72 分 = 0.5 天</b>调休或请假，当季度仅限兑换 1 天</p></div>
+      <div class="card"><h4>换工具</h4><p>自有品牌（有 Theratools 标识）<b>1 分 = 0.5 元</b></p></div>
+      <div class="card"><h4>换书与课</h4><p>自有书籍、外部图书、线上线下课程、进口工具等 <b>1 分 = 0.3 元</b></p></div>
+    </div>
+
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:24%">项目</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>季度排名奖励</td><td>第 1 名 <span class="em">500 元</span>，第 2 名 200 元，第 3 名 100 元，现金发放</td></tr>
+        <tr><td>季度倒数 3 名</td><td>入职 1 个月内新同学除外。手抄企业文化 2 遍（楷书）交效率与服务部；未抄写乐捐 50 元。次季度仍在倒数 3 名：抄 5 遍 + 乐捐 100 元，未抄写乐捐 200 元</td></tr>
+        <tr><td>年度排名</td><td>前 3 名颁发年度冠军、亚军、季军奖杯，作为年终奖项评定依据之一</td></tr>
+        <tr><td>其他用途</td><td>作为月度考核、年度薪资调整的参考项</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note"><b>结算规则：</b>每季度末最后一天积分清零，次月 15 日前完成兑换，新一季度重新计分。季度排名遇到并列，以当年历史总积分高低作为第二参考。虚报积分、把兑换的专业工具或图书对外出售，属于违规。</div>
+  </section>
+
+  <!-- ============ 10 ============ -->
+  <section id="s10">
+    <div class="sechead"><span class="secno">10</span><h2>荣誉与评优</h2></div>
+    <p class="sub">每年评一次，9 个奖项。新人也有一条专属通道——最佳新同学奖。</p>
+
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th>奖项</th><th style="width:12%">名额</th><th style="width:14%">奖金</th><th>评估标准</th></tr></thead>
+      <tbody>
+        <tr><td>最佳团队奖</td><td>1 名</td><td>3000 元</td><td>践行团队、担当、热爱价值观最好的团队</td></tr>
+        <tr><td>最佳内部讲师奖</td><td>2 名</td><td>4000 元</td><td>践行教学相长、热爱、团队、担当</td></tr>
+        <tr><td>优秀产品经理奖</td><td>2 名</td><td>2000 元</td><td>践行客户第一、创新、热爱</td></tr>
+        <tr><td>最佳运营同学奖</td><td>2 名</td><td>2000 元</td><td>践行客户第一、创新、担当、热爱</td></tr>
+        <tr><td>最佳领导力奖</td><td>1 名</td><td>2000 元</td><td>践行担当、团队、教学相长、热爱</td></tr>
+        <tr><td>最佳新同学奖</td><td>2 名</td><td>2000 元</td><td>践行热爱、担当、团队</td></tr>
+        <tr><td>最受客户欢迎同学奖</td><td>1 名</td><td>1000 元</td><td>践行客户第一</td></tr>
+        <tr><td>最佳进步奖</td><td>1 名</td><td>1000 元</td><td>践行热爱、担当、创新</td></tr>
+        <tr><td>最佳执行力奖</td><td>1 名</td><td>1000 元</td><td>践行热爱、担当、团队、客户第一</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="tip">所有奖项的评估标准都指向同一套词：<b>客户第一、创新、担当、团队、热爱、教学相长</b>。这六条就是公司的价值观，也是积分制度和评优的共同底层逻辑。</div>
+  </section>
+
+  <!-- ============ 11 ============ -->
+  <section id="s11">
+    <div class="sechead"><span class="secno">11</span><h2>九段秘书</h2></div>
+    <p class="sub">这一节不是制度，是工作方法。它回答一个问题：同样一件事，为什么有人做到 1 段，有人做到 9 段。</p>
+
+    <div class="card" style="background:var(--brand-soft);border-color:#d8e8e3;margin-bottom:16px">
+      <h4>题目</h4>
+      <p style="color:#2c4b46">领导让你安排次日上午九点的会议。<b>什么是任务，什么是结果？</b><br>
+      发通知、订会议室、准备物资——这是任务。让会议高效开完、决议落地——这才是结果。</p>
+    </div>
+
+    <div class="steps steps-3">
+      <div class="step"><div class="n">一段</div><div class="t">发通知</div><div class="d">发会议通知，准备相关用品，自己到会服务</div></div>
+      <div class="step"><div class="n">二段</div><div class="t">抓落实</div><div class="d">打完电话逐一确认，确保每个人都被通知到</div></div>
+      <div class="step"><div class="n">三段</div><div class="t">重检查</div><div class="d">会前 30 分钟再提醒一遍，确认有无变动，缺席立即报上级</div></div>
+      <div class="step"><div class="n">四段</div><div class="t">勤准备</div><div class="d">测试投影、电脑、音响、空调；桌椅、白板、纸笔逐项确认</div></div>
+      <div class="step"><div class="n">五段</div><div class="t">细准备</div><div class="d">弄清会议性质、议题、议程，提前发给参会者相关资料</div></div>
+      <div class="step"><div class="n">六段</div><div class="t">做记录</div><div class="d">全程详细记录，经允许可录音备份</div></div>
+      <div class="step"><div class="n">七段</div><div class="t">发记录</div><div class="d">整理纪要，请示后发给相关人员并要求执行</div></div>
+      <div class="step"><div class="n">八段</div><div class="t">定责任</div><div class="d">任务一对一落到责任人，签书面备忘，定期跟踪并及时汇报</div></div>
+      <div class="step"><div class="n">九段</div><div class="t">做流程</div><div class="d">把整套动作标准化，换谁来做都能做到九段</div></div>
+    </div>
+
+    <div class="tip"><b>怎么用这一页：</b>接到任何任务，先问自己三个问题——<br>① 领导要的结果是什么，不是动作是什么？<br>② 我做到第几段了？下一段是什么？<br>③ 这件事我能不能沉淀成一个流程，让下次不用重复想？</div>
+  </section>
+
+  <!-- ============ 12 ============ -->
+  <section id="s12">
+    <div class="sechead"><span class="secno">12</span><h2>速查 · 常见问题</h2></div>
+    <p class="sub">新人最常问的十个问题，答案都在这里。</p>
+
+    <details open>
+      <summary>忘打卡了怎么办？</summary>
+      <div class="body">当天在企业微信提交《补卡申请》，由直接上级核实。个人原因每月有 3 次免费补卡机会；超过 3 次且无有效证明的，需部门负责人 + 人力发展部 + 总经办审批后才能调整考勤数据。</div>
+    </details>
+    <details>
+      <summary>迟到会扣多少钱？</summary>
+      <div class="body">15 分钟以内 10 元 / 次；15–30 分钟 20 元 / 次；超过 30 分钟按旷工 0.5 天计。月度累计超 5 次警告，超 7 次记过。乐捐款全部进入公司福利基金。</div>
+    </details>
+    <details>
+      <summary>什么时候发工资？社保什么时候交？</summary>
+      <div class="body">每月 20 日发上月工资，遇节假日提前，银行转账，企微邮件通知工资条。社保在入职满 3 个月并转正后开始缴纳五险。</div>
+    </details>
+    <details>
+      <summary>试用期多久？怎么才能转正？</summary>
+      <div class="body">试用期 3 个月，入职首 3 天为试岗期。转正评估由直接上级、人力发展部、分管领导共同评分：80 分及以上转正，70–80 分延期，70 分以下不予转正。提前转正看《试用期目标确认单》的目标是否提前达成。</div>
+    </details>
+    <details>
+      <summary>加班有加班费吗？</summary>
+      <div class="body">没有加班费，按 1:1 折算调休，以 0.5 天为最小单位，自加班之日起 1 年内有效，逾期作废且不折现。加班至 20:00 后有 20 元餐补，22:00 后打车实报。前提是提前 1 个工作日在企微提交《加班申请》并有打卡记录。</div>
+    </details>
+    <details>
+      <summary>年假怎么算？什么时候能休？</summary>
+      <div class="body">上班满一年后开始享有。满 1 年不满 10 年 5 天（部门负责人 7 天），满 10 年不满 20 年 10 天，满 20 年 15 天。入职当年按剩余日历天数折算，最小 0.5 天；一年内休完，不累计。有年假时请假优先用年假。</div>
+    </details>
+    <details>
+      <summary>请假找谁批？</summary>
+      <div class="body">1–3 天：部门负责人 → 人力发展部。3 天以上：部门负责人 → 人力发展部 → 总经办。部门负责人本人请假需常务副总批准。提前期：3 天内提前 1 天、3–7 天提前 3 天、7 天以上提前 7 天。</div>
+    </details>
+    <details>
+      <summary>病假需要什么材料？工资怎么算？</summary>
+      <div class="body">区级及以上医院的诊断证明、病历、检查报告或缴费单据，材料日期需与请假时间相符。工资按基础工资 80% 发放；无有效证明的按事假处理。病假月度连续不超过 5 天、全年不超过 30 天，超出部分按事假核算。</div>
+    </details>
+    <details>
+      <summary>积分能干什么？会过期吗？</summary>
+      <div class="body">能换调休（72 分 = 0.5 天）、自有品牌工具（1 分 = 0.5 元）、书籍课程与进口工具（1 分 = 0.3 元）；季度前 3 名有 500/200/100 元现金，年度前 3 名有奖杯。每季度末最后一天清零，次月 15 日前兑换完。</div>
+    </details>
+    <details>
+      <summary>完整的制度原文在哪看？</summary>
+      <div class="body">企业微信 → 微盘 → 公司资料 → 2 公司规章制度（实时更新）。本手册只是导读，遇到具体争议以制度原文和人力发展部的解释为准。</div>
+    </details>
+  </section>
+
+  <!-- ============ 13 ============ -->
+  <section id="s13">
+    <div class="sechead"><span class="secno">13</span><h2>制度原文与待确认</h2></div>
+    <p class="sub">手册是导读，原文才是依据。另外整理了几处口径不一致的地方，建议统一后再定稿。</p>
+
+    <h3>本手册依据的文件</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:40%">文件</th><th>本手册对应章节</th></tr></thead>
+      <tbody>
+        <tr><td>健衡康复新同学入职培训课件（定版）</td><td>公司简介、行为规范、九段秘书、福利速览</td></tr>
+        <tr><td>1-公司考勤管理制度（2025-12-01 生效）</td><td>第 03、04 节</td></tr>
+        <tr><td>2-福利制度（2025-07-01 生效）</td><td>第 06 节</td></tr>
+        <tr><td>3-招聘管理制度（2025-07-01 生效）</td><td>第 02 节</td></tr>
+        <tr><td>4-薪酬管理制度（2025-02-25）</td><td>第 05 节</td></tr>
+        <tr><td>6-同学奖惩制度（2025-10）</td><td>第 08 节</td></tr>
+        <tr><td>7-健衡康复团队雷锋积分制度（第 8 版）</td><td>第 09 节</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>五处需要统一的口径</h3>
+    <div class="tblwrap">
+    <table class="tbl">
+      <thead><tr><th style="width:16%">事项</th><th style="width:34%">文件 A 的说法</th><th style="width:30%">文件 B 的说法</th><th>建议</th></tr></thead>
+      <tbody>
+        <tr><td>婚假有效期</td><td>福利制度：领证后 <b>3 个月内</b>申请，逾期视为放弃</td><td>培训课件：有效期 <b>两年</b></td><td>以福利制度为准，课件需改</td></tr>
+        <tr><td>补卡时限</td><td>考勤制度：<b>当天内</b>说明原因并提交申请</td><td>培训课件：补卡须 <b>4 天内</b>提交</td><td>建议统一为"当天提交、特殊情况 4 天内"</td></tr>
+        <tr><td>病假工资口径</td><td>福利制度 / 薪酬制度：基础工资的 <b>80%</b></td><td>考勤制度：不低于当地 <b>最低工资标准的 80%</b></td><td>两套算法差异大，需明确适用哪一条</td></tr>
+        <tr><td>迟到 30 分钟以上</td><td>考勤制度：视为旷工 0.5 天<b>并计入乐捐</b></td><td>培训课件：仅写"视为旷工 0.5 天"</td><td>补充"同时按迟到档位乐捐"</td></tr>
+        <tr><td>积分制度版本</td><td>课件引用的文件名与现行第 8 版一致</td><td>制度目录下两版文件内容相同</td><td>建议只保留一份，标注版本号与生效日期</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note"><b>另建议补充的一块内容：</b>现行材料里没有"新人 30 天成长路径"——第一个月该学什么、跟谁学、什么节点交付什么。这是新人培训最容易缺、也最影响留存的一段。需要的话可以单独做一份。</div>
+
+    <footer>
+      <p><b>健衡康复 · 新同学入职手册 v1.0</b>　|　整理：人力发展部　|　2026 年 11 月</p>
+      <p style="margin-top:4px">本手册内容提炼自公司现行 6 份管理制度及入职培训课件，作为导读使用；涉及具体权益与处分，以制度原文及人力发展部解释为准。</p>
+    </footer>
+  </section>
+</main>
+</div>
+
+<button id="top" title="回到顶部">↑</button>
+
+<script>
+(function(){
+  var bar = document.getElementById('bar');
+  var topBtn = document.getElementById('top');
+  var links = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (st / h * 100) : 0) + '%';
+    topBtn.classList.toggle('show', st > 500);
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop - 120 <= st) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('on', i === idx); });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+})();
+</script>
+</body>
+</html>

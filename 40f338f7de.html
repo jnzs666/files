@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>薪资检核 · 共享标准手册</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 20px 64px;
+    background: #f6f7f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #2b3038; font-size: 14px; line-height: 1.65;
+  }
+  .wrap { max-width: 1300px; margin: 0 auto; }
+  .card { background: #fff; border: 1px solid #e6e8ec; border-radius: 10px; padding: 24px 26px; margin-bottom: 18px; }
+  .hero { background: #fff; border: 1px solid #e6e8ec; border-radius: 10px; padding: 28px 26px 24px; margin-bottom: 18px; border-top: 4px solid #2f5d8a; }
+  .hero h1 { margin: 0 0 6px; font-size: 24px; font-weight: 700; color: #1b2430; }
+  .hero .sub { color: #6b7480; font-size: 12.5px; margin-bottom: 18px; line-height: 1.7; }
+  .hero .sub b { color: #2b3038; font-weight: 600; }
+  .kpis { display: flex; gap: 12px; flex-wrap: wrap; }
+  .kpi { flex: 1 1 168px; border: 1px solid #e6e8ec; border-radius: 8px; padding: 13px 15px; background: #fbfcfd; border-left: 3px solid #2f5d8a; }
+  .kpi .n { font-size: 24px; font-weight: 700; line-height: 1.2; }
+  .kpi .t { font-size: 12px; color: #6b7480; margin-top: 2px; }
+  .kpi.red { border-left-color: #c62828; } .kpi.red .n { color: #c62828; }
+  .kpi.amber { border-left-color: #b26a00; } .kpi.amber .n { color: #b26a00; }
+  .kpi.green { border-left-color: #1f7a45; } .kpi.green .n { color: #1f7a45; }
+
+  h2 { font-size: 17px; font-weight: 700; margin: 0 0 14px; color: #1b2430; padding-left: 11px; border-left: 3px solid #2f5d8a; }
+  h2 .idx { color: #8a929c; font-weight: 600; margin-right: 6px; }
+  h3 { font-size: 14px; font-weight: 700; color: #1b2430; margin: 20px 0 8px; }
+  h3:first-child { margin-top: 0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th { background: #f2f4f7; color: #44505e; font-weight: 600; text-align: left; padding: 9px 9px; border-bottom: 2px solid #dfe3e8; white-space: nowrap; }
+  td { padding: 9px 9px; border-bottom: 1px solid #edf0f3; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; color: #4a5560; }
+  .neg { color: #c62828; font-weight: 700; }
+  .pos { color: #1f7a45; font-weight: 700; }
+  .scroll { overflow-x: auto; }
+  .sh { font-weight: 700; color: #2f5d8a; white-space: nowrap; }
+  .cell-s { font-size: 11px; color: #6b7480; font-family: ui-monospace, Consolas, monospace; }
+  tr.grp td { background: #f7f9fb; font-weight: 700; color: #44505e; }
+
+  .callout { border-radius: 8px; padding: 13px 15px; font-size: 13px; margin: 14px 0 0; border: 1px solid; }
+  .callout.warn { background: #fdf6e9; border-color: #f0d9ac; color: #6b4a00; }
+  .callout.danger { background: #fcefef; border-color: #f0c4c4; color: #7d1c1c; }
+  .callout.info { background: #eef4fa; border-color: #c8dcee; color: #1e3d5c; }
+  .callout.ok { background: #eef7f1; border-color: #c2e0cd; color: #1a5334; }
+  .callout b { font-weight: 700; }
+
+  ul, ol { margin: 8px 0 0; padding-left: 22px; }
+  li { margin-bottom: 5px; }
+  .kv { display: flex; gap: 14px; flex-wrap: wrap; }
+  .kv > div { flex: 1 1 300px; }
+
+  .final { background: #1b2430; color: #eef2f6; border-radius: 10px; padding: 24px 26px; }
+  .final h2 { color: #fff; border-left-color: #7fa9cc; margin-bottom: 10px; }
+  .final p { margin: 8px 0 0; font-size: 14px; line-height: 1.85; }
+  .final .hi { color: #ffd580; font-weight: 700; }
+  .final .hi2 { color: #9fd4b0; font-weight: 700; }
+  .foot { text-align: center; color: #98a0aa; font-size: 12px; margin-top: 24px; }
+  @media print { body { background:#fff; padding:0; } .card,.hero { border:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>薪资检核 · 共享标准手册</h1>
+    <div class="sub">
+      用途：<b>项目内任何人把薪资表交进来，都按这一份标准执行、按这一种格式交付。</b><br>
+      覆盖范围：月薪工资表（含基本薪资 / 考勤 / 绩效 / 奖金 / 社保 / 个税 / 劳务报酬）　|　预留扩展：提成表<br>
+      维护人：陈嘉男（男哥）　|　版本：<b>V1 · 2026-11-19</b>　|　<b>原表一律只读，任何情况下不改动源文件</b>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="n">5 层</div><div class="t">检核分层</div></div>
+      <div class="kpi amber"><div class="n">6 项</div><div class="t">已确认豁免（永不报）</div></div>
+      <div class="kpi red"><div class="n">3 档</div><div class="t">问题分级</div></div>
+      <div class="kpi green"><div class="n">1 张表</div><div class="t">交付形态</div></div>
+    </div>
+  </div>
+
+  <div class="callout info" style="margin-bottom:18px">
+    <b>怎么用：</b>交表时只需一句「检核 X 月薪资表」+ 文件，不用重复交代口径。标准、豁免项、输出格式全部在本文件内，<b>换人不需要重新对齐</b>。
+    若本文件与口头指示冲突，<b>以最新的口头指示为准，并当场更新本文件</b>。
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">一</span>角色与边界</h2>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:130px">事项</th><th>约定</th></tr>
+      <tr><td><b>我的角色</b></td><td>只读检核。输出「问题清单 → 改多少 → 几处」，<b>没有修改权，不动原表任何一个单元格</b>。</td></tr>
+      <tr><td><b>检核对象</b></td><td>别人做好的月度工资表。我做复核，不做制表。</td></tr>
+      <tr><td><b>数据流向</b></td><td>全程本机解析（openpyxl 双开读公式 + 读缓存值），不外传原始数据。</td></tr>
+      <tr><td><b>不做的事</b></td><td>不替业务判断该不该发、不替 HR 定性考勤、不评价员工表现。只报「与制度 / 与源表 / 与上月 不一致」。</td></tr>
+      <tr><td><b>遇到拿不准</b></td><td>列入 🟡 并写明「需要你决定什么」，<b>不自行下结论</b>。历史上我两次自作判断都判错了。</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">二</span>交付格式（固定，不用每次说明）</h2>
+    <ol>
+      <li><b>一句话结论</b>：几处问题、几处必须改、涉及多少钱。</li>
+      <li><b>一张主表</b>，六列，按级别排序：<br>
+        <span class="mono">级别 | 表格 · 位置 | 人员 | 问题 | 金额 | 建议方案</span></li>
+      <li><b>分级标准</b>：
+        <ul>
+          <li><span class="neg">🔴 必须改</span> —— 金额算错，或钱发不出去，或明显违反公司制度</li>
+          <li><span style="color:#b26a00;font-weight:700">🟡 建议核实</span> —— 不影响本次金额，但存在口径不一致、依据缺失、潜在风险</li>
+          <li><span style="color:#6b7480;font-weight:700">⚪ 仅记录</span> —— 已在改进、无需动作，只做留痕</li>
+        </ul>
+      </li>
+      <li><b>必带的三块附注</b>：① 已修好/已确认项（证明复查到位）② 合计勾稽结论 ③ 无法核对的项及所需资料。</li>
+      <li><b>交付形态</b>：HTML 报告 + 对话框内摘要。<b>不贴长篇正文，不用本地路径让人自己找。</b></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">三</span>换月第一件事：重定位表结构</h2>
+    <div class="callout danger">
+      <b>禁止沿用上月硬编码列号。</b>2026 年 10 月表把奖金从 16 项扩到 20 项，整张表从 AJ 往右全部右移 4 列（应发 AZ→BD、实发 BH→BL），
+      社保原表也改了口径。<b>每月第一步必须重新扫表头、重新确认列位</b>，确认后再跑任何比对。
+    </div>
+    <h3>当前位置基线</h3>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:90px">版本</th><th>结构要点</th></tr>
+      <tr><td><b>2026-09</b><br><span class="cell-s">88 人</span></td>
+        <td>奖金 16 项 <span class="mono">AJ–AY</span>（AX 新品奖励）；应发 <span class="mono">AZ</span>、售后定责 <span class="mono">BA</span>、社保基数 <span class="mono">BB</span>、社保个人 <span class="mono">BC</span>、社保单位 <span class="mono">BD</span>、个税 <span class="mono">BE</span>、乐捐 <span class="mono">BF</span>、其他 <span class="mono">BG</span>、实发 <span class="mono">BH</span></td></tr>
+      <tr><td><b>2026-10</b><br><span class="cell-s">92 人</span></td>
+        <td>奖金 20 项 <span class="mono">AJ–BC</span>（新增 AT 小课包提成、AX 挽单奖励、AY 客服评分奖励、BC 设计积分奖金）<br>
+        应发 <span class="mono">BD</span>(56)、售后定责 <span class="mono">BE</span>(57)、社保基数 <span class="mono">BF</span>(58)、社保个人 <span class="mono">BG</span>(59)、社保单位 <span class="mono">BH</span>(60)、个税 <span class="mono">BI</span>(61)、乐捐 <span class="mono">BJ</span>(62)、其他 <span class="mono">BK</span>(63)、实发 <span class="mono">BL</span>(64)</td></tr>
+    </table>
+    </div>
+    <h3>10 月的三处结构变更（下月继续沿用）</h3>
+    <ul>
+      <li><b>奖金表</b> 25 列：<span class="mono">B..V</span> 明细（U 售后定责、V 设计积分奖励）、<span class="mono">W</span> 合计、<span class="mono">X</span> 备注。工资表 <span class="mono">AJ..BB → 奖金 B..T</span>（1:1），<b><span class="mono">BC → 奖金 V</span></b>（跳过 U 售后定责）。</li>
+      <li><b>社保原表</b> 新口径：<span class="mono">A</span>公司 <span class="mono">B</span>姓名 <span class="mono">C</span>公积金 <span class="mono">D</span>基数 <span class="mono">E</span>单位缴费 <span class="mono">F</span>个人缴费 <span class="mono">G</span>7+8单位补缴 <span class="mono">H</span>7+8个人补缴 <b><span class="mono">I</span>本月个人实扣款</b> <span class="mono">J</span>备注。<br>
+        工资表社保个人 = <span class="mono">VLOOKUP(...,B:I,<b>8</b>,0)</span>（取「本月个人实扣款」，已含补缴调整）。</li>
+      <li><b>新增「劳务报酬」表</b>（达人佣金）：<span class="mono">A</span>姓名 <span class="mono">B</span>金额 <span class="mono">C</span>代扣个税 <span class="mono">D</span>代扣增值税 <span class="mono">E</span>代扣附加税 <span class="mono">F</span>实际金额。数据行 <span class="mono">4–95</span>，合计行 <span class="mono">96</span>。</li>
+    </ul>
+    <h3>源表定位</h3>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:150px">Sheet</th><th>取数位置</th></tr>
+      <tr><td><b>基本薪资</b></td><td><span class="mono">B</span>姓名 · <span class="mono">H–M</span> 六项（基本工资/岗位薪资/津贴/绩效薪资/综合工资/当月薪资）</td></tr>
+      <tr><td><b>考勤</b></td><td><span class="mono">B</span>姓名 · <span class="mono">D–O</span> 出勤各项 · <b><span class="mono">P</span> 备注（离职/入职日期，识别异动最快的入口）</b></td></tr>
+      <tr><td><b>绩效</b></td><td><span class="mono">C</span>姓名 · <span class="mono">K</span>最终得分</td></tr>
+      <tr><td><b>个税汇总表1</b></td><td><span class="mono">B</span>姓名 · <span class="mono">C</span>个税</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">四</span>检核清单（五层，按此顺序跑）</h2>
+
+    <h3>第 1 层 · 资金安全（最优先，错了钱就出不去）</h3>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:170px">检查项</th><th>怎么判</th></tr>
+      <tr><td><b>发薪账号能否取到</b></td><td><span class="mono">B</span> 列为 <span class="mono">#N/A</span> → 取不到。<b>还要看 <span class="mono">A</span> 列（姓名）是否为空</b>——A 没填 <span class="mono">=G{行}</span> 公式，B 也没公式，同样发不出去。两类都要报。</td></tr>
+      <tr><td><b>实发是否为负</b></td><td>产假/长期病假/离职人员高发。负数为不可代发，需明确「挂账到下月扣 / 公司垫付 / 本人转账」，<b>必须留备注</b>。</td></tr>
+      <tr><td><b>离职人员是否按实际出勤折算</b></td><td>看考勤 <span class="mono">P</span> 列备注的离职日，核对 <span class="mono">U</span> 实际出勤。<b>正确做法 <span class="mono">O/T×U</span></b>；仍按整月发 = 多发，每月必查。</td></tr>
+      <tr><td><b>在职却无工资</b></td><td>基本薪资状态「在职」但本月无工资记录且社保停缴 → 要么漏发，要么状态没更新，必须定性。</td></tr>
+    </table>
+    </div>
+
+    <h3>第 2 层 · 计算正确性（表内勾稽）</h3>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:170px">检查项</th><th>怎么判</th></tr>
+      <tr><td><b>应发公式是否覆盖全部奖金列</b></td><td><b>历史高发缺陷。</b>9 月漏 AX、10 月漏 AS/AX/AY。<b>建议写法改成 <span class="mono">SUM(AJ:BC)</span></b>，否则每次加列必漏。每加一个奖金项目就要重查一次。</td></tr>
+      <tr><td><b><span class="mono">S</span> 列走哪条公式</b></td><td>有两种：<span class="mono">=J+K+L+R</span> 与 <b><span class="mono">=O</span></b>（直接取当月薪资，试用期/新入职）。<b>看到 <span class="mono">Q</span>/<span class="mono">R</span> 异常，先确认该行 S 走哪条</b>——走 <span class="mono">=O</span> 时 Q 填 0 不影响金额。我曾在这里误判过一次。</td></tr>
+      <tr><td><b>绩效是否加两遍</b></td><td><span class="mono">R</span> 已计入 <span class="mono">S</span>，应发里不能再单独加 <span class="mono">M</span> 或 <span class="mono">R</span>。</td></tr>
+      <tr><td><b>售后定责是否漏减</b></td><td>奖金表 <span class="mono">U</span> 列 → 工资表售后定责列，逐人比对，方向是<b>减</b>。</td></tr>
+      <tr><td><b>合计 = 明细逐行加总</b></td><td>全部金额列逐列验，容许误差 0.01。<b>这一项现在一直很干净，但不能省。</b></td></tr>
+      <tr><td><b>绩效系数分档</b></td><td>&gt;100→1.2 / 90→1.0 / 80→0.8 / 70→0.6 / &lt;70→0.4，逐人验证。<b>《绩效管理制度》不在交付制度里，无法做制度核对，只能核公式逻辑。</b></td></tr>
+    </table>
+    </div>
+
+    <h3>第 3 层 · 跨表一致性</h3>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:170px">检查项</th><th>怎么判</th></tr>
+      <tr><td><b>六项基本薪资取数</b></td><td>逐人逐格对源表，人数 × 6 项全验。</td></tr>
+      <tr><td><b>奖金 20 项逐项</b></td><td>按第二节的列映射逐项比对，注意 <span class="mono">BC→V</span> 跳列。</td></tr>
+      <tr><td><b>社保个人 / 单位</b></td><td>取「本月个人实扣款」，<b>逐人比对，不看合计</b>（合计对得上但个别人错是常见情况）。</td></tr>
+      <tr><td><b>个税</b></td><td>逐人比对个税汇总表。<b>专查「个税表有人、工资表为 0」</b>——新增人员最容易漏取。</td></tr>
+      <tr><td><b>人员完整性</b></td><td>任一源表有人、工资表没有（或反之）都要列出。注意姓名异体字（苗宇青/苗宇靑）、奖金表重名。</td></tr>
+      <tr><td><b>部门名一致性</b></td><td>工资表 / 基本薪资 / 考勤 三张表的部门名要能对上，否则部门汇总会错。</td></tr>
+      <tr><td><b>合同主体 vs 社保主体</b></td><td>两者不一致时提醒：可能是转移未同步。</td></tr>
+    </table>
+    </div>
+
+    <h3>第 4 层 · 环比（与上月逐人格）</h3>
+    <div class="callout warn">
+      <b>这是最容易藏「悄悄改基本工资」的地方，每月必做。</b>
+      比 5 项：基本工资 / 岗位薪资 / 津贴 / 绩效薪资 / 当月薪资。<b>正常月份这几项应该是 0 变动</b>；一旦有人动，必须问「有没有调薪单」。
+    </div>
+    <ul>
+      <li>实发变动超 ±20% 的人逐个看，正常波动（新入职折算、奖金季节性）与异常要分开列。</li>
+      <li><b>反向检查：两个人的四项数值互换</b>——10 月发现马月明与王家贺疑似录反，这种错只能靠环比看出来。</li>
+      <li>社保基数环比注意：8 月表按险种拆列、没有「社保基数」列，改用「个人扣款合计 + 公积金」比对。</li>
+    </ul>
+
+    <h3>第 5 层 · 制度符合性（只有对着制度回算才看得出）</h3>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:190px">检查项</th><th>依据</th></tr>
+      <tr><td><b>试用期工资 ≥ 转正后 80%</b></td><td>《薪酬管理制度》2.1。逐个试用期人员算比例，非 80.0% 的都要核。</td></tr>
+      <tr><td><b>实习生按「日薪 × 实际出勤天数」</b></td><td>《薪酬管理制度》2.4。实习生不适用补贴、绩效、提成。<b>注意别重复扣事假</b>——日薪已按实际天数算过，考勤扣款列不能再扣一遍。</td></tr>
+      <tr><td><b>病假工资 = 基础工资 80%</b></td><td>《薪酬管理制度》5.2。<b>基础工资口径 = 底薪 2,350（已由男哥确认，不含岗位工资）</b>。表内 <span class="mono">(当月薪资 − 0.8×基本工资)/应出勤×病假天</span> 即正确算法。</td></tr>
+      <tr><td><b>病假月度连续不超 5 天</b></td><td>《考勤管理制度》十一.2。超出按事假核算。<b>长期医疗期需另行定性，不在本检核范围。</b></td></tr>
+      <tr><td><b>迟到扣款的定性</b></td><td>《考勤管理制度》六.2：15 分钟内乐捐 10 元、15–30 分钟 20 元、30 分钟以上按旷工 0.5 天。<b>性质是「乐捐」不是「罚款」，应记乐捐列</b>（现表记在迟到扣款列，乐捐列为 0）。</td></tr>
+      <tr><td><b>缺卡扣款是否有依据</b></td><td>《考勤管理制度》十二只有「每月不超 3 次补卡机会」，<b>没有「缺卡扣 10 元」条款</b>。</td></tr>
+      <tr><td><b>扣款须有明文规定</b></td><td>《薪酬管理制度》5.4。售后定责、缺卡等无专项条款的扣款都要标出来。</td></tr>
+      <tr><td><b>社保参保时点</b></td><td>《福利制度》4.1.1 入职满三个月并转正才买；4.1.2 当月离职当月停缴（25 日后离职延续下月由个人承担）。</td></tr>
+    </table>
+    </div>
+    <p style="margin:12px 0 0;color:#6b7480;font-size:12.5px">
+      制度文件位置：<span class="mono">D:\存储\WXWork\1688857660832071\WeDrive\健衡医疗技术\公司资料\2 公司规章制度\</span>　
+      已核 4 份：1-考勤、2-福利、4-薪酬、6-奖惩。<b>《绩效管理制度》不在其中。</b>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">五</span>已确认豁免项（永久，不再报）</h2>
+    <div class="callout ok">
+      以下 6 项男哥已明确定性，<b>每月检核直接跳过，不占篇幅、不重复提</b>。新增豁免项请追加到此表。
+    </div>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:40px">#</th><th style="width:210px">事项</th><th>结论</th></tr>
+      <tr><td>1</td><td><b>发薪账号 <span class="mono">A</span> 列 ≠ 姓名 <span class="mono">G</span> 列</b></td><td>设计如此：A 列放花名册本名做 VLOOKUP 键，G 列显示叫法。<b>非错误。</b></td></tr>
+      <tr><td>2</td><td><b>刘海涛</b></td><td>特殊情况，<b>基本工资及备注一律不处理</b>。</td></tr>
+      <tr><td>3</td><td><b>赵小贝 +500 / 梁喜荣 500 个税错位</b></td><td>已知，以后都不用处理。</td></tr>
+      <tr><td>4</td><td><b>陈嘉男、余腾飞公积金 2,560/月</b></td><td>正常，无需理会。</td></tr>
+      <tr><td>5</td><td><b>病假「基础工资」口径</b></td><td><b>就是底薪 2,350</b>（不含岗位工资）。表内现有算法正确，无差异。</td></tr>
+      <tr><td>6</td><td><b>未转正人员按试用期标准发放</b></td><td>吴帆、魏彭飞、武翰卿、王福宇等，未转正即按试用期核算，<b>「超期未转正」不作为问题报出</b>。</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">六</span>已知长期性问题（每月主动查，不等人提醒）</h2>
+    <ol>
+      <li><b>应发公式漏奖金列</b> —— 表一加列就漏，9 月、10 月连续发生。建议改 <span class="mono">SUM(AJ:BC)</span>。</li>
+      <li><b>发薪账号取不到</b> —— <span class="mono">#N/A</span> 与 <span class="mono">A</span> 列空值两种。<span class="mono">B</span> 列 VLOOKUP 到外部 <span class="mono">[4]Sheet1</span> 账号表，表里没这人就取不到。</li>
+      <li><b>奖金表大量引用外部工作簿</b>（<span class="mono">[5]线下课佣金 / [5]内容部奖金 / [5]电商运营 / [5]客服 / [5]国际开发…</span>）。<b>外链一刷新，奖金就变，公式一个没动也不报错</b> → 核奖金必须回到源表。</li>
+      <li><b>个税表加了人，工资表没跟着取</b> → 专查「源表有、工资表为 0」。</li>
+      <li><b>考勤扣款 <span class="mono">AH</span> 口径不统一</b> —— 老员工 <span class="mono">O/T*Y+J/T*Z*0.2+(O-J)/T*Z</span>；新入职/离职 <span class="mono">=O/T*(T-U)</span>（把年假调休也算缺勤）；另有手填 0 的。<b>同一个金额列出现 3–4 种口径，本身就要报。</b></li>
+      <li><b>人员状态未同步</b> —— 已离职仍写「在职/试用」、或状态改了其他表没改。</li>
+      <li><b>非工资性质款项走工资表</b>（如「合作方回款」记入「其他」列）→ 影响个税与社保基数，需单独说明。</li>
+      <li><b>硬编码数字</b>（如 <span class="mono">=6110.5+89</span>）—— 不可追溯，一律标出。</li>
+      <li><b>姓名异体字 / 重名</b> —— 社保表重复、奖金表同名两行。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">七</span>方法要点（换人执行也不会走偏）</h2>
+    <div class="kv">
+      <div>
+        <h3>读表</h3>
+        <ul>
+          <li>openpyxl <b>双开</b>：<span class="mono">data_only=False</span> 拿公式，<span class="mono">data_only=True</span> 拿缓存值。<b>两者都要，缺一不可。</b></li>
+          <li>公式归一化（行号换 <span class="mono">#</span>）后分组计数，能快速发现同一列多种口径。</li>
+          <li>跨表按姓名比对时，源表 <span class="mono">None</span> 当 0 处理，否则噪声极大。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>版本对比（两遍扫描）</h3>
+        <ul>
+          <li>① 公式不同 → 有人改过；</li>
+          <li>② <b>公式相同但缓存值不同</b> → 源数据或外链变了。</li>
+          <li><b>只比公式会漏掉一大半</b>——我第一次只比公式，漏了 82 处关键变化。</li>
+          <li>数值比较别用 <span class="mono">num(a)==num(b)</span>（两边都非数字时返回 <span class="mono">None</span> 会误判相等），用 <span class="mono">a==b or (num(a) is not None and num(a)==num(b))</span>。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout danger" style="margin-top:16px">
+      <b>最重要的两条教训：</b><br>
+      ① <b>不要拿自己的检核公式当制度。</b>凡涉及扣款比例，必须先看制度原文再下结论——我曾用「病假×20%」判表内多扣 11,234 元，实际制度是「病假发基础工资 80%」，方向是对的，错的是我。<br>
+      ② <b>金额判定前先确认该行走哪条公式。</b>说某人「少发 X 元」之前，必须验证 S 列公式、验证该金额是否已含在别的列里。我曾把 <span class="mono">=O</span> 的行误判成少发 470 元。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="idx">八</span>检核范围扩展：提成表（预留）</h2>
+    <div class="callout info">
+      <b>提成表检核的前提（首次接表时先确认，确认后补入本节）：</b>
+    </div>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:190px">需确认</th><th>为什么</th></tr>
+      <tr><td>提成制度 / 提成方案原文</td><td>没有方案就无法核「算得对不对」，只能核「加得对不对」。这一步不做，检核只能停在第 2 层。</td></tr>
+      <tr><td>提成表结构（人员 / 项目 / 基数字段）</td><td>要建立与工资表奖金列的映射，确认「提成表某一项 → 工资表哪一列」。</td></tr>
+      <tr><td>提成与奖金是否重复计算</td><td>工资表已有 20 项奖金，提成若也进奖金区，需确认不重不漏。</td></tr>
+      <tr><td>提成是否并入个税 / 社保基数</td><td>影响个税核对口径。</td></tr>
+      <tr><td>是否含外链源表</td><td>若引用外部工作簿，必须拿到源表，否则无法验证。</td></tr>
+    </table>
+    </div>
+    <p style="margin:12px 0 0;color:#6b7480;font-size:12.5px">
+      提成表到手后，沿用同一套五层结构：资金安全 → 计算正确 → 跨表一致 → 环比 → 制度符合性；输出格式不变。<b>确认完这五项，本节会被替换成正式的提成检核清单。</b>
+    </p>
+  </div>
+
+  <div class="final">
+    <h2>一句话记住</h2>
+    <p>
+      <span class="hi">换月先重定位列</span>，<span class="hi">金额先说发不出去</span>，<span class="hi">拿不准的一律问</span>。<br>
+      交付永远是：<span class="hi2">一句话结论 + 一张表（级别 / 位置 / 人 / 问题 / 金额 / 建议）+ 三块附注</span>。<br>
+      原表只读，一个单元格都不改。
+    </p>
+  </div>
+
+  <div class="foot">薪资检核共享标准手册 · V1 · 2026-11-19 · 项目内共享</div>
+
+</div>
+</body>
+</html>

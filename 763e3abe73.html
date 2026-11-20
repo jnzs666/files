@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-moss-artifact-mode="interactive-web" data-moss-visual-baseline="editorial-impact" data-moss-render-seed="5eca5199e068a25b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>决策看板 · 运动恢复行业格局透视</title>
+<style>
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin:0; background: var(--moss-color-surface); color: var(--moss-color-text);
+  font-family: var(--moss-font-body); font-size:16px; line-height:1.75; letter-spacing:.01em; }
+:root {
+  --moss-color-primary: #17323F;
+  --moss-color-secondary: #F2EDE4;
+  --moss-color-accent: #C25A2B;
+  --moss-color-surface: #FFFDF8;
+  --moss-color-text: #10131A;
+  --moss-font-display: Georgia, "Times New Roman", serif;
+  --moss-font-body: "Aptos", "Segoe UI", "Microsoft YaHei", sans-serif;
+  --moss-type-ratio: 1.250;
+  --moss-space-unit: 8px;
+  --moss-radius: 4px;
+  --moss-shadow: 0 22px 70px rgba(23, 33, 61, 0.18);
+  --moss-motion-duration: 520ms;
+  --moss-motion-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --moss-tone: editorial;
+  --moss-density: balanced;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+a { color: var(--moss-color-accent); text-decoration:none; border-bottom:1px solid rgba(194,90,43,.35); }
+a:hover { border-bottom-color: var(--moss-color-accent); }
+.masthead { background: var(--moss-color-primary); color:#F7F3EC; padding: 64px 0 40px; position:relative; overflow:hidden; }
+.masthead:after { content:""; position:absolute; inset:auto -10% -60% auto; width:620px; height:620px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, rgba(194,90,43,.35), transparent 62%); }
+.masthead .kicker { font-size:12px; letter-spacing:.34em; text-transform:uppercase; color:#C9A87C; margin-bottom:18px; }
+.masthead h1 { font-family: var(--moss-font-display); font-weight:400; font-size: clamp(30px, 5vw, 54px); line-height:1.14; margin:0 0 18px; letter-spacing:-.01em; }
+.masthead .sub { font-size:14px; color:#BFCFD4; max-width:60ch; }
+.masthead .stamp { position:absolute; right:28px; bottom:26px; font-size:11px; letter-spacing:.22em; color:#8FA6AC; }
+nav.toc { position:sticky; top:0; z-index:50; background: rgba(255,253,248,.94); backdrop-filter: blur(8px);
+  border-bottom:1px solid #E4DCCD; }
+nav.toc .wrap { display:flex; gap:6px; overflow-x:auto; padding:10px 28px; scrollbar-width:none; }
+nav.toc .wrap::-webkit-scrollbar { display:none; }
+nav.toc a { font-size:12.5px; color:#4C5A60; border:1px solid transparent; border-radius:100px; padding:5px 12px; white-space:nowrap; }
+nav.toc a:hover { background: var(--moss-color-secondary); border-color:#DCD2C0; }
+.chapter { padding: 54px 0; border-bottom:1px solid #EDE6D8; }
+.chapter:last-child { border-bottom:none; }
+.ch-label { font-size:11px; letter-spacing:.3em; text-transform:uppercase; color: var(--moss-color-accent); margin-bottom:10px; }
+.ch-title { font-family: var(--moss-font-display); font-weight:400; font-size: clamp(22px,3.2vw,33px); line-height:1.28; margin:0 0 22px; color: var(--moss-color-primary); }
+h3.sub { font-family: var(--moss-font-display); font-weight:400; font-size:20px; margin:36px 0 12px; color: var(--moss-color-primary); }
+p { margin:0 0 18px; }
+p strong, li strong { color: var(--moss-color-primary); font-weight:600; }
+.lead { color:#41525A; }
+.callout { border-left:3px solid var(--moss-color-primary); background: var(--moss-color-secondary); padding:18px 22px; margin:26px 0; border-radius: var(--moss-radius); }
+.callout .ct { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#6B7A80; margin-bottom:6px; }
+.callout p { margin:0; }
+.callout.key { border-left-color: var(--moss-color-accent); background:#FBF0E8; }
+.callout.warn { border-left-color:#A8701C; background:#FBF4E2; }
+.callout.bad { border-left-color:#9B2F32; background:#FAEDEC; }
+.callout.info { border-left-color:#2F5F72; }
+.ev { font-size:10.5px; font-family: var(--moss-font-body); background: var(--moss-color-secondary); border:1px solid #E0D6C4;
+  border-radius:3px; padding:1px 5px; margin:0 1px; color:#6B5A43; border-bottom:1px solid #E0D6C4; white-space:nowrap; }
+.ev:hover { background: var(--moss-color-accent); color:#fff; border-color: var(--moss-color-accent); }
+figure.tbl { margin: 28px 0; }
+figure.tbl figcaption { font-size:12px; letter-spacing:.06em; color:#6B7A80; margin-bottom:8px; }
+.tbl-wrap { overflow-x:auto; border:1px solid #E4DCCD; border-radius: var(--moss-radius); background:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13.5px; }
+th { text-align:left; background: var(--moss-color-primary); color:#F2EDE4; font-weight:500; padding:11px 13px; font-size:12.5px; letter-spacing:.04em; white-space:nowrap; }
+td { padding:11px 13px; border-top:1px solid #EFE8DA; vertical-align:top; }
+tbody tr:nth-child(even) { background:#FCFAF4; }
+.tag-a { color:#1F5B46; font-weight:600; } .tag-b { color:#8A5A15; font-weight:600; } .tag-c { color:#8E3B34; font-weight:600; }
+ul.tight { margin:0 0 18px; padding-left:20px; }
+ul.tight li { margin-bottom:9px; }
+.grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.card { background:#fff; border:1px solid #E7DFD1; border-radius: var(--moss-radius); padding:20px 22px; box-shadow: 0 10px 30px rgba(23,50,63,.05); }
+.card h4 { margin:0 0 10px; font-family: var(--moss-font-display); font-weight:400; font-size:17px; color: var(--moss-color-primary); }
+.card p { margin:0; font-size:13.5px; color:#41525A; line-height:1.7; }
+.mod { margin: 34px 0; }
+.mod-h { font-family: var(--moss-font-display); font-size:22px; color: var(--moss-color-primary); margin-bottom:16px; display:flex; align-items:baseline; gap:12px; }
+.mod-h .num { font-size:12px; letter-spacing:.2em; color: var(--moss-color-accent); border:1px solid rgba(194,90,43,.4); border-radius:3px; padding:2px 7px; }
+.kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:22px; }
+.kpi { background:#fff; border:1px solid #E7DFD1; border-left:3px solid var(--moss-color-primary); border-radius: var(--moss-radius); padding:16px 18px; }
+.k-lab { font-size:11.5px; color:#6B7A80; letter-spacing:.04em; }
+.k-val { font-family: var(--moss-font-display); font-size:30px; line-height:1.2; color: var(--moss-color-primary); margin:6px 0 2px; }
+.k-val .u { font-size:12px; font-family: var(--moss-font-body); color:#6B7A80; margin-left:4px; }
+.k-val.dn { color:#9B2F32; }
+.k-note { font-size:11.5px; color:#7A878C; line-height:1.5; }
+.stage-bar { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid #E7DFD1; border-radius: var(--moss-radius); overflow:hidden; background:#fff; }
+.st { padding:14px 16px; border-right:1px solid #EFE8DA; }
+.st:last-child { border-right:none; }
+.st b { display:block; font-size:13.5px; color: var(--moss-color-primary); }
+.st span { font-size:11.5px; color:#7A878C; }
+.st.on { background:#FAEDEC; } .st.mid { background:#FBF4E2; } .st:not(.on):not(.mid) { background:#EFF4F3; }
+.axis { border:1px solid #E7DFD1; border-radius: var(--moss-radius); background:#fff; padding:24px 22px 16px; margin:22px 0; }
+.axis-h { font-size:12px; letter-spacing:.06em; color:#6B7A80; margin-bottom:34px; }
+.axis-line { position:relative; height:2px; background:#E0D6C4; margin:0 92px 12px; }
+.pt { position:absolute; top:-6px; transform:translateX(-50%); text-align:center; max-width:150px; }
+.dot { display:block; width:13px; height:13px; border-radius:50%; background: var(--moss-color-primary); margin:0 auto 10px; }
+.dot.hollow { background:#fff; border:2.5px solid var(--moss-color-accent); }
+.pt.gap .plabel b { color: var(--moss-color-accent); }
+.plabel { font-size:11.5px; color:#5B6B72; line-height:1.5; }
+.plabel b { display:block; font-family: var(--moss-font-display); font-size:15px; color: var(--moss-color-primary); }
+.plabel i { font-style:normal; color:#98A5AA; font-size:10.5px; }
+.axis-foot { font-size:11px; color:#8B979C; margin-top:14px; }
+.matrix { display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:12px; }
+.q { border:1px solid #E7DFD1; border-radius: var(--moss-radius); padding:18px 20px; background:#fff; }
+.q .qt { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#8B979C; margin-bottom:8px; }
+.q b { font-family: var(--moss-font-display); font-weight:400; font-size:16px; color: var(--moss-color-primary); }
+.q p { font-size:13px; color:#4C5A60; margin:8px 0 0; }
+.q.hi { border:2px solid var(--moss-color-accent); background:#FDF3EC; box-shadow: 0 14px 40px rgba(194,90,43,.14); }
+.q.hi b { color: var(--moss-color-accent); }
+.acts { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:22px; }
+.act { background:#fff; border:1px solid #E7DFD1; border-radius: var(--moss-radius); padding:16px 18px; }
+.act .ah { font-size:13.5px; font-weight:600; color: var(--moss-color-primary); margin-bottom:6px; }
+.act .an { display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; background: var(--moss-color-primary); color:#fff; border-radius:3px; font-size:11px; margin-right:8px; }
+.act p { margin:0; font-size:13px; color:#4C5A60; }
+.watch { display:grid; grid-template-columns:1fr 1fr; gap:22px; border-top:1px solid #EDE6D8; padding-top:20px; }
+.watch h4 { margin:0 0 8px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color: var(--moss-color-accent); }
+.watch ul { font-size:13px; color:#4C5A60; }
+.kv { border-top:1px solid #EDE6D8; margin:22px 0; }
+.kv-row { display:grid; grid-template-columns:220px 1fr; gap:20px; padding:14px 0; border-bottom:1px solid #EDE6D8; }
+.kv-k { font-weight:600; color: var(--moss-color-primary); font-size:13.5px; }
+.kv-v { font-size:13.5px; color:#41525A; }
+.ev-row { display:grid; grid-template-columns:84px 1fr; gap:16px; padding:16px 0; border-bottom:1px solid #EDE6D8; }
+.ev-id { font-family: var(--moss-font-display); font-size:13px; color: var(--moss-color-accent); }
+.ev-id a { border-bottom:none; }
+.ev-id .back { color:#B9C4C7; }
+.ev-title { font-size:14px; color: var(--moss-color-primary); font-weight:600; }
+.ev-meta { font-size:11.5px; color:#8B979C; margin:3px 0; }
+.ev-note { font-size:12.5px; color:#4C5A60; line-height:1.65; }
+.ev-url { font-size:11px; margin-top:4px; word-break:break-all; }
+.nolink { color:#B0B9BC; }
+footer { background: var(--moss-color-primary); color:#9FB1B6; padding:34px 0; font-size:11.5px; letter-spacing:.06em; }
+footer .wrap { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+@media (max-width: 860px) {
+  .kpis { grid-template-columns:repeat(2,1fr); }
+  .grid2, .acts, .watch, .matrix { grid-template-columns:1fr; }
+  .kv-row { grid-template-columns:1fr; gap:4px; }
+  .stage-bar { grid-template-columns:1fr; }
+  .st { border-right:none; border-bottom:1px solid #EFE8DA; }
+  .masthead { padding:44px 0 30px; }
+  .chapter { padding:40px 0; }
+  .plabel { font-size:10px; }
+  .wrap { padding:0 18px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+.rise { opacity:0; transform: translateY(14px); transition: opacity var(--moss-motion-duration) var(--moss-motion-easing), transform var(--moss-motion-duration) var(--moss-motion-easing); }
+.rise.in { opacity:1; transform:none; }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">Industry Landscape · MOSS 增长谋士</div>
+    <h1>运动恢复行业格局透视</h1>
+    <div class="sub">消费级家用恢复设备 · 全球与中国 · 企业战略视角 · 数据截至2026年11月8日</div>
+  </div>
+  <div class="stamp">RESEARCHED 2026.11.08</div>
+</header>
+<nav class="toc"><div class="wrap">
+  <a href="#converge">研究收束</a><a href="#dashboard">决策看板</a>
+  <a href="#verdict">核心判定</a><a href="#landscape">边界与规模</a><a href="#stage">阶段判断</a>
+  <a href="#drivers">驱动力</a><a href="#valuechain">产业链</a><a href="#competition">竞争格局</a>
+  <a href="#position">我方落点</a><a href="#actions">行动</a><a href="#conclusion">结论</a><a href="#evidence">证据链</a>
+</div></nav>
+<main class="wrap">
+
+<section class="chapter" id="converge">
+  <div class="ch-label">研究收束区</div>
+  <h2 class="ch-title">结论是怎么从证据收束出来的</h2>
+  <div class="grid2">
+    <div class="card"><h4>1 范围与问题树</h4><p>纳入：消费级家用气压/压缩靴、冲击式筋膜枪、冷热敷、家用NMES、光疗。排除：医疗级康复设备与服务机构（仅作对照，不计入规模）。地域：全球为主、中国单列。时点：截至2026年11月8日已发布数据，2025完整年度作基准。问题树九支：边界、规模、结构、竞争、需求、渠道、供给、我方落点、验证。</p></div>
+    <div class="card"><h4>2 证据地图与覆盖</h4><p>采用29项证据：官方统计1项（国家体育总局）、上市公司披露4项（倍益康、倍轻松、翔宇医疗、未来穿戴）、监管数据1项（Ⅱ类注册）、机构报告8项（QYResearch、Grand View、Dataintelo、SMR、FMI等）、渠道价格快照4项、行业媒体6项、企业数据库1项（MOSS，河南康复类企业15,636家）。统计截止期分布在2025年至2026年11月。</p></div>
+    <div class="card"><h4>3 分歧与缺口</h4><p><b>核心分歧：</b>筋膜枪2025年全球规模在3.04亿—15亿美元之间，最大差5倍，原因是统计边界（是否含迷你款、专业级、配件）不同。本报告采用窄口径，宽口径仅用于说明定义未统一。<b>未覆盖：</b>天猫/抖音类目后台成交数据、抖音搜索指数、各省长护险辅具目录明细、THERATOOLS持证与渠道结构。</p></div>
+    <div class="card"><h4>4 结论形成</h4><p>事实层：需求指标上行 + 上市公司净利下行 + 全球CR5集中 + 中国价格轴断档。推断层：价值捕获从硬件向“资质+场景+服务”迁移。假设层：1,000-2,000元中端带在中国成立，但缺乏该带位实际成交数据，故列为需验证的中置信结论。</p></div>
+  </div>
+</section>
+
+
+<section class="chapter" id="dashboard">
+  <div class="ch-label">决策看板</div>
+  <h2 class="ch-title">四模块：先看战场，再看钱、仗、动作</h2>
+
+  <div class="mod">
+    <div class="mod-h"><span class="num">Ⅰ</span>战场仪表盘</div>
+    <div class="kpis">
+      <div class="kpi"><div class="k-lab">全球气压恢复靴 · 2025</div><div class="k-val">3.12<span class="u">亿美元</span></div><div class="k-note">CAGR 7.7%｜65万套，均价480美元 <a class="ev" href="#E-001">E-001</a></div></div>
+      <div class="kpi"><div class="k-lab">中国按摩筋膜枪 · 2025</div><div class="k-val">45.9<span class="u">亿元</span></div><div class="k-note">预测值，非实测（约合全球气压靴2倍） <a class="ev" href="#E-012">E-012</a></div></div>
+      <div class="kpi"><div class="k-lab">倍益康净利同比 · 2025</div><div class="k-val dn">-85.7<span class="u">%</span></div><div class="k-note">营收仅-6.22%，经营杠杆反向放大 <a class="ev" href="#E-014">E-014</a></div></div>
+      <div class="kpi"><div class="k-lab">消费级压缩靴 CR5</div><div class="k-val">47.3<span class="u">%</span></div><div class="k-note">全球集中，中国品牌几乎无份额 <a class="ev" href="#E-020">E-020</a></div></div>
+      <div class="kpi"><div class="k-lab">经常锻炼人口比例 · 2025</div><div class="k-val">38.52<span class="u">%</span></div><div class="k-note">较2020年+1.3pct，需求侧真实 <a class="ev" href="#E-013">E-013</a></div></div>
+      <div class="kpi"><div class="k-lab">决策窗口</div><div class="k-val">12-24<span class="u">个月</span></div><div class="k-note">看长护险目录与CE MDR分类两项变量</div></div>
+    </div>
+    <div class="stage-bar">
+      <div class="st on"><b>筋膜枪</b><span>成长期后段 · 利润已出清</span></div>
+      <div class="st mid"><b>压缩靴</b><span>教育期向成长期过渡</span></div>
+      <div class="st"><b>循环健康（医疗化）</b><span>支付方驱动 · 未定型</span></div>
+    </div>
+    <aside class="callout key"><div class="ct">核心判断</div><p>需求是真的，硬件生意是假的。值得进，但不能以“再做一款更好的恢复硬件”的方式进；唯一可用的窗口是把医疗资质与临床语言，转成消费级价格带里的可信溢价。</p></aside>
+  </div>
+
+  <div class="mod">
+    <div class="mod-h"><span class="num">Ⅱ</span>钱在哪里</div>
+    <p class="lead">钱不在“低频高单价的压缩靴”，而在“低单价、多场景、可送礼的筋膜枪/按摩仪”。但筋膜枪的钱已经被价格战打完，真正未被占的是一段价格空档。</p>
+    <div class="axis">
+      <div class="axis-h">中国压缩靴到手价轴（2026年10-11月）</div>
+      <div class="axis-line">
+        <div class="pt" style="left:0%"><span class="dot"></span><div class="plabel"><b>568元</b>THERATOOLS<br><i>空档起点</i></div></div>
+        <div class="pt gap" style="left:38%"><span class="dot hollow"></span><div class="plabel"><b>1,299-1,999元</b>无人占位<br><i>本次建议落点</i></div></div>
+        <div class="pt" style="left:66%"><span class="dot"></span><div class="plabel"><b>2,479-4,299元</b>倍益康ACM-C1</div></div>
+        <div class="pt" style="left:100%"><span class="dot"></span><div class="plabel"><b>4,799元</b>Therabody</div></div>
+      </div>
+      <div class="axis-foot">来源：<a class="ev" href="#E-026">E-026</a> <a class="ev" href="#E-025">E-025</a> <a class="ev" href="#E-024">E-024</a> <a class="ev" href="#E-022">E-022</a>；价格为公开渠道快照，含促销差异</div>
+    </div>
+    <figure class="tbl"><figcaption>价值池分层：可见规模 × 利润质量 × 我方可得性</figcaption>
+      <div class="tbl-wrap"><table><thead><tr><th>价值池</th><th>可见规模</th><th>利润质量</th><th>我方可得性</th><th>判断</th></tr></thead><tbody>
+      <tr><td>气压/循环健康（械字号消费化）</td><td>全球3.12亿美元</td><td>高（头部经营利润率约18%）</td><td>高（气压技术+资质可迁移）</td><td class="tag-a">主攻</td></tr>
+      <tr><td>B端机构（康复/月子/养老/运动队）</td><td>中国康复器械211亿元（2024）</td><td>最高（翔宇毛利率66.63%）</td><td>高（既有渠道）</td><td class="tag-a">主攻</td></tr>
+      <tr><td>海外ODM/DTC压缩靴</td><td>无线一体式0.79亿美元</td><td>中（出口均价-4.8%）</td><td>中（需认证）</td><td class="tag-b">现金牛</td></tr>
+      <tr><td>筋膜枪C端</td><td>全球5.83亿美元</td><td>低（倍益康净利率1.45%）</td><td>低（专利与品牌已被占）</td><td class="tag-c">不碰</td></tr>
+      <tr><td>568元白牌价格带</td><td>分散长尾</td><td>负（无法覆盖流量成本）</td><td>低</td><td class="tag-c">退出</td></tr>
+      </tbody></table></div>
+    </figure>
+  </div>
+
+  <div class="mod">
+    <div class="mod-h"><span class="num">Ⅲ</span>仗怎么打</div>
+    <p class="lead">横轴是“价格与信任的可获得性”，纵轴是“壁垒强度”。全球头部占据右上，中国白牌挤在左下，中间那块既需要资质又需要消费运营能力的位置是空的。</p>
+    <div class="matrix">
+      <div class="q q1"><div class="qt">高壁垒 × 高溢价</div><b>Therabody / Hyperice-NormaTec</b><p>靠职业体育关系、临床证据、零售货架定价。中国品牌短期无法正面进入。</p></div>
+      <div class="q q2 hi"><div class="qt">高壁垒 × 中价带（空位）</div><b>我方目标位置</b><p>Ⅱ类械资质 + 循环健康人群 + 1,299-1,999元。需要把临床语言翻译成消费语言。</p></div>
+      <div class="q q3"><div class="qt">低壁垒 × 低溢价</div><b>白牌 / 家电跨界 / 小米生态</b><p>参数竞赛与价格战，568元及以下。利润率不足以支撑品牌建设。</p></div>
+      <div class="q q4"><div class="qt">低壁垒 × 中高溢价</div><b>SKG / 倍益康中端款</b><p>靠品牌势能与专利，但净利已被费用吞噬，位置不稳。</p></div>
+    </div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-h"><span class="num">Ⅳ</span>现在做什么</div>
+    <div class="acts">
+      <div class="act"><div class="ah"><span class="an">A</span>两套话术A/B（2周）</div><p>同一568元SKU：一版打“按摩放松”，一版打“久坐/长途/健身后下肢沉重”。判定：人群版转化率提升≥50%即证伪“价格问题”，坐实“定位问题”。</p></div>
+      <div class="act"><div class="ah"><span class="an">B</span>上架中端专业版（4周）</div><p>1,299-1,599元，械字号+适应症说明+机构背书。判定：30天月销≥100台且退货率&lt;10%，空档成立。</p></div>
+      <div class="act"><div class="ah"><span class="an">C</span>核算出海全成本（3周）</div><p>BOM + CE MDR认证摊销 + 欧洲DTC落地费。判定：落地毛利率≥45%才进入下一步。</p></div>
+      <div class="act"><div class="ah"><span class="an">D</span>机构客户深访3家（3周）</div><p>康复中心/月子中心/养老。判定：≥2家接受试用即启动B端小批量。</p></div>
+    </div>
+    <div class="watch">
+      <div class="w-col"><h4>持续观察</h4><ul class="tight"><li>天猫/抖音“压缩靴”类目TOP20价格分布（月度）</li><li>倍益康ACM系列与SKG压缩靴到手价变动</li><li>各省长期护理保险辅具目录是否新增家用气压设备</li></ul></div>
+      <div class="w-col"><h4>停止信号</h4><ul class="tight"><li>中端价格带连续两个月月销&lt;30台</li><li>出口均价连续两季同比降幅&gt;5%且我方毛利率&lt;30%</li><li>平台将气压设备纳入器械类目强监管，上架成本骤增</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="verdict"><div class="ch-label">核心</div><h2 class="ch-title">核心判定：需求是真的，硬件生意是假的</h2><p>运动恢复的“需求侧”在过去五年被彻底验证：中国7岁及以上经常参加体育锻炼人数比例达38.52%，19-59岁居民人均体育年消费2428元，其中服务型消费已占48.5%（<a class="ev" href="#E-013">E-013</a>，国家体育总局《2025年全民健身活动状况调查公报》，2025年12月发布）。但同一时间，赛道上所有“卖硬件”的中国公司都在丢利润：倍益康2025年营收2.731亿元仅降6.22%，归母净利却只剩397.21万元、同比降85.70%（<a class="ev" href="#E-014">E-014</a>）；倍轻松营收7.71亿元降28%、全年亏9726万元（<a class="ev" href="#E-017">E-017</a>）；奥佳华营收微增5%、净利降81%。</p>
+<p>这不是周期波动，而是价值捕获位置发生了迁移——需求增长流向“服务与场景”，硬件环节则被参数竞赛、白牌供给和流量成本同时挤压。结论：值得进入，但不能以“再做一款更好的恢复硬件”的方式进入。</p>
+<aside class="callout warn"><div class="ct">判断</div><p>消费级运动恢复是“高需求、低壁垒、低复购、低净利”的四低结构。可进入的窗口只有一个：把医疗资质与临床语言，转成消费级价格带里的“可信溢价”。</p></aside></section>
+<section class="chapter" id="landscape"><div class="ch-label">一、</div><h2 class="ch-title">一、边界与规模：同一赛道，五个口径差了五倍</h2><p>“运动恢复市场多大”没有唯一答案，因为口径差异极大。按最窄的整机品类口径，2025年全球空气压缩恢复靴为3.12亿美元、年产量65万套、均价480美元/套（<a class="ev" href="#E-001">E-001</a>，QYResearch，2026年6月发布）；其中“无线一体式”这一真正的消费级主流形态只有0.79亿美元、12.9万件、均价610美元（<a class="ev" href="#E-002">E-002</a>）。</p>
+<p>同一年的冲击式筋膜枪，QYResearch给5.83亿美元（<a class="ev" href="#E-003">E-003</a>），Research and Markets给3.04亿美元（<a class="ev" href="#E-006">E-006</a>），Strategic Market Research给10.5亿美元（<a class="ev" href="#E-004">E-004</a>），Future Market Insights给15亿美元（<a class="ev" href="#E-005">E-005</a>）。五个数字不是谁算错了，而是分别对应“仅冲击式手持”、“窄品类”、“含迷你与全品类按摩枪”、“含专业级与配件”。</p>
+<figure class="tbl"><figcaption>表1 全球消费级恢复设备主要口径对照（2025年）</figcaption><div class="tbl-wrap"><table><thead><tr><th>品类/口径</th><th>2025年规模</th><th>增速</th><th>口径说明</th><th>来源</th></tr></thead><tbody><tr><td>空气压缩恢复靴（整机）</td><td>3.12亿美元</td><td>CAGR 7.7%（2026-32）</td><td>含消费级+临床级，65万套、均价480美元</td><td><a class="ev" href="#E-001">E-001</a></td></tr><tr><td>└ 无线一体式子集</td><td>0.79亿美元</td><td>CAGR 7.2%</td><td>12.9万件、均价610美元，最贴近家用消费</td><td><a class="ev" href="#E-002">E-002</a></td></tr><tr><td>冲击式筋膜枪（窄）</td><td>3.04亿美元</td><td>CAGR 7.0%</td><td>Research and Markets 口径</td><td><a class="ev" href="#E-006">E-006</a></td></tr><tr><td>冲击式筋膜枪（中）</td><td>5.83亿美元</td><td>CAGR 8.5%</td><td>QYResearch 手持冲击式</td><td><a class="ev" href="#E-003">E-003</a></td></tr><tr><td>按摩枪（宽）</td><td>10.5-15亿美元</td><td>CAGR 8.1-10.0%</td><td>含迷你款与全品类，家用占75.8%</td><td><a class="ev" href="#E-004">E-004</a>, <a class="ev" href="#E-005">E-005</a></td></tr><tr><td>按摩设备全行业</td><td>116亿美元（2024）</td><td>CAGR 7.3%至2033年217亿</td><td>含按摩椅等全品类</td><td><a class="ev" href="#E-008">E-008</a></td></tr><tr><td>运动医学-支撑与恢复</td><td>14.41亿美元</td><td>CAGR 8.1%</td><td>含护具、压缩衣，非纯设备</td><td><a class="ev" href="#E-007">E-007</a></td></tr></tbody></table></div></figure>
+<p><strong>这意味着什么：</strong>做进入判断时，可用的“可信盘子”应是口径最窄、定义最清楚的那一层——全球压缩靴约3亿美元、无线一体式不到1亿美元、冲击式筋膜枪约6亿美元。把“运动恢复”理解成百亿美元市场，会让资源投放严重高估。反过来，宽口径的存在本身说明：这条赛道尚未形成统一品类定义，谁定义品类，谁拿溢价。</p>
+<p>中国侧的结构更值得注意。2024年中国按摩器具内销369.1亿元（<a class="ev" href="#E-010">E-010</a>），但被拆开后，单品类规模远小于想象：中国按摩筋膜枪2022年29.2亿元，2025年45.9亿元（<a class="ev" href="#E-012">E-012</a>）——后者是2023年报告的预测值，不是实测。即便按预测值，中国单一筋膜枪品类的规模，也是全球压缩靴整机盘子的两倍以上（45.9亿元 vs 约22.5亿元，按1美元≈7.2元人民币折算）。</p>
+<aside class="callout info"><div class="ct">结构性事实</div><p>中国消费级恢复市场的钱，主要不在“气压靴”这种低频高单价设备，而在“筋膜枪/按摩仪”这种低单价、多场景、可送礼的高触点品类。压缩靴在全球只是约3亿美元的小池子。</p></aside></section>
+<section class="chapter" id="stage"><div class="ch-label">二、</div><h2 class="ch-title">二、阶段判断：筋膜枪已过成长期顶，压缩靴仍在教育期</h2><p>两条子品类处在完全不同的生命周期位置，用一张图看会更清楚：一条是“渗透率见顶、价格下沉、利润出清”，另一条是“认知刚起、单价高、渠道未定型”。</p>
+<figure class="tbl"><figcaption>表2 两个主力子品类的生命周期对照</figcaption><div class="tbl-wrap"><table><thead><tr><th>维度</th><th>冲击式筋膜枪</th><th>空气压缩恢复靴</th></tr></thead><tbody><tr><td>全球规模（2025）</td><td>约6亿美元（QY口径）</td><td>约3亿美元（整机）</td></tr><tr><td>中国规模</td><td>约46亿元（2025预测）</td><td>无权威公开实测，估计个位数亿元级</td></tr><tr><td>增长阶段</td><td>成长期后段，增速从20%+回落至个位数</td><td>教育期向成长期过渡</td></tr><tr><td>竞争强度</td><td>极高：白牌、家电巨头、专业品牌三层混战</td><td>中：头部集中（消费级CR5 47.3%），中国品牌刚进入</td></tr><tr><td>价格带形态</td><td>从百元到3000元，长尾极厚</td><td>从500元到8000元，中间层几乎空白</td></tr><tr><td>复购逻辑</td><td>几乎不复购，靠新增与送礼</td><td>几乎不复购，靠生态捆绑与配件</td></tr><tr><td>利润状态</td><td>已出清：倍益康净利率1.45%</td><td>头部仍高毛利：NormaTec经营利润率约18%</td></tr></tbody></table></div></figure>
+<p>筋膜枪的“成长故事”已经被证伪在利润表上。倍益康2025年营收只降6.22%，净利却降85.70%（<a class="ev" href="#E-014">E-014</a>）——这是典型的经营杠杆反向放大：毛利率35.4%的硬件生意，一旦售价被下压、销售费用刚性，跌5个点毛利就足以吃掉全部净利。倍轻松的情况更极端：毛利率62.63%，净利率-9.37%，销售费用率57.32%（<a class="ev" href="#E-017">E-017</a>）——高毛利被流量费全额买走。</p>
+<p>压缩靴则还在“品类教育”阶段。全球消费级CR5约47.3%，NormaTec（Hyperice）压缩业务约2.25亿美元、经营利润率约18%（<a class="ev" href="#E-020">E-020</a>）——这是全赛道最好的利润结构。它的护城河不是气泵，是450+职业球队的合作关系与临床证据（同源）。</p>
+<aside class="callout key"><div class="ct">阶段结论</div><p>不要进筋膜枪，那是已经打完的仗；压缩靴还有仗可打，但打法必须是“定义品类”，不是“复制参数”。</p></aside></section>
+<section class="chapter" id="drivers"><div class="ch-label">三、</div><h2 class="ch-title">三、驱动力与转折信号：谁在真正推动这条赛道</h2><p>表面驱动力是健身人口。真实驱动力是三股力量叠加，而且正在互相抵消。</p>
+<div class="kv"><div class="kv-row"><div class="kv-k">驱动力一：健身人口与“恢复”心智</div><div class="kv-v">经常锻炼人口比例38.52%、服务型体育消费占48.5%（<a class="ev" href="#E-013">E-013</a>）。心智从“练得更多”转向“恢复得更好”，是这条赛道最扎实的底层变量。</div></div><div class="kv-row"><div class="kv-k">驱动力二：老龄化与循环健康需求</div><div class="kv-v">中国康复医疗器械2024年211亿元、2030年473亿元、CAGR约14%（<a class="ev" href="#E-029">E-029</a>）；60岁及以上人口3.2亿（2025年末）。气压设备的医学适应症（下肢循环、水肿、DVT预防）与这一人群高度重合——这是比“运动恢复”更大的池子。</div></div><div class="kv-row"><div class="kv-k">驱动力三：出海与跨境DTC</div><div class="kv-v">中国按摩器具2024年出口超120亿美元（<a class="ev" href="#E-010">E-010</a>）；家用产品占出口65%-70%，2025年智能联网款出口占比37%（<a class="ev" href="#E-009">E-009</a>）。倍益康2025H1境外收入+70.90%、境内-33.58%（<a class="ev" href="#E-015">E-015</a>）——增量在海外，且是唯一增量。</div></div></div>
+<p>抵消力量同样清晰：2026年上半年按摩器械出口均价同比下降4.8%（<a class="ev" href="#E-009">E-009</a>）。这意味着出海是“以价换量”，不是“以品牌换溢价”。中国制造在恢复硬件上的成本优势（基础款筋膜枪出厂15-25欧元、欧洲零售80-250欧元，毛利空间400%-600%，<a class="ev" href="#E-008">E-008</a>）正在被同质化供给迅速抹平。</p>
+<p><strong>转折信号（未来12-24个月会改变格局的三件事）</strong>：第一，家用气压设备若被纳入长期护理保险或康复辅具目录，需求会从“消费决策”切换为“支付方决策”，医疗级厂商（翔宇、倍益康）先受益，纯消费品牌被挤出；第二，欧盟MDR与美国FDA对“恢复类器械”的分类收紧，会把没有合规能力的白牌清出主流渠道；第三，头部品牌向中端下压（SKG压缩靴在美国已到$399.99，<a class="ev" href="#E-024">E-024</a>），会挤压中国品牌刚占住的中端位。</p>
+<aside class="callout warn"><div class="ct">反证条件</div><p>如果“恢复”在中国仍属低频尝鲜，则中端价格带的“专业背书溢价”不成立。验证指标：天猫/抖音压缩靴类目TOP20中，是否出现1,000-2,000元价位的国产品牌并稳定月销过百。若无，说明该价格带在中国尚未被验证。</p></aside></section>
+<section class="chapter" id="valuechain"><div class="ch-label">四、</div><h2 class="ch-title">四、产业链与价值分布：钱在两端，不在中间</h2><p>这条链的价值分布极不均衡：研发与品牌拿走大部分毛利，制造环节拿加工费，渠道在流量涨价时反过来吃掉品牌利润。</p>
+<figure class="tbl"><figcaption>表3 产业链价值分布与卡点</figcaption><div class="tbl-wrap"><table><thead><tr><th>环节</th><th>代表主体</th><th>价值捕获</th><th>关键卡点</th></tr></thead><tbody><tr><td>核心件（气泵/阀/控制板/气室面料）</td><td>分散，长三角/珠三角</td><td>低毛利，标准化程度上升</td><td>静音气泵、闭环压力传感、气室密封寿命</td></tr><tr><td>整机ODM/代工</td><td>中国产能占全球主要份额</td><td>加工费，10%-20%毛利</td><td>认证能力（FDA 510(k)、CE MDR）成为新门槛</td></tr><tr><td>品牌（全球）</td><td>Therabody、Hyperice/NormaTec、Air Relax、Rapid Reboot</td><td>高毛利，NormaTec经营利润率约18%</td><td>临床证据+职业体育关系+零售货架</td></tr><tr><td>品牌（中国）</td><td>倍益康、SKG、倍轻松、小米生态</td><td>毛利35%-63%，净利被费用吞噬</td><td>缺“可信溢价”，只能打参数与价格</td></tr><tr><td>渠道</td><td>亚马逊/独立站/天猫/抖音</td><td>流量成本持续上涨</td><td>出口均价-4.8%背景下，平台补贴成为主要转化手段</td></tr><tr><td>专业背书</td><td>医院/康复中心/运动队/临床研究</td><td>决定溢价的隐性环节</td><td>中国品牌普遍缺可引用的本土临床数据</td></tr></tbody></table></div></figure>
+<p>一个被普遍误读的成本事实：筋膜枪基础款的出厂成本只有15-25欧元，欧洲零售80-250欧元（<a class="ev" href="#E-008">E-008</a>）。这说明“制造成本”从来不是壁垒，400%-600%的渠道毛利空间才是所有人往里冲的原因——也正是它被迅速打平的原因。到了压缩靴，成本结构变了：气泵、多腔气室、电池与压力控制把BOM推高，加上认证费用，白牌难以在300美元以下做出合格产品。这是压缩靴比筋膜枪“更适合认真做”的技术原因。</p></section>
+<section class="chapter" id="competition"><div class="ch-label">五、</div><h2 class="ch-title">五、竞争格局：全球高度集中，中国高度分散</h2><p>这是全场最不对称的一张图：全球消费级压缩靴CR5约47.3%，而中国几乎没有品牌份额；全球筋膜枪Therabody占15%-20%、Hyperice占10%-15%，其余50%-65%由长尾分食（<a class="ev" href="#E-005">E-005</a>、<a class="ev" href="#E-020">E-020</a>）。</p>
+<figure class="tbl"><figcaption>表4 头部玩家与打法</figcaption><div class="tbl-wrap"><table><thead><tr><th>玩家</th><th>定位与价格</th><th>核心打法</th><th>可复制性</th></tr></thead><tbody><tr><td>Therabody</td><td>生态全价位：Theragun Relief $159.99 至 JetBoots PRO Plus $1,149.99（<a class="ev" href="#E-022">E-022</a>）</td><td>一品牌多设备+App+零售扩张（Ulta 1000+门店，2026-03）+千万美元级研究投入（<a class="ev" href="#E-023">E-023</a>）</td><td>难复制：靠10年品牌资产与临床叙事</td></tr><tr><td>Hyperice / NormaTec</td><td>压缩靴高端锚点，压缩业务约2.25亿美元、经营利润率约18%（<a class="ev" href="#E-020">E-020</a>）</td><td>450+职业球队关系+临床证据+并购整合</td><td>难复制：关系资产</td></tr><tr><td>Air Relax / Rapid Reboot</td><td>中端，$200-$350与专业级之间（<a class="ev" href="#E-020">E-020</a>）</td><td>亚马逊算法+评价体系+性价比</td><td>可复制：中国供应链可直接对标</td></tr><tr><td>SKG（未来穿戴）</td><td>压缩靴$399.99-$599.99（<a class="ev" href="#E-024">E-024</a>），6腔200mmHg无线</td><td>以消费品牌势能跨品类，健身恢复塑形作为新曲线（<a class="ev" href="#E-018">E-018</a>）</td><td>部分可复制：需品牌与渠道，不需医疗资质</td></tr><tr><td>倍益康</td><td>筋膜枪+压缩靴ACM系列，天猫4,299元（到手约2,479元，<a class="ev" href="#E-025">E-025</a>）</td><td>ODM+自有品牌双轮，沙利文“全球中高端筋膜枪销量第一”，FDA 510(k)已过（<a class="ev" href="#E-015">E-015</a>、<a class="ev" href="#E-016">E-016</a>）</td><td>部分可复制：专利与资质是真资产</td></tr><tr><td>翔宇医疗</td><td>医疗级：空气波压力治疗仪、间歇充气加压防治系统，2025年营收7.68亿元、毛利率66.63%（<a class="ev" href="#E-019">E-019</a>）</td><td>院内渠道+全品类康复设备+注册证矩阵</td><td>难复制：注册证与院内关系</td></tr></tbody></table></div></figure>
+<p><strong>关键洞察</strong>：全球头部靠“关系与证据”定价，中国头部靠“参数与价格”走量。这两套体系之间有一道没有被填上的空隙——1,000-2,000元人民币（约$150-$300）的“有专业背书但不贵”的价格带。Therabody在这个带位只放了最简配的Relief（$159.99，无压缩功能）；SKG在中国没有主推压缩靴；倍益康的压缩靴直接标4,299元；白牌则集中在568元以下。中间是空的。</p>
+<p>再看经营信号，中国侧几乎全线下行：倍益康净利-85.70%（<a class="ev" href="#E-014">E-014</a>）、倍轻松亏9726万元（<a class="ev" href="#E-017">E-017</a>）、奥佳华净利-81%、未来穿戴营收连续两年停在10亿元级（<a class="ev" href="#E-018">E-018</a>）。唯一逆势的是医疗级：翔宇医疗2025年营收+3.26%、2026Q1净利+10.33%（<a class="ev" href="#E-019">E-019</a>）。这个背离说明钱正在从“消费硬件”向“有支付方的专业设备”回流。</p></section>
+<section class="chapter" id="position"><div class="ch-label">六、</div><h2 class="ch-title">六、我方落点：THERATOOLS 的位置与三个可打的口子</h2><p>先把事实摆清楚。公开渠道可见：THERATOOLS在淘宝的加热款气压恢复靴标价568元、促销422元，店铺位于河南郑州，抓取时该链接近30天成交0单（<a class="ev" href="#E-026">E-026</a>，单链接快照，不代表店铺整体）。同一品类里，倍益康ACM-C1天猫标价4,299元（到手约2,479元，<a class="ev" href="#E-025">E-025</a>），Therabody RecoveryAir Prime中国售价约4,799元，SKG在海外卖$399.99-$599.99（<a class="ev" href="#E-024">E-024</a>）。</p>
+<p><strong>这意味着</strong>：我方在价格轴上位于最低端，距离最近的中国品牌竞品（倍益康到手价）有4.4倍差距，距离国际品牌有14倍差距。而在“恢复”这个高关心度、需要信任背书的品类里，最低价恰恰是最难成交的位置——消费者不是买不起贵的，是不敢买便宜的。“568元治腿”在消费者心里过不了信任关，所以0单不是流量问题。</p>
+<aside class="callout bad"><div class="ct">战略错配</div><p>空气波压力治疗仪在中国是Ⅱ类医疗器械（京械注准20252090945，适用范围含家庭场景与DVT预防，<a class="ev" href="#E-027">E-027</a>）。我方把它放在“运动/瑜伽/健身”类目、以568元销售，等于自愿放弃医疗资质带来的定价权，去和白牌比价格。</p></aside>
+<p><strong>三个可打的口子，按优先级排序：</strong></p>
+<ul class="tight"><li><strong>① 医疗资质的消费化（首选）</strong>：用Ⅱ类证+临床语言做“循环健康管理”而非“运动放松”。人群从跑者换成久坐/长途/术后/产后/中老年下肢沉重人群——这群人更多、更刚需、竞争更少，且愿意为“械字号”付溢价。价格带定1,299-1,999元，正好卡在全球头部与中国白牌之间的空档。成立条件：能拿到或已有Ⅱ类注册证、能做出可引用的适应症说明、能把医疗语言翻译成消费语言。</li><li><strong>② 出海DTC/ODM（次选，现金流导向）</strong>：基础款筋膜枪出厂15-25欧元、欧洲零售80-250欧元（<a class="ev" href="#E-008">E-008</a>），但出口均价已在下滑（-4.8%，<a class="ev" href="#E-009">E-009</a>），这是“以价换量”的生意。压缩靴的技术门槛（气泵、多腔、认证）比筋膜枪高，白牌做不出合格品，因此B端ODM的议价能力更好。成立条件：完成CE MDR分类确认（气压设备可能被划入器械）、拿到FDA 510(k)或等效路径、有稳定的欧洲渠道商。</li><li><strong>③ B端机构（护城河导向）</strong>：康复中心、月子中心、养老机构、运动队。单价高、决策链长、需要资质与售后，恰是健衡康复的既有能力。翔宇医疗2025年毛利率66.63%（<a class="ev" href="#E-019">E-019</a>）证明这条路的利润质量远高于C端。成立条件：能提供机构级售后与培训、有可比案例。</li></ul>
+<p><strong>明确不该打的</strong>：568元价格带的C端白牌消耗战（没有品牌信任支撑，只会亏费用）；筋膜枪红海（倍益康已积累数百项专利并拿到“全球中高端销量第一”的第三方认证，这是重资产专利战，不是产品战）。</p>
+<p>还有一个结构性缺口必须补：气压靴是低频高单价，单SKU撑不起电商模型。Therabody的解法是“一人多设备”——买了枪的人再买靴子（<a class="ev" href="#E-023">E-023</a>）。我方若只有一款气压靴，无论定价多少，都只能做一次性生意；需要配一个高频低单价的引流品（热敷/足部/颈肩）来摊薄获客成本。</p></section>
+<section class="chapter" id="actions"><div class="ch-label">七、</div><h2 class="ch-title">七、现在做什么：四个可验证动作与停止信号</h2><figure class="tbl"><figcaption>表5 验证计划（按优先级）</figcaption><div class="tbl-wrap"><table><thead><tr><th>动作</th><th>验证什么</th><th>成本</th><th>判定标准</th></tr></thead><tbody><tr><td>A/B测试现有568元SKU的两套话术：一版“按摩放松”（现状），一版“久坐/长途/健身后下肢沉重”</td><td>是价格问题还是信任与人群问题</td><td>极低，仅素材与投放</td><td>若人群版转化率提升≥50%，说明是定位问题；若都无转化，说明该价格带本身不被信任</td></tr><tr><td>上架一个1,299-1,599元“专业版”（械字号+适应症说明+机构背书）</td><td>1,000-2,000元空档是否真实存在</td><td>中，需产品与资质准备</td><td>30天内月销≥100台且退货率&lt;10%，即视为空档成立</td></tr><tr><td>核算压缩靴BOM与欧洲DTC落地全成本（含CE MDR认证摊销）</td><td>400%-600%毛利空间是否对我方成立</td><td>低，内部核算</td><td>落地毛利率≥45%才进入下一步</td></tr><tr><td>盘点机构客户（康复中心/月子中心/养老）现有触点，做3家深访</td><td>B端路径的启动成本与决策周期</td><td>低</td><td>3家中≥2家愿意接受试用，即启动B端小批量</td></tr></tbody></table></div></figure>
+<p><strong>观察指标（按月跟踪）</strong>：天猫/抖音“气压恢复靴/压缩靴”类目TOP20的价格分布变化；该关键词搜索指数；倍益康ACM系列与SKG压缩靴的到手价变动；各省长期护理保险辅具目录是否新增家用气压设备。</p>
+<p><strong>停止信号</strong>：①中端价格带测试连续两个月月销&lt;30台；②出口均价连续两个季度同比降幅&gt;5%且我方毛利率跌破30%；③主流平台把气压设备纳入器械类目强监管导致上架成本骤增。出现任一条，即停止C端投入，退回B端与ODM。</p></section>
+<section class="chapter" id="conclusion"><div class="ch-label">八、</div><h2 class="ch-title">八、结论与置信度</h2><ul class="tight"><li><strong>结论1（高置信）</strong>：消费级运动恢复的需求真实且在增长，但硬件环节的利润已被出清。中国三家代表性硬件公司2025年净利分别为-85.70%、亏损9726万、-81%，不是个案。</li><li><strong>结论2（高置信）</strong>：压缩靴的全球盘子只有约3亿美元、中国无线一体式子集不足1亿美元。任何以“百亿美元赛道”为前提的投入测算都会高估机会。</li><li><strong>结论3（中置信）</strong>：1,000-2,000元人民币的“专业背书中端带”在中国尚属空白。依据是价格轴上的断档（568元白牌 → 2,479元起中国品牌 → 4,799元国际品牌），但缺乏该带位的实际成交数据支撑。</li><li><strong>结论4（中置信）</strong>：中国厂商的唯一增量在海外（倍益康境外+70.90%、境内-33.58%），但这是以价换量（出口均价-4.8%），不是品牌溢价。</li><li><strong>结论5（推断）</strong>：若家用气压设备被纳入长护险或康复辅具支付目录，赛道会从“消费决策”切换为“支付方决策”，医疗资质企业的估值逻辑将被重估。这是未来12-24个月最大的单一变量。</li></ul>
+<p><strong>给男哥的一句话</strong>：这条赛道值得进，但要换一个身份进——不是“又一家卖恢复设备的中国品牌”，而是“有械字号、能把临床语言讲成消费语言的循环健康品牌”。前者已经在价格战里亏损，后者还没有人做。</p></section>
+
+<section class="chapter" id="evidence">
+  <div class="ch-label">附录</div>
+  <h2 class="ch-title">证据链与数据来源</h2>
+  <p class="lead">共29项证据。正文中的 E-xxx 徽章点击可跳转至对应条目；每条提供原始链接。</p>
+  <div class="ev-row" id="E-001">
+      <div class="ev-id"><a href="#dashboard">E-001</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">2026-2032全球及中国空气压缩恢复靴行业研究及十五五规划分析报告（摘要）</div>
+      <div class="ev-meta">QYResearch（北京恒州博智）｜2026-06-05｜机构报告</div>
+      <div class="ev-note">2025年全球规模3.12亿美元，2032年5.28亿美元，CAGR 7.7%；2025年产量65万套，均价480美元/套</div>
+      <div class="ev-url"><a href="https://www.qyresearch.com.cn/reports/7009070/air-compression-recovery-boots" target="_blank" rel="noopener">https://www.qyresearch.com.cn/reports/7009070/air-compression-recovery-boots</a></div></div></div><div class="ev-row" id="E-002">
+      <div class="ev-id"><a href="#dashboard">E-002</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">2026-2032全球与中国无线腿部气压恢复靴市场现状及未来发展趋势</div>
+      <div class="ev-meta">QYResearch｜2026｜机构报告</div>
+      <div class="ev-note">无线一体式子集：2025年0.79亿美元，12.9万件，均价610美元，CAGR 7.2%</div>
+      <div class="ev-url"><a href="https://www.qyresearch.com.cn/reports/8099262/cordless-pneumatic-recovery-boots" target="_blank" rel="noopener">https://www.qyresearch.com.cn/reports/8099262/cordless-pneumatic-recovery-boots</a></div></div></div><div class="ev-row" id="E-003">
+      <div class="ev-id"><a href="#dashboard">E-003</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Percussion Massage Gun - Global Market Share and Ranking 2026-2032</div>
+      <div class="ev-meta">QYResearch｜2026-02-11｜机构报告</div>
+      <div class="ev-note">2025年5.83亿美元，2032年10.25亿美元，CAGR 8.5%</div>
+      <div class="ev-url"><a href="https://www.qyresearch.com/reports/5962313/percussion-massage-gun" target="_blank" rel="noopener">https://www.qyresearch.com/reports/5962313/percussion-massage-gun</a></div></div></div><div class="ev-row" id="E-004">
+      <div class="ev-id"><a href="#dashboard">E-004</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Massage Guns Market（更新于2026年10月16日）</div>
+      <div class="ev-meta">Strategic Market Research｜2026-10-16｜机构报告</div>
+      <div class="ev-note">2025年10.5亿美元；家用个人消费占75.8%；北美42%；Therabody累计销量超650万台、覆盖60余国（截至2025年11月）</div>
+      <div class="ev-url"><a href="https://www.strategicmarketresearch.com/market-report/massage-guns-market" target="_blank" rel="noopener">https://www.strategicmarketresearch.com/market-report/massage-guns-market</a></div></div></div><div class="ev-row" id="E-005">
+      <div class="ev-id"><a href="#dashboard">E-005</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Massage Guns Market Analysis &amp; Forecast 2025-2035</div>
+      <div class="ev-meta">Future Market Insights｜2026｜机构报告</div>
+      <div class="ev-note">2025年15亿美元；Therabody份额15-20%，Hyperice 10-15%，其余50-65%分散</div>
+      <div class="ev-url"><a href="https://www.futuremarketinsights.com/reports/massage-guns-market" target="_blank" rel="noopener">https://www.futuremarketinsights.com/reports/massage-guns-market</a></div></div></div><div class="ev-row" id="E-006">
+      <div class="ev-id"><a href="#dashboard">E-006</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Percussion Massagers - Global Strategic Business Report</div>
+      <div class="ev-meta">Research and Markets / Market Glass｜2026-10｜机构报告</div>
+      <div class="ev-note">2025年3.04亿美元，CAGR 7.0%；统计范围明显窄于E-003/E-004</div>
+      <div class="ev-url"><a href="http://researchandmarkets.com/reports/6094525/percussion-massagers-global-strategic-business" target="_blank" rel="noopener">http://researchandmarkets.com/reports/6094525/percussion-massagers-global-strategic-business</a></div></div></div><div class="ev-row" id="E-007">
+      <div class="ev-id"><a href="#dashboard">E-007</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Sports Medicine Market: Body Support &amp; Recovery 细分统计</div>
+      <div class="ev-meta">Grand View Research｜2025-06｜机构报告</div>
+      <div class="ev-note">2025年14.409亿美元，CAGR 8.1%，2033年26.63亿美元；含护具/压缩衣，不等于消费恢复设备</div>
+      <div class="ev-url"><a href="https://www.grandviewresearch.com/horizon/statistics/sports-medicine-market/product/body-support-recovery/global" target="_blank" rel="noopener">https://www.grandviewresearch.com/horizon/statistics/sports-medicine-market/product/body-support-recovery/global</a></div></div></div><div class="ev-row" id="E-008">
+      <div class="ev-id"><a href="#dashboard">E-008</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">家用健身选品2026：筋膜枪毛利400%，运动恢复比运动更好卖</div>
+      <div class="ev-meta">ESG跨境（行业服务商）｜2026｜行业媒体</div>
+      <div class="ev-note">全球按摩设备2024年116亿美元、2033年217亿美元、CAGR 7.3%；筋膜枪基础款出厂成本15-25欧元、欧洲零售80-250欧元，毛利空间400%-600%；智能款出厂40-50欧元</div>
+      <div class="ev-url"><a href="https://m.eservicesgroup.com.cn/news/181142.html" target="_blank" rel="noopener">https://m.eservicesgroup.com.cn/news/181142.html</a></div></div></div><div class="ev-row" id="E-009">
+      <div class="ev-id"><a href="#dashboard">E-009</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">2026年按摩器械行业现状/格局/痛点+发展趋势调研解析</div>
+      <div class="ev-meta">中研网｜2026-11-05｜行业媒体</div>
+      <div class="ev-note">2026上半年按摩器械出口均价同比-4.8%；家用产品占出口65%-70%；2025年智能联网款出口占比37%；美国占出口27.7%</div>
+      <div class="ev-url"><a href="https://www.chinairn.com/scfx/20261105/175911904.shtml" target="_blank" rel="noopener">https://www.chinairn.com/scfx/20261105/175911904.shtml</a></div></div></div><div class="ev-row" id="E-010">
+      <div class="ev-id"><a href="#dashboard">E-010</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">从一把筋膜枪到万亿赛道：健康个护站上银发经济风口</div>
+      <div class="ev-meta">消费日报网｜2026-09-07｜行业媒体</div>
+      <div class="ev-note">中国按摩器具2024年369.1亿元，2019-2024 CAGR 8.06%；小型便携按摩器2024年121.2亿元；2024年出口额超120亿美元；中国康复医疗器械2024年约211亿元、2030年约473亿元</div>
+      <div class="ev-url"><a href="https://www.xfrb.com.cn/content/202609/07/c1632282.html" target="_blank" rel="noopener">https://www.xfrb.com.cn/content/202609/07/c1632282.html</a></div></div></div><div class="ev-row" id="E-011">
+      <div class="ev-id"><a href="#dashboard">E-011</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">智能按摩仪从硬件销售到健康服务：AI重塑下的行业转型路径</div>
+      <div class="ev-meta">凤凰网财经｜2026｜行业媒体</div>
+      <div class="ev-note">中国智能按摩仪2025年40.81亿元，2022-2025 CAGR 7.62%；2026-2030 CAGR 6.84%至56.76亿元</div>
+      <div class="ev-url"><a href="https://finance.ifeng.com/c/8ukuTvjonve" target="_blank" rel="noopener">https://finance.ifeng.com/c/8ukuTvjonve</a></div></div></div><div class="ev-row" id="E-012">
+      <div class="ev-id"><a href="#dashboard">E-012</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">筋膜枪行业内卷加剧（引市场调研在线网中国按摩筋膜枪规模序列）</div>
+      <div class="ev-meta">华夏时报 / 腾讯新闻｜2023-10-24｜行业媒体</div>
+      <div class="ev-note">中国按摩筋膜枪2017年11.3亿元、2022年29.2亿元；2025年45.9亿元为报告预测值，非实测</div>
+      <div class="ev-url"><a href="https://www.chinatimes.net.cn/article/131473.html" target="_blank" rel="noopener">https://www.chinatimes.net.cn/article/131473.html</a></div></div></div><div class="ev-row" id="E-013">
+      <div class="ev-id"><a href="#dashboard">E-013</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">《2025年全民健身活动状况调查公报》</div>
+      <div class="ev-meta">国家体育总局｜2025-12｜官方统计</div>
+      <div class="ev-note">7岁及以上经常参加体育锻炼人数比例38.52%（较2020年+1.3pct）；19-59岁人均体育消费2428元；服务型体育消费占比48.5%</div>
+      <div class="ev-url"><a href="https://www.sport.gov.cn/n20001280/n20745751/c29327174/content.html" target="_blank" rel="noopener">https://www.sport.gov.cn/n20001280/n20745751/c29327174/content.html</a></div></div></div><div class="ev-row" id="E-014">
+      <div class="ev-id"><a href="#dashboard">E-014</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">倍益康2025年年度报告（财务数据）</div>
+      <div class="ev-meta">北交所 920199 / 东方财富｜2026-04-15｜公司披露</div>
+      <div class="ev-note">2025年营收2.731亿元（-6.22%），归母净利397.21万元（-85.70%），扣非87.75万元（-95.93%），毛利率35.4%，销售费用5956万元</div>
+      <div class="ev-url"><a href="https://gu.qq.com/bj920199/gp/jbnb" target="_blank" rel="noopener">https://gu.qq.com/bj920199/gp/jbnb</a></div></div></div><div class="ev-row" id="E-015">
+      <div class="ev-id"><a href="#dashboard">E-015</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">倍益康2025年半年度报告</div>
+      <div class="ev-meta">北交所 920199 / 东方财富｜2025-08-25｜公司披露</div>
+      <div class="ev-note">境内收入5456.83万元（-33.58%），境外6016.93万元（+70.90%）；压缩靴Air compression massager通过美国FDA 510(K)</div>
+      <div class="ev-url"><a href="https://data.eastmoney.com/notices/detail/870199/AN202508251734256109.html" target="_blank" rel="noopener">https://data.eastmoney.com/notices/detail/870199/AN202508251734256109.html</a></div></div></div><div class="ev-row" id="E-016">
+      <div class="ev-id"><a href="#dashboard">E-016</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">筋膜枪第一股热度退潮，倍益康的康复科技逻辑正在被重估</div>
+      <div class="ev-meta">复健商业评论｜2026｜行业媒体</div>
+      <div class="ev-note">2025年康复医疗业务营收仍为数千万元级；引弗若斯特沙利文：2022年5月-2025年4月全球中高端筋膜枪（500元以上）全渠道销量第一；2022年北交所上市</div>
+      <div class="ev-url"><a href="http://mp.weixin.qq.com/s?__biz=Mzk3NTc4MDY2MQ==&mid=2247485424&idx=1&sn=e855bb992463f3d939c10197bc6021f2" target="_blank" rel="noopener">http://mp.weixin.qq.com/s?__biz=Mzk3NTc4MDY2MQ==&mid=2247485424&idx=1&sn=e855bb992463f3d939c10197bc6021f2</a></div></div></div><div class="ev-row" id="E-017">
+      <div class="ev-id"><a href="#dashboard">E-017</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">倍轻松2025年年度业绩与半年报</div>
+      <div class="ev-meta">科创板 688793 / 腾讯财经｜2026｜公司披露</div>
+      <div class="ev-note">2025年营收7.71亿元（-28%）、归母净亏9726万元；2025H1销售费用率57.32%，毛利率62.63%，净利率-9.37%</div>
+      <div class="ev-url"><a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html" target="_blank" rel="noopener">https://gu.qq.com/resources/shy/news/detail-v2/index.html</a></div></div></div><div class="ev-row" id="E-018">
+      <div class="ev-id"><a href="#dashboard">E-018</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">SKG（未来穿戴）再闯港交所</div>
+      <div class="ev-meta">中国经济网 / 长桥证券｜2026-08-27｜公司披露+媒体</div>
+      <div class="ev-note">2022-2024年营收9.04/10.46/10.45亿元、净利1.19/1.27/1.35亿元；研发占比9.1%降至6.6%；健身恢复塑形设备为新增曲线</div>
+      <div class="ev-url"><a href="https://finance.ce.cn/stock/gsgdbd/202608/t20260827_3174290.shtml" target="_blank" rel="noopener">https://finance.ce.cn/stock/gsgdbd/202608/t20260827_3174290.shtml</a></div></div></div><div class="ev-row" id="E-019">
+      <div class="ev-id"><a href="#dashboard">E-019</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">翔宇医疗2025年年度报告</div>
+      <div class="ev-meta">科创板 688626 / 中证网｜2026-04-24｜公司披露</div>
+      <div class="ev-note">2025年营收7.68亿元（+3.26%）、归母净利7815.64万元（-24.08%）、毛利率66.63%；康复理疗设备4.78亿元（-5.22%）；产品含空气波压力治疗仪、间歇充气加压防治系统</div>
+      <div class="ev-url"><a href="https://newzzbcx.cs.com.cn/cxnews.html?name=new20260424103109ejbrdllk" target="_blank" rel="noopener">https://newzzbcx.cs.com.cn/cxnews.html?name=new20260424103109ejbrdllk</a></div></div></div><div class="ev-row" id="E-020">
+      <div class="ev-id"><a href="#dashboard">E-020</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Compression Boots Market</div>
+      <div class="ev-meta">Dataintelo｜2026｜机构报告</div>
+      <div class="ev-note">消费级CR5约47.3%（NormaTec/Hyperice、Rapid Reboot、Air Relax、Therabody、RecoveryPump）；NormaTec压缩业务约2.25亿美元、经营利润率约18%；Hyperice 2025年设备收入5亿美元+</div>
+      <div class="ev-url"><a href="https://dataintelo.com/report/compression-boots-market" target="_blank" rel="noopener">https://dataintelo.com/report/compression-boots-market</a></div></div></div><div class="ev-row" id="E-021">
+      <div class="ev-id"><a href="#dashboard">E-021</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Recovery Lounge Market Research Report</div>
+      <div class="ev-meta">Market Intelo｜2026｜机构报告</div>
+      <div class="ev-note">估Hyperice 2025年总营收约8.5亿美元、恢复业务14.2%份额；Therabody 9.8%。与E-020口径冲突，仅作低置信参考</div>
+      <div class="ev-url"><a href="http://dns-only.marketintelo.com/report/recovery-lounge-market/amp" target="_blank" rel="noopener">http://dns-only.marketintelo.com/report/recovery-lounge-market/amp</a></div></div></div><div class="ev-row" id="E-022">
+      <div class="ev-id"><a href="#dashboard">E-022</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Therabody 官方商城在售价格</div>
+      <div class="ev-meta">Therabody｜2026-11｜企业官网</div>
+      <div class="ev-note">JetBoots PRO Plus $1,149.99；JetBoots Prime $549.99；Theragun Pro Plus $649.99；Theragun Prime $329.99；Theragun Mini $219.99-229.99；Theragun Relief $159.99</div>
+      <div class="ev-url"><a href="https://www.therabody.com/" target="_blank" rel="noopener">https://www.therabody.com/</a></div></div></div><div class="ev-row" id="E-023">
+      <div class="ev-id"><a href="#dashboard">E-023</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">Therabody Scales Ulta Beauty Partnership to 1,000+ Doors</div>
+      <div class="ev-meta">Therabody 新闻稿｜2026-03-31｜企业新闻</div>
+      <div class="ev-note">从300余家扩至1000+家门店；2024年承诺超1000万美元研究投入；累计融资1.65亿美元（最后一轮2022-09）</div>
+      <div class="ev-url"><a href="https://www.therabody.com/blogs/news/therabody-scales-ulta-beauty-partnership-to-1-000-doors-nationwide" target="_blank" rel="noopener">https://www.therabody.com/blogs/news/therabody-scales-ulta-beauty-partnership-to-1-000-doors-nationwide</a></div></div></div><div class="ev-row" id="E-024">
+      <div class="ev-id"><a href="#dashboard">E-024</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">SKG 压缩靴海外在售价格</div>
+      <div class="ev-meta">Amazon / 欧洲渠道商｜2026-11｜渠道数据</div>
+      <div class="ev-note">YYA01系列：美国$399.99（原价$599.99）、英国£414.25、欧元区€496.99；6腔、200mmHg、无线</div>
+      <div class="ev-url"><a href="https://www.dealmoon.com/en/product/skg-skg-air-compression-cordless-calf-and-foot-massager-boots/8889833" target="_blank" rel="noopener">https://www.dealmoon.com/en/product/skg-skg-air-compression-cordless-calf-and-foot-massager-boots/8889833</a></div></div></div><div class="ev-row" id="E-025">
+      <div class="ev-id"><a href="#dashboard">E-025</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">倍益康 ACM-C1 气压恢复靴天猫在售页</div>
+      <div class="ev-meta">天猫 beoka倍益康旗舰店（第三方比价站抓取）｜2026-10-30｜渠道数据</div>
+      <div class="ev-note">标价4,299元，官方立减+券后到手约2,479元</div>
+      <div class="ev-url"><a href="https://www.taouq.com/id-R84ggwvuZtjaexnOAKUr42IMt6-rkOPPMub2QoBYrzfD" target="_blank" rel="noopener">https://www.taouq.com/id-R84ggwvuZtjaexnOAKUr42IMt6-rkOPPMub2QoBYrzfD</a></div></div></div><div class="ev-row" id="E-026">
+      <div class="ev-id"><a href="#dashboard">E-026</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">THERATOOLS 气压恢复靴淘宝在售页</div>
+      <div class="ev-meta">淘宝 theratools专业康复工具企业店（第三方比价站抓取）｜2026-05-21｜渠道数据</div>
+      <div class="ev-note">加热款标价568元、促销422元；店铺所在地河南郑州；抓取时近30天成交0单。单链接快照，不代表店铺整体</div>
+      <div class="ev-url"><a href="https://taouq.com/id-NrPBJOPf5tGXj2PrrDFxxqHRtB-WkRwwpuXoP5oVk3ID/" target="_blank" rel="noopener">https://taouq.com/id-NrPBJOPf5tGXj2PrrDFxxqHRtB-WkRwwpuXoP5oVk3ID/</a></div></div></div><div class="ev-row" id="E-027">
+      <div class="ev-id"><a href="#dashboard">E-027</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">第二类医疗器械注册信息：空气波压力治疗仪</div>
+      <div class="ev-meta">国家/省级药监数据库（东方医疗器械网转载）｜2025-11-24｜监管数据</div>
+      <div class="ev-note">京械注准20252090945，管理类别Ⅱ，适用范围含家庭或医疗机构、预防下肢深静脉血栓；另见河南省药监局2026年9月公告新批豫械注准20262090573</div>
+      <div class="ev-url"><a href="https://m.qxw18.com/cp/JuXhiKcTGP.html" target="_blank" rel="noopener">https://m.qxw18.com/cp/JuXhiKcTGP.html</a></div></div></div><div class="ev-row" id="E-028">
+      <div class="ev-id"><a href="#dashboard">E-028</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">企业高级筛选：河南省名称含康复的企业</div>
+      <div class="ev-meta">MOSS（帆软增长谋士）企业库｜2026-11-08｜企业数据库</div>
+      <div class="ev-note">河南全省名称含康复的企业15,636家，以服务机构为主；安阳市内黄县形成康复设备产业园集聚（多家设备企业注册于帝喾大道）</div>
+      <div class="ev-url"><span class="nolink">无可公开链接</span></div></div></div><div class="ev-row" id="E-029">
+      <div class="ev-id"><a href="#dashboard">E-029</a> <a class="back" href="#dashboard" title="返回">↩</a></div>
+      <div class="ev-body"><div class="ev-title">中国康复医疗器械市场规模与增速</div>
+      <div class="ev-meta">消费日报网（引行业数据）｜2026-09-07｜行业媒体</div>
+      <div class="ev-note">2024年约211亿元，2030年约473亿元，CAGR约14%；康复辅具占82.15%</div>
+      <div class="ev-url"><a href="https://www.xfrb.com.cn/content/202609/07/c1632282.html" target="_blank" rel="noopener">https://www.xfrb.com.cn/content/202609/07/c1632282.html</a></div></div></div>
+  <h3 class="sub">数据局限</h3>
+  <ul class="tight"><li>全球与中国市场规模数据高度依赖第三方研究机构（QYResearch、Strategic Market Research、FMI、Dataintelo 等），口径互不兼容，最大差异达5倍（3.04亿至15亿美元）；本报告采用“窄口径优先”原则，宽口径仅用于说明定义分歧，不用于测算。</li><li>中国“运动恢复”无官方统计口径，筋膜枪45.9亿元为2023年报告对2025年的预测值，非实测；压缩靴中国零售规模无权威公开数据，本报告未做定量估算，仅作定性判断。</li><li>Therabody、Hyperice等非上市公司无经审计财报，第三方收入估算互相矛盾（Hyperice 5亿美元 vs 8.5亿美元），相关数字仅作低置信参考，不进入结论。</li><li>THERATOOLS价格与销量信号来自第三方比价站对单条商品链接的快照（568元、近30天0单），不代表店铺整体经营状况，仅用于说明价格轴位置。</li><li>汇率按1美元≈7.2元人民币折算，用于量级比较，不做精确换算。</li><li>未获取：天猫/抖音类目后台成交数据、抖音搜索指数、各省长护险辅具目录明细、THERATOOLS持证与渠道结构。上述缺口直接影响“中端空档是否成立”的置信度。</li><li>本研究不构成投资建议，也不替代具体产品的可行性测算与合规评估。</li></ul>
+  <h3 class="sub">方法论</h3>
+  <p class="lead">双主来源（公开报告与官方统计 + MOSS 结构化企业数据）交叉核验；市场规模按“窄口径优先”原则，宽口径仅用于说明定义分歧；关键公司数据一律采用公开披露而非第三方估算；价格数据采用公开渠道快照并标注抓取时间；涉及跨币种比较按1美元≈7.2元人民币折算，仅用于量级判断。</p>
+</section>
+
+</main>
+<footer><div class="wrap"><span>MOSS 增长谋士 · 运动恢复行业格局透视</span><span>数据截至 2026-11-08 · 29 项证据 · 深度行业研究</span></div></footer>
+<script>
+(function(){
+  var els = document.querySelectorAll('.chapter, .mod, .card');
+  els.forEach(function(el){ el.classList.add('rise'); });
+  if (!('IntersectionObserver' in window)) { els.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
