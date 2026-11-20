@@ -10,59 +10,68 @@
   --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:auto}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased}
 
-.shell{display:flex;min-height:100vh}
+.topline{height:3px;background:var(--red)}
 
-/* 侧栏 */
-.side{flex:0 0 264px;width:264px;border-right:1px solid var(--line);padding:28px 16px 40px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--bg)}
-.brand{padding:0 8px 20px;margin-bottom:12px;border-bottom:1px solid var(--line);font-size:16px;font-weight:700;line-height:1.5;letter-spacing:.3px}
-.brand small{display:block;font-size:13px;font-weight:400;color:var(--sub);letter-spacing:0;margin-top:2px}
-.grp{font-size:13px;color:var(--sub);font-weight:700;padding:16px 8px 6px;letter-spacing:.5px}
-.side nav a{display:flex;gap:10px;align-items:baseline;text-decoration:none;color:var(--ink);font-size:13px;padding:7px 8px 7px 10px;border-left:3px solid transparent;border-radius:0 3px 3px 0;line-height:1.5}
-.side nav a i{flex:0 0 16px;font-style:normal;color:var(--sub);font-size:13px;text-align:right;font-weight:700}
-.side nav a:hover{background:var(--soft)}
-.side nav a.cur{background:var(--soft);border-left-color:var(--red);font-weight:700}
-.side nav a.cur i{color:var(--red)}
+/* 头部 */
+.hd{display:flex;align-items:center;gap:16px;background:var(--card);padding:26px 28px;border-bottom:1px solid var(--line)}
+.hd-in{display:flex;align-items:center;gap:16px;max-width:980px;margin:0 auto;width:100%}
+.logo{flex:0 0 46px;height:46px;background:var(--red);color:#fff;font-size:20px;font-weight:700;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.ht{flex:1;min-width:0}
+.ht h1{margin:0 0 4px;font-size:24px;font-weight:700;line-height:1.3;letter-spacing:.3px}
+.ht p{margin:0;font-size:13px;color:var(--sub)}
 
-/* 主区 */
-.main{flex:1;min-width:0;padding:44px 48px 96px;max-width:840px;margin:0 auto}
+/* 顶部导航 */
+.tabbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.tabbar-in{max-width:980px;margin:0 auto;padding:10px 28px 12px}
+.trow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.trow + .trow{margin-top:8px}
+.tlab{font-size:13px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin-right:2px}
+.tdiv{width:1px;height:18px;background:var(--line);margin:0 4px}
+.tab{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--ink);font-size:13px;padding:6px 11px;border:1px solid var(--line);border-radius:6px;background:var(--card);line-height:1.4;white-space:nowrap;transition:border-color .12s,background .12s}
+.tab:hover{border-color:var(--red)}
+.tab .tn{flex:0 0 auto;min-width:17px;height:17px;padding:0 3px;background:var(--soft);color:var(--sub);border-radius:3px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tab.cur{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+.tab.cur .tn{background:rgba(255,255,255,.22);color:#fff}
+
+/* 内容区 */
+.main{max-width:980px;margin:0 auto;padding:40px 28px 96px}
 
 .view{display:none}
 .view.on{display:block;animation:fade .12s ease-out}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
 .view-hd{display:flex;gap:14px;align-items:center;margin-bottom:8px}
-.view-hd .no{flex:0 0 40px;height:40px;background:var(--red);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px}
-.view-hd h2{margin:0;font-size:22px;font-weight:700;line-height:1.4;padding:0;border:none}
-.view-sub{margin:0 0 28px 54px;font-size:13px;color:var(--sub)}
-.view-hd.plain{margin-bottom:24px}
-.view-hd.plain h2{margin:0}
+.view-hd .no{flex:0 0 38px;height:38px;background:var(--red);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.view-hd h2{margin:0;font-size:20px;font-weight:700;line-height:1.4}
+.view-sub{margin:0 0 26px 52px;font-size:13px;color:var(--sub)}
+.view-hd.plain{margin-bottom:6px}
+.view-hd.plain h2{font-size:24px;line-height:1.35}
 
 h3{font-size:18px;font-weight:700;margin:0 0 8px}
 p{margin:0 0 16px}
 
-.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:4px;padding:24px;margin-bottom:32px}
+.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:6px;padding:24px;margin-bottom:28px}
 .lead p{margin:0 0 12px;font-size:15px}
 .lead p:last-child{margin-bottom:0}
 .lead .big{font-size:18px;font-weight:700;line-height:1.6;margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 
-.chain{list-style:none;margin:0 0 24px;padding:0}
-.chain li{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px dashed var(--line)}
+.chain{list-style:none;margin:0 0 20px;padding:0}
+.chain li{padding:0;border-bottom:1px dashed var(--line)}
 .chain li:last-child{border-bottom:none}
-.chain .no{flex:0 0 34px;height:34px;background:var(--red);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px}
-.chain .tx{flex:1;padding-top:2px}
+.chain a{display:flex;gap:14px;align-items:flex-start;text-decoration:none;color:inherit;padding:13px 0}
+.chain a:hover .tx b{color:var(--red)}
+.chain .no{flex:0 0 32px;height:32px;background:var(--soft);color:var(--ink);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px}
+.chain .tx{flex:1;padding-top:1px}
 .chain .tx b{display:block;font-size:15px;margin-bottom:2px}
 .chain .tx span{font-size:13px;color:var(--sub)}
-.chain a{text-decoration:none;color:inherit;display:flex;gap:16px;align-items:flex-start;width:100%}
-.chain a:hover .tx b{color:var(--red)}
 
-.step{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:28px;margin-bottom:24px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px;margin-bottom:24px}
 
 .seg{margin-bottom:20px}
 .seg:last-child{margin-bottom:0}
-.seg-tag{display:inline-block;font-size:13px;font-weight:700;margin-bottom:8px;padding:2px 8px;border-radius:2px}
+.seg-tag{display:inline-block;font-size:13px;font-weight:700;margin-bottom:8px;padding:2px 8px;border-radius:3px}
 .tag-what{background:#fbeae7;color:var(--red)}
 .tag-why{background:var(--soft);color:var(--sub)}
 .seg-what{padding-left:16px;border-left:3px solid var(--red)}
@@ -82,40 +91,41 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 .note{background:var(--soft);border-radius:4px;padding:16px 20px;margin:20px 0;font-size:15px;color:#4a4641}
 .note b{color:var(--ink)}
 
-.flow{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px 24px;margin:20px 0;font-size:15px;line-height:2}
+.flow{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 24px;margin:20px 0;font-size:15px;line-height:2}
 .flow b{color:var(--red)}
 .flow .ar{color:var(--sub);padding:0 6px}
 
-.check{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:8px 28px 28px}
+.check{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 28px 28px}
 .check ol{list-style:none;counter-reset:c;padding:0;margin:0}
 .check li{counter-increment:c;padding:16px 0 16px 44px;position:relative;border-bottom:1px dashed var(--line);font-size:15px}
 .check li:last-child{border-bottom:none}
-.check li::before{content:counter(c);position:absolute;left:0;top:16px;width:28px;height:28px;background:var(--soft);color:var(--red);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px}
+.check li::before{content:counter(c);position:absolute;left:0;top:16px;width:28px;height:28px;background:var(--soft);color:var(--red);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:3px}
 .check li b{display:block;margin-bottom:2px;font-weight:700}
 .check li span{font-size:13px;color:var(--sub)}
 
-/* 翻页 */
-.pager{display:flex;gap:16px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
-.pg{flex:1;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 18px;transition:border-color .12s}
+.pager{display:flex;gap:16px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line)}
+.pg{flex:1;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 18px;transition:border-color .12s}
 .pg:hover{border-color:var(--red)}
 .pg span{display:block;font-size:13px;color:var(--sub);margin-bottom:2px}
 .pg b{font-size:15px;font-weight:700}
 .pg.next{text-align:right}
 .pager .sp{flex:1}
 
-@media(max-width:900px){
-  .shell{display:block}
-  .side{position:static;width:auto;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:16px 12px}
-  .brand{padding:0 4px 12px;font-size:15px}
-  .side nav{display:flex;flex-wrap:wrap;gap:2px}
-  .side nav a{padding:5px 8px;border-left:none;border-bottom:2px solid transparent;font-size:13px}
-  .side nav a.cur{border-bottom-color:var(--red);background:none}
-  .side nav a i{display:none}
-  .grp{width:100%;padding:10px 4px 2px}
-  .main{padding:28px 16px 72px}
-  .view-hd h2{font-size:18px}
-  .view-hd .no{flex:0 0 34px;height:34px;font-size:13px}
-  .view-sub{margin-left:48px}
+@media(max-width:760px){
+  .hd{padding:18px 16px}
+  .hd-in{gap:12px}
+  .logo{flex:0 0 38px;height:38px;font-size:17px;border-radius:6px}
+  .ht h1{font-size:19px}
+  .ht p{font-size:13px}
+  .tabbar-in{padding:8px 16px 10px}
+  .tab{padding:5px 9px;font-size:13px}
+  .tab .tn{display:none}
+  .tlab{width:100%;margin:0}
+  .tdiv{display:none}
+  .main{padding:26px 16px 72px}
+  .view-hd h2,.view-hd.plain h2{font-size:18px}
+  .view-hd .no{flex:0 0 32px;height:32px;font-size:13px}
+  .view-sub{margin-left:44px}
   .step{padding:20px}
   h3{font-size:15px}
   .seg li,.flow,.key,.note{font-size:14px}
@@ -123,47 +133,58 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 }
 
 @media print{
-  .side,.pager{display:none}
-  .shell{display:block}
+  .topline,.hd,.tabbar,.pager{display:none}
   .view{display:block!important;page-break-inside:avoid}
   .main{max-width:none;padding:0}
 }
 </style>
 </head>
 <body>
-<div class="shell">
 
-<aside class="side">
-  <div class="brand">品 · 渠 · 人 · 钱<small>年度目标规划：从经营结论到人力承接</small></div>
-  <nav>
-    <a href="#overview"><i>◎</i>总览</a>
+<div class="topline"></div>
 
-    <div class="grp">上篇 · 经营侧</div>
-    <a href="#s0"><i>0</i>目标值的来源</a>
-    <a href="#s1"><i>1</i>品 · 资源投向</a>
-    <a href="#s2"><i>2</i>渠 · 规模路径</a>
-    <a href="#s3"><i>3</i>人 · 编制依据</a>
-    <a href="#s4"><i>4</i>钱 · 预算约束</a>
-    <a href="#diff"><i>＋</i>三类增量路径</a>
+<header class="hd">
+  <div class="hd-in">
+    <div class="logo">品</div>
+    <div class="ht">
+      <h1>品 · 渠 · 人 · 钱：年度目标规划</h1>
+      <p>从经营结论到人力承接 ｜ 上篇 0–4 定方向 · 下篇 5–8 接得住</p>
+    </div>
+  </div>
+</header>
 
-    <div class="grp">下篇 · 人力侧</div>
-    <a href="#s5"><i>5</i>部门 · 重点工作</a>
-    <a href="#s6"><i>6</i>岗位 · 指标与绩效</a>
-    <a href="#s7"><i>7</i>岗位 · 画像与词典</a>
-    <a href="#s8"><i>8</i>人才 · 招聘与排布</a>
-    <a href="#hr"><i>◆</i>人力部门的角色</a>
-
-    <div class="grp">收尾</div>
-    <a href="#check"><i>✓</i>规划前的核对项</a>
-  </nav>
-</aside>
+<nav class="tabbar">
+  <div class="tabbar-in">
+    <div class="trow">
+      <a class="tab" href="#overview">总览</a>
+      <span class="tdiv"></span>
+      <span class="tlab">上篇</span>
+      <a class="tab" href="#s0"><span class="tn">0</span>目标值</a>
+      <a class="tab" href="#s1"><span class="tn">1</span>品</a>
+      <a class="tab" href="#s2"><span class="tn">2</span>渠</a>
+      <a class="tab" href="#s3"><span class="tn">3</span>人</a>
+      <a class="tab" href="#s4"><span class="tn">4</span>钱</a>
+      <a class="tab" href="#diff"><span class="tn">＋</span>增量路径</a>
+    </div>
+    <div class="trow">
+      <span class="tlab">下篇</span>
+      <a class="tab" href="#s5"><span class="tn">5</span>部门</a>
+      <a class="tab" href="#s6"><span class="tn">6</span>岗位指标</a>
+      <a class="tab" href="#s7"><span class="tn">7</span>能力词典</a>
+      <a class="tab" href="#s8"><span class="tn">8</span>人才</a>
+      <a class="tab" href="#hr"><span class="tn">◆</span>人力位置</a>
+      <span class="tdiv"></span>
+      <a class="tab" href="#check"><span class="tn">✓</span>核对项</a>
+    </div>
+  </div>
+</nav>
 
 <main class="main">
 
 <!-- ================= 总览 ================= -->
 <section class="view on" id="overview" data-title="总览">
-  <div class="view-hd plain"><h2>品 · 渠 · 人 · 钱<br>年度目标规划：从经营结论到人力承接</h2></div>
-  <p class="view-sub" style="margin-left:0">经营侧决定方向，人力侧决定能不能落下去</p>
+  <div class="view-hd plain"><h2>品 · 渠 · 人 · 钱</h2></div>
+  <p class="view-sub" style="margin-left:0">年度目标规划：从经营结论到人力承接</p>
 
   <div class="lead">
     <p class="big">年度规划最容易错的一步，是起点。一上来就分指标，后面的编制和预算都在补前面的漏洞。</p>
@@ -171,7 +192,7 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
     <p>前半段是经营侧，决定方向；后半段是人力侧，决定落不落得下去。只做前半段，规划停在预算表上；只做后半段，考核脱离经营实际。</p>
   </div>
 
-  <p class="grp" style="padding-left:0">上篇 · 经营侧：定方向</p>
+  <p class="tlab" style="padding-left:0;display:block;margin-bottom:2px">上篇 · 经营侧：定方向</p>
   <ul class="chain">
     <li><a href="#s0"><span class="no">0</span><span class="tx"><b>目标值的来源</b><span>三个基线交叉验证，先算可实现区间</span></span></a></li>
     <li><a href="#s1"><span class="no">1</span><span class="tx"><b>品 · 资源投向</b><span>划定主次，资源按级配</span></span></a></li>
@@ -180,7 +201,7 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
     <li><a href="#s4"><span class="no">4</span><span class="tx"><b>钱 · 预算约束</b><span>由产出倒推，设三条校验线</span></span></a></li>
   </ul>
 
-  <p class="grp" style="padding-left:0;margin-top:24px">下篇 · 人力侧：接得住</p>
+  <p class="tlab" style="padding-left:0;display:block;margin:24px 0 2px">下篇 · 人力侧：接得住</p>
   <ul class="chain">
     <li><a href="#s5"><span class="no">5</span><span class="tx"><b>部门 · 重点工作与核心指标</b><span>经营语言翻译成职能语言</span></span></a></li>
     <li><a href="#s6"><span class="no">6</span><span class="tx"><b>岗位 · 指标拆解与绩效</b><span>年目标拆到月，指标落到人</span></span></a></li>
@@ -193,7 +214,7 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
     规划只做经营侧、不落到部门和岗位，年底考核只能依赖印象判断，绩效体系与经营结果脱钩。
   </div>
 
-  <p class="view-sub" style="margin:28px 0 0">左侧目录可直接跳到任一板块，链接带锚点，可以单独发给别人。</p>
+  <p style="font-size:13px;color:var(--sub);margin:24px 0 0">上方导航可直接跳到任一板块，链接带锚点，可以单独发给别人。</p>
 </section>
 
 <!-- ================= 0 ================= -->
@@ -616,12 +637,11 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 </section>
 
 </main>
-</div>
 
 <script>
 (function(){
   var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
-  var links = Array.prototype.slice.call(document.querySelectorAll('.side nav a'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.tabbar .tab'));
 
   views.forEach(function(v, i){
     var p = document.createElement('div');
@@ -643,7 +663,8 @@ td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
       a.classList.toggle('cur', on);
       if(on){ a.setAttribute('aria-current','true'); } else { a.removeAttribute('aria-current'); }
     });
-    window.scrollTo(0,0);
+    var bar = document.querySelector('.tabbar');
+    window.scrollTo(0, bar ? bar.offsetTop : 0);
   }
 
   window.addEventListener('hashchange', route);
