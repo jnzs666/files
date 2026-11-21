@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OKR 目标拆解 · 公司到岗位</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#141312;
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--ink);-webkit-font-smoothing:antialiased}
+
+#poster{position:absolute;top:0;left:0;width:1920px;background:var(--bg);
+  transform-origin:top left;padding:34px 40px 30px}
+
+/* 标题 */
+.hd{display:flex;align-items:baseline;gap:20px;margin-bottom:16px}
+.hd h1{font-size:34px;font-weight:700;letter-spacing:.5px}
+.hd .sub{font-size:15px;color:var(--sub);letter-spacing:1px}
+
+/* 公司三个 O */
+.company{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:22px}
+.co{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--red);
+  border-radius:3px;padding:14px 22px;display:flex;align-items:baseline;gap:16px}
+.co .ol{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--red);flex:0 0 auto}
+.co .ot{font-size:26px;font-weight:700;line-height:1.2}
+.co .os{font-size:14px;color:var(--sub);margin-left:auto;flex:0 0 auto}
+
+/* 列头 */
+.colhead{display:grid;grid-template-columns:140px 1fr;gap:20px;margin-bottom:6px}
+.colhead .lbl{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--sub);align-self:end;padding-bottom:6px}
+.colhead .cells{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr;align-items:end;padding-bottom:6px}
+.colhead .cells div{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--sub)}
+
+/* 部门块 */
+.board{position:relative}
+.dept{display:grid;grid-template-columns:140px 1fr;gap:20px;position:relative;
+  padding-top:16px;border-top:1px solid var(--line)}
+.dept:first-child{border-top:none;padding-top:0}
+.dept .dlabel{display:flex;flex-direction:column;justify-content:flex-start}
+.dept .dname{font-size:21px;font-weight:700;line-height:1.3}
+.dept .dtag{margin-top:7px;font-size:12px;color:var(--red);font-weight:700;letter-spacing:1px}
+.dept .rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr;height:56px}
+
+/* 节点 */
+.nd{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  display:flex;flex-direction:column;justify-content:center;padding:0 14px}
+.nd .t{font-size:18px;font-weight:700;line-height:1.3}
+.nd .s{font-size:12px;color:var(--sub);line-height:1.3;margin-top:3px}
+.nd.o{border-left:4px solid var(--red);padding-left:11px}
+.nd.k{background:var(--soft);border-color:transparent}
+.nd.p{border:1px dashed var(--line)}
+.nd.r{border-bottom:2px solid var(--ink)}
+.ar{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:15px;font-weight:700}
+</style>
+</head>
+<body>
+<div id="poster">
+
+  <div class="hd">
+    <h1>公司目标 → 部门目标 → 岗位目标</h1>
+    <div class="sub">上一格是下一格的前提 · 对上是 KR，对下是 O</div>
+  </div>
+
+  <div class="company">
+    <div class="co"><span class="ol">O1</span><span class="ot">业绩 8000 万</span><span class="os">24 年 4000 万，翻一番</span></div>
+    <div class="co"><span class="ol">O2</span><span class="ot">利润率 +5%</span><span class="os">比 24 年提升 5 个点</span></div>
+    <div class="co"><span class="ol">O3</span><span class="ot">标准化建设</span><span class="os">全公司一套标准</span></div>
+  </div>
+
+  <div class="colhead">
+    <div class="lbl">部门</div>
+    <div class="cells">
+      <div>部门 O</div><div></div><div>部门 KR</div><div></div><div>岗位 O</div><div></div><div>岗位 KR</div>
+    </div>
+  </div>
+
+  <div class="board">
+
+    <div class="dept">
+      <div class="dlabel">
+        <div class="dname">产品部</div>
+        <div class="dtag">承接 O1 · O2 · O3</div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="nd o"><div class="t">新品销售 4000 万</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">各系列业绩达标</div><div class="s">红光 · 电震动 · 按摩…</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">每个系列开几款品</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">单品首月销量达标</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">新品毛利 ≥50%</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">单款成本控在目标线</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">客单价 · 功能 · 成本</div><div class="s">三者一起定死</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">单款成本 ≤ 目标值</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">品质标准化</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">包装 · 说明书 · 合格证 · 合规</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">资料与合规专人</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">四项 100% 合规</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept">
+      <div class="dlabel">
+        <div class="dname">电商运营</div>
+        <div class="dtag">承接 O1 · O3</div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="nd o"><div class="t">销售达成</div><div class="s">老品维持 + 新品 4000 万</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">GMV 达标</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">店铺整体产出</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">月度 GMV · 系列达成</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">店铺量级上一台阶</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">曝光 · 转化 · 复购 三率提升</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">三块分人负责</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">种草量 · 复购率 · 私域转化</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">产能与 SOP 配套</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">美工客服配置 · 流程 SOP</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">美工 · 客服 · 流程</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">出图量 · 响应时长 · SOP 执行</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept">
+      <div class="dlabel">
+        <div class="dname">供应链</div>
+        <div class="dtag">承接 O1 · O2 · O3</div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="nd o"><div class="t">供货保障</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">入库及时率 · 数据准确率</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">仓配岗 · 数据岗</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">入库时效 · 账实相符</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">降本</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">降本金额达标</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">采购选品与议价</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">单品降幅 × 预估销量</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">流程与人员</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">流程节点优化 · 人员调整</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">流程负责人</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">节点完成 · 人岗匹配</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept">
+      <div class="dlabel">
+        <div class="dname">人力资源</div>
+        <div class="dtag">承接 O1 · O2 · O3</div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="nd o"><div class="t">编制与招聘到位</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">关键岗按时到岗</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">招聘专员</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">到岗率 · 招聘周期</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">人工成本与招聘预算</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">各部门人工成本核定</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">薪酬核算</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">成本占比 · 单岗成本</div></div>
+        </div>
+        <div class="row">
+          <div class="nd o"><div class="t">标准化人力配套</div></div>
+          <div class="ar">→</div>
+          <div class="nd k"><div class="t">编制标准 · 制度落地</div></div>
+          <div class="ar">→</div>
+          <div class="nd p"><div class="t">制度建设</div></div>
+          <div class="ar">→</div>
+          <div class="nd r"><div class="t">文件数 · 执行率</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var p=document.getElementById('poster');
+  function fit(){
+    p.style.transform='scale(1)';
+    var w=p.offsetWidth, h=p.offsetHeight;
+    var s=Math.min(window.innerWidth/w, window.innerHeight/h);
+    p.style.transform='scale('+s+')';
+    p.style.left=Math.max(0,(window.innerWidth-w*s)/2)+'px';
+    p.style.top=Math.max(0,(window.innerHeight-h*s)/2)+'px';
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  fit();
+})();
+</script>
+</body>
+</html>
