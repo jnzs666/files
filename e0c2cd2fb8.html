@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>目标怎么串起来 · 中层管理培训</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#141312;
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--ink);-webkit-font-smoothing:antialiased}
+#stage{position:fixed;left:50%;top:50%;width:1600px;height:900px;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:var(--bg);overflow:hidden}
+
+.slide{position:absolute;inset:0;padding:58px 88px 78px;display:none;flex-direction:column}
+.slide.on{display:flex;animation:in .26s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* 头部 */
+.stag{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--sub);letter-spacing:1px;margin-bottom:16px}
+.stag b{display:inline-flex;align-items:center;justify-content:center;height:26px;padding:0 9px;
+  background:var(--red);color:#fff;font-size:14px;font-weight:700;border-radius:2px;letter-spacing:.5px}
+.stitle{font-size:46px;font-weight:700;line-height:1.28;letter-spacing:.5px}
+.slead{margin-top:16px;font-size:21px;color:var(--sub);line-height:1.65}
+.sbody{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:34px}
+.cmid{margin:auto 0}
+
+/* 底部 */
+.foot{position:absolute;left:88px;right:88px;bottom:26px;display:flex;justify-content:space-between;
+  align-items:center;font-size:14px;color:var(--sub);letter-spacing:.5px}
+.pnum b{color:var(--ink);font-weight:700}
+#prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--red);transition:width .25s ease}
+
+/* 通用块 */
+.card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:30px 32px}
+.card h3{font-size:27px;font-weight:700;line-height:1.35;margin-bottom:12px}
+.card p{font-size:19px;color:var(--sub);line-height:1.8}
+.cnum{font-size:13px;font-weight:700;color:var(--red);letter-spacing:2px;margin-bottom:18px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+
+.band{margin-top:30px;background:var(--soft);border-left:4px solid var(--red);
+  padding:22px 30px;font-size:25px;font-weight:700;line-height:1.55}
+.trio{margin-top:18px;font-size:19px;color:var(--sub);letter-spacing:.5px}
+
+/* 封面 */
+.cover{justify-content:center;padding-left:140px}
+.cov-top{font-size:16px;letter-spacing:3px;color:var(--sub);margin-bottom:26px}
+.cover h1{font-size:82px;font-weight:700;line-height:1.15;letter-spacing:1px}
+.cov-sub{margin-top:22px;font-size:28px;color:var(--sub);line-height:1.6}
+.cov-rule{width:76px;height:4px;background:var(--red);margin-top:44px}
+.cov-foot{position:absolute;left:140px;bottom:88px;font-size:17px;color:var(--sub);letter-spacing:1px}
+.cov-foot span+span{margin-left:44px}
+
+/* 结果 vs 过程 */
+.vs{display:grid;grid-template-columns:1fr 1px 1fr;gap:52px;align-items:start}
+.vsdiv{background:var(--line);height:100%;min-height:300px}
+.vshead{font-size:32px;font-weight:700;margin-bottom:8px;display:flex;align-items:baseline;gap:14px}
+.vshead span{font-size:15px;font-weight:400;color:var(--sub);letter-spacing:2px}
+.vscol ul{list-style:none;margin-top:22px}
+.vscol li{font-size:24px;color:var(--sub);line-height:1.6;padding:16px 0;border-bottom:1px solid var(--line)}
+.vscol li:last-child{border-bottom:none}
+.vscol.hi li{color:var(--ink)}
+.vscol.hi li::before{content:"";display:inline-block;width:7px;height:7px;background:var(--red);
+  margin-right:14px;vertical-align:middle;border-radius:50%}
+
+/* O 卡片 */
+.ocard{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:3px;padding:34px 32px}
+.ocard .ok{font-size:14px;font-weight:700;letter-spacing:2px;color:var(--red);margin-bottom:18px}
+.ocard .num{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:.5px}
+.ocard .num small{font-size:22px;font-weight:400;color:var(--sub);margin-left:8px}
+.ocard h3{font-size:19px;font-weight:400;color:var(--sub);margin-top:20px;line-height:1.6}
+
+/* 倒推链 */
+.chainrow{display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+.cnode{flex:1;background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:20px 10px;text-align:center;font-size:18px;font-weight:700;line-height:1.4}
+.cnode small{display:block;font-size:13px;font-weight:400;color:var(--sub);margin-top:5px}
+.car{color:var(--red);font-size:20px;font-weight:700;flex:0 0 auto}
+
+/* 两列清单 */
+.listhead{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.listhead h3{font-size:26px;font-weight:700}
+.listhead span{font-size:14px;color:var(--sub);letter-spacing:1px}
+.blist{list-style:none}
+.blist li{font-size:20px;line-height:1.75;padding:10px 0 10px 22px;position:relative;color:#3d3a36}
+.blist li::before{content:"";position:absolute;left:0;top:22px;width:8px;height:1px;background:var(--sub)}
+.blist li b{color:var(--ink)}
+
+/* 人资链路 */
+.vchain{display:flex;flex-direction:column}
+.vstep{display:flex;align-items:center;gap:14px}
+.vstep .n{flex:0 0 30px;height:30px;background:var(--soft);color:var(--sub);font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;border-radius:2px}
+.vstep .t{font-size:21px;font-weight:700;padding:9px 0}
+.vlink{width:1px;height:18px;background:var(--line);margin-left:15px}
+
+/* 树 */
+.tree{display:flex;flex-direction:column;align-items:center}
+.troot{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);
+  border-radius:3px;padding:16px 36px;text-align:center}
+.troot .k{font-size:14px;letter-spacing:3px;color:var(--sub);margin-bottom:6px}
+.troot .v{font-size:25px;font-weight:700;letter-spacing:.5px}
+.tstem{width:2px;height:24px;background:var(--line)}
+.trail{width:calc(75% + 27px);height:2px;background:var(--line)}
+.tcols{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;width:100%}
+.tdrop{width:2px;height:22px;background:var(--line);margin:0 auto}
+.tbox{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px 22px 24px}
+.tbox .tname{font-size:23px;font-weight:700;margin-bottom:6px}
+.tbox .tmeta{font-size:13px;color:var(--red);font-weight:700;letter-spacing:1px;margin-bottom:14px}
+.tbox ul{list-style:none}
+.tbox li{font-size:17px;line-height:1.55;color:#3d3a36;padding:6px 0;border-bottom:1px dashed var(--line)}
+.tbox li:last-child{border-bottom:none}
+
+/* 关联卡 */
+.link{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:26px 26px}
+.link .pa{font-size:18px;font-weight:700;line-height:1.55;margin-bottom:10px}
+.link .pa .ar{color:var(--red);padding:0 8px}
+.link .px{font-size:16px;color:var(--sub);line-height:1.65}
+
+/* 表 */
+table{width:100%;border-collapse:collapse;font-size:19px}
+th{background:var(--head);text-align:left;padding:15px 16px;font-weight:700;border-bottom:2px solid var(--line);
+  border-top:1px solid var(--line);letter-spacing:.5px}
+td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:middle;line-height:1.6}
+td.k{font-weight:700}
+td .em{color:var(--red);font-weight:700}
+
+/* 冲突 */
+.conf{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:26px 28px}
+.conf .who{font-size:14px;letter-spacing:2px;color:var(--sub);font-weight:700;margin-bottom:16px}
+.conf .cvs{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:700;line-height:1.4}
+.conf .cvs .vs{color:var(--red);font-size:15px;font-weight:700;letter-spacing:1px}
+
+/* PDCA */
+.pdca{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.pcol{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:30px 24px}
+.pcol .pl{font-size:48px;font-weight:700;color:var(--red);line-height:1;margin-bottom:20px}
+.pcol .pn{font-size:17px;color:var(--sub);letter-spacing:2px;margin-bottom:16px}
+.pcol p{font-size:19px;line-height:1.75;color:#3d3a36}
+
+/* 四象限 */
+.quad{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;flex:1}
+.q{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:24px 28px;
+  display:flex;flex-direction:column;justify-content:center}
+.q .qh{font-size:18px;font-weight:700;letter-spacing:1px;margin-bottom:16px;color:var(--sub)}
+.q ul{list-style:none}
+.q li{font-size:18px;line-height:1.65;color:#3d3a36;padding:5px 0}
+.q.on{border:2px solid var(--red);padding:23px 27px}
+.q.on .qh{color:var(--red)}
+.q.on li{font-size:19px;font-weight:700;color:var(--ink)}
+
+/* 收尾 */
+.do3{display:flex;flex-direction:column}
+.do{display:flex;gap:26px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--line)}
+.do:last-child{border-bottom:none}
+.do .dn{flex:0 0 44px;font-size:30px;font-weight:700;color:var(--red);line-height:1}
+.do .dt{font-size:25px;font-weight:700;line-height:1.5}
+.do .dd{font-size:18px;color:var(--sub);margin-top:6px;line-height:1.65}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 封面 -->
+<section class="slide on cover">
+  <div class="cov-top">中层管理培训 · 2026.11</div>
+  <h1>目标怎么串起来</h1>
+  <p class="cov-sub">从公司目标，到每个人的动作</p>
+  <div class="cov-rule"></div>
+  <div class="cov-foot"><span>分享人：陈嘉男</span><span>← → 翻页</span></div>
+</section>
+
+<!-- 2 今天三件事 -->
+<section class="slide">
+  <div class="stag"><b>开场</b>今天讲三件事</div>
+  <h2 class="stitle">先看一张图，再讲两个工具</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid3">
+        <div class="card">
+          <div class="cnum">01</div>
+          <h3>目标怎么串</h3>
+          <p>公司目标拆到部门，再拆到岗位。让每个人知道，自己在撑谁。</p>
+        </div>
+        <div class="card">
+          <div class="cnum">02</div>
+          <h3>执行怎么查</h3>
+          <p>PDCA。重点不在四个字母，在检查点设在哪里。</p>
+        </div>
+        <div class="card">
+          <div class="cnum">03</div>
+          <h3>时间怎么排</h3>
+          <p>中层自己也有活。四象限解决的是，你的时间到底该花在哪。</p>
+        </div>
+      </div>
+    </div>
+    <div class="band">三个东西是一条线：先把结果说清楚，再盯住过程，最后决定时间投多少。</div>
+  </div>
+</section>
+
+<!-- 3 结果与过程 -->
+<section class="slide">
+  <div class="stag"><b>00</b>过程与结果</div>
+  <h2 class="stitle">结果管不了，过程才管得了</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="vs">
+        <div class="vscol">
+          <div class="vshead">结果<span>滞后</span></div>
+          <ul>
+            <li>今年签了多少学校</li>
+            <li>教材交了几本</li>
+            <li>利润多少</li>
+          </ul>
+        </div>
+        <div class="vsdiv"></div>
+        <div class="vscol hi">
+          <div class="vshead">过程<span>领先</span></div>
+          <ul>
+            <li>跑了多少校，进了几次门</li>
+            <li>编到第几章，过没过评审</li>
+            <li>关键人见到没，样书送出去没</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="band">结果只能等，过程才能管。</div>
+    <div class="trio">OKR 说清结果 &nbsp;·&nbsp; PDCA 盯住过程 &nbsp;·&nbsp; 时间管理决定过程投多少</div>
+  </div>
+</section>
+
+<!-- 4 OKR 是什么 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">OKR：先把"要什么"说清楚</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid2">
+        <div>
+          <div class="card" style="margin-bottom:24px">
+            <div class="cnum">O</div>
+            <h3>方向</h3>
+            <p>一句话，我们要去哪。定性，不考核，但所有人都得看见同一句。</p>
+          </div>
+          <div class="card">
+            <div class="cnum">KR</div>
+            <h3>可验证的结果</h3>
+            <p>做到了长什么样，有数、有期限。KR 才考核。</p>
+          </div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+          <div class="cnum">三条规矩</div>
+          <ul class="blist">
+            <li>KR 不超过四条。多了就不是重点。</li>
+            <li>KR 必须能被别人验证，不能自己说了算。</li>
+            <li>每个 KR 都要能回答：它撑的是上面哪个目标。</li>
+          </ul>
+          <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--line);font-size:20px;line-height:1.7;color:#3d3a36">
+            OKR 的用处只有一个：<b style="color:var(--red)">让每个人知道自己在撑谁。</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 公司三个 O -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">25 年，公司三个 O</h2>
+  <p class="slead">24 年做到 4000 万。25 年三件事，一起往前推。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid3">
+        <div class="ocard">
+          <div class="ok">O1 · 业绩</div>
+          <div class="num">8000<small>万</small></div>
+          <h3>比 24 年翻一番，增量 4000 万</h3>
+        </div>
+        <div class="ocard">
+          <div class="ok">O2 · 利润</div>
+          <div class="num">+5<small>%</small></div>
+          <h3>利润率比 24 年提升 5 个点</h3>
+        </div>
+        <div class="ocard">
+          <div class="ok">O3 · 标准化</div>
+          <div class="num">1<small>套</small></div>
+          <h3>完成公司标准化建设</h3>
+        </div>
+      </div>
+    </div>
+    <div class="band">三个 O 是三条主线，四个部门横着接。所以这张图是网，不是树。</div>
+  </div>
+</section>
+
+<!-- 6 产品部 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">产品部：接业绩，也接利润</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid3" style="gap:22px">
+        <div class="card">
+          <div class="cnum">KR1 · 撑 O1</div>
+          <h3 style="font-size:21px">新品销售 4000 万</h3>
+          <p style="font-size:17px">增量全部来自新品，老品维持不动。</p>
+        </div>
+        <div class="card">
+          <div class="cnum">KR2 · 撑 O2</div>
+          <h3 style="font-size:21px">新品毛利率 ≥ 50%</h3>
+          <p style="font-size:17px">去年有部分新品毛利偏低，今年设成红线。</p>
+        </div>
+        <div class="card">
+          <div class="cnum">KR3 · 撑 O3</div>
+          <h3 style="font-size:21px">品质标准化</h3>
+          <p style="font-size:17px">包装、说明书、合格证、合规，一套标准管到底。</p>
+        </div>
+      </div>
+      <div style="font-size:17px;color:var(--sub);letter-spacing:1px;margin:44px 0 14px">KR1 往下还有一条倒推链</div>
+      <div class="chainrow">
+        <div class="cnode">4000 万<small>业绩</small></div>
+        <div class="car">→</div>
+        <div class="cnode">各系列<small>红光 / 电震动 / 按摩…</small></div>
+        <div class="car">→</div>
+        <div class="cnode">开几个品<small>每系列要几款</small></div>
+        <div class="car">→</div>
+        <div class="cnode">客单价<small>定在什么档</small></div>
+        <div class="car">→</div>
+        <div class="cnode">功能<small>要什么配置</small></div>
+        <div class="car">→</div>
+        <div class="cnode">成本<small>能不能守住毛利</small></div>
+      </div>
+    </div>
+    <div class="band" style="font-size:22px">定功能那天，成本就锁死了，毛利也就锁死了。</div>
+  </div>
+</section>
+
+<!-- 7 运营与供应链 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">运营负责卖，供应链负责省</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid2">
+        <div>
+          <div class="listhead"><h3>电商运营</h3><span>撑 O1 · O3</span></div>
+          <ul class="blist">
+            <li><b>销售 = 老品维持 + 新品 4000 万</b></li>
+            <li>店铺量级上一个台阶：曝光不够，做站外种草</li>
+            <li>转化不够，做复购；复购不够，做公域转私域</li>
+            <li>配套产能：美工标准定到哪、要几个美工</li>
+            <li>配套产能：客服量决定要配多少客服</li>
+          </ul>
+        </div>
+        <div>
+          <div class="listhead"><h3>供应链</h3><span>撑 O1 · O2 · O3</span></div>
+          <ul class="blist">
+            <li><b>入库及时，数据准确</b>　运营的判断靠这个数据</li>
+            <li>降本：选销量好的品，定降幅</li>
+            <li>降本额 = 单品降幅 × 预估销量</li>
+            <li>流程优化，人员调整</li>
+            <li>降本和品质、交付会打架，要设边界</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="band" style="font-size:22px">一个往前冲，一个往后省。两条腿一起走，8000 万才带得动利润。</div>
+  </div>
+</section>
+
+<!-- 8 人资与一盘账 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">人资：把前面的结论，收成一本账</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid2" style="gap:56px">
+        <div class="vchain">
+          <div class="vstep"><span class="n">1</span><span class="t">各部门拆完，人头就出来了</span></div>
+          <div class="vlink"></div>
+          <div class="vstep"><span class="n">2</span><span class="t">编制定死</span></div>
+          <div class="vlink"></div>
+          <div class="vstep"><span class="n">3</span><span class="t">招聘计划 + 什么时候启动</span></div>
+          <div class="vlink"></div>
+          <div class="vstep"><span class="n">4</span><span class="t">招聘预算</span></div>
+          <div class="vlink"></div>
+          <div class="vstep"><span class="n">5</span><span class="t">人工成本</span></div>
+          <div class="vlink"></div>
+          <div class="vstep"><span class="n">6</span><span class="t">各部门财务预算</span></div>
+          <div class="vlink"></div>
+          <div class="vstep"><span class="n">7</span><span class="t">全公司一盘账</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:23px;line-height:1.8;color:#3d3a36">前面六步，都是部门账。</p>
+          <p style="font-size:23px;line-height:1.8;color:#3d3a36;margin-top:14px">走到第七步，才是公司的总账。</p>
+          <p style="font-size:23px;line-height:1.8;color:#3d3a36;margin-top:14px">人资不是最后一个环节，是把所有部门的结论对上的那一环。</p>
+          <div style="margin-top:36px;padding-top:26px;border-top:1px solid var(--line);font-size:19px;color:var(--sub);line-height:1.7">
+            人头不落地，预算就是拍脑袋。<br>编制不锁死，年初定完，年中还得再吵一次。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 串联图 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">一张图看全</h2>
+  <p class="slead">上面是公司要什么，下面是四个部门各撑哪一块。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="tree">
+        <div class="troot">
+          <div class="k">公司目标</div>
+          <div class="v">业绩 8000 万　·　利润率 +5%　·　标准化完成</div>
+        </div>
+        <div class="tstem"></div>
+        <div class="trail"></div>
+        <div class="tcols">
+          <div class="tcol">
+            <div class="tdrop"></div>
+            <div class="tbox">
+              <div class="tname">产品部</div>
+              <div class="tmeta">撑 O1 · O2 · O3</div>
+              <ul>
+                <li>新品销售 4000 万</li>
+                <li>新品毛利 ≥ 50%</li>
+                <li>品质标准化</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tcol">
+            <div class="tdrop"></div>
+            <div class="tbox">
+              <div class="tname">电商运营</div>
+              <div class="tmeta">撑 O1 · O3</div>
+              <ul>
+                <li>店铺量级上一台阶</li>
+                <li>曝光 / 转化 / 复购</li>
+                <li>美工、客服产能</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tcol">
+            <div class="tdrop"></div>
+            <div class="tbox">
+              <div class="tname">供应链</div>
+              <div class="tmeta">撑 O1 · O2 · O3</div>
+              <ul>
+                <li>入库及时、数据准确</li>
+                <li>降本金额</li>
+                <li>流程与人员调整</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tcol">
+            <div class="tdrop"></div>
+            <div class="tbox">
+              <div class="tname">人资</div>
+              <div class="tmeta">撑 O1 · O2 · O3</div>
+              <ul>
+                <li>编制与招聘到位</li>
+                <li>招聘预算</li>
+                <li>人工成本进预算</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="band" style="font-size:22px">四个部门，都挂在三个 O 上。没有一个部门只对一个 O 负责。</div>
+  </div>
+</section>
+
+<!-- 10 横向关联 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">线在哪里：谁是谁的前提</h2>
+  <p class="slead">上下是一条线，横向还有六条。这六条不连上，各部门就会各干各的。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid3" style="gap:20px">
+        <div class="link">
+          <div class="pa">产品 KR1<span class="ar">→</span>电商运营</div>
+          <div class="px">没新品，运营卖不出增量。</div>
+        </div>
+        <div class="link">
+          <div class="pa">运营销售预估<span class="ar">→</span>产品部</div>
+          <div class="px">卖多少，决定开几个品、定什么价。</div>
+        </div>
+        <div class="link">
+          <div class="pa">运营销售预估<span class="ar">→</span>供应链</div>
+          <div class="px">预估决定备多少货。</div>
+        </div>
+        <div class="link">
+          <div class="pa">产品毛利 + 供应链降本<span class="ar">→</span>利润</div>
+          <div class="px">利润靠两条腿，缺一条就站不住。</div>
+        </div>
+        <div class="link">
+          <div class="pa">各部门人头<span class="ar">→</span>人资<span class="ar">→</span>财务预算</div>
+          <div class="px">人头是预算的起点。</div>
+        </div>
+        <div class="link">
+          <div class="pa">标准化<span class="ar">→</span>业绩、利润</div>
+          <div class="px">降返工、降损耗，反过来喂业绩。</div>
+        </div>
+      </div>
+    </div>
+    <div class="band" style="font-size:22px">各自为政的根子，是没人对"乘出来的那个数"负责。</div>
+  </div>
+</section>
+
+<!-- 11 行为到结果 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">你做的事，在哪一格</h2>
+  <p class="slead">从一个人的动作，一直连到公司那个数。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <table>
+        <tr><th style="width:36%">你的动作</th><th style="width:22%">直接影响</th><th style="width:20%">部门结果</th><th>公司结果</th></tr>
+        <tr><td class="k">产品经理多开一个有竞争力的品</td><td>单品起量</td><td>系列业绩达标</td><td class="em">业绩 8000 万</td></tr>
+        <tr><td class="k">美工多出一套能打的主图</td><td>点击率上升</td><td>店铺转化提升</td><td class="em">业绩 8000 万</td></tr>
+        <tr><td class="k">客服回得快、说得清</td><td>好评率和复购上升</td><td>老客贡献提升</td><td class="em">业绩 8000 万</td></tr>
+        <tr><td class="k">采购谈下一分钱</td><td>单品成本下降</td><td>毛利抬升</td><td class="em">利润率 +5%</td></tr>
+        <tr><td class="k">人资早一个月把人招到</td><td>新人早上手</td><td>产能跟上</td><td class="em">业绩 8000 万</td></tr>
+      </table>
+    </div>
+    <div class="band" style="font-size:22px">每个人干的都不是杂活，是链条上的一节。</div>
+  </div>
+</section>
+
+<!-- 12 KR 打架 -->
+<section class="slide">
+  <div class="stag"><b>01</b>目标怎么串</div>
+  <h2 class="stitle">KR 之间会打架</h2>
+  <p class="slead">这不是设计错了，是必然。不讲清楚，执行时一定变形。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="grid2" style="gap:20px">
+        <div class="conf">
+          <div class="who">产品部</div>
+          <div class="cvs">冲 4000 万<span class="vs">VS</span>守毛利 50%</div>
+        </div>
+        <div class="conf">
+          <div class="who">电商运营</div>
+          <div class="cvs">冲量级<span class="vs">VS</span>保利润</div>
+        </div>
+        <div class="conf">
+          <div class="who">供应链</div>
+          <div class="cvs">降本<span class="vs">VS</span>品质和交付</div>
+        </div>
+        <div class="conf">
+          <div class="who">人资</div>
+          <div class="cvs">控人工成本<span class="vs">VS</span>招够人</div>
+        </div>
+      </div>
+    </div>
+    <div class="band">解法是给 KR 定边界：毛利 50% 是红线，冲量在红线里冲。</div>
+  </div>
+</section>
+
+<!-- 13 PDCA -->
+<section class="slide">
+  <div class="stag"><b>02</b>执行怎么查</div>
+  <h2 class="stitle">PDCA：把计划变成闭环</h2>
+  <p class="slead">四个字母都认识。真正难的，是检查点设在哪。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="pdca">
+        <div class="pcol">
+          <div class="pl">P</div>
+          <div class="pn">计划</div>
+          <p>定目标，定动作，<b>定检查点</b>。计划里没有检查点，这步就等于没做。</p>
+        </div>
+        <div class="pcol">
+          <div class="pl">D</div>
+          <div class="pn">执行</div>
+          <p>按计划做，过程留痕。做过什么、做到哪，要能被别人看见。</p>
+        </div>
+        <div class="pcol">
+          <div class="pl">C</div>
+          <div class="pn">检查</div>
+          <p>到点看数，跟目标比差异。差异是信息，不是追责。</p>
+        </div>
+        <div class="pcol">
+          <div class="pl">A</div>
+          <div class="pn">处理</div>
+          <p>有效的做法固化成标准动作，无效的当轮改掉，带进下一轮。</p>
+        </div>
+      </div>
+    </div>
+    <div class="band">没有检查点的计划，等于没计划。</div>
+  </div>
+</section>
+
+<!-- 14 检查点 -->
+<section class="slide">
+  <div class="stag"><b>02</b>执行怎么查</div>
+  <h2 class="stitle">检查点：什么时候，看什么数</h2>
+  <p class="slead">每个目标都要落到一行，落到一个人。</p>
+  <div class="sbody">
+    <div class="cmid">
+      <table>
+        <tr><th style="width:28%">目标</th><th style="width:28%">看什么</th><th style="width:22%">多久看</th><th>谁看</th></tr>
+        <tr><td class="k">业绩 8000 万</td><td>GMV、各系列达成率</td><td>每周</td><td>运营 + 老板</td></tr>
+        <tr><td class="k">新品毛利 ≥ 50%</td><td>新品实际毛利率</td><td>每月</td><td>产品 + 财务</td></tr>
+        <tr><td class="k">供应链降本</td><td>降本金额、达成率</td><td>每月</td><td>供应链 + 财务</td></tr>
+        <tr><td class="k">招聘到位</td><td>到岗率、到岗时间</td><td>每月</td><td>人资</td></tr>
+        <tr><td class="k">标准化建设</td><td>节点完成情况</td><td>每季度</td><td>总经办</td></tr>
+      </table>
+    </div>
+    <div class="band" style="font-size:22px">周会只开一件事：这几个数，对上了没有。</div>
+  </div>
+</section>
+
+<!-- 15 四象限 -->
+<section class="slide">
+  <div class="stag"><b>03</b>时间怎么排</div>
+  <h2 class="stitle">中层的时间：先锁重要不紧急</h2>
+  <p class="slead">自己也有活，还要盯团队。时间不排，就永远被救火占满。</p>
+  <div class="sbody">
+    <div class="quad">
+      <div class="q">
+        <div class="qh">重要 · 紧急</div>
+        <ul>
+          <li>客户投诉、交期卡点</li>
+          <li>突发的质量问题</li>
+          <li>临时的投标、报价</li>
+        </ul>
+      </div>
+      <div class="q on">
+        <div class="qh">重要 · 不紧急　← 管理者的活在这</div>
+        <ul>
+          <li>带人、教方法</li>
+          <li>做计划、定标准</li>
+          <li>复盘、看数据找方向</li>
+        </ul>
+      </div>
+      <div class="q">
+        <div class="qh">紧急 · 不重要</div>
+        <ul>
+          <li>临时会议</li>
+          <li>别人插队的事</li>
+          <li>各种要签字的单子</li>
+        </ul>
+      </div>
+      <div class="q">
+        <div class="qh">不重要 · 不紧急</div>
+        <ul>
+          <li>漫无目的地刷数据</li>
+          <li>无效社交</li>
+        </ul>
+      </div>
+    </div>
+    <div class="band" style="font-size:22px;margin-top:22px">每周先给自己锁两块"重要不紧急"的时间，救火的活往里塞。</div>
+  </div>
+</section>
+
+<!-- 16 收尾 -->
+<section class="slide">
+  <div class="stag"><b>收尾</b>回去先做三件事</div>
+  <h2 class="stitle">这周就能动起来</h2>
+  <div class="sbody">
+    <div class="cmid">
+      <div class="do3">
+        <div class="do">
+          <div class="dn">1</div>
+          <div>
+            <div class="dt">把自己部门的目标，对着公司三个 O 说一遍</div>
+            <div class="dd">说不出它撑哪个 O，这个目标就该重写。</div>
+          </div>
+        </div>
+        <div class="do">
+          <div class="dn">2</div>
+          <div>
+            <div class="dt">给每个 KR 定一个检查点</div>
+            <div class="dd">什么时候看、看什么数、谁看。三个空，填完。</div>
+          </div>
+        </div>
+        <div class="do">
+          <div class="dn">3</div>
+          <div>
+            <div class="dt">每周给自己锁两块时间</div>
+            <div class="dd">一块带人，一块复盘。先占住，再谈别的。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="band">结果只能等，过程可以管。</div>
+  </div>
+</section>
+
+<div class="foot"><span></span><span class="pnum"><b id="cur">1</b> / <span id="tot">16</span></span></div>
+<div id="prog"></div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0, n=slides.length;
+  var cur=document.getElementById('cur'), tot=document.getElementById('tot'), prog=document.getElementById('prog');
+  tot.textContent=n;
+
+  function fit(){
+    var s=Math.min(window.innerWidth/1600, window.innerHeight/900);
+    document.getElementById('stage').style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  function show(k){
+    if(k<0) k=0; if(k>n-1) k=n-1;
+    slides[i].classList.remove('on');
+    i=k;
+    slides[i].classList.add('on');
+    cur.textContent=i+1;
+    prog.style.width=((i)/(n-1)*100)+'%';
+    try{history.replaceState(null,'','#'+(i+1));}catch(e){}
+  }
+  window.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'||k==='Enter'){e.preventDefault();show(i+1);}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();show(i-1);}
+    else if(k==='Home'){e.preventDefault();show(0);}
+    else if(k==='End'){e.preventDefault();show(n-1);}
+    else if(k==='f'||k==='F'){
+      if(!document.fullscreenElement){document.documentElement.requestFullscreen();}
+      else{document.exitFullscreen();}
+    }
+  });
+  window.addEventListener('resize',fit);
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  fit();
+  if(h>=1&&h<=n){ show(h-1); } else { show(0); }
+})();
+</script>
+</body>
+</html>

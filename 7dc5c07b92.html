@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>品 · 渠 · 人 · 钱 —— 年度目标规划：从经营结论到人力承接</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased}
+
+.topline{height:3px;background:var(--red)}
+
+/* 头部 */
+.hd{display:flex;align-items:center;gap:16px;background:var(--card);padding:26px 28px;border-bottom:1px solid var(--line)}
+.hd-in{display:flex;align-items:center;gap:16px;max-width:980px;margin:0 auto;width:100%}
+.logo{flex:0 0 46px;height:46px;background:var(--red);color:#fff;font-size:20px;font-weight:700;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.ht{flex:1;min-width:0}
+.ht h1{margin:0 0 4px;font-size:24px;font-weight:700;line-height:1.3;letter-spacing:.3px}
+.ht p{margin:0;font-size:13px;color:var(--sub)}
+
+/* 顶部导航 */
+.tabbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.tabbar-in{max-width:980px;margin:0 auto;padding:10px 28px 12px}
+.trow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.trow + .trow{margin-top:8px}
+.tlab{font-size:13px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin-right:2px}
+.tdiv{width:1px;height:18px;background:var(--line);margin:0 4px}
+.tab{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--ink);font-size:13px;padding:6px 11px;border:1px solid var(--line);border-radius:6px;background:var(--card);line-height:1.4;white-space:nowrap;transition:border-color .12s,background .12s}
+.tab:hover{border-color:var(--red)}
+.tab .tn{flex:0 0 auto;min-width:17px;height:17px;padding:0 3px;background:var(--soft);color:var(--sub);border-radius:3px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tab.cur{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+.tab.cur .tn{background:rgba(255,255,255,.22);color:#fff}
+
+/* 内容区 */
+.main{max-width:980px;margin:0 auto;padding:40px 28px 96px}
+
+.view{display:none}
+.view.on{display:block;animation:fade .12s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.view-hd{display:flex;gap:14px;align-items:center;margin-bottom:8px}
+.view-hd .no{flex:0 0 38px;height:38px;background:var(--red);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.view-hd h2{margin:0;font-size:20px;font-weight:700;line-height:1.4}
+.view-sub{margin:0 0 26px 52px;font-size:13px;color:var(--sub)}
+.view-hd.plain{margin-bottom:6px}
+.view-hd.plain h2{font-size:24px;line-height:1.35}
+
+h3{font-size:18px;font-weight:700;margin:0 0 8px}
+p{margin:0 0 16px}
+
+.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:6px;padding:24px;margin-bottom:28px}
+.lead p{margin:0 0 12px;font-size:15px}
+.lead p:last-child{margin-bottom:0}
+.lead .big{font-size:18px;font-weight:700;line-height:1.6;margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+
+.chain{list-style:none;margin:0 0 20px;padding:0}
+.chain li{padding:0;border-bottom:1px dashed var(--line)}
+.chain li:last-child{border-bottom:none}
+.chain a{display:flex;gap:14px;align-items:flex-start;text-decoration:none;color:inherit;padding:13px 0}
+.chain a:hover .tx b{color:var(--red)}
+.chain .no{flex:0 0 32px;height:32px;background:var(--soft);color:var(--ink);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px}
+.chain .tx{flex:1;padding-top:1px}
+.chain .tx b{display:block;font-size:15px;margin-bottom:2px}
+.chain .tx span{font-size:13px;color:var(--sub)}
+
+.step{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px;margin-bottom:24px}
+
+.seg{margin-bottom:20px}
+.seg:last-child{margin-bottom:0}
+.seg-tag{display:inline-block;font-size:13px;font-weight:700;margin-bottom:8px;padding:2px 8px;border-radius:3px}
+.tag-what{background:#fbeae7;color:var(--red)}
+.tag-why{background:var(--soft);color:var(--sub)}
+.seg-what{padding-left:16px;border-left:3px solid var(--red)}
+.seg-why{padding-left:16px;border-left:3px solid var(--line)}
+.seg ol{margin:0;padding-left:20px}
+.seg li{margin-bottom:8px;font-size:15px}
+.seg li:last-child{margin-bottom:0}
+.seg-why li{color:#3d3a36}
+
+.key{background:var(--soft);border-radius:4px;padding:14px 20px;margin-top:20px;font-size:15px}
+.key b{color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:var(--head);text-align:left;padding:10px 12px;font-weight:700;border-bottom:2px solid var(--line);border-top:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+
+.note{background:var(--soft);border-radius:4px;padding:16px 20px;margin:20px 0;font-size:15px;color:#4a4641}
+.note b{color:var(--ink)}
+
+.flow{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 24px;margin:20px 0;font-size:15px;line-height:2}
+.flow b{color:var(--red)}
+.flow .ar{color:var(--sub);padding:0 6px}
+
+.check{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 28px 28px}
+.check ol{list-style:none;counter-reset:c;padding:0;margin:0}
+.check li{counter-increment:c;padding:16px 0 16px 44px;position:relative;border-bottom:1px dashed var(--line);font-size:15px}
+.check li:last-child{border-bottom:none}
+.check li::before{content:counter(c);position:absolute;left:0;top:16px;width:28px;height:28px;background:var(--soft);color:var(--red);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:3px}
+.check li b{display:block;margin-bottom:2px;font-weight:700}
+.check li span{font-size:13px;color:var(--sub)}
+
+.pager{display:flex;gap:16px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line)}
+.pg{flex:1;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 18px;transition:border-color .12s}
+.pg:hover{border-color:var(--red)}
+.pg span{display:block;font-size:13px;color:var(--sub);margin-bottom:2px}
+.pg b{font-size:15px;font-weight:700}
+.pg.next{text-align:right}
+.pager .sp{flex:1}
+
+@media(max-width:760px){
+  .hd{padding:18px 16px}
+  .hd-in{gap:12px}
+  .logo{flex:0 0 38px;height:38px;font-size:17px;border-radius:6px}
+  .ht h1{font-size:19px}
+  .ht p{font-size:13px}
+  .tabbar-in{padding:8px 16px 10px}
+  .tab{padding:5px 9px;font-size:13px}
+  .tab .tn{display:none}
+  .tlab{width:100%;margin:0}
+  .tdiv{display:none}
+  .main{padding:26px 16px 72px}
+  .view-hd h2,.view-hd.plain h2{font-size:18px}
+  .view-hd .no{flex:0 0 32px;height:32px;font-size:13px}
+  .view-sub{margin-left:44px}
+  .step{padding:20px}
+  h3{font-size:15px}
+  .seg li,.flow,.key,.note{font-size:14px}
+  .pager{flex-direction:column}
+}
+
+@media print{
+  .topline,.hd,.tabbar,.pager{display:none}
+  .view{display:block!important;page-break-inside:avoid}
+  .main{max-width:none;padding:0}
+}
+</style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header class="hd">
+  <div class="hd-in">
+    <div class="logo">品</div>
+    <div class="ht">
+      <h1>品 · 渠 · 人 · 钱：年度目标规划</h1>
+      <p>从经营结论到人力承接 ｜ 上篇 0–4 定方向 · 下篇 5–8 接得住</p>
+    </div>
+  </div>
+</header>
+
+<nav class="tabbar">
+  <div class="tabbar-in">
+    <div class="trow">
+      <a class="tab" href="#overview">总览</a>
+      <span class="tdiv"></span>
+      <span class="tlab">上篇</span>
+      <a class="tab" href="#s0"><span class="tn">0</span>目标值</a>
+      <a class="tab" href="#s1"><span class="tn">1</span>品</a>
+      <a class="tab" href="#s2"><span class="tn">2</span>渠</a>
+      <a class="tab" href="#s3"><span class="tn">3</span>人</a>
+      <a class="tab" href="#s4"><span class="tn">4</span>钱</a>
+      <a class="tab" href="#diff"><span class="tn">＋</span>增量路径</a>
+    </div>
+    <div class="trow">
+      <span class="tlab">下篇</span>
+      <a class="tab" href="#s5"><span class="tn">5</span>部门</a>
+      <a class="tab" href="#s6"><span class="tn">6</span>岗位指标</a>
+      <a class="tab" href="#s7"><span class="tn">7</span>能力词典</a>
+      <a class="tab" href="#s8"><span class="tn">8</span>人才</a>
+      <a class="tab" href="#hr"><span class="tn">◆</span>人力位置</a>
+      <span class="tdiv"></span>
+      <a class="tab" href="#check"><span class="tn">✓</span>核对项</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ================= 总览 ================= -->
+<section class="view on" id="overview" data-title="总览">
+  <div class="view-hd plain"><h2>品 · 渠 · 人 · 钱</h2></div>
+  <p class="view-sub" style="margin-left:0">年度目标规划：从经营结论到人力承接</p>
+
+  <div class="lead">
+    <p class="big">年度规划最容易错的一步，是起点。一上来就分指标，后面的编制和预算都在补前面的漏洞。</p>
+    <p>完整的链路是两段：<b>先定做什么、怎么卖、要几个人、花多少钱</b>，再把这四个结论翻译成<b>部门重点工作、岗位指标、能力要求、人才动作</b>。</p>
+    <p>前半段是经营侧，决定方向；后半段是人力侧，决定落不落得下去。只做前半段，规划停在预算表上；只做后半段，考核脱离经营实际。</p>
+  </div>
+
+  <p class="tlab" style="padding-left:0;display:block;margin-bottom:2px">上篇 · 经营侧：定方向</p>
+  <ul class="chain">
+    <li><a href="#s0"><span class="no">0</span><span class="tx"><b>目标值的来源</b><span>三个基线交叉验证，先算可实现区间</span></span></a></li>
+    <li><a href="#s1"><span class="no">1</span><span class="tx"><b>品 · 资源投向</b><span>划定主次，资源按级配</span></span></a></li>
+    <li><a href="#s2"><span class="no">2</span><span class="tx"><b>渠 · 规模路径</b><span>评估渠道，识别单点依赖</span></span></a></li>
+    <li><a href="#s3"><span class="no">3</span><span class="tx"><b>人 · 编制依据</b><span>由产出倒推，保住关键岗</span></span></a></li>
+    <li><a href="#s4"><span class="no">4</span><span class="tx"><b>钱 · 预算约束</b><span>由产出倒推，设三条校验线</span></span></a></li>
+  </ul>
+
+  <p class="tlab" style="padding-left:0;display:block;margin:24px 0 2px">下篇 · 人力侧：接得住</p>
+  <ul class="chain">
+    <li><a href="#s5"><span class="no">5</span><span class="tx"><b>部门 · 重点工作与核心指标</b><span>经营语言翻译成职能语言</span></span></a></li>
+    <li><a href="#s6"><span class="no">6</span><span class="tx"><b>岗位 · 指标拆解与绩效</b><span>年目标拆到月，指标落到人</span></span></a></li>
+    <li><a href="#s7"><span class="no">7</span><span class="tx"><b>岗位 · 画像与能力词典</b><span>由岗位设置定要求，归并成标准</span></span></a></li>
+    <li><a href="#s8"><span class="no">8</span><span class="tx"><b>人才 · 招聘、盘点与排布</b><span>标准用于进出，结论用于排布</span></span></a></li>
+  </ul>
+
+  <div class="note">
+    <b>顺序颠倒会产生两类后果。</b>先定编制再定品，人员结构会先于业务判断被锁定，后续只能为已有的人安排工作。先定预算再定渠道，投入规模会沿用历史基数，新增投入缺少验证依据。<br>
+    规划只做经营侧、不落到部门和岗位，年底考核只能依赖印象判断，绩效体系与经营结果脱钩。
+  </div>
+
+  <p style="font-size:13px;color:var(--sub);margin:24px 0 0">上方导航可直接跳到任一板块，链接带锚点，可以单独发给别人。</p>
+</section>
+
+<!-- ================= 0 ================= -->
+<section class="view" id="s0" data-title="0 目标值的来源">
+  <div class="view-hd"><span class="no">0</span><h2>目标值的来源</h2></div>
+  <p class="view-sub">起点决定后续所有环节的假设</p>
+
+  <div class="step">
+    <h3>目标值需要可追溯的推导过程</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>分别测算三个基线。</b>历史趋势取近三年，避开峰值年；自身能力按现有产品、渠道、人力的实际产出测算；外部大盘看行业增速与主要竞争者的变化。</li>
+        <li><b>三项并列比对，找出偏差最大的一项。</b>偏差本身是信息，说明某一项假设与实际不符。</li>
+        <li><b>以能力基线为起点，给出可实现区间。</b>与目标值对照，差额定义为待攻坚项。</li>
+        <li><b>设置三档目标。</b>下限、考核线、挑战线分别对应不同的资源配置和激励强度。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>单一来源的目标缺少校准机制，外部条件变化时没有调整依据。</li>
+        <li>三档目标把"定多少"转化为"投多少、奖多少"，单档目标在期末只有完成或解释两种结果。</li>
+        <li>差额如果不被显性识别，就不会转化为动作，最终以"再努力一点"收场。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>目标值的可信度取决于推导链条的长度。链条越短，执行期可调整的余地越小。</div>
+  </div>
+</section>
+
+<!-- ================= 1 ================= -->
+<section class="view" id="s1" data-title="1 品 · 资源投向">
+  <div class="view-hd"><span class="no">1</span><h2>品 · 资源投向</h2></div>
+  <p class="view-sub">决定钱和人往哪里去</p>
+
+  <div class="step">
+    <h3>资源总量固定时，优先级只能通过数量体现</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>划定基底。</b>同时满足出量、复购、毛利三项条件的品类，作为主力投入对象。</li>
+        <li><b>分级管理。</b>主力、培育、淘汰三级，各级名额在规划阶段写定，不由执行期追加。</li>
+        <li><b>资源按级配。</b>人力、预算、内容产能、渠道位置按级别分配，主力级获得明确倾斜。</li>
+        <li><b>单品建账。</b>每个品建立四项记录：销量、毛利、退款、库存，作为去留依据。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>资源总量固定，均摊等于取消优先级。被摊薄的不仅是预算，还有负责人的注意力。</li>
+        <li>分级如果不设名额上限，执行时所有品都会进入主力级，分级随之失效。</li>
+        <li>四项记录缺任何一项，该品都无法进入取舍，只能靠主观判断保留。</li>
+        <li>品类过多时，真正的问题不在库存金额，而在没有哪个品获得足够的投入强度。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>聚焦是否成立，可以用数量变化检验——被压缩了多少，被集中的资源有多少。</div>
+  </div>
+</section>
+
+<!-- ================= 2 ================= -->
+<section class="view" id="s2" data-title="2 渠 · 规模路径">
+  <div class="view-hd"><span class="no">2</span><h2>渠 · 规模路径</h2></div>
+  <p class="view-sub">决定增长从哪里来</p>
+
+  <div class="step">
+    <h3>渠道能力能否脱离个别人存在，决定规模是否可复制</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>渠道评估三问。</b>谁在承担销售、以什么方式承担、投入产出能否单独核算。</li>
+        <li><b>识别单点依赖。</b>统计单个达人、单个链接、单个平台、单个客户在总量中的占比，占比过高的列入拆解对象。</li>
+        <li><b>投入产出分层。</b>低于阈值的停止投入，区间内的观察并限量，高于阈值的放量，每档对应明确动作。</li>
+        <li><b>新渠道使用验证预算。</b>达到验证标准后再给规模预算，验证标准在年初写定。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>渠道能力如果依附于个别人或个别链接，规模不具备可复制性，人员变动会直接反映为业绩波动。</li>
+        <li>平均值会掩盖结构差异。同一账户内可能同时存在高回报单元和持续亏损单元，均值看起来正常。</li>
+        <li>以规模预算启动新渠道，等于用确定投入对赌未验证的模式，失败成本无法控制。</li>
+        <li>渠道选错时，后续投入的每一笔都在放大错误，且纠正成本随规模上升。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>渠道是否跑通，可以用脱离测试检验——换掉当前主要依赖对象，产出是否仍在可接受区间。</div>
+  </div>
+</section>
+
+<!-- ================= 3 ================= -->
+<section class="view" id="s3" data-title="3 人 · 编制依据">
+  <div class="view-hd"><span class="no">3</span><h2>人 · 编制依据</h2></div>
+  <p class="view-sub">决定目标能否被推动</p>
+
+  <div class="step">
+    <h3>编制的起点是产出，不是历史人数</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>由产出倒推编制。</b>目标产出 ÷ 实际人均产出，得出底线人数，作为编制下限。</li>
+        <li><b>区分关键岗与辅助岗。</b>关键岗优先保障，辅助岗按效率配置。</li>
+        <li><b>处理单点承担。</b>某一模块由单人承担且占比过高时，规划中列明拆分节点与接替安排。</li>
+        <li><b>编制与目标按期对账。</b>目标调整时，编制和薪酬包同步调整，不只调整目标。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>编制一旦落为具体岗位，回收成本很高，因此起点必须是产出而非历史人数。</li>
+        <li>关键岗空缺造成的业务中断，代价高于人数超编。两者的风险量级不同。</li>
+        <li>人效偏差多数由品和渠引起。先调整人，容易误判问题所在。</li>
+        <li>目标下调和编制不下调，中间差额会转化为长期的效率损耗。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>编制方案是否成立，取决于人均产出用的是实际值还是目标值。用目标值倒推，人数会系统性偏少。</div>
+  </div>
+</section>
+
+<!-- ================= 4 ================= -->
+<section class="view" id="s4" data-title="4 钱 · 预算约束">
+  <div class="view-hd"><span class="no">4</span><h2>钱 · 预算约束</h2></div>
+  <p class="view-sub">决定规模增长是否能留下利润</p>
+
+  <div class="step">
+    <h3>预算由产出倒推，并配置校验线</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>预算倒推。</b>目标产出 → 单位投入 → 投入产出比校验，过线才给预算。</li>
+        <li><b>人力预算单列。</b>目标 → 人数 → 薪酬包 → 薪酬占收入比，形成一条可核对的链。</li>
+        <li><b>设三条校验线：</b>人效不低于上期、薪酬占收入比在区间内、投入产出比达标。三条同时满足才放行。</li>
+        <li><b>库存与在途单列清理目标。</b>与营收目标并列，不并入费用项。</li>
+        <li><b>预留验证预算。</b>用于新方向、新渠道、新品的小规模试错。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>按上期基数加成的预算方式，会把历史低效固化为下期标准。</li>
+        <li>人力成本如果不在规划阶段锁定，全年处于被动追加状态，无法与目标同步调整。</li>
+        <li>只考核营收不考核费用率，规模增长可能与利润下降同时发生。</li>
+        <li>库存占用的是现金。只计入资产、不计入约束，资金压力会持续累积。</li>
+        <li>不预留验证预算，新方向只能借用存量预算，试错空间被挤压到零。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>预算是否可控，看三条校验线是否都有明确的责任人。没有责任人的校验线，执行期会被逐条绕开。</div>
+  </div>
+</section>
+
+<!-- ================= 结构差异 ================= -->
+<section class="view" id="diff" data-title="三类增量路径">
+  <div class="view-hd"><span class="no">＋</span><h2>结构差异：增量来源不同，投法不同</h2></div>
+  <p class="view-sub">上篇通用结构的适用前提</p>
+
+  <p>上述四步是通用结构。具体资源投向，取决于规划期内的增量来源。三类路径的前提、投向与风险各不相同。</p>
+
+  <table>
+    <tr>
+      <th style="width:16%">增量来源</th>
+      <th style="width:26%">前提条件</th>
+      <th style="width:26%">资源投向</th>
+      <th style="width:32%">主要风险</th>
+    </tr>
+    <tr>
+      <td><b>拓渠道</b><br><span style="color:var(--sub);font-size:13px">产品固定，可加渠道</span></td>
+      <td>产品已验证、具备复购、价格带能支撑新渠道</td>
+      <td>渠道团队、渠道启动投入、平台运营能力</td>
+      <td>渠道间价格冲突、客户归属重复计算、原有渠道被分流</td>
+    </tr>
+    <tr>
+      <td><b>拓量</b><br><span style="color:var(--sub);font-size:13px">渠道固定，可提产出</span></td>
+      <td>渠道已跑通，转化率、客单价、复购率可单独核算</td>
+      <td>转化与复购环节，销售人效提升</td>
+      <td>边际回报递减，规模增长与利润脱节；只看总量不看结构</td>
+    </tr>
+    <tr>
+      <td><b>拓新品</b><br><span style="color:var(--sub);font-size:13px">现有品类触及上限</span></td>
+      <td>现有品类确实无空间，且具备开发与验证能力</td>
+      <td>研发与开品、测试预算、小批量试产</td>
+      <td>周期长、成功率低、试错成本转为库存；同时启动过多项目</td>
+    </tr>
+  </table>
+
+  <div class="note">
+    <b>三类可以叠加，但在同一规划期内通常只能以一类为主。</b>它们的资源需求重叠，且存在先后依赖。同时推进多类，常见结果是每一类都停留在启动阶段。
+  </div>
+</section>
+
+<!-- ================= 5 ================= -->
+<section class="view" id="s5" data-title="5 部门 · 重点工作">
+  <div class="view-hd"><span class="no">5</span><h2>部门 · 重点工作与核心指标</h2></div>
+  <p class="view-sub">经营语言翻译成职能语言</p>
+
+  <div class="flow">
+    <b>经营结论</b><span class="ar">→</span><b>部门重点工作</b><span class="ar">→</span><b>部门核心指标</b><span class="ar">→</span><b>岗位指标（年拆到月）</b><span class="ar">→</span><b>岗位绩效</b><br>
+    <b>岗位设置</b><span class="ar">→</span><b>岗位画像</b><span class="ar">→</span><b>能力素质词典</b><span class="ar">→</span><b>招聘标准</b><span class="ar">/</span><b>人才盘点</b><span class="ar">→</span><b>人员排布</b>
+  </div>
+  <p>两条支线在"绩效"和"能力"处汇合：一条决定"考什么"，一条决定"要什么样的人"。两者共同支撑盘点与排布。</p>
+
+  <div class="step">
+    <h3>规划到部门这一层最容易断</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>由品、渠、人、钱四项结论，推出各部门的年度重点工作。</b>每部门控制在五项以内，按主次排序。</li>
+        <li><b>每项重点工作配核心指标。</b>指标要有基线、目标值、统计口径三项要素，缺一项就不算定义清楚。</li>
+        <li><b>指标分两类。</b>结果指标对经营结果负责，过程指标对关键动作负责，两类都要有。</li>
+        <li><b>与预算和编制对齐后再定稿。</b>部门重点工作所需的钱和人，回过去核上篇的结论是否支撑得住。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>上面是经营语言，下面是职能语言，中间没有翻译，就会出现"每个部门都知道目标，但不知道自己该干什么"。</li>
+        <li>重点工作超过五项，等于没有重点。部门精力会被摊开，每件事都推进一点。</li>
+        <li>只有结果指标会失控，因为过程不可见；只有过程指标会走形式，因为结果不负责。两类并存才能同时管住方向和动作。</li>
+        <li>部门重点工作和预算是两张皮时，执行期一定超支或搁置。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>部门重点工作是否成立，看它能否倒推回经营结论。倒推不回去的工作，属于部门自选动作，占用的是有限资源。</div>
+  </div>
+</section>
+
+<!-- ================= 6 ================= -->
+<section class="view" id="s6" data-title="6 岗位 · 指标与绩效">
+  <div class="view-hd"><span class="no">6</span><h2>岗位 · 指标拆解与绩效</h2></div>
+  <p class="view-sub">年目标拆到月，指标落到人</p>
+
+  <div class="step">
+    <h3>部门指标不拆到岗位，个人就没有抓手</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>按业务流程拆解。</b>把部门指标沿业务流程拆到岗位，而不是平均分配。</li>
+        <li><b>每岗位确定三到五项考核指标。</b>结果与过程搭配，权重体现优先级。</li>
+        <li><b>指标四项要素齐全。</b>定义、算法、数据来源、考核周期，四项缺一项，考核就无法执行。</li>
+        <li><b>年目标拆到月。</b>按季节性配置月度权重，不按十二个月均分。</li>
+        <li><b>形成岗位年度绩效指标表。</b>每月可量化，偏差在月内可见。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>部门指标只停在部门，考核只能考团队，个人没有责任落点，出现问题时找不到承担者。</li>
+        <li>指标超过五项，权重被摊薄，考核失去导向作用，员工会挑容易的做。</li>
+        <li>没有数据来源的指标，期末只能靠印象打分，绩效争议由此产生。</li>
+        <li>年拆月不是除以十二。业务有旺淡季，均分会让淡季永远完不成、旺季永远超额，考核信号失真。</li>
+        <li>月度可见，才有月度纠偏的可能。年度才看见的偏差，已经没有调整余地。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>岗位指标是否可用，检验方法是让该岗位的人复述一遍考核算法。复述不出来，说明指标没有落到可执行层面。</div>
+  </div>
+</section>
+
+<!-- ================= 7 ================= -->
+<section class="view" id="s7" data-title="7 岗位 · 画像与词典">
+  <div class="view-hd"><span class="no">7</span><h2>岗位 · 画像与能力词典</h2></div>
+  <p class="view-sub">由要求归并成公司级标准</p>
+
+  <div class="step">
+    <h3>画像的依据是岗位设置，不是编制人数</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>基于岗位设置确定画像。</b>每个岗位写清职责、产出、能力要求三项。编制决定要几个人，画像决定要什么样的人，两个维度分开。</li>
+        <li><b>岗位分级处理。</b>关键岗做详细画像，通用岗共用能力模型，不逐岗展开。</li>
+        <li><b>归并成公司级词典。</b>把各岗位的能力要求分层分类归并，形成统一的能力素质词典。</li>
+        <li><b>能力描述落到可观察行为。</b>每条能力配行为锚点，写清什么表现算达标、什么表现算超出。</li>
+        <li><b>词典绑定两个应用场景。</b>招聘评估表、盘点评价表，两张表的能力项直接取自词典。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>编制是数量问题，画像是标准问题。混在一起谈，会导致"因为缺人所以降标准"。</li>
+        <li>全部岗位都做详细画像，成本高于收益，且多数通用岗的能力差异并不显著。</li>
+        <li>各岗位各写一套标准，招聘和盘点就无法横向比较，最终回到主观判断。</li>
+        <li>能力要求不落到行为，评估只能凭感觉。同一个"沟通能力强"，不同评估者的理解可以完全不同。</li>
+        <li>词典如果只用于存档，一年后无人使用。它必须同时服务招聘和盘点，才有维护的动力。这是词典失效最常见的原因。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>词典是否可用，看它能否直接生成一张招聘评估表和一张盘点评价表。生成不了，说明词典还停留在概念层。</div>
+  </div>
+</section>
+
+<!-- ================= 8 ================= -->
+<section class="view" id="s8" data-title="8 人才 · 招聘与排布">
+  <div class="view-hd"><span class="no">8</span><h2>人才 · 招聘、盘点与排布</h2></div>
+  <p class="view-sub">标准用于进出，结论用于排布</p>
+
+  <div class="step">
+    <h3>盘点的目的是回答"明年这些事谁来做"</h3>
+
+    <div class="seg seg-what">
+      <span class="seg-tag tag-what">做什么</span>
+      <ol>
+        <li><b>按词典制定招聘标准。</b>评估表的能力项、面试问题、评分标准，三者与词典一一对应。</li>
+        <li><b>年度盘点用两个维度。</b>绩效结果与能力评价，形成九宫格，区分出可用、待培养、需调整三类。</li>
+        <li><b>盘点产出三类结论。</b>谁能接更大责任、谁需要补什么、谁在什么时间前需要替换。</li>
+        <li><b>人员排布分三类动作，判断标准不同：</b>离职补缺，关键岗立即补，非关键岗先看能否合并；替换，绩效与能力双低且有接替人时执行；新增，在编制内且产出可验证时批准。</li>
+        <li><b>盘点和排布结果回写编制与预算。</b>形成下一轮规划的输入。</li>
+      </ol>
+    </div>
+
+    <div class="seg seg-why">
+      <span class="seg-tag tag-why">为什么</span>
+      <ol>
+        <li>招聘没有标准，只能靠试用期淘汰，纠错成本被推后且放大。</li>
+        <li>盘点如果只有评价没有结论，会开成评语会。评价本身不产生任何组织变化。</li>
+        <li>三类排布动作混在一起决策，容易出现"该换的没换、该并的又招"，编制越管越多。</li>
+        <li>盘点不回答"谁来做"，规划里的重点工作就没有责任人，落回规划表本身。</li>
+        <li>盘点结果不回写编制和预算，下一轮规划仍然从旧数据出发，形成循环偏差。</li>
+      </ol>
+    </div>
+
+    <div class="key"><b>判断要点：</b>盘点是否有效，看会后是否有人事动作发生。没有动作的盘点，只是年度例行工作。</div>
+  </div>
+</section>
+
+<!-- ================= HR ================= -->
+<section class="view" id="hr" data-title="人力部门的角色">
+  <div class="view-hd"><span class="no">◆</span><h2>人力部门在整条链上的位置</h2></div>
+  <p class="view-sub">上半段校验，下半段承接</p>
+
+  <p>人力部门在整条链上有两个角色。上半段是校验者：确认品、渠、人、钱的假设互相对齐。下半段是承接者：把经营结论翻译成部门重点、岗位指标、能力标准和人才动作。</p>
+
+  <table>
+    <tr>
+      <th style="width:14%">环节</th>
+      <th style="width:30%">人力部门的角色</th>
+      <th style="width:56%">判断依据</th>
+    </tr>
+    <tr>
+      <td><b>品</b></td>
+      <td>校验资源投向是否与分级一致</td>
+      <td>主力品相关的人员与预算投入，高于其他单元</td>
+    </tr>
+    <tr>
+      <td><b>渠</b></td>
+      <td>校验渠道产出是否存在单点依赖</td>
+      <td>关键人员变动不影响出量</td>
+    </tr>
+    <tr>
+      <td><b>人</b></td>
+      <td>校验编制依据是产出推算还是人数惯例</td>
+      <td>人均产出不低于上期，关键岗无空缺</td>
+    </tr>
+    <tr>
+      <td><b>钱</b></td>
+      <td>校验薪酬包是否随目标同步调整</td>
+      <td>薪酬占收入比在区间内，且变动可解释</td>
+    </tr>
+    <tr>
+      <td><b>部门</b></td>
+      <td>承接：重点工作收敛、指标定义完整</td>
+      <td>每项重点工作能倒推回经营结论，指标三要素齐全</td>
+    </tr>
+    <tr>
+      <td><b>岗位</b></td>
+      <td>承接：指标拆到岗、拆到月、要素齐全</td>
+      <td>岗位人员能复述自己的考核算法</td>
+    </tr>
+    <tr>
+      <td><b>能力</b></td>
+      <td>承接：画像、词典、两张应用表</td>
+      <td>词典能直接生成招聘评估表与盘点评价表</td>
+    </tr>
+    <tr>
+      <td><b>人才</b></td>
+      <td>承接：盘点有结论、排布有标准、结果回写</td>
+      <td>盘点后有人事动作，且回写进下一轮编制与预算</td>
+    </tr>
+  </table>
+
+  <div class="note"><b>人力部门在这条链上的作用，是校验一致性、承接翻译，不是替代业务判断。</b></div>
+</section>
+
+<!-- ================= 核对项 ================= -->
+<section class="view" id="check" data-title="规划前的核对项">
+  <div class="view-hd"><span class="no">✓</span><h2>规划前的核对项</h2></div>
+  <p class="view-sub">检验规划内部是否自洽</p>
+
+  <p>以下八项用于检验规划内部是否自洽。任一项无法回答，说明对应环节的推导尚未完成。</p>
+
+  <div class="check">
+    <ol>
+      <li><b>目标值由几个独立来源推算？</b><span>来源少于两个，缺少校准机制。</span></li>
+      <li><b>本期的资源投向能否指向具体的品类或客群？</b><span>无法指向具体对象，等于尚未选择。</span></li>
+      <li><b>部门重点工作是否收敛在五项以内，每项都有基线和口径？</b><span>重点工作过多，等于没有重点。</span></li>
+      <li><b>岗位指标是否拆到月，并且有人能复述考核算法？</b><span>复述不出来，指标停留在纸面。</span></li>
+      <li><b>年目标拆月是按季节性配权重，还是十二个月均分？</b><span>均分会让考核信号失真。</span></li>
+      <li><b>能力素质词典能否直接生成招聘评估表和盘点评价表？</b><span>生成不了，词典只是存档。</span></li>
+      <li><b>人员排布的三类动作，是否各有独立判断标准？</b><span>标准混用，编制会越管越多。</span></li>
+      <li><b>偏差达到什么程度触发调整，由谁决策？</b><span>缺少触发线，复盘会退化为汇报会。</span></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.tabbar .tab'));
+
+  views.forEach(function(v, i){
+    var p = document.createElement('div');
+    p.className = 'pager';
+    var prev = views[i-1], next = views[i+1];
+    p.innerHTML =
+      (prev ? '<a class="pg prev" href="#'+prev.id+'"><span>上一节</span><b>'+prev.dataset.title+'</b></a>' : '<span class="sp"></span>') +
+      (next ? '<a class="pg next" href="#'+next.id+'"><span>下一节</span><b>'+next.dataset.title+'</b></a>' : '<span class="sp"></span>');
+    v.appendChild(p);
+  });
+
+  function route(){
+    var id = (location.hash || '#overview').replace('#','');
+    var target = document.getElementById(id);
+    if(!target || !target.classList.contains('view')) id = 'overview';
+    views.forEach(function(v){ v.classList.toggle('on', v.id === id); });
+    links.forEach(function(a){
+      var on = a.getAttribute('href') === '#'+id;
+      a.classList.toggle('cur', on);
+      if(on){ a.setAttribute('aria-current','true'); } else { a.removeAttribute('aria-current'); }
+    });
+    var bar = document.querySelector('.tabbar');
+    window.scrollTo(0, bar ? bar.offsetTop : 0);
+  }
+
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+
+</body>
+</html>
