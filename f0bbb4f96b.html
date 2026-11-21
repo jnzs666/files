@@ -40,7 +40,15 @@ section{margin-bottom:44px;scroll-margin-top:70px}
 .oc .s{font-size:13px;color:var(--sub);margin-top:6px}
 
 .flow{background:var(--card);border:1px solid var(--line);border-radius:4px;
-  padding:14px 22px;font-size:14px;line-height:1.9}
+  padding:14px 22px;font-size:14px;line-height:1.9;margin-top:18px}
+
+/* 部门 O 矩阵 */
+.mh{font-size:15px;font-weight:700;margin:26px 0 10px;letter-spacing:.5px}
+.mtx th .ok{display:inline-block;background:var(--red);color:#fff;font-size:11px;
+  padding:1px 6px;border-radius:2px;margin-right:8px;letter-spacing:1px;vertical-align:1px}
+.mtx td.n{font-weight:700}
+.mtx td.dash{color:#c9c3bc}
+.mtx td{line-height:1.65}
 .flow b{color:var(--red)}
 .flow .fa{color:var(--sub);padding:0 9px}
 .flow .note{color:var(--sub);padding-left:14px;border-left:1px solid var(--line);margin-left:10px}
@@ -138,6 +146,41 @@ td.n{font-weight:700;white-space:nowrap}
       <div class="s">产品、运营、供应链、人资，各出一套标准</div>
     </div>
   </div>
+
+  <h3 class="mh">部门 O 一览：四个部门各接哪几块</h3>
+
+  <table class="mtx">
+    <tr>
+      <th style="width:13%">部门</th>
+      <th style="width:28%"><span class="ok">O1</span>业绩 8000 万</th>
+      <th style="width:28%"><span class="ok">O2</span>利润率 +5%</th>
+      <th style="width:31%"><span class="ok">O3</span>标准化建设</th>
+    </tr>
+    <tr>
+      <td class="n">产品部</td>
+      <td>新品销售 4000 万</td>
+      <td>新品毛利 ≥ 50%</td>
+      <td>品质标准化</td>
+    </tr>
+    <tr>
+      <td class="n">电商运营</td>
+      <td>销售达成<br>店铺量级上一台阶</td>
+      <td class="dash">—</td>
+      <td>产能与 SOP 配套</td>
+    </tr>
+    <tr>
+      <td class="n">供应链</td>
+      <td>供货保障</td>
+      <td>降本</td>
+      <td>流程与人员</td>
+    </tr>
+    <tr>
+      <td class="n">人力资源</td>
+      <td>编制与招聘到位</td>
+      <td>人工成本与预算</td>
+      <td>标准化人力配套</td>
+    </tr>
+  </table>
 
   <div class="flow">
     <b>公司 O</b><span class="fa">→</span><b>部门 O</b><span class="fa">→</span><b>系列 O / 分工</b><span class="fa">→</span><b>关键结果</b><span class="fa">→</span><b>岗位</b><span class="fa">→</span><b>岗位 KR</b><span class="note">同一句话，向上看是 KR，向下看是 O</span>
