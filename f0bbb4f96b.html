@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OKR 目标拆解 · 公司到岗位</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#141312;
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--ink);-webkit-font-smoothing:antialiased}
+#stage{position:fixed;left:50%;top:50%;width:1600px;height:900px;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:var(--bg);overflow:hidden}
+
+.slide{position:absolute;inset:0;padding:52px 84px 74px;display:none;flex-direction:column}
+.slide.on{display:flex;animation:in .22s ease-out}
+@keyframes in{from{opacity:0}to{opacity:1}}
+
+.stag{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--sub);letter-spacing:1px;margin-bottom:12px}
+.stag b{display:inline-flex;align-items:center;justify-content:center;height:24px;padding:0 9px;
+  background:var(--red);color:#fff;font-size:13px;font-weight:700;border-radius:2px}
+.stitle{font-size:40px;font-weight:700;line-height:1.25;letter-spacing:.5px}
+
+/* 总览三列 */
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;flex:1;margin-top:30px;min-height:0}
+.col{display:flex;flex-direction:column}
+.co{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);
+  border-radius:3px;padding:18px 22px}
+.co .ol{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--red);margin-bottom:6px}
+.co .ot{font-size:24px;font-weight:700;line-height:1.3}
+.co .os{font-size:15px;color:var(--sub);margin-top:6px}
+
+.depts{list-style:none;position:relative;margin-top:0;padding-left:34px;flex:1}
+.depts li{position:relative;padding-top:16px}
+.depts li::after{content:"";position:absolute;left:-34px;top:0;width:2px;height:100%;background:var(--line)}
+.depts li:last-child::after{height:58px}
+.depts li::before{content:"";position:absolute;left:-34px;top:58px;width:34px;height:2px;background:var(--line)}
+.dcard{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 20px}
+.dcard .dn{font-size:14px;color:var(--sub);letter-spacing:1px;margin-bottom:5px}
+.dcard .dt{font-size:21px;font-weight:700;line-height:1.4}
+.dcard .dt em{font-style:normal;color:var(--red)}
+
+/* 部门链路 */
+.hd{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr;margin-top:26px;padding-bottom:10px}
+.hd div{font-size:14px;font-weight:700;letter-spacing:2px;color:var(--sub)}
+.hd div:nth-child(odd){padding-left:4px}
+.hd div:nth-child(even){}
+
+.chain{display:flex;flex-direction:column;gap:18px;flex:1;margin-top:4px;justify-content:center}
+.row{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr;align-items:stretch;height:132px;flex:none}
+.nd{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:18px 20px;
+  display:flex;flex-direction:column;justify-content:center}
+.nd .t{font-size:22px;font-weight:700;line-height:1.45}
+.nd .s{font-size:15px;color:var(--sub);line-height:1.5;margin-top:7px}
+.nd.o{border-left:4px solid var(--red);padding-left:17px}
+.nd.k{background:var(--soft);border-color:transparent}
+.nd.p{border:dashed 1px var(--line)}
+.nd.r{border-bottom:2px solid var(--ink)}
+.ar{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:19px;font-weight:700}
+
+/* 底部 */
+.foot{position:absolute;left:84px;right:84px;bottom:24px;display:flex;justify-content:space-between;
+  align-items:center;font-size:13px;color:var(--sub);letter-spacing:.5px}
+.pnum b{color:var(--ink);font-weight:700}
+#prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--red);transition:width .22s ease}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 总览 -->
+<section class="slide on">
+  <div class="stag"><b>01</b>公司目标 → 部门目标</div>
+  <h2 class="stitle">三个 O，落到四个部门</h2>
+  <div class="cols3">
+
+    <div class="col">
+      <div class="co">
+        <div class="ol">O1</div>
+        <div class="ot">业绩 8000 万</div>
+        <div class="os">24 年 4000 万，翻一番</div>
+      </div>
+      <ul class="depts">
+        <li><div class="dcard"><div class="dn">产品部</div><div class="dt">新品销售 <em>4000 万</em></div></div></li>
+        <li><div class="dcard"><div class="dn">电商运营</div><div class="dt">销售达成</div></div></li>
+        <li><div class="dcard"><div class="dn">供应链</div><div class="dt">供货保障</div></div></li>
+        <li><div class="dcard"><div class="dn">人资</div><div class="dt">编制与招聘到位</div></div></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <div class="co">
+        <div class="ol">O2</div>
+        <div class="ot">利润率 +5%</div>
+        <div class="os">比 24 年提升 5 个点</div>
+      </div>
+      <ul class="depts">
+        <li><div class="dcard"><div class="dn">产品部</div><div class="dt">新品毛利 <em>≥50%</em></div></div></li>
+        <li><div class="dcard"><div class="dn">供应链</div><div class="dt">降本</div></div></li>
+        <li><div class="dcard"><div class="dn">人资</div><div class="dt">人工成本进预算</div></div></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <div class="co">
+        <div class="ol">O3</div>
+        <div class="ot">标准化建设</div>
+        <div class="os">全公司一套标准</div>
+      </div>
+      <ul class="depts">
+        <li><div class="dcard"><div class="dn">产品部</div><div class="dt">品质标准化</div></div></li>
+        <li><div class="dcard"><div class="dn">电商运营</div><div class="dt">运营 SOP</div></div></li>
+        <li><div class="dcard"><div class="dn">供应链</div><div class="dt">流程与人员</div></div></li>
+        <li><div class="dcard"><div class="dn">人资</div><div class="dt">编制与制度配套</div></div></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- 2 产品部 -->
+<section class="slide">
+  <div class="stag"><b>02</b>产品部 · 承接 O1 / O2 / O3</div>
+  <h2 class="stitle">产品部</h2>
+  <div class="hd">
+    <div>部门 O</div><div></div><div>部门 KR</div><div></div><div>岗位 O</div><div></div><div>岗位 KR</div>
+  </div>
+  <div class="chain">
+    <div class="row">
+      <div class="nd o"><div class="t">新品销售 4000 万</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">各系列业绩达标</div><div class="s">红光 · 电震动 · 按摩 …</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">每个系列开几款品</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">单品首月销量达标</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">新品毛利 ≥50%</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">单款成本控在目标线内</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">客单价 · 功能 · 成本</div><div class="s">三者一起定死</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">单款成本 ≤ 目标值</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">品质标准化</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">包装 / 说明书 / 合格证 / 合规</div><div class="s">四项全部落地</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">资料与合规专人</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">四项 100% 合规</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 电商运营 -->
+<section class="slide">
+  <div class="stag"><b>03</b>电商运营 · 承接 O1 / O3</div>
+  <h2 class="stitle">电商运营</h2>
+  <div class="hd">
+    <div>部门 O</div><div></div><div>部门 KR</div><div></div><div>岗位 O</div><div></div><div>岗位 KR</div>
+  </div>
+  <div class="chain">
+    <div class="row">
+      <div class="nd o"><div class="t">销售达成</div><div class="s">老品维持 + 新品 4000 万</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">GMV 达标</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">运营专员负责店铺产出</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">月度 GMV · 系列达成率</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">店铺量级上一台阶</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">曝光 · 转化 · 复购 三率提升</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">曝光 / 转化 / 复购 分人负责</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">站外种草量 · 复购率 · 私域转化</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">产能配套</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">美工出图量 · 客服配置</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">美工岗 / 客服岗</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">主图详情页数量 · 响应时长</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 供应链 -->
+<section class="slide">
+  <div class="stag"><b>04</b>供应链 · 承接 O1 / O2 / O3</div>
+  <h2 class="stitle">供应链</h2>
+  <div class="hd">
+    <div>部门 O</div><div></div><div>部门 KR</div><div></div><div>岗位 O</div><div></div><div>岗位 KR</div>
+  </div>
+  <div class="chain">
+    <div class="row">
+      <div class="nd o"><div class="t">供货保障</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">入库及时率 · 数据准确率</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">仓配岗 / 数据岗</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">入库时效 · 账实相符</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">降本</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">降本金额达标</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">采购选品与议价</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">单品降幅 × 预估销量</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">流程与人员</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">流程节点优化 · 人员调整</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">流程负责人</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">节点完成数 · 人岗匹配</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 人资 -->
+<section class="slide">
+  <div class="stag"><b>05</b>人资 · 承接 O1 / O2 / O3</div>
+  <h2 class="stitle">人力资源</h2>
+  <div class="hd">
+    <div>部门 O</div><div></div><div>部门 KR</div><div></div><div>岗位 O</div><div></div><div>岗位 KR</div>
+  </div>
+  <div class="chain">
+    <div class="row">
+      <div class="nd o"><div class="t">编制与招聘到位</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">关键岗按时到岗</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">招聘专员</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">到岗率 · 招聘周期</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">人工成本与招聘预算</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">各部门人工成本核定</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">薪酬核算</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">成本占比 · 单岗成本</div></div>
+    </div>
+    <div class="row">
+      <div class="nd o"><div class="t">标准化人力配套</div></div>
+      <div class="ar">→</div>
+      <div class="nd k"><div class="t">编制标准 · 制度落地</div></div>
+      <div class="ar">→</div>
+      <div class="nd p"><div class="t">制度建设</div></div>
+      <div class="ar">→</div>
+      <div class="nd r"><div class="t">标准文件数 · 执行率</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="foot"><span></span><span class="pnum"><b id="cur">1</b> / <span id="tot">5</span></span></div>
+<div id="prog"></div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0, n=slides.length;
+  var cur=document.getElementById('cur'), tot=document.getElementById('tot'), prog=document.getElementById('prog');
+  tot.textContent=n;
+  function fit(){
+    var s=Math.min(window.innerWidth/1600, window.innerHeight/900);
+    document.getElementById('stage').style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  function show(k){
+    if(k<0) k=0; if(k>n-1) k=n-1;
+    slides[i].classList.remove('on');
+    i=k;
+    slides[i].classList.add('on');
+    cur.textContent=i+1;
+    prog.style.width=((i)/(n-1)*100)+'%';
+    try{history.replaceState(null,'','#'+(i+1));}catch(e){}
+  }
+  window.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'||k==='Enter'){e.preventDefault();show(i+1);}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();show(i-1);}
+    else if(k==='Home'){e.preventDefault();show(0);}
+    else if(k==='End'){e.preventDefault();show(n-1);}
+    else if(k==='f'||k==='F'){
+      if(!document.fullscreenElement){document.documentElement.requestFullscreen();}
+      else{document.exitFullscreen();}
+    }
+  });
+  window.addEventListener('resize',fit);
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  fit();
+  if(h>=1&&h<=n){ show(h-1); } else { show(0); }
+})();
+</script>
+</body>
+</html>
