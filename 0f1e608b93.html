@@ -1,0 +1,690 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 认知地图 · 21 页</title>
+<style>
+:root{
+  --paper:#e9e9e7; --sheet:#fdfdfc;
+  --ink:#141414; --ink2:#57575a; --ink3:#9a9a98;
+  --line:#dededb; --line2:#ececea;
+  --red:#c0110c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--paper);
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+  color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.7}
+#stage{position:absolute;top:0;left:0;width:1280px;height:720px;background:var(--sheet);
+  transform-origin:top left;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:36px 64px 28px;background:var(--sheet)}
+.slide.on{display:flex}
+
+.hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;flex:0 0 auto}
+.hd .sec{font-size:13px;color:var(--ink2)}
+.hd .sec b{color:var(--red);font-weight:700;margin-right:9px}
+.hd .pg{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+
+h2{font-size:42px;line-height:1.16;font-weight:700;letter-spacing:-.03em}
+.sub{font-size:15.5px;line-height:1.9;color:var(--ink2);margin-top:12px;max-width:560px}
+.sub b{color:var(--ink);font-weight:700}
+.kick{font-size:13px;color:var(--ink3)}
+.take{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}
+.take b{color:var(--ink)}
+.grow{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+.two{display:flex;gap:52px;flex:1;min-height:0;margin-top:22px}
+.two .l{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.two .r{flex:0 0 470px;display:flex;flex-direction:column;justify-content:center}
+
+/* 封面 */
+.cv{justify-content:space-between}
+.cv-top{display:flex;justify-content:space-between;gap:64px;flex:1;min-height:0}
+.cv-l{flex:1;display:flex;flex-direction:column;justify-content:center}
+h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin-top:22px}
+.cv-sub{font-size:18px;line-height:2;color:var(--ink2);margin-top:26px;max-width:420px}
+.cv-r{flex:0 0 380px;display:flex;flex-direction:column;justify-content:center}
+.cv-r .layer{padding:13px 0 15px;border-bottom:1px solid var(--line)}
+.cv-r .layer:first-child{border-top:1px solid var(--line)}
+.cv-r .lno{font-size:12px;color:var(--ink3)}
+.cv-r .lnm{font-size:27px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.cv-r .lct{font-size:12.5px;color:var(--ink3);line-height:1.7;margin-top:2px}
+.cv-r .l3c .lnm{color:var(--red)}
+.cv-r .mount{font-size:12.5px;color:var(--ink2);margin-top:14px;line-height:1.9}
+.cv-bot{position:absolute;left:64px;right:64px;bottom:32px;display:flex;justify-content:space-between;
+  align-items:baseline;font-size:12px;color:var(--ink3)}
+
+/* 塔 */
+.pills4{display:flex;gap:30px;margin-bottom:10px}
+.pill4{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2)}
+.pill4 i{display:block;width:2px;height:14px;background:var(--ink3)}
+.tl{display:flex;align-items:baseline;gap:13px;padding:12px 20px;margin-bottom:6px}
+.tl .lv{font-size:11px;opacity:.7;flex:0 0 auto}
+.tl b{font-size:23px;font-weight:700;letter-spacing:-.02em;flex:0 0 auto}
+.tl i{font-style:normal;font-size:12px;opacity:.62;line-height:1.5}
+.t3{width:66%;background:#f1f1ee}
+.t3 b{color:var(--red)}
+.t2{width:83%;background:#dededb}
+.t1{width:100%;background:#141414;color:#fff}
+.t1 .lv,.t1 i{color:#fff;opacity:.5}
+
+/* 演示 */
+.demo{margin-top:40px}
+.dline{font-size:25px;line-height:1.6}
+.dline .bl{display:inline-block;min-width:58px;border-bottom:2px solid var(--ink);height:30px;vertical-align:-4px}
+.cands{display:flex;gap:42px;align-items:flex-end;margin-top:16px}
+.cand .w{font-size:40px;font-weight:700;letter-spacing:-.035em;line-height:1.05}
+.cand .bar{height:3px;margin-top:7px;background:var(--line)}
+.cand .p{font-size:12px;color:var(--ink3);margin-top:6px;font-variant-numeric:tabular-nums}
+.cand.o1 .w{color:var(--red)}
+.cand.o1 .bar{background:var(--red);width:100%}
+.cand.o2{opacity:.4}.cand.o2 .bar{width:34%}
+.cand.o3{opacity:.18}.cand.o3 .bar{width:18%}
+.notes{display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--line);padding-left:30px}
+.note{padding:12px 0;border-bottom:1px solid var(--line2)}
+.note:first-child{padding-top:0}
+.note:last-child{border-bottom:none;padding-bottom:0}
+.nh{display:flex;align-items:center;gap:7px}
+.nh svg{width:15px;height:15px;fill:none;stroke:var(--ink3);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.nh b{font-size:14.5px;font-weight:700}
+.note p{font-size:12.5px;line-height:1.8;color:var(--ink2);margin-top:4px}
+.note .j{font-size:12.5px;color:var(--ink);margin-top:6px}
+.note .j::before{content:"";display:inline-block;width:10px;height:1px;background:var(--red);vertical-align:middle;margin-right:7px}
+
+/* App 堆 */
+.apps{position:relative;height:290px}
+.app{position:absolute;width:106px;height:106px;border-radius:27px;background:#e6e6e2;
+  display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#3a3a3c}
+.a1{top:0;left:0}
+.a2{top:76px;left:114px;background:#dcdcd7}
+.a3{top:152px;left:6px;background:#d0d0ca}
+.apps .meta2{position:absolute;right:4px;top:4px;font-size:12px;color:var(--ink3);text-align:right;line-height:1.9}
+
+/* 流程 */
+.flow{display:flex;align-items:center}
+.fend{flex:0 0 auto;min-width:170px}
+.fend .fk{font-size:12px;color:var(--ink3)}
+.fend .fv{font-size:19px;font-weight:700;margin-top:3px}
+.fend.dark .fv{color:var(--red)}
+.fline{flex:1;height:2px;background:var(--ink);position:relative;margin:0 24px}
+.fline::after{content:"";position:absolute;right:-2px;top:-4px;width:0;height:0;
+  border-left:9px solid var(--ink);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.fline .lab{position:absolute;left:50%;top:-25px;transform:translateX(-50%);font-size:12px;color:var(--ink3);white-space:nowrap}
+.fmid{display:flex;gap:40px}
+.fc{flex:1}
+.fc .fn{font-size:12px;color:var(--ink3)}
+.fc .ft{font-size:15px;font-weight:700;margin-top:3px}
+.fc p{font-size:12.5px;color:var(--ink2);line-height:1.8;margin-top:3px}
+
+/* 清单（选型页） */
+.list{margin-top:10px}
+.row{display:grid;gap:18px;align-items:center;padding:4px 0;border-bottom:1px solid var(--line2)}
+.row.h{font-size:11px;color:var(--ink3);padding-bottom:5px;border-bottom:1px solid var(--line)}
+.row .nm{font-size:13.5px;font-weight:700;line-height:1.35}
+.row .by{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.row .st{font-size:12px;color:var(--ink2);line-height:1.45}
+.row .wk{font-size:12px;color:var(--ink3);line-height:1.45}
+.row .fit{font-size:12px;line-height:1.45}
+.c5{grid-template-columns:150px 118px 1fr 1fr 150px}
+.c4{grid-template-columns:170px 130px 1fr 1fr}
+.c3{grid-template-columns:190px 1fr 1fr}
+
+/* SOP */
+.paper{background:#fff;border:1px solid #e6e6e2;padding:22px 24px 20px;transform:rotate(-1.4deg);
+  box-shadow:0 10px 24px rgba(20,20,20,.06);width:390px;margin:0 auto}
+.paper .pt{font-size:15.5px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--line2)}
+.paper ol{list-style:none;margin-top:9px}
+.paper li{font-size:12.5px;color:var(--ink2);line-height:1.7;padding:7px 0 7px 23px;position:relative;border-bottom:1px dashed #efefec}
+.paper li:last-child{border-bottom:none}
+.paper li em{position:absolute;left:0;top:8px;font-style:normal;font-size:10.5px;color:var(--ink3);font-weight:700}
+.paper li.chk{color:var(--red);font-weight:700}
+.paper li.chk em{color:var(--red)}
+.paper .pf{margin-top:8px;padding-top:7px;border-top:1px solid var(--line2);font-size:11px;color:var(--ink3)}
+
+/* 资料堆 */
+.docs{position:relative;height:250px}
+.doc{position:absolute;width:290px;height:188px;background:#fff;border:1px solid #e6e6e2}
+.d1{top:0;left:46px;transform:rotate(2deg);background:#fafaf7}
+.d2{top:8px;left:28px;transform:rotate(-1deg);background:#fdfdfb}
+.d3{top:16px;left:10px;transform:rotate(1.5deg);background:#fff}
+.d4{top:26px;left:0;box-shadow:0 12px 26px rgba(20,20,20,.08);padding:15px 17px}
+.d4 .dt{font-size:13px;font-weight:700}
+.d4 .dl{font-size:11.5px;color:var(--ink3);margin-top:4px;line-height:1.7}
+.d4 .dv{margin-top:9px;font-size:11px;color:var(--red)}
+
+/* 接口 */
+.plugfig{display:flex;align-items:center}
+.sys{flex:0 0 auto;padding:16px 24px;font-size:15px;font-weight:700;background:#f1f1ee}
+.sys.dark{background:#141414;color:#fff}
+.wire{flex:1;height:2px;background:var(--ink);position:relative;margin:0 18px}
+.wire .plug{position:absolute;left:50%;top:-9px;transform:translateX(-50%);display:flex;gap:3px}
+.wire .plug i{display:block;width:5px;height:18px;background:var(--ink)}
+.wire .wl{position:absolute;left:50%;top:17px;transform:translateX(-50%);font-size:11px;color:var(--ink3);white-space:nowrap}
+.pl-notes{display:flex;gap:40px;margin-top:44px}
+.pl-notes .pn2{flex:1}
+.pn2 b{font-size:14px;display:block}
+.pn2 p{font-size:12.5px;color:var(--ink2);line-height:1.8;margin-top:3px}
+
+/* 时间轴 */
+.tl2{position:relative;display:flex;justify-content:space-between}
+.tl2::before{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:var(--line)}
+.tp{flex:1;position:relative;padding-top:24px}
+.tp::before{content:"";position:absolute;left:0;top:1px;width:11px;height:11px;border-radius:50%;background:var(--ink)}
+.tp .tt{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.tp .td{font-size:12.5px;color:var(--ink2);margin-top:3px;line-height:1.7;max-width:200px}
+.tp.last::before{background:var(--red)}
+.tp.last .tt{color:var(--red)}
+
+/* 台阶 */
+.stairs{display:flex;align-items:flex-end;gap:10px;flex:1;padding-bottom:4px}
+.st{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:14px 16px}
+.st b{font-size:16px;font-weight:700}
+.st span{font-size:12px;opacity:.65;margin-top:3px;line-height:1.6}
+.s1{height:106px;background:#efefec}
+.s2{height:158px;background:#e0e0dc}
+.s3{height:210px;background:#d0d0cb}
+.s4{height:262px;background:#141414;color:#fff}
+.s4 b{color:#ff6a62}
+.s4 span{color:#fff;opacity:.55}
+
+/* 流水线 */
+.pipe{display:flex;align-items:center}
+.pnode{flex:0 0 auto;text-align:center;min-width:92px}
+.pnode .pi{width:50px;height:50px;border-radius:50%;background:#f1f1ee;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--ink2)}
+.pnode.on .pi{background:#141414;color:#fff}
+.pnode .pl2{font-size:12px;color:var(--ink3);margin-top:6px}
+.seg{flex:1;height:1px;background:var(--line);position:relative;margin:0 6px 22px}
+.seg::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;
+  border-top:1px solid var(--ink3);border-right:1px solid var(--ink3);transform:rotate(45deg)}
+.pipe-foot{display:flex;gap:36px;margin-top:36px}
+.pipe-foot div{flex:1;font-size:12.5px;color:var(--ink2);line-height:1.8}
+.pipe-foot b{color:var(--ink)}
+
+/* 问答 */
+.qa{flex:1;display:flex;flex-direction:column;justify-content:center}
+.qrow{display:flex;gap:40px;padding:20px 0;border-bottom:1px solid var(--line)}
+.qrow:last-child{border-bottom:none}
+.qrow .q{flex:0 0 400px;font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.4}
+.qrow .a{flex:1;font-size:14px;color:var(--ink2);line-height:1.85;padding-top:3px}
+.qrow .a b{color:var(--ink)}
+.qrow .a em{font-style:normal;color:var(--red);font-weight:700}
+
+/* 禁区 */
+.forbid{display:flex;gap:36px;margin-top:38px}
+.fb{flex:1}
+.fb .fw{font-size:36px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.fb p{font-size:12.5px;color:var(--ink2);line-height:1.8;margin-top:6px}
+
+/* 收尾 */
+.end{flex:1;display:flex;flex-direction:column;justify-content:center}
+.erow{display:flex;gap:40px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.erow:last-child{border-bottom:none}
+.erow .ek{flex:0 0 170px;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.erow .ev{flex:1;font-size:14px;color:var(--ink2);line-height:1.85}
+.erow .ev b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 -->
+<section class="slide on cv">
+  <div class="cv-top">
+    <div class="cv-l">
+      <div class="kick">内部培训 · 2026 年 11 月</div>
+      <h1>AI<br>认知地图</h1>
+      <p class="cv-sub">三层是骨架，四样往上盖。<br>先看清全景，再谈哪一层能替我们干活。</p>
+    </div>
+    <div class="cv-r">
+      <div class="layer l3c"><div class="lno">第 3 层</div><div class="lnm">工作台</div><div class="lct">WorkBuddy · DeepSeek Harness · Coze · Dify</div></div>
+      <div class="layer"><div class="lno">第 2 层</div><div class="lnm">工具</div><div class="lct">豆包 · 通义 · DeepSeek 官网 · Kimi · ChatGPT</div></div>
+      <div class="layer"><div class="lno">第 1 层</div><div class="lnm">大模型</div><div class="lct">DeepSeek · 通义千问 · 豆包 · GPT · Claude</div></div>
+      <div class="mount">四样盖在第 3 层上：Skill · 知识库 · 接口 · 自动化</div>
+    </div>
+  </div>
+  <div class="cv-bot"><div>21 页 · 约 60 分钟 · 老板与人资</div><div>01 / 21</div></div>
+</section>
+
+<!-- 02 全貌 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>00</b>全貌</div><div class="pg">02 / 21</div></div>
+  <div class="two">
+    <div class="l">
+      <h2>三层是骨架<br>四样往上叠</h2>
+      <p class="sub">上面一层用下面一层。第 1 层你碰不到，第 3 层你能交活。</p>
+    </div>
+    <div class="r" style="flex:0 0 560px">
+      <div class="pills4">
+        <div class="pill4"><i></i>Skill</div>
+        <div class="pill4"><i></i>知识库</div>
+        <div class="pill4"><i></i>接口</div>
+        <div class="pill4"><i></i>自动化</div>
+      </div>
+      <div class="tl t3"><span class="lv">第 3 层</span><b>工作台</b><i>WorkBuddy · DSH · Coze</i></div>
+      <div class="tl t2"><span class="lv">第 2 层</span><b>工具</b><i>豆包 · 通义 · Kimi</i></div>
+      <div class="tl t1"><span class="lv">第 1 层</span><b>大模型</b><i>DeepSeek · 千问 · GPT · Claude</i></div>
+    </div>
+  </div>
+  <div class="take">先记住三层。<b>名字随它换，层不会变。</b></div>
+</section>
+
+<!-- 03 大模型 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>第 1 层</b>大模型 · 是什么</div><div class="pg">03 / 21</div></div>
+  <div class="two">
+    <div class="l">
+      <h2>它只会接着<br>往下写</h2>
+      <p class="sub">你给它一段字，它一个词一个词往下猜。猜得准，是因为它读过很多字——<b>不是因为它算过</b>。</p>
+      <div class="demo">
+        <div class="dline">8 月抖音做了 25 万，9 月大概能做 <span class="bl"></span></div>
+        <div class="cands">
+          <div class="cand o1"><div class="w">28 万</div><div class="bar"></div><div class="p">62%</div></div>
+          <div class="cand o2"><div class="w">30 万</div><div class="bar"></div><div class="p">21%</div></div>
+          <div class="cand o3"><div class="w">24 万</div><div class="bar"></div><div class="p">11%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="r notes">
+      <div class="note">
+        <div class="nh"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg><b>不是算出来的</b></div>
+        <p>三个数都可能出现，它挑概率最高的那个说出口。</p>
+        <div class="j">它写的数、人名、条款，一律复核</div>
+      </div>
+      <div class="note">
+        <div class="nh"><svg viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8.5 4.5 6 4.5H3v14h3c2.5 0 4.5.5 6 2 1.5-1.5 3.5-2 6-2h3v-14h-3c-2.5 0-4.5.5-6 1.5Z"/><path d="M12 6.5v14"/></svg><b>它没读过我们</b></div>
+        <p>训练用的是公开文字，读到某个时间点为止。SKU 表、口径、客户，它没见过。</p>
+        <div class="j">问公司的事，先把资料给它</div>
+      </div>
+      <div class="note">
+        <div class="nh"><svg viewBox="0 0 24 24"><path d="M10.3 4.3 2.6 18a1.5 1.5 0 0 0 1.3 2.2h16.2a1.5 1.5 0 0 0 1.3-2.2L13.7 4.3a2 2 0 0 0-3.4 0Z"/><path d="M12 9.5v4.5"/><circle cx="12" cy="17.2" r=".7" fill="currentColor" stroke="none"/></svg><b>四个毛病</b></div>
+        <p>会编、算数弱、记不住太长的材料、两次答案不一样。</p>
+        <div class="j">要准的数，别交给它</div>
+      </div>
+      <div class="note">
+        <div class="nh"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg><b>参数不代表强弱</b></div>
+        <p>几百亿到上万亿，是它连线的数量。70B 不一定输给 671B。</p>
+        <div class="j">按能不能私有部署选</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 大模型 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>第 1 层</b>大模型 · 有哪些</div><div class="pg">04 / 21</div></div>
+  <h2 style="margin-top:8px">市面上就这几家</h2>
+  <p class="sub">强弱是分项的，没有全能的。<b>按你的活来挑，不按排名挑。</b></p>
+  <div class="list">
+    <div class="row h c5"><div>名字</div><div>谁家的</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">DeepSeek</div><div class="by">深度求索</div><div class="st">推理和写代码强，中文稳，便宜</div><div class="wk">看图弱，高峰期会转圈</div><div class="fit">写稿、算数、读长文</div></div>
+    <div class="row c5"><div class="nm">通义千问</div><div class="by">阿里</div><div class="st">开源可自己部署，图片视频都能做</div><div class="wk">网页版偏公式化，像在念文件</div><div class="fit">要留在公司内网的场景</div></div>
+    <div class="row c5"><div class="nm">豆包</div><div class="by">字节</div><div class="st">语音和图片强，App 好用，便宜</div><div class="wk">长文推理浅，复杂任务接不住</div><div class="fit">日常问答、做图、语音</div></div>
+    <div class="row c5"><div class="nm">Kimi</div><div class="by">月之暗面</div><div class="st">超长文档能吃下几十万字</div><div class="wk">推理和代码一般，速度偏慢</div><div class="fit">读合同、读长报告</div></div>
+    <div class="row c5"><div class="nm">文心一言</div><div class="by">百度</div><div class="st">中文语料多，跟搜索结合好</div><div class="wk">复杂推理一般</div><div class="fit">查资料、写公文</div></div>
+    <div class="row c5"><div class="nm">混元</div><div class="by">腾讯</div><div class="st">图片生成好，微信生态里能用</div><div class="wk">对外开放的能力少</div><div class="fit">微信生态内做事</div></div>
+    <div class="row c5"><div class="nm">智谱 GLM</div><div class="by">智谱</div><div class="st">开源、能私有化，Agent 能力好</div><div class="wk">通用写作平平</div><div class="fit">企业自己搭</div></div>
+    <div class="row c5"><div class="nm">GPT / Claude / Gemini</div><div class="by">OpenAI 等</div><div class="st">综合最强，复杂任务稳</div><div class="wk">国内访问难，贵，数据出境</div><div class="fit">有出海业务</div></div>
+  </div>
+  <div class="take">怎么选：<b>能不能私有部署 &gt; 贵不贵 &gt; 够不够用。</b>别追排名，三个月就换一批。</div>
+</section>
+
+<!-- 05 工具 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>第 2 层</b>工具 · 是什么</div><div class="pg">05 / 21</div></div>
+  <div class="two">
+    <div class="l">
+      <h2>同一层<br>三个入口</h2>
+      <p class="sub">一个模型能装进很多 App，一个 App 也能换模型。<b>你看到的界面，就是它的全部能力。</b></p>
+      <p class="sub" style="margin-top:8px">你能改的只有一个对话框。功能、按钮、每天能问几次，都是厂家定死的。</p>
+    </div>
+    <div class="r">
+      <div class="apps">
+        <div class="app a1">豆包</div>
+        <div class="app a2">通义</div>
+        <div class="app a3">Kimi</div>
+        <div class="meta2">豆包是字节的<br>通义是阿里的<br>Kimi 是月之暗面的</div>
+      </div>
+    </div>
+  </div>
+  <div class="take">同一个问题，两家答得不一样，正常。<b>底层不是同一个模型。</b></div>
+</section>
+
+<!-- 06 工具 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>第 2 层</b>工具 · 有哪些</div><div class="pg">06 / 21</div></div>
+  <h2 style="margin-top:8px">大家平时在用的，就这几类</h2>
+  <p class="sub">这层最好上手，也最容易停在闲聊。<b>差别在能不能上传文件、能不能连办公系统。</b></p>
+  <div class="list">
+    <div class="row h c5"><div>名字</div><div>谁家的</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">豆包</div><div class="by">字节</div><div class="st">随手问，语音、拍照都能用</div><div class="wk">长文档和表格处理弱</div><div class="fit">手机上的日常问答</div></div>
+    <div class="row c5"><div class="nm">通义</div><div class="by">阿里</div><div class="st">会议纪要、长文总结、写公文</div><div class="wk">界面重，功能藏得深</div><div class="fit">开会、写材料</div></div>
+    <div class="row c5"><div class="nm">DeepSeek 官网</div><div class="by">深度求索</div><div class="st">深度推理、写代码</div><div class="wk">不带文件和表格处理</div><div class="fit">想难题、写公式</div></div>
+    <div class="row c5"><div class="nm">Kimi</div><div class="by">月之暗面</div><div class="st">传一整份 PDF 让它读</div><div class="wk">改写和润色一般</div><div class="fit">读长报告、读合同</div></div>
+    <div class="row c5"><div class="nm">ChatGPT</div><div class="by">OpenAI</div><div class="st">综合能力全，插件多</div><div class="wk">要翻墙，付费，数据出境</div><div class="fit">复杂任务、出海</div></div>
+    <div class="row c5"><div class="nm">WPS AI</div><div class="by">金山</div><div class="st">就在 Word、PPT 里改，不用来回复制</div><div class="wk">能力比网页版弱一档</div><div class="fit">写方案、做 PPT</div></div>
+    <div class="row c5"><div class="nm">飞书 / 钉钉 AI</div><div class="by">字节 / 阿里</div><div class="st">会议纪要、群聊总结，跟工作流连着</div><div class="wk">离不开它自己的生态</div><div class="fit">已经在用的公司</div></div>
+    <div class="row c5"><div class="nm">剪映 AI</div><div class="by">字节</div><div class="st">字幕、配音、成片，做短视频快</div><div class="wk">只管视频，不管别的</div><div class="fit">短视频、剪辑</div></div>
+  </div>
+  <div class="take">这层解决“问一句答一句”。<b>要它干活，得往上走一层。</b></div>
+</section>
+
+<!-- 07 工作台 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>第 3 层</b>工作台 · 是什么</div><div class="pg">07 / 21</div></div>
+  <div style="margin-top:20px">
+    <h2>能接活，能动手</h2>
+    <p class="sub">工具是你问它答；工作台是你交一件活，它自己跑完再给你。</p>
+  </div>
+  <div class="grow" style="gap:48px">
+    <div class="flow">
+      <div class="fend"><div class="fk">第 2 层 · 工具</div><div class="fv">你问一句，它答一句</div></div>
+      <div class="fline"><span class="lab">跨过去，就得上工作台</span></div>
+      <div class="fend dark"><div class="fk">第 3 层 · 工作台</div><div class="fv">你交一件活，它跑完给你</div></div>
+    </div>
+    <div class="fmid">
+      <div class="fc"><div class="fn">凭什么能干</div><div class="ft">能读文件、能调接口</div><p>能装 Skill、能连着跑好几步。这四件事，第 2 层做不到。</p></div>
+      <div class="fc"><div class="fn">里面有什么</div><div class="ft">WorkBuddy · DSH · Coze</div><p>有的偏成品，装好就用；有的偏自己搭。</p></div>
+      <div class="fc"><div class="fn">风险</div><div class="ft">能动手，也就能动错</div><p>所以先只给只读权限，动作留痕。</p></div>
+    </div>
+  </div>
+  <div class="take">第 3 层不是更聪明的模型，<b>是能动手的那一层。</b></div>
+</section>
+
+<!-- 08 工作台 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>第 3 层</b>工作台 · 有哪些</div><div class="pg">08 / 21</div></div>
+  <h2 style="margin-top:8px">这一层分两种：成品 和 自己搭</h2>
+  <p class="sub">成品装好就用，省事但改不动；自己搭改得动，但要有人折腾。</p>
+  <div class="list">
+    <div class="row h c5"><div>名字</div><div>类型</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">WorkBuddy</div><div class="by">成品</div><div class="st">装好就能用，带技能市场，能做自动化</div><div class="wk">改不动底层，跟着官方节奏走</div><div class="fit">不想折腾的团队</div></div>
+    <div class="row c5"><div class="nm">DeepSeek Harness</div><div class="by">自己搭</div><div class="st">能装插件、能接自己的工具、能改</div><div class="wk">要有人会弄，出问题自己扛</div><div class="fit">有人能折腾的团队</div></div>
+    <div class="row c5"><div class="nm">扣子 Coze</div><div class="by">成品</div><div class="st">拖拽搭 Bot，接微信、飞书方便</div><div class="wk">复杂流程和大文件处理一般</div><div class="fit">客服、问答机器人</div></div>
+    <div class="row c5"><div class="nm">Dify</div><div class="by">开源</div><div class="st">能装在自己服务器，知识库和工作流强</div><div class="wk">要自己运维，要懂部署</div><div class="fit">数据必须留在公司</div></div>
+    <div class="row c5"><div class="nm">Manus</div><div class="by">成品</div><div class="st">能自己上网查、自己往下做</div><div class="wk">结果不稳，贵，可控性差</div><div class="fit">调研类、一次性任务</div></div>
+    <div class="row c5"><div class="nm">n8n</div><div class="by">开源</div><div class="st">连几百个系统，跑定时任务稳</div><div class="wk">不是对话式，要懂流程</div><div class="fit">系统之间搬数据</div></div>
+  </div>
+  <div class="take">先挑成品型试一个月。跑顺了，再考虑自己搭。<b>别一上来就自己搭。</b></div>
+</section>
+
+<!-- 09 Skill 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 是什么</div><div class="pg">09 / 21</div></div>
+  <div class="two">
+    <div class="l">
+      <h2>把干活的步骤<br>存下来</h2>
+      <p class="sub">一份作业指导书，AI 照它执行。<b>写一次，以后每次都按这个走。</b></p>
+      <p class="sub" style="margin-top:8px">提示词说完就没了；Skill 存着，换个人用、换台机器用，还是同一套。</p>
+    </div>
+    <div class="r">
+      <div class="paper">
+        <div class="pt">月报 SOP</div>
+        <ol>
+          <li><em>01</em>读 3 张表：订单、退款、投放</li>
+          <li><em>02</em>算 4 个数：GMV、退款率、净 ROI、毛利</li>
+          <li><em>03</em>按模板出 1 页，渠道口径查知识库</li>
+          <li class="chk"><em>04</em>这 2 个数必须人来核</li>
+        </ol>
+        <div class="pf">存进工作台 · 下次直接调用</div>
+      </div>
+    </div>
+  </div>
+  <div class="take">SOP 写错，错得很稳定。<b>所以第 4 步必须留给人。</b></div>
+</section>
+
+<!-- 10 Skill 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 有哪些</div><div class="pg">10 / 21</div></div>
+  <h2 style="margin-top:8px">三个来源：官方给的、平台搭的、自己写的</h2>
+  <p class="sub">越往下越贴合我们自己的活，也越要自己维护。</p>
+  <div class="list">
+    <div class="row h c5"><div>做法</div><div>谁提供</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">官方技能包</div><div class="by">各平台自带</div><div class="st">装了就灵，跟着更新，不用管</div><div class="wk">都是通用活，不贴我们的口径</div><div class="fit">先拿来试手感</div></div>
+    <div class="row c5"><div class="nm">Claude Skills</div><div class="by">Anthropic</div><div class="st">写得最规范，能带文件模板</div><div class="wk">要翻墙，国内用不上</div><div class="fit">参考它怎么写的</div></div>
+    <div class="row c5"><div class="nm">扣子 / Dify 工作流</div><div class="by">平台</div><div class="st">拖拽搭，接微信飞书方便</div><div class="wk">复杂逻辑会搭成一团线</div><div class="fit">问答、审批这类固定流程</div></div>
+    <div class="row c5"><div class="nm">GPTs / 自定义指令</div><div class="by">OpenAI / 各家 App</div><div class="st">写一段说明就成，门槛最低</div><div class="wk">只能改“怎么说”，改不了“怎么做”</div><div class="fit">固定话术、角色设定</div></div>
+    <div class="row c5"><div class="nm">自己写 SOP</div><div class="by">我们自己</div><div class="st">完全贴我们的活，口径不跑偏</div><div class="wk">要自己写、自己改、自己盯</div><div class="fit">月报、招聘这类重复活</div></div>
+  </div>
+  <div class="take">先抄官方技能包的结构，<b>再往里填我们的口径。</b>别从零写。</div>
+</section>
+
+<!-- 11 知识库 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之二</b>知识库 · 是什么</div><div class="pg">11 / 21</div></div>
+  <div class="two">
+    <div class="l">
+      <h2>先查我们的<br>再回答</h2>
+      <p class="sub">它不知道我们公司的事。知识库把这些事提前放进去，让它回答前先查一遍。</p>
+      <p class="sub" style="margin-top:8px">资料旧，答案就旧。所以谁更新，要定一个人。</p>
+    </div>
+    <div class="r">
+      <div class="docs">
+        <div class="doc d1"></div>
+        <div class="doc d2"></div>
+        <div class="doc d3"></div>
+        <div class="doc d4">
+          <div class="dt">渠道口径</div>
+          <div class="dl">抖音两店合计 · 净 ROI 低于 4.5 砍</div>
+          <div class="dv">更新：2026-11-20 · 责任人：运营</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="take">知识库是养出来的，<b>不是做完就完事。</b></div>
+</section>
+
+<!-- 12 知识库 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之二</b>知识库 · 有哪些</div><div class="pg">12 / 21</div></div>
+  <h2 style="margin-top:8px">三类：办公套件自带、平台自带、自己搭</h2>
+  <p class="sub">先看数据能不能留在公司，再看好不好用。</p>
+  <div class="list">
+    <div class="row h c5"><div>产品</div><div>类型</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">飞书 / 钉钉知识库</div><div class="by">办公套件</div><div class="st">文档本来就存在里面，权限跟人走</div><div class="wk">换不了工具，绑死生态</div><div class="fit">已经在用的公司</div></div>
+    <div class="row c5"><div class="nm">Dify 知识库</div><div class="by">开源自建</div><div class="st">数据在自己服务器，能接到工作流里</div><div class="wk">要运维，要人管更新</div><div class="fit">数据必须留公司</div></div>
+    <div class="row c5"><div class="nm">扣子知识库</div><div class="by">平台</div><div class="st">上传即用，跟 Bot 直接连</div><div class="wk">大文件解析一般，深度问答弱</div><div class="fit">做客服问答</div></div>
+    <div class="row c5"><div class="nm">WorkBuddy / DSH</div><div class="by">工作台内置</div><div class="st">能直接读本地文件，不用先上传</div><div class="wk">散在本地，得有目录规矩</div><div class="fit">内部资料、SOP</div></div>
+    <div class="row c5"><div class="nm">腾讯 ima / 纳米 AI</div><div class="by">互联网大厂</div><div class="st">能连微信公众号、网页，查得快</div><div class="wk">公司内部资料不适合放进去</div><div class="fit">查公开资料</div></div>
+  </div>
+  <div class="take">先定“哪些资料能进、谁来更新”，<b>再挑产品。</b>顺序反了会返工。</div>
+</section>
+
+<!-- 13 接口 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之三</b>接口 · 是什么</div><div class="pg">13 / 21</div></div>
+  <div style="margin-top:20px">
+    <h2>让它去读写别的系统</h2>
+    <p class="sub">没接口，它只能看你给的；有接口，它能自己拿，也能自己往回写。</p>
+  </div>
+  <div class="grow" style="gap:40px">
+    <div class="plugfig">
+      <div class="sys">抖店后台</div>
+      <div class="wire"><span class="plug"><i></i><i></i></span><span class="wl">只读 · 一张表</span></div>
+      <div class="sys dark">工作台</div>
+    </div>
+    <div class="pl-notes">
+      <div class="pn2"><b>API 是门</b><p>系统对外开的那扇门。MCP 是让 AI 接这些门的通用插头。</p></div>
+      <div class="pn2"><b>权限给最小</b><p>只读不给写、只给一张表、只给一个群。能临时别设永久。</p></div>
+      <div class="pn2"><b>能写的要签字</b><p>它改错数、发错消息，收不回，也未必查得到。</p></div>
+    </div>
+  </div>
+  <div class="take">先读后写。<b>能写的权限，必须有人签字。</b></div>
+</section>
+
+<!-- 14 接口 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之三</b>接口 · 有哪些</div><div class="pg">14 / 21</div></div>
+  <h2 style="margin-top:8px">四条路，从窄到宽</h2>
+  <p class="sub">越往后，能碰的系统越多，需要的权限也越大。</p>
+  <div class="list">
+    <div class="row h c5"><div>做法</div><div>谁提供</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">办公系统开放平台</div><div class="by">飞书 / 企微 / 钉钉</div><div class="st">能读审批、日程、群消息，权限给得细</div><div class="wk">只管自己生态里的东西</div><div class="fit">从这里开始最稳</div></div>
+    <div class="row c5"><div class="nm">电商后台 API</div><div class="by">抖店 / 天猫</div><div class="st">能直接拉订单、投放、退款，不用导表</div><div class="wk">要申请权限，有限流</div><div class="fit">做经营数据自动化</div></div>
+    <div class="row c5"><div class="nm">MCP</div><div class="by">开放协议</div><div class="st">一个插头接多家工具，换工具不用重做</div><div class="wk">生态还在长，不是所有系统都有</div><div class="fit">想长期用的接法</div></div>
+    <div class="row c5"><div class="nm">Zapier / Make</div><div class="by">国外平台</div><div class="st">连几千个 SaaS，拖拽就接上</div><div class="wk">贵，国内系统支持少，数据出境</div><div class="fit">有出海业务</div></div>
+    <div class="row c5"><div class="nm">n8n / 自写脚本</div><div class="by">开源自建</div><div class="st">想怎么接就怎么接，数据不出门</div><div class="wk">要开发，要维护，出错自己扛</div><div class="fit">长期、复杂、内部系统</div></div>
+  </div>
+  <div class="take">先在办公系统里接一个只读的，<b>跑稳了再碰电商后台。</b></div>
+</section>
+
+<!-- 15 自动化 概念 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之四</b>自动化 · 是什么</div><div class="pg">15 / 21</div></div>
+  <div style="margin-top:20px">
+    <h2>到点自己跑</h2>
+    <p class="sub">前三样是人叫它干；自动化是它自己到点干。<b>好处在这，风险也在这。</b></p>
+  </div>
+  <div class="grow" style="gap:38px">
+    <div class="tl2">
+      <div class="tp"><div class="tt">1 号 08:00</div><div class="td">自己开始跑，不用人叫</div></div>
+      <div class="tp"><div class="tt">08:04</div><div class="td">算完，按模板出 1 页</div></div>
+      <div class="tp"><div class="tt">08:05</div><div class="td">发到群里，等人看一眼</div></div>
+      <div class="tp last"><div class="tt">差在哪</div><div class="td">没人看着，错了没人拦，一错一整个月</div></div>
+    </div>
+    <div class="pipe-foot" style="margin-top:0">
+      <div><b>必须的护栏：</b>跑完发人看</div>
+      <div><b>出错就停：</b>别自动重试</div>
+      <div><b>留日志：</b>能查到它干了什么</div>
+    </div>
+  </div>
+  <div class="take">没有护栏，<b>不上自动化。</b></div>
+</section>
+
+<!-- 16 自动化 选型 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之四</b>自动化 · 有哪些</div><div class="pg">16 / 21</div></div>
+  <h2 style="margin-top:8px">从最轻的开始</h2>
+  <p class="sub">能用手点一下解决的，别上自动化。<b>上之前先问：错了谁看得见。</b></p>
+  <div class="list">
+    <div class="row h c5"><div>做法</div><div>谁提供</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">办公套件自动化</div><div class="by">飞书 / 钉钉</div><div class="st">表单一提交就触发，不用开发</div><div class="wk">只能在自己的表和群里转</div><div class="fit">审批、通知、催办</div></div>
+    <div class="row c5"><div class="nm">扣子 / Dify 定时任务</div><div class="by">平台</div><div class="st">到点跑一个工作流，结果发群里</div><div class="wk">复杂依赖不好表达</div><div class="fit">日报、周报</div></div>
+    <div class="row c5"><div class="nm">WorkBuddy / DSH 自动化</div><div class="by">工作台</div><div class="st">能读写本地文件，能连内部系统</div><div class="wk">要有人配、有人盯</div><div class="fit">月报、对账</div></div>
+    <div class="row c5"><div class="nm">n8n</div><div class="by">开源自建</div><div class="st">连接器多，出错能重跑，日志全</div><div class="wk">要运维，要懂流程</div><div class="fit">系统之间搬数据</div></div>
+    <div class="row c5"><div class="nm">计划任务 / 脚本</div><div class="by">自己写</div><div class="st">最便宜，最自由，不依赖谁</div><div class="wk">没人维护就烂在那，出错没人知道</div><div class="fit">临时、一次性</div></div>
+  </div>
+  <div class="take">先用办公套件自带的。<b>它覆盖不了的，再往上走。</b></div>
+</section>
+
+<!-- 17 顺序 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样</b>别一起上</div><div class="pg">17 / 21</div></div>
+  <div style="margin-top:8px">
+    <h2>顺序不能倒</h2>
+    <p class="sub">改流程 &lt; 给资料 &lt; 给手脚 &lt; 给自由。越往后，越要人管。</p>
+  </div>
+  <div class="stairs">
+    <div class="st s1"><b>Skill</b><span>只改流程，动不了数据</span></div>
+    <div class="st s2"><b>知识库</b><span>给资料，先过一遍</span></div>
+    <div class="st s3"><b>接口</b><span>给手脚，限权限留痕</span></div>
+    <div class="st s4"><b>自动化</b><span>给自由，必须签字</span></div>
+  </div>
+  <div class="take">前两样部门自己上；<b>后两样要签字、要留痕、要有人看结果。</b></div>
+</section>
+
+<!-- 18 月报 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>串起来</b>一件活</div><div class="pg">18 / 21</div></div>
+  <div style="margin-top:8px">
+    <h2>每月月报：四样一起上</h2>
+    <p class="sub">缺哪一样，就卡在哪一步。</p>
+  </div>
+  <div class="grow" style="gap:34px">
+    <div class="pipe">
+      <div class="pnode"><div class="pi">表</div><div class="pl2">3 张表</div></div>
+      <div class="seg"></div>
+      <div class="pnode"><div class="pi">SOP</div><div class="pl2">怎么算</div></div>
+      <div class="seg"></div>
+      <div class="pnode"><div class="pi">口径</div><div class="pl2">按我们的算</div></div>
+      <div class="seg"></div>
+      <div class="pnode"><div class="pi">拉数</div><div class="pl2">自己取</div></div>
+      <div class="seg"></div>
+      <div class="pnode on"><div class="pi">出稿</div><div class="pl2">1 页</div></div>
+    </div>
+    <div class="pipe-foot" style="margin-top:0">
+      <div><b>没 Skill：</b>每次重新交代，十次十个版本。</div>
+      <div><b>没知识库：</b>两个店分开算，数对不上。</div>
+      <div><b>没接口：</b>你得导表、复制、再发一遍。</div>
+      <div><b>没自动化：</b>到月底还得有人想起来。</div>
+    </div>
+  </div>
+  <div class="take">人在月初只看一版成品，签字。<b>省的是要数的时间，不是判断。</b></div>
+</section>
+
+<!-- 19 三问 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>大概率被问</b>三个问题</div><div class="pg">19 / 21</div></div>
+  <div class="qa">
+    <div class="qrow">
+      <div class="q">哪个模型最强</div>
+      <div class="a">别比分，三个月换一批。看三件事：能不能私有部署、贵不贵、够不够用。<em>够用就行，别追排名。</em></div>
+    </div>
+    <div class="qrow">
+      <div class="q">有豆包了<br>为什么还要工作台</div>
+      <div class="a">豆包是你问它答，工作台是你交活它干。<b>要读我们的表、按我们的流程跑，就得上第 3 层。</b></div>
+    </div>
+    <div class="qrow">
+      <div class="q">数据会不会漏</div>
+      <div class="a">网页版贴进去的，在别人服务器上；本地或私有部署的，留在公司。<em>先定部署方式，再谈用不用。</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 底线 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>底线</b>什么不能往里贴</div><div class="pg">20 / 21</div></div>
+  <div style="margin-top:8px">
+    <h2>这四类，不往里贴</h2>
+    <p class="sub">不管用哪个工具、哪一层。不是保守，是底线。</p>
+  </div>
+  <div class="forbid">
+    <div class="fb"><div class="fw">客户</div><p>姓名、电话、地址、订单明细。客诉聊天记录里全是这些。</p></div>
+    <div class="fb"><div class="fw">员工</div><p>身份证、银行卡、薪酬、体检、家庭情况。</p></div>
+    <div class="fb"><div class="fw">公司</div><p>没公开的合同、报价、配方、成本结构。</p></div>
+    <div class="fb"><div class="fw">判断</div><p>法务、医疗、劳动纠纷的最终意见。它只能出初稿。</p></div>
+  </div>
+  <div class="take">真出事，签字的人和公司一起担。<b>它不担责，担责的是人。</b></div>
+</section>
+
+<!-- 21 收尾 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>收尾</b>三个动作</div><div class="pg">21 / 21</div></div>
+  <div style="margin-top:8px">
+    <h2>记住三层<br>四样一样一样加</h2>
+  </div>
+  <div class="end">
+    <div class="erow"><div class="ek">明天</div><div class="ev">挑手上最烦的那份文字活，<b>让它出初稿，你来改</b>。别一上来就交整件活。</div></div>
+    <div class="erow"><div class="ek">这个月</div><div class="ev">挑三个岗位试一个月，看两个数：<b>出稿省了多少时间、返工多少次</b>。</div></div>
+    <div class="erow"><div class="ek">要签字</div><div class="ev">接口和自动化：<b>谁批、谁看结果、日志留多久</b>。这三条先定下来。</div></div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0;
+  function show(n){ if(n<0)n=0; if(n>s.length-1)n=s.length-1; if(n===i)return; s[i].classList.remove('on'); i=n; s[i].classList.add('on'); }
+  function fit(){
+    var k=Math.min(window.innerWidth/1280, window.innerHeight/720);
+    stage.style.transform='scale('+k+')';
+    stage.style.left=Math.max(0,(window.innerWidth-1280*k)/2)+'px';
+    stage.style.top=Math.max(0,(window.innerHeight-720*k)/2)+'px';
+  }
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    if(e.key==='Home'){show(0);}
+    if(e.key==='End'){show(s.length-1);}
+  });
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  if(h>=1&&h<=s.length&&h-1!==i){ s[i].classList.remove('on'); i=h-1; s[i].classList.add('on'); }
+  window.addEventListener('resize',fit); window.addEventListener('load',fit); fit();
+})();
+</script>
+</body>
+</html>
+
