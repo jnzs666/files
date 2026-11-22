@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI 认知地图 · 21 页</title>
+<title>AI 认知地图 · 22 页</title>
 <style>
 :root{
   --paper:#e9e9e7; --sheet:#fdfdfc;
@@ -117,8 +117,30 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 .fc p{font-size:12.5px;color:var(--ink2);line-height:1.8;margin-top:3px}
 
 /* 清单（选型页） */
-.list{margin-top:10px}
-.row{display:grid;gap:18px;align-items:center;padding:4px 0;border-bottom:1px solid var(--line2)}
+.list{margin-top:8px}
+.list.roomy .row{padding:26px 0}
+.list.roomy{margin-top:14px}
+
+/* Skill 演示 */
+.sd{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;margin-top:24px;flex:1;align-items:start;align-content:center}
+.sdc .lab{font-size:12px;color:var(--ink3);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line2)}
+.inputrow{border:1px solid #dcdcd8;border-radius:24px;padding:16px 20px;font-size:15px;color:var(--ink);line-height:1.4}
+.files{display:flex;gap:8px;margin-top:14px}
+.file{width:80px;height:62px;border:1px solid #e2e2de;background:#fff;font-size:10px;color:var(--ink3);
+  display:flex;align-items:flex-end;padding:7px;line-height:1.3}
+.sdc .hint2{font-size:11.5px;color:var(--ink3);margin-top:12px;line-height:1.6}
+.sopmini{background:#fff;border:1px solid #e6e6e2;padding:20px 22px;box-shadow:0 8px 20px rgba(20,20,20,.05)}
+.sopmini .st2{font-size:13px;font-weight:700;border-bottom:1px solid var(--line2);padding-bottom:8px;margin-bottom:8px}
+.sopmini .ln{font-size:11.5px;color:var(--ink2);line-height:1.6;padding:6px 0;border-bottom:1px dashed #f1f1ee}
+.sopmini .ln:last-child{border-bottom:none}
+.sopmini .ln b{color:var(--red)}
+.report{background:#fff;border:1px solid #e6e6e2;padding:20px 22px;box-shadow:0 8px 20px rgba(20,20,20,.05)}
+.report .rt{font-size:13px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--line2)}
+.report .rline{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink2);
+  padding:7px 0;border-bottom:1px dashed #f1f1ee}
+.report .rline span:last-child{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:700}
+.report .rchk{font-size:11px;color:var(--red);margin-top:10px;font-weight:700}
+.row{display:grid;gap:18px;align-items:center;padding:2px 0;border-bottom:1px solid var(--line2)}
 .row.h{font-size:11px;color:var(--ink3);padding-bottom:5px;border-bottom:1px solid var(--line)}
 .row .nm{font-size:13.5px;font-weight:700;line-height:1.35}
 .row .by{font-size:11.5px;color:var(--ink3);line-height:1.4}
@@ -252,12 +274,12 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
       <div class="mount">四样盖在第 3 层上：Skill · 知识库 · 接口 · 自动化</div>
     </div>
   </div>
-  <div class="cv-bot"><div>21 页 · 约 60 分钟 · 老板与人资</div><div>01 / 21</div></div>
+  <div class="cv-bot"><div>22 页 · 约 60 分钟 · 老板与人资</div><div>01 / 22</div></div>
 </section>
 
 <!-- 02 全貌 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>00</b>全貌</div><div class="pg">02 / 21</div></div>
+  <div class="hd"><div class="sec"><b>00</b>全貌</div><div class="pg">02 / 22</div></div>
   <div class="two">
     <div class="l">
       <h2>三层是骨架<br>四样往上叠</h2>
@@ -280,7 +302,7 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 03 大模型 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>第 1 层</b>大模型 · 是什么</div><div class="pg">03 / 21</div></div>
+  <div class="hd"><div class="sec"><b>第 1 层</b>大模型 · 是什么</div><div class="pg">03 / 22</div></div>
   <div class="two">
     <div class="l">
       <h2>它只会接着<br>往下写</h2>
@@ -321,31 +343,32 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 04 大模型 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>第 1 层</b>大模型 · 有哪些</div><div class="pg">04 / 21</div></div>
-  <h2 style="margin-top:8px">市面上就这几家</h2>
+  <div class="hd"><div class="sec"><b>第 1 层</b>大模型 · 有哪些</div><div class="pg">04 / 22</div></div>
+  <h2 style="margin-top:4px">市面上就这几家</h2>
   <p class="sub">强弱是分项的，没有全能的。<b>按你的活来挑，不按排名挑。</b></p>
   <div class="list">
     <div class="row h c5"><div>名字</div><div>谁家的</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">GPT</div><div class="by">OpenAI</div><div class="st">综合最强，复杂任务稳</div><div class="wk">国内访问难，贵，数据出境</div><div class="fit">有出海业务</div></div>
+    <div class="row c5"><div class="nm">Gemini</div><div class="by">谷歌</div><div class="st">图片视频强，上下文超长</div><div class="wk">国内用不了</div><div class="fit">有出海业务</div></div>
+    <div class="row c5"><div class="nm">Kimi</div><div class="by">月之暗面</div><div class="st">超长文档能吃下几十万字</div><div class="wk">推理和代码一般，速度偏慢</div><div class="fit">读合同、读长报告</div></div>
     <div class="row c5"><div class="nm">DeepSeek</div><div class="by">深度求索</div><div class="st">推理和写代码强，中文稳，便宜</div><div class="wk">看图弱，高峰期会转圈</div><div class="fit">写稿、算数、读长文</div></div>
     <div class="row c5"><div class="nm">通义千问</div><div class="by">阿里</div><div class="st">开源可自己部署，图片视频都能做</div><div class="wk">网页版偏公式化，像在念文件</div><div class="fit">要留在公司内网的场景</div></div>
     <div class="row c5"><div class="nm">豆包</div><div class="by">字节</div><div class="st">语音和图片强，App 好用，便宜</div><div class="wk">长文推理浅，复杂任务接不住</div><div class="fit">日常问答、做图、语音</div></div>
-    <div class="row c5"><div class="nm">Kimi</div><div class="by">月之暗面</div><div class="st">超长文档能吃下几十万字</div><div class="wk">推理和代码一般，速度偏慢</div><div class="fit">读合同、读长报告</div></div>
     <div class="row c5"><div class="nm">文心一言</div><div class="by">百度</div><div class="st">中文语料多，跟搜索结合好</div><div class="wk">复杂推理一般</div><div class="fit">查资料、写公文</div></div>
     <div class="row c5"><div class="nm">混元</div><div class="by">腾讯</div><div class="st">图片生成好，微信生态里能用</div><div class="wk">对外开放的能力少</div><div class="fit">微信生态内做事</div></div>
     <div class="row c5"><div class="nm">智谱 GLM</div><div class="by">智谱</div><div class="st">开源、能私有化，Agent 能力好</div><div class="wk">通用写作平平</div><div class="fit">企业自己搭</div></div>
-    <div class="row c5"><div class="nm">GPT / Claude / Gemini</div><div class="by">OpenAI 等</div><div class="st">综合最强，复杂任务稳</div><div class="wk">国内访问难，贵，数据出境</div><div class="fit">有出海业务</div></div>
   </div>
   <div class="take">怎么选：<b>能不能私有部署 &gt; 贵不贵 &gt; 够不够用。</b>别追排名，三个月就换一批。</div>
 </section>
 
 <!-- 05 工具 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>第 2 层</b>工具 · 是什么</div><div class="pg">05 / 21</div></div>
+  <div class="hd"><div class="sec"><b>第 2 层</b>工具 · 是什么</div><div class="pg">05 / 22</div></div>
   <div class="two">
     <div class="l">
       <h2>同一层<br>三个入口</h2>
       <p class="sub">一个模型能装进很多 App，一个 App 也能换模型。<b>你看到的界面，就是它的全部能力。</b></p>
-      <p class="sub" style="margin-top:8px">你能改的只有一个对话框。功能、按钮、每天能问几次，都是厂家定死的。</p>
+      <p class="sub" style="margin-top:4px">你能改的只有一个对话框。功能、按钮、每天能问几次，都是厂家定死的。</p>
     </div>
     <div class="r">
       <div class="apps">
@@ -361,16 +384,16 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 06 工具 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>第 2 层</b>工具 · 有哪些</div><div class="pg">06 / 21</div></div>
-  <h2 style="margin-top:8px">大家平时在用的，就这几类</h2>
+  <div class="hd"><div class="sec"><b>第 2 层</b>工具 · 有哪些</div><div class="pg">06 / 22</div></div>
+  <h2 style="margin-top:4px">大家平时在用的，就这几类</h2>
   <p class="sub">这层最好上手，也最容易停在闲聊。<b>差别在能不能上传文件、能不能连办公系统。</b></p>
   <div class="list">
     <div class="row h c5"><div>名字</div><div>谁家的</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
-    <div class="row c5"><div class="nm">豆包</div><div class="by">字节</div><div class="st">随手问，语音、拍照都能用</div><div class="wk">长文档和表格处理弱</div><div class="fit">手机上的日常问答</div></div>
-    <div class="row c5"><div class="nm">通义</div><div class="by">阿里</div><div class="st">会议纪要、长文总结、写公文</div><div class="wk">界面重，功能藏得深</div><div class="fit">开会、写材料</div></div>
-    <div class="row c5"><div class="nm">DeepSeek 官网</div><div class="by">深度求索</div><div class="st">深度推理、写代码</div><div class="wk">不带文件和表格处理</div><div class="fit">想难题、写公式</div></div>
-    <div class="row c5"><div class="nm">Kimi</div><div class="by">月之暗面</div><div class="st">传一整份 PDF 让它读</div><div class="wk">改写和润色一般</div><div class="fit">读长报告、读合同</div></div>
     <div class="row c5"><div class="nm">ChatGPT</div><div class="by">OpenAI</div><div class="st">综合能力全，插件多</div><div class="wk">要翻墙，付费，数据出境</div><div class="fit">复杂任务、出海</div></div>
+    <div class="row c5"><div class="nm">DeepSeek 官网</div><div class="by">深度求索</div><div class="st">深度推理、写代码</div><div class="wk">不带文件和表格处理</div><div class="fit">想难题、写公式</div></div>
+    <div class="row c5"><div class="nm">通义千问</div><div class="by">阿里</div><div class="st">会议纪要、长文总结、写公文</div><div class="wk">界面重，功能藏得深</div><div class="fit">开会、写材料</div></div>
+    <div class="row c5"><div class="nm">豆包</div><div class="by">字节</div><div class="st">随手问，语音、拍照都能用</div><div class="wk">长文档和表格处理弱</div><div class="fit">手机上的日常问答</div></div>
+    <div class="row c5"><div class="nm">Kimi</div><div class="by">月之暗面</div><div class="st">传一整份 PDF 让它读</div><div class="wk">改写和润色一般</div><div class="fit">读长报告、读合同</div></div>
     <div class="row c5"><div class="nm">WPS AI</div><div class="by">金山</div><div class="st">就在 Word、PPT 里改，不用来回复制</div><div class="wk">能力比网页版弱一档</div><div class="fit">写方案、做 PPT</div></div>
     <div class="row c5"><div class="nm">飞书 / 钉钉 AI</div><div class="by">字节 / 阿里</div><div class="st">会议纪要、群聊总结，跟工作流连着</div><div class="wk">离不开它自己的生态</div><div class="fit">已经在用的公司</div></div>
     <div class="row c5"><div class="nm">剪映 AI</div><div class="by">字节</div><div class="st">字幕、配音、成片，做短视频快</div><div class="wk">只管视频，不管别的</div><div class="fit">短视频、剪辑</div></div>
@@ -380,7 +403,7 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 07 工作台 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>第 3 层</b>工作台 · 是什么</div><div class="pg">07 / 21</div></div>
+  <div class="hd"><div class="sec"><b>第 3 层</b>工作台 · 是什么</div><div class="pg">07 / 22</div></div>
   <div style="margin-top:20px">
     <h2>能接活，能动手</h2>
     <p class="sub">工具是你问它答；工作台是你交一件活，它自己跑完再给你。</p>
@@ -402,29 +425,27 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 08 工作台 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>第 3 层</b>工作台 · 有哪些</div><div class="pg">08 / 21</div></div>
-  <h2 style="margin-top:8px">这一层分两种：成品 和 自己搭</h2>
-  <p class="sub">成品装好就用，省事但改不动；自己搭改得动，但要有人折腾。</p>
-  <div class="list">
+  <div class="hd"><div class="sec"><b>第 3 层</b>工作台 · 有哪些</div><div class="pg">08 / 22</div></div>
+  <h2 style="margin-top:4px">就这三个，够用了</h2>
+  <p class="sub">一个是写代码的，一个是装好就能用的，一个是自己搭的。</p>
+  <div class="list roomy">
     <div class="row h c5"><div>名字</div><div>类型</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
-    <div class="row c5"><div class="nm">WorkBuddy</div><div class="by">成品</div><div class="st">装好就能用，带技能市场，能做自动化</div><div class="wk">改不动底层，跟着官方节奏走</div><div class="fit">不想折腾的团队</div></div>
+    <div class="row c5"><div class="nm">Claude Code</div><div class="by">Anthropic</div><div class="st">能读整个项目、自己改文件、自己跑命令</div><div class="wk">要翻墙，要会命令行，贵</div><div class="fit">写代码、批量改文件</div></div>
+    <div class="row c5"><div class="nm">WorkBuddy</div><div class="by">成品</div><div class="st">装好就用，带技能市场，能定时跑</div><div class="wk">改不动底层，跟着官方节奏走</div><div class="fit">不想折腾的团队</div></div>
     <div class="row c5"><div class="nm">DeepSeek Harness</div><div class="by">自己搭</div><div class="st">能装插件、能接自己的工具、能改</div><div class="wk">要有人会弄，出问题自己扛</div><div class="fit">有人能折腾的团队</div></div>
-    <div class="row c5"><div class="nm">扣子 Coze</div><div class="by">成品</div><div class="st">拖拽搭 Bot，接微信、飞书方便</div><div class="wk">复杂流程和大文件处理一般</div><div class="fit">客服、问答机器人</div></div>
-    <div class="row c5"><div class="nm">Dify</div><div class="by">开源</div><div class="st">能装在自己服务器，知识库和工作流强</div><div class="wk">要自己运维，要懂部署</div><div class="fit">数据必须留在公司</div></div>
-    <div class="row c5"><div class="nm">Manus</div><div class="by">成品</div><div class="st">能自己上网查、自己往下做</div><div class="wk">结果不稳，贵，可控性差</div><div class="fit">调研类、一次性任务</div></div>
-    <div class="row c5"><div class="nm">n8n</div><div class="by">开源</div><div class="st">连几百个系统，跑定时任务稳</div><div class="wk">不是对话式，要懂流程</div><div class="fit">系统之间搬数据</div></div>
   </div>
-  <div class="take">先挑成品型试一个月。跑顺了，再考虑自己搭。<b>别一上来就自己搭。</b></div>
+  <p class="sub" style="margin-top:22px;max-width:760px">其余的先别碰：要么得有人搭，要么结果不稳，要么把你绑死在一个生态里。</p>
+  <div class="take">先拿成品试一个月。<b>跑顺了，再上自己搭的那个。</b></div>
 </section>
 
 <!-- 09 Skill 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 是什么</div><div class="pg">09 / 21</div></div>
+  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 是什么</div><div class="pg">09 / 22</div></div>
   <div class="two">
     <div class="l">
       <h2>把干活的步骤<br>存下来</h2>
       <p class="sub">一份作业指导书，AI 照它执行。<b>写一次，以后每次都按这个走。</b></p>
-      <p class="sub" style="margin-top:8px">提示词说完就没了；Skill 存着，换个人用、换台机器用，还是同一套。</p>
+      <p class="sub" style="margin-top:4px">提示词说完就没了；Skill 存着，换个人用、换台机器用，还是同一套。</p>
     </div>
     <div class="r">
       <div class="paper">
@@ -442,10 +463,53 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
   <div class="take">SOP 写错，错得很稳定。<b>所以第 4 步必须留给人。</b></div>
 </section>
 
+<!-- 10 Skill 演示 -->
+<section class="slide">
+  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 长什么样</div><div class="pg">10 / 22</div></div>
+  <h2 style="margin-top:4px">一个 Skill，就是这三段</h2>
+  <p class="sub">左边你说一句，中间是它照着做的规矩，右边是它交出来的东西。</p>
+  <div class="sd">
+    <div class="sdc">
+      <div class="lab">你给它什么</div>
+      <div class="inputrow">帮我写 9 月抖音月报</div>
+      <div class="files">
+        <div class="file">订单.xlsx</div>
+        <div class="file">退款.xlsx</div>
+        <div class="file">投放.xlsx</div>
+      </div>
+      <div class="hint2">就一句话，加上三张表。不用解释口径，不用说要什么格式。</div>
+      <div class="hint2" style="margin-top:30px">以前这活得半天：导表、算数、排版、再发到群里。现在一句话。</div>
+    </div>
+    <div class="sdc">
+      <div class="lab">Skill 里写了什么</div>
+      <div class="sopmini">
+        <div class="st2">月报 SOP</div>
+        <div class="ln">01 读哪三张表、表头叫什么</div>
+        <div class="ln">02 算哪四个数、各按什么口径</div>
+        <div class="ln">03 按哪套模板出、几页</div>
+        <div class="ln"><b>04 哪两个数必须人来核</b></div>
+      </div>
+      <div class="hint2">这四条写死在文件里。换谁来点，读的都是这一份。</div>
+    </div>
+    <div class="sdc">
+      <div class="lab">它交出什么</div>
+      <div class="report">
+        <div class="rt">9 月抖音月报</div>
+        <div class="rline"><span>GMV</span><span>25.2 万</span></div>
+        <div class="rline"><span>退款率</span><span>3.1%</span></div>
+        <div class="rline"><span>净 ROI</span><span>4.8</span></div>
+        <div class="rchk">退款率、净 ROI 两处待核</div>
+      </div>
+      <div class="hint2">同一套结构，每个月都一样。人只看两个数、签个字。</div>
+    </div>
+  </div>
+  <div class="take">没有 Skill：你得从头交代一遍，出来的格式还每次不一样。<b>有 Skill：只说一句。</b></div>
+</section>
+
 <!-- 10 Skill 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 有哪些</div><div class="pg">10 / 21</div></div>
-  <h2 style="margin-top:8px">三个来源：官方给的、平台搭的、自己写的</h2>
+  <div class="hd"><div class="sec"><b>四样之一</b>Skill · 有哪些</div><div class="pg">11 / 22</div></div>
+  <h2 style="margin-top:4px">三个来源：官方给的、平台搭的、自己写的</h2>
   <p class="sub">越往下越贴合我们自己的活，也越要自己维护。</p>
   <div class="list">
     <div class="row h c5"><div>做法</div><div>谁提供</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
@@ -455,17 +519,18 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
     <div class="row c5"><div class="nm">GPTs / 自定义指令</div><div class="by">OpenAI / 各家 App</div><div class="st">写一段说明就成，门槛最低</div><div class="wk">只能改“怎么说”，改不了“怎么做”</div><div class="fit">固定话术、角色设定</div></div>
     <div class="row c5"><div class="nm">自己写 SOP</div><div class="by">我们自己</div><div class="st">完全贴我们的活，口径不跑偏</div><div class="wk">要自己写、自己改、自己盯</div><div class="fit">月报、招聘这类重复活</div></div>
   </div>
+  <p class="sub" style="margin-top:20px;max-width:980px">我自己在装的三个：<b>humanizer-zh</b>（把中文改成正常人写的）、<b>markitdown</b>（Word、Excel、PDF 直接读进来）、<b>unslop</b>（把页面做得不像模板）。都不是买的，是写成文件放进去的。</p>
   <div class="take">先抄官方技能包的结构，<b>再往里填我们的口径。</b>别从零写。</div>
 </section>
 
 <!-- 11 知识库 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之二</b>知识库 · 是什么</div><div class="pg">11 / 21</div></div>
+  <div class="hd"><div class="sec"><b>四样之二</b>知识库 · 是什么</div><div class="pg">12 / 22</div></div>
   <div class="two">
     <div class="l">
       <h2>先查我们的<br>再回答</h2>
       <p class="sub">它不知道我们公司的事。知识库把这些事提前放进去，让它回答前先查一遍。</p>
-      <p class="sub" style="margin-top:8px">资料旧，答案就旧。所以谁更新，要定一个人。</p>
+      <p class="sub" style="margin-top:4px">资料旧，答案就旧。所以谁更新，要定一个人。</p>
     </div>
     <div class="r">
       <div class="docs">
@@ -485,11 +550,12 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 12 知识库 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之二</b>知识库 · 有哪些</div><div class="pg">12 / 21</div></div>
-  <h2 style="margin-top:8px">三类：办公套件自带、平台自带、自己搭</h2>
+  <div class="hd"><div class="sec"><b>四样之二</b>知识库 · 有哪些</div><div class="pg">13 / 22</div></div>
+  <h2 style="margin-top:4px">四类：本地笔记、办公套件、平台、自己搭</h2>
   <p class="sub">先看数据能不能留在公司，再看好不好用。</p>
   <div class="list">
     <div class="row h c5"><div>产品</div><div>类型</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
+    <div class="row c5"><div class="nm">Obsidian</div><div class="by">本地笔记</div><div class="st">资料是本地纯文本，AI 能直接读，断网也能用</div><div class="wk">要自己建目录，不装插件就是个记事本</div><div class="fit">个人和团队的资料库</div></div>
     <div class="row c5"><div class="nm">飞书 / 钉钉知识库</div><div class="by">办公套件</div><div class="st">文档本来就存在里面，权限跟人走</div><div class="wk">换不了工具，绑死生态</div><div class="fit">已经在用的公司</div></div>
     <div class="row c5"><div class="nm">Dify 知识库</div><div class="by">开源自建</div><div class="st">数据在自己服务器，能接到工作流里</div><div class="wk">要运维，要人管更新</div><div class="fit">数据必须留公司</div></div>
     <div class="row c5"><div class="nm">扣子知识库</div><div class="by">平台</div><div class="st">上传即用，跟 Bot 直接连</div><div class="wk">大文件解析一般，深度问答弱</div><div class="fit">做客服问答</div></div>
@@ -501,7 +567,7 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 13 接口 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之三</b>接口 · 是什么</div><div class="pg">13 / 21</div></div>
+  <div class="hd"><div class="sec"><b>四样之三</b>接口 · 是什么</div><div class="pg">14 / 22</div></div>
   <div style="margin-top:20px">
     <h2>让它去读写别的系统</h2>
     <p class="sub">没接口，它只能看你给的；有接口，它能自己拿，也能自己往回写。</p>
@@ -523,8 +589,8 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 14 接口 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之三</b>接口 · 有哪些</div><div class="pg">14 / 21</div></div>
-  <h2 style="margin-top:8px">四条路，从窄到宽</h2>
+  <div class="hd"><div class="sec"><b>四样之三</b>接口 · 有哪些</div><div class="pg">15 / 22</div></div>
+  <h2 style="margin-top:4px">四条路，从窄到宽</h2>
   <p class="sub">越往后，能碰的系统越多，需要的权限也越大。</p>
   <div class="list">
     <div class="row h c5"><div>做法</div><div>谁提供</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
@@ -539,7 +605,7 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 15 自动化 概念 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之四</b>自动化 · 是什么</div><div class="pg">15 / 21</div></div>
+  <div class="hd"><div class="sec"><b>四样之四</b>自动化 · 是什么</div><div class="pg">16 / 22</div></div>
   <div style="margin-top:20px">
     <h2>到点自己跑</h2>
     <p class="sub">前三样是人叫它干；自动化是它自己到点干。<b>好处在这，风险也在这。</b></p>
@@ -562,8 +628,8 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 16 自动化 选型 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样之四</b>自动化 · 有哪些</div><div class="pg">16 / 21</div></div>
-  <h2 style="margin-top:8px">从最轻的开始</h2>
+  <div class="hd"><div class="sec"><b>四样之四</b>自动化 · 有哪些</div><div class="pg">17 / 22</div></div>
+  <h2 style="margin-top:4px">从最轻的开始</h2>
   <p class="sub">能用手点一下解决的，别上自动化。<b>上之前先问：错了谁看得见。</b></p>
   <div class="list">
     <div class="row h c5"><div>做法</div><div>谁提供</div><div>强在哪</div><div>弱在哪</div><div>适合</div></div>
@@ -578,8 +644,8 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 17 顺序 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>四样</b>别一起上</div><div class="pg">17 / 21</div></div>
-  <div style="margin-top:8px">
+  <div class="hd"><div class="sec"><b>四样</b>别一起上</div><div class="pg">18 / 22</div></div>
+  <div style="margin-top:4px">
     <h2>顺序不能倒</h2>
     <p class="sub">改流程 &lt; 给资料 &lt; 给手脚 &lt; 给自由。越往后，越要人管。</p>
   </div>
@@ -594,8 +660,8 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 18 月报 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>串起来</b>一件活</div><div class="pg">18 / 21</div></div>
-  <div style="margin-top:8px">
+  <div class="hd"><div class="sec"><b>串起来</b>一件活</div><div class="pg">19 / 22</div></div>
+  <div style="margin-top:4px">
     <h2>每月月报：四样一起上</h2>
     <p class="sub">缺哪一样，就卡在哪一步。</p>
   </div>
@@ -623,7 +689,7 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 19 三问 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>大概率被问</b>三个问题</div><div class="pg">19 / 21</div></div>
+  <div class="hd"><div class="sec"><b>大概率被问</b>三个问题</div><div class="pg">20 / 22</div></div>
   <div class="qa">
     <div class="qrow">
       <div class="q">哪个模型最强</div>
@@ -642,8 +708,8 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 20 底线 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>底线</b>什么不能往里贴</div><div class="pg">20 / 21</div></div>
-  <div style="margin-top:8px">
+  <div class="hd"><div class="sec"><b>底线</b>什么不能往里贴</div><div class="pg">21 / 22</div></div>
+  <div style="margin-top:4px">
     <h2>这四类，不往里贴</h2>
     <p class="sub">不管用哪个工具、哪一层。不是保守，是底线。</p>
   </div>
@@ -658,8 +724,8 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 
 <!-- 21 收尾 -->
 <section class="slide">
-  <div class="hd"><div class="sec"><b>收尾</b>三个动作</div><div class="pg">21 / 21</div></div>
-  <div style="margin-top:8px">
+  <div class="hd"><div class="sec"><b>收尾</b>三个动作</div><div class="pg">22 / 22</div></div>
+  <div style="margin-top:4px">
     <h2>记住三层<br>四样一样一样加</h2>
   </div>
   <div class="end">
@@ -696,4 +762,9 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 </script>
 </body>
 </html>
+
+
+
+
+
 
