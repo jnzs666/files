@@ -41,17 +41,16 @@ section{margin-bottom:44px;scroll-margin-top:70px}
 
 .flow{background:var(--card);border:1px solid var(--line);border-radius:4px;
   padding:14px 22px;font-size:14px;line-height:1.9;margin-top:18px}
+.flow b{color:var(--red)}
+.flow .fa{color:var(--sub);padding:0 9px}
+.flow .note{color:var(--sub);padding-left:14px;border-left:1px solid var(--line);margin-left:10px}
 
 /* 部门 O 矩阵 */
 .mh{font-size:15px;font-weight:700;margin:26px 0 10px;letter-spacing:.5px}
 .mtx th .ok{display:inline-block;background:var(--red);color:#fff;font-size:11px;
   padding:1px 6px;border-radius:2px;margin-right:8px;letter-spacing:1px;vertical-align:1px}
 .mtx td.n{font-weight:700}
-.mtx td.dash{color:#c9c3bc}
 .mtx td{line-height:1.65}
-.flow b{color:var(--red)}
-.flow .fa{color:var(--sub);padding:0 9px}
-.flow .note{color:var(--sub);padding-left:14px;border-left:1px solid var(--line);margin-left:10px}
 
 /* 章节头 */
 .sechd{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
@@ -62,13 +61,12 @@ section{margin-bottom:44px;scroll-margin-top:70px}
 .sectip{font-size:12px;color:var(--sub);margin:0 0 16px;padding-left:44px}
 
 /* 列头 */
-.colhead{display:grid;grid-template-columns:1.02fr 30px 1.38fr 30px 0.92fr 30px 1fr;
+.colhead{display:grid;grid-template-columns:0.95fr 26px 1.35fr 26px 0.8fr 26px 1.25fr;
   gap:0;margin-bottom:6px}
 .colhead div{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--sub);padding-bottom:6px}
-.colhead div:nth-child(even){}
 
 /* 链路行 */
-.chain{display:grid;grid-template-columns:1.02fr 30px 1.38fr 30px 0.92fr 30px 1fr;
+.chain{display:grid;grid-template-columns:0.95fr 26px 1.35fr 26px 0.8fr 26px 1.25fr;
   align-items:stretch;margin-bottom:12px}
 .nd{border-radius:4px;padding:13px 16px;display:flex;flex-direction:column;justify-content:center}
 .nd .t{font-size:16px;font-weight:700;line-height:1.4}
@@ -76,6 +74,7 @@ section{margin-bottom:44px;scroll-margin-top:70px}
 .nd .li{font-size:13.5px;line-height:1.65;color:#3d3a36}
 .nd .li span{display:block;padding-left:13px;position:relative}
 .nd .li span::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1px;background:var(--red)}
+.nd .li span b{color:var(--ink);font-weight:700}
 .nd-o{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red)}
 .nd .ob{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--red);margin-bottom:3px}
 .nd-k{background:var(--soft);border:1px solid transparent}
@@ -83,7 +82,6 @@ section{margin-bottom:44px;scroll-margin-top:70px}
 .nd-r{background:var(--card);border:1px solid var(--line);border-bottom:2px solid var(--ink)}
 .ar{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:14px;font-weight:700}
 
-/* 岗位表 */
 table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
 th{background:var(--head);text-align:left;padding:10px 12px;font-weight:700;
   border-bottom:2px solid var(--line);border-top:1px solid var(--line)}
@@ -95,7 +93,7 @@ td.n{font-weight:700;white-space:nowrap}
   .hd-in,.nav-in,.main{padding-left:16px;padding-right:16px}
   .colhead{display:none}
   .chain{grid-template-columns:1fr;gap:6px}
-  .ar{justify-content:flex-start;padding:2px 0 2px 16px;transform:rotate(90deg);transform-origin:left center;height:22px}
+  .ar{justify-content:flex-start;padding:2px 0 2px 16px;height:22px}
   .sectip{padding-left:0}
   table{font-size:12.5px}
 }
@@ -191,7 +189,7 @@ td.n{font-weight:700;white-space:nowrap}
 <!-- 产品部 -->
 <section id="product">
   <div class="sechd"><span class="no">01</span><h2>产品部</h2><span class="tag">承接 O1 · O2 · O3</span></div>
-  <p class="sectip">新品 4000 万先拆到系列，系列是系列 O；每个系列一个产品经理</p>
+  <p class="sectip">新品 4000 万先拆到系列，系列是系列 O；每个系列一个产品经理。岗位 KR 按数量、质量、业绩三条一起考</p>
 
   <div class="colhead">
     <div>部门 O / 系列 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div>
@@ -204,7 +202,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">产品经理</div><div class="s">红光</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>红光系列每月业绩目标达成</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 3 款品</span><span><b>质量：</b>成本 ≤ 190、四项资料一次过</span><span><b>业绩：</b>红光系列每月目标达成</span></div></div>
   </div>
 
   <div class="chain">
@@ -214,7 +212,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">产品经理</div><div class="s">电刺激</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>电刺激系列每月业绩目标达成</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 2 款品</span><span><b>质量：</b>成本 ≤ 145、四项资料一次过</span><span><b>业绩：</b>电刺激系列每月目标达成</span></div></div>
   </div>
 
   <div class="chain">
@@ -224,7 +222,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">产品经理</div><div class="s">按摩</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>按摩系列每月业绩目标达成</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 2 款品</span><span><b>质量：</b>成本 ≤ 245、四项资料一次过</span><span><b>业绩：</b>按摩系列每月目标达成</span></div></div>
   </div>
 
   <div class="chain">
@@ -234,7 +232,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">产品经理</div><div class="s">延展</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>延展系列每月业绩目标达成</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 1–2 款补充品</span><span><b>质量：</b>成本不超同档、四项资料一次过</span><span><b>业绩：</b>延展系列每月目标达成</span></div></div>
   </div>
 
   <div class="chain">
@@ -244,7 +242,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">各系列产品经理</div><div class="s">成本是自己的责任</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>所辖系列每月毛利目标达成</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>成本：</b>单款成本 ≤ 客单 × 50%</span><span><b>毛利：</b>所辖系列每月毛利目标达成</span><span><b>复盘：</b>每季度给出降本点</span></div></div>
   </div>
 
   <div class="chain">
@@ -254,14 +252,14 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">产品经理 + 品质对接</div><div class="s"></div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>四项 100% 合规，因资料问题零下架</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>产出：</b>四项模板各一套并落地</span><span><b>执行：</b>新品上架前四项齐全</span><span><b>结果：</b>100% 合规，因资料问题零下架</span></div></div>
   </div>
 </section>
 
 <!-- 电商运营 -->
 <section id="ops">
   <div class="sechd"><span class="no">02</span><h2>电商运营</h2><span class="tag">承接 O1 · O2 · O3</span></div>
-  <p class="sectip">三个岗位：运营管产出，美工管素材，客服管转化和售后</p>
+  <p class="sectip">三个岗位：运营管产出，美工管素材，客服管转化和售后。运营的 KR 要同时背 GMV、费比、爆品、新品起量</p>
 
   <div class="colhead">
     <div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div>
@@ -274,7 +272,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">运营</div><div class="s">店铺整体产出</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>月度 GMV 目标达成</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>GMV：</b>月度目标达成、各系列达成率</span><span><b>新品起量：</b>新品上架后按计划起量</span></div></div>
   </div>
 
   <div class="chain">
@@ -284,7 +282,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">运营</div><div class="s">曝光 / 复购 / 私域</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>站外种草量、复购率、私域转化率</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>爆品：</b>按年度爆品目标出量</span><span><b>三率：</b>站外种草量、复购率、私域转化率</span></div></div>
   </div>
 
   <div class="chain">
@@ -294,7 +292,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">美工</div><div class="s">素材支撑转化</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>月度出图量、主图点击率、详情页按模板</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>月度出图量达标</span><span><b>质量：</b>主图点击率达到标准</span><span><b>规范：</b>详情页按模板出，不改结构</span></div></div>
   </div>
 
   <div class="chain">
@@ -304,7 +302,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">客服</div><div class="s">询单转化与售后</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>响应时长、询单转化率、好评率、退款率</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>效率：</b>响应时长达标</span><span><b>转化：</b>询单转化率达标</span><span><b>质量：</b>好评率、退款率控制在标准内</span></div></div>
   </div>
 
   <div class="chain">
@@ -314,7 +312,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">运营</div><div class="s">投放与费用</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>月度费比不超、ROI 达标</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>费比：</b>月度费比不超目标</span><span><b>投产：</b>ROI 达到标准</span><span><b>结构：</b>推广费用按品分层投放</span></div></div>
   </div>
 </section>
 
@@ -334,7 +332,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">仓储</div><div class="s">库存与库容</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>库存准确率、库容周转达标</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>准确：</b>库存准确率达标</span><span><b>盘点：</b>账实相符，月度零差异</span><span><b>周转：</b>库容周转达标</span></div></div>
   </div>
 
   <div class="chain">
@@ -344,7 +342,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">发货</div><div class="s">出库与配送</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>发货时效、错发率、大促不爆仓</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>时效：</b>按承诺时效发出</span><span><b>质量：</b>错发漏发率控制在标准内</span><span><b>峰值：</b>大促期间不爆仓</span></div></div>
   </div>
 
   <div class="chain">
@@ -354,7 +352,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">采购</div><div class="s">选品与议价</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>降本金额、到货及时率</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>降本：</b>降本金额达成</span><span><b>交付：</b>到货及时率达标</span><span><b>质量：</b>来料合格率达标</span></div></div>
   </div>
 
   <div class="chain">
@@ -364,7 +362,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">三个岗位</div><div class="s">各管一段</div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>节点完成数、人岗匹配</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>节点：</b>流程节点按计划完成</span><span><b>人岗：</b>人岗匹配，关键岗不缺位</span></div></div>
   </div>
 </section>
 
@@ -384,7 +382,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">招聘</div><div class="s"></div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>到岗率、招聘周期、招聘预算不超</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>关键岗按计划到岗</span><span><b>效率：</b>招聘周期达标</span><span><b>成本：</b>招聘预算不超</span><span><b>质量：</b>试用期留存达标</span></div></div>
   </div>
 
   <div class="chain">
@@ -394,7 +392,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">薪酬绩效</div><div class="s"></div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>成本占比达标、预算核定完成、核算零差错</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>成本：</b>人工成本占比在区间内</span><span><b>预算：</b>各部门预算核定完成</span><span><b>准确：</b>月度薪酬核算零差错</span></div></div>
   </div>
 
   <div class="chain">
@@ -404,7 +402,7 @@ td.n{font-weight:700;white-space:nowrap}
     <div class="ar">→</div>
     <div class="nd nd-p"><div class="t">制度与组织</div><div class="s"></div></div>
     <div class="ar">→</div>
-    <div class="nd nd-r"><div class="li"><span>编制标准、制度节点、执行率</span></div></div>
+    <div class="nd nd-r"><div class="li"><span><b>产出：</b>编制标准与制度文件落地</span><span><b>节点：</b>制度按计划节点完成</span><span><b>执行：</b>制度执行率达标</span></div></div>
   </div>
 </section>
 
@@ -414,22 +412,22 @@ td.n{font-weight:700;white-space:nowrap}
   <p class="sectip">每个岗位一行，看它撑哪个部门 O</p>
 
   <table>
-    <tr><th style="width:15%">部门</th><th style="width:20%">岗位</th><th style="width:28%">撑的部门 O</th><th>岗位 KR</th></tr>
-    <tr><td class="n">产品部</td><td>产品经理 · 红光</td><td>新品销售 4000 万</td><td>红光系列每月业绩目标达成</td></tr>
-    <tr><td class="n">产品部</td><td>产品经理 · 电刺激</td><td>新品销售 4000 万</td><td>电刺激系列每月业绩目标达成</td></tr>
-    <tr><td class="n">产品部</td><td>产品经理 · 按摩</td><td>新品销售 4000 万</td><td>按摩系列每月业绩目标达成</td></tr>
-    <tr><td class="n">产品部</td><td>产品经理 · 延展</td><td>新品销售 4000 万</td><td>延展系列每月业绩目标达成</td></tr>
-    <tr><td class="n">产品部</td><td>产品经理（全部）</td><td>新品毛利 ≥ 50%</td><td>所辖系列每月毛利目标达成</td></tr>
-    <tr><td class="n">产品部</td><td>产品经理 + 品质对接</td><td>品质标准化</td><td>四项 100% 合规，零下架</td></tr>
-    <tr><td class="n">电商运营</td><td>运营</td><td>销售达成、量级提升、控费比</td><td>月度 GMV 达成、三率达标、费比达标</td></tr>
-    <tr><td class="n">电商运营</td><td>美工</td><td>产能与 SOP 配套</td><td>出图量、主图点击率、详情页按模板</td></tr>
-    <tr><td class="n">电商运营</td><td>客服</td><td>产能与 SOP 配套</td><td>响应时长、询单转化率、好评率</td></tr>
-    <tr><td class="n">供应链</td><td>仓储</td><td>供货保障</td><td>库存准确率、库容周转</td></tr>
-    <tr><td class="n">供应链</td><td>发货</td><td>供货保障</td><td>发货时效、错发率</td></tr>
-    <tr><td class="n">供应链</td><td>采购</td><td>降本、供货保障</td><td>降本金额、到货及时率</td></tr>
-    <tr><td class="n">人力资源</td><td>招聘</td><td>编制与招聘到位</td><td>到岗率、招聘周期、预算</td></tr>
-    <tr><td class="n">人力资源</td><td>薪酬绩效</td><td>人工成本与预算</td><td>成本占比、预算核定、核算准确</td></tr>
-    <tr><td class="n">人力资源</td><td>制度与组织</td><td>标准化人力配套</td><td>编制标准、制度节点、执行率</td></tr>
+    <tr><th style="width:13%">部门</th><th style="width:17%">岗位</th><th style="width:20%">撑的部门 O</th><th>岗位 KR</th></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 红光</td><td>新品销售 4000 万</td><td>数量：开 3 款；质量：成本 ≤190、资料一次过；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 电刺激</td><td>新品销售 4000 万</td><td>数量：开 2 款；质量：成本 ≤145、资料一次过；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 按摩</td><td>新品销售 4000 万</td><td>数量：开 2 款；质量：成本 ≤245、资料一次过；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 延展</td><td>新品销售 4000 万</td><td>数量：开 1–2 款；质量：不超同档；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理（全部）</td><td>新品毛利 ≥ 50%</td><td>成本：≤ 客单 ×50%；毛利：系列每月毛利达成；每季降本点</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 + 品质对接</td><td>品质标准化</td><td>产出：四项模板；执行：上架前齐；结果：100% 合规零下架</td></tr>
+    <tr><td class="n">电商运营</td><td>运营</td><td>销售达成、量级提升、控费比</td><td>GMV 月度达成；费比不超；爆品出量；新品起量达标</td></tr>
+    <tr><td class="n">电商运营</td><td>美工</td><td>产能与 SOP 配套</td><td>数量：出图量；质量：主图点击率；规范：详情页按模板</td></tr>
+    <tr><td class="n">电商运营</td><td>客服</td><td>产能与 SOP 配套</td><td>效率：响应时长；转化：询单转化率；质量：好评率、退款率</td></tr>
+    <tr><td class="n">供应链</td><td>仓储</td><td>供货保障</td><td>准确：库存准确率；盘点：账实相符；周转：库容周转</td></tr>
+    <tr><td class="n">供应链</td><td>发货</td><td>供货保障</td><td>时效：按承诺发出；质量：错发率；峰值：大促不爆仓</td></tr>
+    <tr><td class="n">供应链</td><td>采购</td><td>降本、供货保障</td><td>降本：金额达成；交付：到货及时率；质量：来料合格率</td></tr>
+    <tr><td class="n">人力资源</td><td>招聘</td><td>编制与招聘到位</td><td>数量：关键岗到岗；效率：周期；成本：预算；质量：留存</td></tr>
+    <tr><td class="n">人力资源</td><td>薪酬绩效</td><td>人工成本与预算</td><td>成本：占比达标；预算：核定完成；准确：核算零差错</td></tr>
+    <tr><td class="n">人力资源</td><td>制度与组织</td><td>标准化人力配套</td><td>产出：标准文件；节点：按期完成；执行：执行率</td></tr>
   </table>
 </section>
 
