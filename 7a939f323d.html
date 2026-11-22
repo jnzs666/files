@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PDCA 与时间管理 · 中层培训</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.topline{height:3px;background:var(--red)}
+
+.hd{background:var(--card);border-bottom:1px solid var(--line);padding:26px 0}
+.hd-in{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:18px}
+.logo{flex:0 0 46px;height:46px;background:var(--red);color:#fff;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700}
+.ht h1{margin:0 0 4px;font-size:24px;font-weight:700;line-height:1.3}
+.ht p{margin:0;font-size:13px;color:var(--sub)}
+
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav-in{max-width:1200px;margin:0 auto;padding:10px 32px;display:flex;gap:8px;flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--ink);font-size:13px;padding:6px 12px;
+  border:1px solid var(--line);border-radius:5px;background:var(--card);line-height:1.4;white-space:nowrap}
+.nav a:hover{border-color:var(--red);color:var(--red)}
+
+.main{max-width:1200px;margin:0 auto;padding:32px 32px 80px}
+section{margin-bottom:44px;scroll-margin-top:70px}
+
+.sechd{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
+.sechd .no{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;
+  padding:0 8px;background:var(--red);color:#fff;font-size:12px;font-weight:700;border-radius:3px}
+.sechd h2{margin:0;font-size:21px;font-weight:700;line-height:1.35}
+.sectip{font-size:12px;color:var(--sub);margin:0 0 16px;padding-left:44px}
+
+.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);
+  border-radius:4px;padding:22px 26px;margin-bottom:20px}
+.lead p{margin:0 0 8px;font-size:15px}
+.lead p:last-child{margin:0}
+.lead b{color:var(--red)}
+
+/* PDCA 四格 */
+.p4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px 20px 22px;
+  display:flex;flex-direction:column}
+.pc .pl{font-size:38px;font-weight:700;color:var(--red);line-height:1;margin-bottom:12px}
+.pc .pn{font-size:13px;color:var(--sub);letter-spacing:2px;margin-bottom:12px}
+.pc .pd{font-size:14px;line-height:1.7;color:#3d3a36}
+.pc .bad{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);
+  font-size:12.5px;color:var(--sub);line-height:1.6}
+.pc .bad b{color:var(--red);font-weight:700}
+
+/* 通用表 */
+table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
+th{background:var(--head);text-align:left;padding:10px 12px;font-weight:700;
+  border-bottom:2px solid var(--line);border-top:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+td.n{font-weight:700;white-space:nowrap}
+
+/* 周会流程 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.st .sn{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--red);margin-bottom:8px}
+.st .sx{font-size:14.5px;font-weight:700;line-height:1.5}
+.st .sy{font-size:12.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+
+.rule{background:var(--soft);border-radius:4px;padding:14px 20px;margin-top:14px;
+  font-size:13.5px;color:#3d3a36;line-height:1.8}
+.rule b{color:var(--ink)}
+
+/* 四象限 */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 22px;min-height:150px}
+.q .qh{font-size:13px;font-weight:700;letter-spacing:1px;color:var(--sub);margin-bottom:12px}
+.q ul{list-style:none;margin:0;padding:0}
+.q li{font-size:14px;line-height:1.7;color:#3d3a36;padding:3px 0 3px 13px;position:relative}
+.q li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--sub)}
+.q.on{border:2px solid var(--red);padding:17px 21px}
+.q.on .qh{color:var(--red)}
+.q.on li{font-weight:700;color:var(--ink)}
+.q.on li::before{background:var(--red)}
+
+/* 时间块 */
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 20px}
+.wk .wn{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--sub);margin-bottom:10px}
+.wk .wx{font-size:16px;font-weight:700;line-height:1.5}
+.wk .wy{font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.65}
+.wk.hi{border-left:4px solid var(--red);padding-left:17px}
+
+@media(max-width:900px){
+  .hd-in,.nav-in,.main{padding-left:16px;padding-right:16px}
+  .p4,.steps,.week,.quad{grid-template-columns:1fr}
+  .sectip{padding-left:0}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header class="hd">
+  <div class="hd-in">
+    <div class="logo">P</div>
+    <div class="ht">
+      <h1>PDCA 与时间管理</h1>
+      <p>目标拆完之后 · 怎么盯执行 · 中层怎么排自己的时间</p>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="#pdca">PDCA 四步</a>
+    <a href="#check">检查点</a>
+    <a href="#meeting">周会怎么开</a>
+    <a href="#quad">四象限</a>
+    <a href="#week">每周怎么排</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<section id="pdca">
+  <div class="lead">
+    <p><b>结果只能等，过程才能管。</b></p>
+    <p>目标拆完只是说清楚了"要什么"。真正决定能不能做到的，是中间有没有人盯。</p>
+    <p>PDCA 就是把过程盯起来的那套动作。四个字母都认识，难的是把检查点落下来。</p>
+  </div>
+
+  <div class="sechd"><span class="no">01</span><h2>PDCA 四步：每一步都有一件最容易漏掉的事</h2></div>
+  <p class="sectip">只看右边那行灰字，那才是实际做的时候经常出问题的地方</p>
+
+  <div class="p4">
+    <div class="pc">
+      <div class="pl">P</div>
+      <div class="pn">计划</div>
+      <div class="pd">定目标，定动作，<b>定检查点</b>。<br>目标要能对上公司 O，动作要能落到人。</div>
+      <div class="bad"><b>最容易漏：</b>计划里没写什么时候看、看什么数。写完就挂墙上。</div>
+    </div>
+    <div class="pc">
+      <div class="pl">D</div>
+      <div class="pn">执行</div>
+      <div class="pd">按计划做，<b>过程留痕</b>。<br>拜访有记录，进度有节点，做过的事能被看见。</div>
+      <div class="bad"><b>最容易漏：</b>做了没记，到检查时只能凭印象说，说不清。</div>
+    </div>
+    <div class="pc">
+      <div class="pl">C</div>
+      <div class="pn">检查</div>
+      <div class="pd">到点对数，<b>只看差异</b>。<br>差异是信息，不是追责的由头。</div>
+      <div class="bad"><b>最容易漏：</b>要么不检查，要么只对态度不对数。</div>
+    </div>
+    <div class="pc">
+      <div class="pl">A</div>
+      <div class="pn">处理</div>
+      <div class="pd">有效的<b>固化成标准动作</b>，无效的当轮改掉，带进下一轮。</div>
+      <div class="bad"><b>最容易漏：</b>改完不写进标准，下一轮换个坑再踩一次。</div>
+    </div>
+  </div>
+
+  <div class="rule"><b>一句话记住：</b>没有检查点的计划，等于没计划。</div>
+</section>
+
+<section id="check">
+  <div class="sechd"><span class="no">02</span><h2>检查点：每个目标都要落到一行</h2></div>
+  <p class="sectip">一行三个空：看什么数、多久看、谁看。少一个，这个检查点就是虚的</p>
+
+  <table>
+    <tr><th style="width:24%">目标</th><th style="width:30%">看什么</th><th style="width:18%">多久看</th><th>谁看</th></tr>
+    <tr><td class="n">业绩 8000 万</td><td>GMV、各系列达成率</td><td>每周</td><td>运营 + 老板</td></tr>
+    <tr><td class="n">新品毛利 ≥ 50%</td><td>新品实际毛利率、单款成本</td><td>每月</td><td>产品 + 财务</td></tr>
+    <tr><td class="n">供应链降本</td><td>降本金额、达成率</td><td>每月</td><td>供应链 + 财务</td></tr>
+    <tr><td class="n">控费比</td><td>费比、ROI</td><td>每月</td><td>运营 + 财务</td></tr>
+    <tr><td class="n">招聘到位</td><td>关键岗到岗率、招聘周期</td><td>每月</td><td>人资</td></tr>
+    <tr><td class="n">标准化建设</td><td>节点完成情况</td><td>每季度</td><td>总经办</td></tr>
+  </table>
+
+  <div class="rule">
+    <b>三个坑：</b>一是只有月看没有周看，问题发现得太晚；二是看数的人不是管人的人，看了也改不动；三是数是从别人嘴里问来的，不是表里出来的。
+  </div>
+</section>
+
+<section id="meeting">
+  <div class="sechd"><span class="no">03</span><h2>周会怎么开：只开三个数</h2></div>
+  <p class="sectip">最容易开的周会是"各部门轮流汇报"，开完什么也没解决</p>
+
+  <div class="steps">
+    <div class="st">
+      <div class="sn">第一步</div>
+      <div class="sx">对数</div>
+      <div class="sy">只报三个数：GMV、新品毛利、降本进度。其他人不讲。</div>
+    </div>
+    <div class="st">
+      <div class="sn">第二步</div>
+      <div class="sx">找差异</div>
+      <div class="sy">哪个数没到，差多少，为什么差。只讲原因，不讲苦劳。</div>
+    </div>
+    <div class="st">
+      <div class="sn">第三步</div>
+      <div class="sx">定动作</div>
+      <div class="sy">每个差异配一个动作：谁做、什么时候做、做到什么程度。</div>
+    </div>
+    <div class="st">
+      <div class="sn">第四步</div>
+      <div class="sx">记下来</div>
+      <div class="sy">当场记，下周同一时间对上次的动作有没有做。</div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <b>不开的：</b>部门轮流汇报、讲过程多辛苦、讨论不在三个数里的事。<br>
+    <b>要开的：</b>差异、原因、下一步。一小时以内结束。
+  </div>
+</section>
+
+<section id="quad">
+  <div class="sechd"><span class="no">04</span><h2>四象限：中层的时间到底该花在哪</h2></div>
+  <p class="sectip">自己也有活，还要盯团队。不排，就永远被救火占满</p>
+
+  <div class="quad">
+    <div class="q">
+      <div class="qh">重要 · 紧急</div>
+      <ul>
+        <li>客户投诉、交期卡点</li>
+        <li>突发的质量问题</li>
+        <li>临时的投标、报价</li>
+      </ul>
+    </div>
+    <div class="q on">
+      <div class="qh">重要 · 不紧急　← 管理者的活在这里</div>
+      <ul>
+        <li>带人、教方法</li>
+        <li>做计划、定标准</li>
+        <li>复盘、看数据找方向</li>
+      </ul>
+    </div>
+    <div class="q">
+      <div class="qh">紧急 · 不重要</div>
+      <ul>
+        <li>临时会议</li>
+        <li>别人插队的事</li>
+        <li>各种要签字的单子</li>
+      </ul>
+    </div>
+    <div class="q">
+      <div class="qh">不重要 · 不紧急</div>
+      <ul>
+        <li>漫无目的地刷数据</li>
+        <li>无效社交</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule">
+    <b>为什么强调第二格：</b>第一格的活，不做今天就会出事，所以一定会做。第二格的活，不做这一周也不会出事，所以永远排在最后。等到它变成第一格，就已经晚了。
+  </div>
+</section>
+
+<section id="week">
+  <div class="sechd"><span class="no">05</span><h2>每周怎么排：先锁时间，再谈别的</h2></div>
+  <p class="sectip">不锁在日历上，就等于没有安排</p>
+
+  <div class="week">
+    <div class="wk hi">
+      <div class="wn">每周固定</div>
+      <div class="wx">锁一块"带人"的时间</div>
+      <div class="wy">两小时，一对一或小组，讲方法、看进展、解决卡点。锁在日历上，别人不能占。</div>
+    </div>
+    <div class="wk hi">
+      <div class="wn">每周固定</div>
+      <div class="wx">锁一块"复盘"的时间</div>
+      <div class="wy">两小时，看数、找差异、定下周动作。为周会做准备，不是开会本身。</div>
+    </div>
+    <div class="wk">
+      <div class="wn">剩下的时间</div>
+      <div class="wx">留给救火和日常</div>
+      <div class="wy">救火的活往剩下的时间里塞。塞不下，说明资源不够，往上报，不要自己硬扛。</div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <b>管理者的时间，要花在"让别人能干成"上。</b>自己冲在前面干得再多，团队不长本事，明年还是这一摊。
+  </div>
+</section>
+
+</main>
+</body>
+</html>

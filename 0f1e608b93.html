@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -223,6 +223,15 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
 .erow .ek{flex:0 0 170px;font-size:20px;font-weight:700;letter-spacing:-.02em}
 .erow .ev{flex:1;font-size:14px;color:var(--ink2);line-height:1.85}
 .erow .ev b{color:var(--ink)}
+
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{height:auto;overflow:visible;background:#fff}
+  #stage{position:static;transform:none!important;width:1280px;height:auto;overflow:visible;background:#fff}
+  .slide{position:relative;inset:auto;display:flex!important;width:1280px;height:720px;
+    page-break-after:always;break-after:page;overflow:hidden}
+  .slide:last-child{page-break-after:auto;break-after:auto}
+}
 </style>
 </head>
 <body>
@@ -279,9 +288,9 @@ h1{font-size:80px;line-height:1.04;font-weight:700;letter-spacing:-.035em;margin
       <div class="demo">
         <div class="dline">8 月抖音做了 25 万，9 月大概能做 <span class="bl"></span></div>
         <div class="cands">
-          <div class="cand o1"><div class="w">28 万</div><div class="bar"></div><div class="p">62%</div></div>
-          <div class="cand o2"><div class="w">30 万</div><div class="bar"></div><div class="p">21%</div></div>
-          <div class="cand o3"><div class="w">24 万</div><div class="bar"></div><div class="p">11%</div></div>
+          <div class="cand o1"><div class="w">28 万</div><div class="bar"></div><div class="p">它最可能这么说</div></div>
+          <div class="cand o2"><div class="w">30 万</div><div class="bar"></div><div class="p">也可能</div></div>
+          <div class="cand o3"><div class="w">24 万</div><div class="bar"></div><div class="p">也可能</div></div>
         </div>
       </div>
     </div>
