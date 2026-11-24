@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中层管理培训 · 目标 · 执行 · 时间</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.topline{height:3px;background:var(--red)}
+
+.hd{background:var(--card);border-bottom:1px solid var(--line);padding:28px 0}
+.hd-in{max-width:1400px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:18px}
+.logo{flex:0 0 48px;height:48px;background:var(--red);color:#fff;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.ht h1{margin:0 0 4px;font-size:25px;font-weight:700;line-height:1.3}
+.ht p{margin:0;font-size:13px;color:var(--sub)}
+
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav-in{max-width:1400px;margin:0 auto;padding:10px 32px;display:flex;gap:8px;flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--ink);font-size:13px;padding:6px 13px;
+  border:1px solid var(--line);border-radius:5px;background:var(--card);line-height:1.4;white-space:nowrap}
+.nav a:hover{border-color:var(--red);color:var(--red)}
+.nav a b{color:var(--red);font-weight:700;margin-right:6px}
+
+.main{max-width:1400px;margin:0 auto;padding:20px 32px 90px}
+section{scroll-margin-top:70px;padding:36px 0 10px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+
+/* 章节头 */
+.chapter{display:flex;align-items:flex-start;gap:18px;margin-bottom:6px}
+.chno{font-size:52px;font-weight:700;line-height:.9;color:#f0dcd7;letter-spacing:-1px;flex:0 0 auto}
+.chtx h2{margin:0 0 4px;font-size:24px;font-weight:700;line-height:1.3}
+.chtx p{margin:0;font-size:13px;color:var(--sub)}
+
+.dh3{font-size:16px;font-weight:700;margin:30px 0 10px;padding-left:11px;border-left:3px solid var(--red);line-height:1.4}
+.dh3 span{font-size:12px;color:var(--sub);font-weight:400;margin-left:10px}
+
+.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);
+  border-radius:4px;padding:20px 24px;margin:14px 0 6px}
+.lead p{margin:0 0 8px;font-size:15px}
+.lead p:last-child{margin:0}
+.lead b{color:var(--red)}
+
+/* 公司三 O */
+.o3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:10px 0 18px}
+.oc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);
+  border-radius:4px;padding:16px 20px}
+.oc .k{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--red);margin-bottom:8px}
+.oc .v{font-size:20px;font-weight:700;line-height:1.3}
+.oc .s{font-size:13px;color:var(--sub);margin-top:6px}
+
+/* O / KR 两张卡 */
+.okr2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0 16px}
+.okc{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 24px}
+.okc .kl{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--red);margin-bottom:10px}
+.okc .kt{font-size:19px;font-weight:700;margin-bottom:10px;line-height:1.4}
+.okc .kd{font-size:14px;color:#3d3a36;line-height:1.75}
+
+.flow{background:var(--card);border:1px solid var(--line);border-radius:4px;
+  padding:14px 22px;font-size:14px;line-height:1.9;margin-top:16px}
+.flow b{color:var(--red)}
+.flow .fa{color:var(--sub);padding:0 9px}
+.flow .note{color:var(--sub);padding-left:14px;border-left:1px solid var(--line);margin-left:10px}
+
+/* 矩阵头 */
+.mtx th .ok{display:inline-block;background:var(--red);color:#fff;font-size:11px;
+  padding:1px 6px;border-radius:2px;margin-right:8px;letter-spacing:1px;vertical-align:1px}
+.mtx td.n{font-weight:700}
+.mtx td{line-height:1.65}
+
+/* 列头 */
+.colhead{display:grid;grid-template-columns:0.95fr 26px 1.35fr 26px 0.8fr 26px 1.25fr;
+  gap:0;margin:14px 0 6px}
+.colhead div{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--sub);padding-bottom:6px}
+
+/* 链路行 */
+.chain{display:grid;grid-template-columns:0.95fr 26px 1.35fr 26px 0.8fr 26px 1.25fr;
+  align-items:stretch;margin-bottom:12px}
+.nd{border-radius:4px;padding:13px 16px;display:flex;flex-direction:column;justify-content:center}
+.nd .t{font-size:16px;font-weight:700;line-height:1.4}
+.nd .s{font-size:12px;color:var(--sub);line-height:1.5;margin-top:5px}
+.nd .li{font-size:14px;line-height:1.65;color:#3d3a36}
+.nd .li span{display:block;padding-left:13px;position:relative}
+.nd .li span::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1px;background:var(--red)}
+.nd .li span b{color:var(--ink);font-weight:700}
+.nd-o{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red)}
+.nd .ob{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--red);margin-bottom:3px}
+.nd-k{background:var(--soft);border:1px solid transparent}
+.nd-p{background:var(--card);border:1px dashed var(--line)}
+.nd-r{background:var(--card);border:1px solid var(--line);border-bottom:2px solid var(--ink)}
+.ar{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:14px;font-weight:700}
+
+/* 表 */
+table{width:100%;border-collapse:collapse;margin:8px 0 0;font-size:14px}
+th{background:var(--head);text-align:left;padding:10px 12px;font-weight:700;
+  border-bottom:2px solid var(--line);border-top:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+td.n{font-weight:700;white-space:nowrap}
+
+/* PDCA 四格 */
+.p4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px 20px 22px;
+  display:flex;flex-direction:column}
+.pc .pl{font-size:38px;font-weight:700;color:var(--red);line-height:1;margin-bottom:12px}
+.pc .pn{font-size:13px;color:var(--sub);letter-spacing:2px;margin-bottom:12px}
+.pc .pd{font-size:14px;line-height:1.7;color:#3d3a36}
+.pc .bad{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);
+  font-size:12px;color:var(--sub);line-height:1.6}
+.pc .bad b{color:var(--red);font-weight:700}
+
+/* 步骤 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.st .sn{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--red);margin-bottom:8px}
+.st .sx{font-size:14.5px;font-weight:700;line-height:1.5}
+.st .sy{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.6}
+
+.rule{background:var(--soft);border-radius:4px;padding:14px 20px;margin-top:14px;
+  font-size:14px;color:#3d3a36;line-height:1.8}
+.rule b{color:var(--ink)}
+
+/* 四象限 */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 22px;min-height:150px}
+.q .qh{font-size:13px;font-weight:700;letter-spacing:1px;color:var(--sub);margin-bottom:12px}
+.q ul{list-style:none;margin:0;padding:0}
+.q li{font-size:14px;line-height:1.7;color:#3d3a36;padding:3px 0 3px 13px;position:relative}
+.q li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--sub)}
+.q.on{border:2px solid var(--red);padding:17px 21px}
+.q.on .qh{color:var(--red)}
+.q.on li{font-weight:700;color:var(--ink)}
+.q.on li::before{background:var(--red)}
+
+/* 时间块 */
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 20px}
+.wk .wn{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--sub);margin-bottom:10px}
+.wk .wx{font-size:16px;font-weight:700;line-height:1.5}
+.wk .wy{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.65}
+.wk.hi{border-left:4px solid var(--red);padding-left:17px}
+
+@media(max-width:900px){
+  .hd-in,.nav-in,.main{padding-left:16px;padding-right:16px}
+  .o3,.okr2,.p4,.steps,.week,.quad{grid-template-columns:1fr}
+  .colhead{display:none}
+  .chain{grid-template-columns:1fr;gap:6px}
+  .ar{justify-content:flex-start;padding:2px 0 2px 16px;height:22px}
+  .chno{font-size:38px}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header class="hd">
+  <div class="hd-in">
+    <div class="logo">O</div>
+    <div class="ht">
+      <h1>中层管理培训：目标 · 执行 · 时间</h1>
+      <p>四章 · OKR 是什么 → 目标怎么拆 → 执行怎么查 → 时间怎么排</p>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="#c1"><b>01</b>OKR 是什么</a>
+    <a href="#c2"><b>02</b>目标拆解</a>
+    <a href="#c3"><b>03</b>PDCA</a>
+    <a href="#c4"><b>04</b>时间管理</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ========== 01 OKR 是什么 ========== -->
+<section id="c1">
+  <div class="chapter">
+    <div class="chno">01</div>
+    <div class="chtx">
+      <h2>OKR 是什么</h2>
+      <p>先说清楚要什么，再谈怎么拆</p>
+    </div>
+  </div>
+
+  <div class="lead">
+    <p><b>目标说清楚，是管理的第一件事。</b></p>
+    <p>说不清要什么，后面拆得再细也是白拆。OKR 就是一套把"要什么"说清楚的办法，只有两个字母。</p>
+  </div>
+
+  <div class="okr2">
+    <div class="okc">
+      <div class="kl">O</div>
+      <div class="kt">方向</div>
+      <div class="kd">一句话，我们要去哪。<br>定性描述，不考核，但所有人都得看见同一句。</div>
+    </div>
+    <div class="okc">
+      <div class="kl">KR</div>
+      <div class="kt">可验证的结果</div>
+      <div class="kd">做到了长什么样，有数、有期限。<br>KR 才考核，而且必须别人也能验证。</div>
+    </div>
+  </div>
+
+  <div class="dh3">三条规矩</div>
+  <table>
+    <tr><th style="width:22%">规矩</th><th style="width:46%">什么意思</th><th>违反了会怎样</th></tr>
+    <tr><td class="n">不超过四条</td><td>一个 O 下面，KR 最多四条</td><td>多了就不是重点，什么都想要等于什么都不要</td></tr>
+    <tr><td class="n">别人能验证</td><td>KR 不能自己说了算，要能被查</td><td>年底只能靠印象打分，说不清做到没做到</td></tr>
+    <tr><td class="n">必须能对上</td><td>每条 KR 都要回答：撑的是上面哪个目标</td><td>各部门各定各的，年底对不上公司的账</td></tr>
+  </table>
+
+  <div class="dh3">OKR 和"只定一个数"差在哪</div>
+  <table>
+    <tr><th style="width:16%"></th><th style="width:40%">只定一个数</th><th>用 OKR</th></tr>
+    <tr><td class="n">写法</td><td>今年做 8000 万</td><td>业绩翻一番（O）＋ 新品 4000 万、毛利 50%（KR）</td></tr>
+    <tr><td class="n">关注点</td><td>完成没完成</td><td>为什么做、做到什么程度、靠什么做到</td></tr>
+    <tr><td class="n">层级关系</td><td>上下各定各的</td><td>上一层的 KR，就是下一层的 O</td></tr>
+    <tr><td class="n">复盘</td><td>年底算总账</td><td>按月、按季对，随时能调</td></tr>
+  </table>
+
+  <div class="flow">
+    <b>公司 O</b><span class="fa">→</span><b>部门 O</b><span class="fa">→</span><b>系列 O / 分工</b><span class="fa">→</span><b>关键结果</b><span class="fa">→</span><b>岗位</b><span class="fa">→</span><b>岗位 KR</b><span class="note">同一句话，向上看是 KR，向下看是 O</span>
+  </div>
+</section>
+
+<!-- ========== 02 目标拆解 ========== -->
+<section id="c2">
+  <div class="chapter">
+    <div class="chno">02</div>
+    <div class="chtx">
+      <h2>目标拆解</h2>
+      <p>25 年目标 · 从公司 O 一路拆到岗位 KR · 每一行从左往右读</p>
+    </div>
+  </div>
+
+  <div class="dh3">公司三个 O</div>
+  <div class="o3">
+    <div class="oc">
+      <div class="k">O1 · 公司</div>
+      <div class="v">业绩 8000 万</div>
+      <div class="s">24 年 4000 万，翻一番，增量全部来自新品</div>
+    </div>
+    <div class="oc">
+      <div class="k">O2 · 公司</div>
+      <div class="v">利润率 +5%</div>
+      <div class="s">比 24 年提升 5 个点，提毛利 + 降本两条路</div>
+    </div>
+    <div class="oc">
+      <div class="k">O3 · 公司</div>
+      <div class="v">标准化建设</div>
+      <div class="s">产品、运营、供应链、人资，各出一套标准</div>
+    </div>
+  </div>
+
+  <div class="dh3">部门 O 一览<span>四个部门各接哪几块</span></div>
+  <table class="mtx">
+    <tr>
+      <th style="width:13%">部门</th>
+      <th style="width:28%"><span class="ok">O1</span>业绩 8000 万</th>
+      <th style="width:28%"><span class="ok">O2</span>利润率 +5%</th>
+      <th style="width:31%"><span class="ok">O3</span>标准化建设</th>
+    </tr>
+    <tr>
+      <td class="n">产品部</td>
+      <td>新品销售 4000 万</td>
+      <td>新品毛利 ≥ 50%</td>
+      <td>品质标准化</td>
+    </tr>
+    <tr>
+      <td class="n">电商运营</td>
+      <td>销售达成<br>店铺量级上一台阶</td>
+      <td>控费比</td>
+      <td>产能与 SOP 配套</td>
+    </tr>
+    <tr>
+      <td class="n">供应链</td>
+      <td>供货保障</td>
+      <td>降本</td>
+      <td>流程与人员</td>
+    </tr>
+    <tr>
+      <td class="n">人力资源</td>
+      <td>编制与招聘到位</td>
+      <td>人工成本与预算</td>
+      <td>标准化人力配套</td>
+    </tr>
+  </table>
+
+  <div class="dh3">产品部<span>承接 O1 · O2 · O3</span></div>
+  <p style="font-size:12px;color:var(--sub);margin:0 0 4px">新品 4000 万先拆到系列，系列是系列 O；每个系列一个产品经理。岗位 KR 按数量、质量、业绩三条一起考</p>
+  <div class="colhead">
+    <div>部门 O / 系列 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">新品销售 4000 万</div><div class="s">红光系列</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>开 3 款品（Q1 两款 / Q2 一款）</span><span>客单价定在 399 档</span><span>单款成本 ≤ 190，守 50% 毛利</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">产品经理</div><div class="s">红光</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 3 款品</span><span><b>质量：</b>成本 ≤ 190、四项资料一次过</span><span><b>业绩：</b>红光系列每月目标达成</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">新品销售 4000 万</div><div class="s">电刺激系列</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>开 2 款品，上半年上完</span><span>客单价定在 299 档</span><span>单款成本 ≤ 145</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">产品经理</div><div class="s">电刺激</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 2 款品</span><span><b>质量：</b>成本 ≤ 145、四项资料一次过</span><span><b>业绩：</b>电刺激系列每月目标达成</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">新品销售 4000 万</div><div class="s">按摩系列</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>开 2 款品，二季度起</span><span>客单价定在 499 档</span><span>单款成本 ≤ 245</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">产品经理</div><div class="s">按摩</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 2 款品</span><span><b>质量：</b>成本 ≤ 245、四项资料一次过</span><span><b>业绩：</b>按摩系列每月目标达成</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">新品销售 4000 万</div><div class="s">延展系列</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>开 1–2 款补充品</span><span>成本不高于现有同档品</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">产品经理</div><div class="s">延展</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>按计划开出 1–2 款补充品</span><span><b>质量：</b>成本不超同档、四项资料一次过</span><span><b>业绩：</b>延展系列每月目标达成</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O2</div><div class="t">新品毛利 ≥ 50%</div><div class="s">全部系列</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>单款成本 ≤ 客单价 × 50%</span><span>每个系列月度毛利达标</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">各系列产品经理</div><div class="s">成本是自己的责任</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>成本：</b>单款成本 ≤ 客单 × 50%</span><span><b>毛利：</b>所辖系列每月毛利目标达成</span><span><b>复盘：</b>每季度给出降本点</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O3</div><div class="t">品质标准化</div><div class="s">全部系列</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>包装 / 说明书 / 合格证 / 合规，四项各一套模板</span><span>新品上架前四项必须齐</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">产品经理 + 品质对接</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>产出：</b>四项模板各一套并落地</span><span><b>执行：</b>新品上架前四项齐全</span><span><b>结果：</b>100% 合规，因资料问题零下架</span></div></div>
+  </div>
+
+  <div class="dh3">电商运营<span>承接 O1 · O2 · O3</span></div>
+  <p style="font-size:12px;color:var(--sub);margin:0 0 4px">三个岗位：运营管产出，美工管素材，客服管转化和售后。运营的 KR 要同时背 GMV、费比、爆品、新品起量</p>
+  <div class="colhead">
+    <div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">销售达成</div><div class="s">老品维持 + 新品 4000 万</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>GMV 达标</span><span>各系列达成率达标</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">运营</div><div class="s">店铺整体产出</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>GMV：</b>月度目标达成、各系列达成率</span><span><b>新品起量：</b>新品上架后按计划起量</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">店铺量级上一台阶</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>曝光 · 转化 · 复购 三率提升</span><span>三块分人负责</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">运营</div><div class="s">曝光 / 复购 / 私域</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>爆品：</b>按年度爆品目标出量</span><span><b>三率：</b>站外种草量、复购率、私域转化率</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O3</div><div class="t">产能与 SOP 配套</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>美工出图量达标</span><span>主图点击率达标</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">美工</div><div class="s">素材支撑转化</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>月度出图量达标</span><span><b>质量：</b>主图点击率达到标准</span><span><b>规范：</b>详情页按模板出，不改结构</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O3</div><div class="t">产能与 SOP 配套</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>客服配置到位</span><span>接待量与咨询量匹配</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">客服</div><div class="s">询单转化与售后</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>效率：</b>响应时长达标</span><span><b>转化：</b>询单转化率达标</span><span><b>质量：</b>好评率、退款率控制在标准内</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O2</div><div class="t">控费比</div><div class="s">利润这块由电商承接</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>费比控制在目标区间</span><span>推广投产比达标</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">运营</div><div class="s">投放与费用</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>费比：</b>月度费比不超目标</span><span><b>投产：</b>ROI 达到标准</span><span><b>结构：</b>推广费用按品分层投放</span></div></div>
+  </div>
+
+  <div class="dh3">供应链<span>承接 O1 · O2 · O3</span></div>
+  <p style="font-size:12px;color:var(--sub);margin:0 0 4px">三个岗位：仓储管货，发货管出，采购管价</p>
+  <div class="colhead">
+    <div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">供货保障</div><div class="s">入库及时、数据准确</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>库存准确率达标</span><span>账实相符，月度盘点零差异</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">仓储</div><div class="s">库存与库容</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>准确：</b>库存准确率达标</span><span><b>盘点：</b>账实相符，月度零差异</span><span><b>周转：</b>库容周转达标</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">供货保障</div><div class="s">交付体验</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>发货时效达标</span><span>错发漏发率控制在标准内</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">发货</div><div class="s">出库与配送</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>时效：</b>按承诺时效发出</span><span><b>质量：</b>错发漏发率控制在标准内</span><span><b>峰值：</b>大促期间不爆仓</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O2</div><div class="t">降本</div><div class="s">降本额 = 单品降幅 × 预估销量</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>降本金额达标</span><span>到货及时率达标</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">采购</div><div class="s">选品与议价</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>降本：</b>降本金额达成</span><span><b>交付：</b>到货及时率达标</span><span><b>质量：</b>来料合格率达标</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O3</div><div class="t">流程与人员</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>流程节点优化</span><span>人员调整到位</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">三个岗位</div><div class="s">各管一段</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>节点：</b>流程节点按计划完成</span><span><b>人岗：</b>人岗匹配，关键岗不缺位</span></div></div>
+  </div>
+
+  <div class="dh3">人力资源<span>承接 O1 · O2 · O3</span></div>
+  <p style="font-size:12px;color:var(--sub);margin:0 0 4px">三个岗位：招聘管进人，薪酬管成本，制度管标准</p>
+  <div class="colhead">
+    <div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O1</div><div class="t">编制与招聘到位</div><div class="s">关键岗按时到岗</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>按各部门人头定编制</span><span>关键岗按计划到岗</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">招聘</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>数量：</b>关键岗按计划到岗</span><span><b>效率：</b>招聘周期达标</span><span><b>成本：</b>招聘预算不超</span><span><b>质量：</b>试用期留存达标</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O2</div><div class="t">人工成本与预算</div><div class="s">进各部门财务预算</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>各部门人工成本核定</span><span>薪酬占收入比在区间内</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">薪酬绩效</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>成本：</b>人工成本占比在区间内</span><span><b>预算：</b>各部门预算核定完成</span><span><b>准确：</b>月度薪酬核算零差错</span></div></div>
+  </div>
+
+  <div class="chain">
+    <div class="nd nd-o"><div class="ob">O3</div><div class="t">标准化人力配套</div><div class="s">编制标准、制度落地</div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-k"><div class="li"><span>编制标准一套</span><span>制度按节点落地</span></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-p"><div class="t">制度与组织</div><div class="s"></div></div>
+    <div class="ar">→</div>
+    <div class="nd nd-r"><div class="li"><span><b>产出：</b>编制标准与制度文件落地</span><span><b>节点：</b>制度按计划节点完成</span><span><b>执行：</b>制度执行率达标</span></div></div>
+  </div>
+
+  <div class="dh3">岗位一览<span>15 个岗位</span></div>
+  <table>
+    <tr><th style="width:13%">部门</th><th style="width:17%">岗位</th><th style="width:20%">撑的部门 O</th><th>岗位 KR</th></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 红光</td><td>新品销售 4000 万</td><td>数量：开 3 款；质量：成本 ≤190、资料一次过；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 电刺激</td><td>新品销售 4000 万</td><td>数量：开 2 款；质量：成本 ≤145、资料一次过；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 按摩</td><td>新品销售 4000 万</td><td>数量：开 2 款；质量：成本 ≤245、资料一次过；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 · 延展</td><td>新品销售 4000 万</td><td>数量：开 1–2 款；质量：不超同档；业绩：系列每月达成</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理（全部）</td><td>新品毛利 ≥ 50%</td><td>成本：≤ 客单 ×50%；毛利：系列每月毛利达成；每季降本点</td></tr>
+    <tr><td class="n">产品部</td><td>产品经理 + 品质对接</td><td>品质标准化</td><td>产出：四项模板；执行：上架前齐；结果：100% 合规零下架</td></tr>
+    <tr><td class="n">电商运营</td><td>运营</td><td>销售达成、量级提升、控费比</td><td>GMV 月度达成；费比不超；爆品出量；新品起量达标</td></tr>
+    <tr><td class="n">电商运营</td><td>美工</td><td>产能与 SOP 配套</td><td>数量：出图量；质量：主图点击率；规范：详情页按模板</td></tr>
+    <tr><td class="n">电商运营</td><td>客服</td><td>产能与 SOP 配套</td><td>效率：响应时长；转化：询单转化率；质量：好评率、退款率</td></tr>
+    <tr><td class="n">供应链</td><td>仓储</td><td>供货保障</td><td>准确：库存准确率；盘点：账实相符；周转：库容周转</td></tr>
+    <tr><td class="n">供应链</td><td>发货</td><td>供货保障</td><td>时效：按承诺发出；质量：错发率；峰值：大促不爆仓</td></tr>
+    <tr><td class="n">供应链</td><td>采购</td><td>降本、供货保障</td><td>降本：金额达成；交付：到货及时率；质量：来料合格率</td></tr>
+    <tr><td class="n">人力资源</td><td>招聘</td><td>编制与招聘到位</td><td>数量：关键岗到岗；效率：周期；成本：预算；质量：留存</td></tr>
+    <tr><td class="n">人力资源</td><td>薪酬绩效</td><td>人工成本与预算</td><td>成本：占比达标；预算：核定完成；准确：核算零差错</td></tr>
+    <tr><td class="n">人力资源</td><td>制度与组织</td><td>标准化人力配套</td><td>产出：标准文件；节点：按期完成；执行：执行率</td></tr>
+  </table>
+</section>
+
+<!-- ========== 03 PDCA ========== -->
+<section id="c3">
+  <div class="chapter">
+    <div class="chno">03</div>
+    <div class="chtx">
+      <h2>PDCA：执行怎么查</h2>
+      <p>结果只能等，过程才能管</p>
+    </div>
+  </div>
+
+  <div class="lead">
+    <p>目标拆完只是说清楚了"要什么"。真正决定能不能做到的，是中间有没有人盯。</p>
+    <p>PDCA 就是把过程盯起来的那套动作。四个字母都认识，难的是<b>把检查点落下来</b>。</p>
+  </div>
+
+  <div class="dh3">四步<span>每一步都有一件最容易漏掉的事</span></div>
+  <div class="p4">
+    <div class="pc">
+      <div class="pl">P</div>
+      <div class="pn">计划</div>
+      <div class="pd">定目标，定动作，<b>定检查点</b>。<br>目标要能对上公司 O，动作要能落到人。</div>
+      <div class="bad"><b>最容易漏：</b>计划里没写什么时候看、看什么数。写完就挂墙上。</div>
+    </div>
+    <div class="pc">
+      <div class="pl">D</div>
+      <div class="pn">执行</div>
+      <div class="pd">按计划做，<b>过程留痕</b>。<br>拜访有记录，进度有节点，做过的事能被看见。</div>
+      <div class="bad"><b>最容易漏：</b>做了没记，到检查时只能凭印象说，说不清。</div>
+    </div>
+    <div class="pc">
+      <div class="pl">C</div>
+      <div class="pn">检查</div>
+      <div class="pd">到点对数，<b>只看差异</b>。<br>差异是信息，不是追责的由头。</div>
+      <div class="bad"><b>最容易漏：</b>要么不检查，要么只对态度不对数。</div>
+    </div>
+    <div class="pc">
+      <div class="pl">A</div>
+      <div class="pn">处理</div>
+      <div class="pd">有效的<b>固化成标准动作</b>，无效的当轮改掉，带进下一轮。</div>
+      <div class="bad"><b>最容易漏：</b>改完不写进标准，下一轮换个坑再踩一次。</div>
+    </div>
+  </div>
+  <div class="rule"><b>一句话记住：</b>没有检查点的计划，等于没计划。</div>
+
+  <div class="dh3">检查点<span>每个目标都要落到一行</span></div>
+  <table>
+    <tr><th style="width:24%">目标</th><th style="width:30%">看什么</th><th style="width:18%">多久看</th><th>谁看</th></tr>
+    <tr><td class="n">业绩 8000 万</td><td>GMV、各系列达成率</td><td>每周</td><td>运营 + 老板</td></tr>
+    <tr><td class="n">新品毛利 ≥ 50%</td><td>新品实际毛利率、单款成本</td><td>每月</td><td>产品 + 财务</td></tr>
+    <tr><td class="n">供应链降本</td><td>降本金额、达成率</td><td>每月</td><td>供应链 + 财务</td></tr>
+    <tr><td class="n">控费比</td><td>费比、ROI</td><td>每月</td><td>运营 + 财务</td></tr>
+    <tr><td class="n">招聘到位</td><td>关键岗到岗率、招聘周期</td><td>每月</td><td>人资</td></tr>
+    <tr><td class="n">标准化建设</td><td>节点完成情况</td><td>每季度</td><td>总经办</td></tr>
+  </table>
+  <div class="rule">
+    <b>三个坑：</b>一是只有月看没有周看，问题发现得太晚；二是看数的人不是管人的人，看了也改不动；三是数是从别人嘴里问来的，不是表里出来的。
+  </div>
+
+  <div class="dh3">周会怎么开<span>只开三个数</span></div>
+  <div class="steps">
+    <div class="st">
+      <div class="sn">第一步</div>
+      <div class="sx">对数</div>
+      <div class="sy">只报三个数：GMV、新品毛利、降本进度。其他人不讲。</div>
+    </div>
+    <div class="st">
+      <div class="sn">第二步</div>
+      <div class="sx">找差异</div>
+      <div class="sy">哪个数没到，差多少，为什么差。只讲原因，不讲苦劳。</div>
+    </div>
+    <div class="st">
+      <div class="sn">第三步</div>
+      <div class="sx">定动作</div>
+      <div class="sy">每个差异配一个动作：谁做、什么时候做、做到什么程度。</div>
+    </div>
+    <div class="st">
+      <div class="sn">第四步</div>
+      <div class="sx">记下来</div>
+      <div class="sy">当场记，下周同一时间对上次的动作有没有做。</div>
+    </div>
+  </div>
+  <div class="rule">
+    <b>不开的：</b>部门轮流汇报、讲过程多辛苦、讨论不在三个数里的事。<br>
+    <b>要开的：</b>差异、原因、下一步。一小时以内结束。
+  </div>
+</section>
+
+<!-- ========== 04 时间管理 ========== -->
+<section id="c4">
+  <div class="chapter">
+    <div class="chno">04</div>
+    <div class="chtx">
+      <h2>时间管理：中层的时间该花在哪</h2>
+      <p>自己也有活，还要盯团队。不排，就永远被救火占满</p>
+    </div>
+  </div>
+
+  <div class="dh3">四象限</div>
+  <div class="quad">
+    <div class="q">
+      <div class="qh">重要 · 紧急</div>
+      <ul>
+        <li>客户投诉、交期卡点</li>
+        <li>突发的质量问题</li>
+        <li>临时的投标、报价</li>
+      </ul>
+    </div>
+    <div class="q on">
+      <div class="qh">重要 · 不紧急　← 管理者的活在这里</div>
+      <ul>
+        <li>带人、教方法</li>
+        <li>做计划、定标准</li>
+        <li>复盘、看数据找方向</li>
+      </ul>
+    </div>
+    <div class="q">
+      <div class="qh">紧急 · 不重要</div>
+      <ul>
+        <li>临时会议</li>
+        <li>别人插队的事</li>
+        <li>各种要签字的单子</li>
+      </ul>
+    </div>
+    <div class="q">
+      <div class="qh">不重要 · 不紧急</div>
+      <ul>
+        <li>漫无目的地刷数据</li>
+        <li>无效社交</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rule">
+    <b>为什么强调第二格：</b>第一格的活，不做今天就会出事，所以一定会做。第二格的活，不做这一周也不会出事，所以永远排在最后。等到它变成第一格，就已经晚了。
+  </div>
+
+  <div class="dh3">每周怎么排<span>先锁时间，再谈别的</span></div>
+  <div class="week">
+    <div class="wk hi">
+      <div class="wn">每周固定</div>
+      <div class="wx">锁一块"带人"的时间</div>
+      <div class="wy">两小时，一对一或小组，讲方法、看进展、解决卡点。锁在日历上，别人不能占。</div>
+    </div>
+    <div class="wk hi">
+      <div class="wn">每周固定</div>
+      <div class="wx">锁一块"复盘"的时间</div>
+      <div class="wy">两小时，看数、找差异、定下周动作。为周会做准备，不是开会本身。</div>
+    </div>
+    <div class="wk">
+      <div class="wn">剩下的时间</div>
+      <div class="wx">留给救火和日常</div>
+      <div class="wy">救火的活往剩下的时间里塞。塞不下，说明资源不够，往上报，不要自己硬扛。</div>
+    </div>
+  </div>
+  <div class="rule">
+    <b>管理者的时间，要花在"让别人能干成"上。</b>自己冲在前面干得再多，团队不长本事，明年还是这一摊。
+  </div>
+</section>
+
+</main>
+</body>
+</html>
