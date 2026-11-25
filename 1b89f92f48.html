@@ -128,7 +128,9 @@ td.n{font-weight:700;white-space:nowrap}
 
 /* 四象限 */
 .quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-.q{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 22px;min-height:150px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 22px;min-height:150px;
+  display:flex;flex-direction:column;justify-content:center}
+.q .qsay{font-size:15px;font-weight:700;margin:0;line-height:1.7;color:#3d3a36}
 .q .qh{font-size:13px;font-weight:700;letter-spacing:1px;color:var(--sub);margin-bottom:12px}
 .q ul{list-style:none;margin:0;padding:0}
 .q li{font-size:14px;line-height:1.7;color:#3d3a36;padding:3px 0 3px 13px;position:relative}
@@ -137,6 +139,18 @@ td.n{font-weight:700;white-space:nowrap}
 .q.on .qh{color:var(--red)}
 .q.on li{font-weight:700;color:var(--ink)}
 .q.on li::before{background:var(--red)}
+
+/* 工作类型 */
+.types{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.tp{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.tp .tn{font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px;letter-spacing:.5px}
+.tp .td{font-size:12px;color:#3d3a36;line-height:1.7}
+
+/* 标签块 */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:20px;
+  background:var(--card);color:#3d3a36;line-height:1.6}
+.q.on .chip{border-color:var(--red);color:var(--red);font-weight:700}
 
 /* 时间块 */
 .week{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
@@ -600,42 +614,107 @@ td.n{font-weight:700;white-space:nowrap}
     </div>
   </div>
 
-  <div class="dh3">四象限</div>
+  <div class="dh3">日常都在干什么<span>先看清楚一天的时间去哪了</span></div>
+  <div class="types">
+    <div class="tp">
+      <div class="tn">带人</div>
+      <div class="td">带新人上手、教方法、看进展、做绩效面谈</div>
+    </div>
+    <div class="tp">
+      <div class="tn">自己的业务</div>
+      <div class="td">自己负责的品、客户、项目，还得亲自干</div>
+    </div>
+    <div class="tp">
+      <div class="tn">内部会议</div>
+      <div class="td">日会、周会、月度经营会、复盘会</div>
+    </div>
+    <div class="tp">
+      <div class="tn">跨部门沟通</div>
+      <div class="td">对齐口径、要资源、推协同、处理扯皮</div>
+    </div>
+    <div class="tp">
+      <div class="tn">对上</div>
+      <div class="td">汇报、请示、写材料、准备数据</div>
+    </div>
+    <div class="tp">
+      <div class="tn">对外</div>
+      <div class="td">客户、供应商、合作方</div>
+    </div>
+    <div class="tp">
+      <div class="tn">突发处理</div>
+      <div class="td">投诉、交期卡点、质量异常</div>
+    </div>
+    <div class="tp">
+      <div class="tn">事务性</div>
+      <div class="td">审批、签字、报表</div>
+    </div>
+  </div>
+
+  <div class="dh3">四象限<span>先记住四个判断</span></div>
   <div class="quad">
     <div class="q">
       <div class="qh">重要 · 紧急</div>
-      <ul>
-        <li>客户投诉、交期卡点</li>
-        <li>突发的质量问题</li>
-        <li>临时的投标、报价</li>
-      </ul>
+      <p class="qsay">不做，今天就出事</p>
     </div>
     <div class="q on">
       <div class="qh">重要 · 不紧急　← 管理者的活在这里</div>
-      <ul>
-        <li>带人、教方法</li>
-        <li>做计划、定标准</li>
-        <li>复盘、看数据找方向</li>
-      </ul>
+      <p class="qsay">不做，今年才出事</p>
     </div>
     <div class="q">
       <div class="qh">紧急 · 不重要</div>
-      <ul>
-        <li>临时会议</li>
-        <li>别人插队的事</li>
-        <li>各种要签字的单子</li>
-      </ul>
+      <p class="qsay">不做，也没人记得</p>
     </div>
     <div class="q">
       <div class="qh">不重要 · 不紧急</div>
-      <ul>
-        <li>漫无目的地刷数据</li>
-        <li>无效社交</li>
-      </ul>
+      <p class="qsay">做了，也没用</p>
     </div>
   </div>
   <div class="rule">
     <b>为什么强调第二格：</b>第一格的活，不做今天就会出事，所以一定会做。第二格的活，不做这一周也不会出事，所以永远排在最后。等到它变成第一格，就已经晚了。
+  </div>
+
+  <div class="dh3">上面这些事，落在哪一格<span>同一件事，放在不同位置，性质就不一样</span></div>
+  <div class="quad">
+    <div class="q">
+      <div class="qh">重要 · 紧急</div>
+      <div class="chips">
+        <span class="chip">客户投诉</span>
+        <span class="chip">交期卡点</span>
+        <span class="chip">质量异常</span>
+        <span class="chip">老板临时要的数</span>
+      </div>
+    </div>
+    <div class="q on">
+      <div class="qh">重要 · 不紧急　← 管理者的活在这里</div>
+      <div class="chips">
+        <span class="chip">带新人、教方法</span>
+        <span class="chip">绩效面谈</span>
+        <span class="chip">做计划、定标准</span>
+        <span class="chip">复盘、看数</span>
+        <span class="chip">把跨部门规则定下来</span>
+      </div>
+    </div>
+    <div class="q">
+      <div class="qh">紧急 · 不重要</div>
+      <div class="chips">
+        <span class="chip">大部分临时会议</span>
+        <span class="chip">别人拉你进的会</span>
+        <span class="chip">代签的字、代审的单</span>
+        <span class="chip">群里随时找你的事</span>
+      </div>
+    </div>
+    <div class="q">
+      <div class="qh">不重要 · 不紧急</div>
+      <div class="chips">
+        <span class="chip">无目的刷后台数据</span>
+        <span class="chip">陪会</span>
+        <span class="chip">重复要的报表</span>
+        <span class="chip">无效社交</span>
+      </div>
+    </div>
+  </div>
+  <div class="rule">
+    <b>四格看下来，有两件事最值得警惕：</b>一是"自己的业务"和"突发处理"最容易把人整个吃掉；二是"带人"和"定规则"永远排不进来。前者今天不做今天就出事，后者今年不做明年才出事。
   </div>
 
   <div class="dh3">每周怎么排<span>先锁时间，再谈别的</span></div>
