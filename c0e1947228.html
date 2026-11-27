@@ -71,6 +71,18 @@ tr.hl td{background:var(--card)}
 .line{margin-top:18px;background:var(--soft);border-left:4px solid var(--red);
   padding:16px 24px;font-size:19px;font-weight:700;line-height:1.5}
 
+
+/* 章节页 */
+.chap{display:flex;align-items:flex-start;gap:26px;margin-top:18px}
+.chnum{font-size:88px;font-weight:700;line-height:.9;color:#f0dcd7;letter-spacing:-2px}
+.ckick{font-size:13px;letter-spacing:3px;color:var(--red);font-weight:700;margin-bottom:8px}
+.cdesc{font-size:15px;color:var(--sub);margin-top:12px;line-height:1.6}
+.chap + .body .mid{margin-top:0;margin-bottom:auto}
+.tcard{min-height:300px;display:flex;flex-direction:column;justify-content:center}
+.points{min-height:150px;display:flex;flex-direction:column;justify-content:center;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 20px}
+.points .pt{font-size:15px;font-weight:700;line-height:1.4}
+.points .pd{font-size:12.5px;color:var(--sub);margin-top:5px;line-height:1.5}
+
 /* 底部 */
 .foot{position:absolute;left:84px;right:170px;bottom:22px;display:flex;justify-content:space-between;
   align-items:center;font-size:13px;color:var(--sub);letter-spacing:.5px}
@@ -107,23 +119,43 @@ tr.hl td{background:var(--card)}
 <!-- 2 -->
 <section class="s">
   <div class="kick">目录</div>
-  <h2>四章，一条线</h2>
+  <h2>三章，一条线</h2>
   <div class="body">
     <div class="mid">
-      <div class="g2" style="gap:16px">
-        <div class="card o"><div class="tag">01</div><h3>OKR 是什么</h3><div class="note">先说清楚要什么</div></div>
-        <div class="card o"><div class="tag">02</div><h3>目标拆解</h3><div class="note">从公司 O 一路拆到岗位 KR</div></div>
-        <div class="card o"><div class="tag">03</div><h3>PDCA</h3><div class="note">执行怎么查</div></div>
-        <div class="card o"><div class="tag">04</div><h3>时间管理</h3><div class="note">中层的时间该花在哪</div></div>
+      <div class="g3" style="gap:18px">
+        <div class="card o tcard"><div class="tag">第一章</div><h3 style="font-size:19px">目标</h3><div class="note">OKR 是什么，再一路拆到岗位 KR</div></div>
+        <div class="card o tcard"><div class="tag">第二章</div><h3 style="font-size:19px">执行</h3><div class="note">PDCA，重点在检查点</div></div>
+        <div class="card o tcard"><div class="tag">第三章</div><h3 style="font-size:19px">时间</h3><div class="note">中层的时间该花在哪</div></div>
       </div>
     </div>
-    <div class="line">后面三章都在回答一个问题：拆完之后，怎么让它真的发生。</div>
+    <div class="line">后面两章都在回答一个问题：拆完之后，怎么让它真的发生。</div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="chap">
+    <div class="chnum">01</div>
+    <div>
+      <div class="ckick">第一章</div>
+      <h2 style="font-size:42px">目标</h2>
+      <div class="cdesc">先说清楚要什么，再一路拆到每个人头上</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="mid">
+      <div class="g2" style="gap:14px">
+        <div class="points"><div class="pt">OKR 是什么</div><div class="pd">O 是方向，KR 是可验证的结果</div></div>
+        <div class="points"><div class="pt">对上是 KR，对下是 O</div><div class="pd">同一句话，两个身份</div></div>
+        <div class="points"><div class="pt">公司三个 O</div><div class="pd">业绩 8000 万、利润率 +5%、标准化</div></div>
+        <div class="points"><div class="pt">拆到岗位</div><div class="pd">四个部门，15 个岗位，每个都有 KR</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- 3 -->
 <section class="s">
-  <div class="kick">01 · OKR 是什么</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>OKR：只有两个字母</h2>
   <div class="sub">先把要什么说清楚，再谈怎么拆</div>
   <div class="body">
@@ -141,7 +173,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 4 -->
 <section class="s">
-  <div class="kick">01 · OKR 是什么</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>同一句话，向上看是 KR，向下看是 O</h2>
   <div class="sub">这是整套拆解的地基</div>
   <div class="body">
@@ -172,7 +204,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 5 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>25 年，公司三个 O</h2>
   <div class="sub">24 年 4000 万，25 年翻一番</div>
   <div class="body">
@@ -192,7 +224,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 6 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>部门 O 一览</h2>
   <div class="sub">四个部门各接哪几块</div>
   <div class="body">
@@ -211,7 +243,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 7 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>产品部：先拆到系列</h2>
   <div class="sub">系列是系列 O，每个系列一个产品经理；岗位 KR 按数量、质量、业绩一起考</div>
   <div class="body">
@@ -257,7 +289,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 8 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>产品部：接业绩，也接利润</h2>
   <div class="sub">毛利和品质不挂在业绩上，是另外两个 O</div>
   <div class="body">
@@ -287,7 +319,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 9 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>电商运营：三个岗位</h2>
   <div class="sub">运营管产出，美工管素材，客服管转化和售后</div>
   <div class="body">
@@ -342,7 +374,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 10 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>供应链：仓储、发货、采购</h2>
   <div class="sub">仓储管货，发货管出，采购管价</div>
   <div class="body">
@@ -388,7 +420,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 11 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>人力资源：把结论收成一本账</h2>
   <div class="sub">招聘管进人，薪酬管成本，制度管标准</div>
   <div class="body">
@@ -425,7 +457,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 12 -->
 <section class="s">
-  <div class="kick">02 · 目标拆解</div>
+  <div class="kick">第一章 · 目标</div>
   <h2>岗位一览</h2>
   <div class="sub">15 个岗位，每个岗位一行</div>
   <div class="body">
@@ -452,9 +484,29 @@ tr.hl td{background:var(--card)}
   </div>
 </section>
 
+<section class="s">
+  <div class="chap">
+    <div class="chnum">02</div>
+    <div>
+      <div class="ckick">第二章</div>
+      <h2 style="font-size:42px">执行</h2>
+      <div class="cdesc">计划写完只是开始，中间得有人盯</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="mid">
+      <div class="g2" style="gap:14px">
+        <div class="points"><div class="pt">PDCA 四步</div><div class="pd">计划、执行、检查、处理</div></div>
+        <div class="points"><div class="pt">检查点</div><div class="pd">什么时候看、看什么数、谁看</div></div>
+        <div class="points"><div class="pt">周会怎么开</div><div class="pd">只开三个数，不搞轮流汇报</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 13 -->
 <section class="s">
-  <div class="kick">03 · PDCA</div>
+  <div class="kick">第二章 · 执行</div>
   <h2>执行怎么查：四步</h2>
   <div class="sub">结果只能等，过程才能管</div>
   <div class="body">
@@ -482,7 +534,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 14 -->
 <section class="s">
-  <div class="kick">03 · PDCA</div>
+  <div class="kick">第二章 · 执行</div>
   <h2>检查点：每个目标落到一行</h2>
   <div class="sub">三个空：看什么数、多久看、谁看</div>
   <div class="body">
@@ -503,7 +555,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 15 -->
 <section class="s">
-  <div class="kick">03 · PDCA</div>
+  <div class="kick">第二章 · 执行</div>
   <h2>周会怎么开：只开三个数</h2>
   <div class="sub">最容易开的会，是各部门轮流汇报，开完什么也没解决</div>
   <div class="body">
@@ -523,9 +575,30 @@ tr.hl td{background:var(--card)}
   </div>
 </section>
 
+<section class="s">
+  <div class="chap">
+    <div class="chnum">03</div>
+    <div>
+      <div class="ckick">第三章</div>
+      <h2 style="font-size:42px">时间</h2>
+      <div class="cdesc">自己也有活，还要盯团队，不排就被救火占满</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="mid">
+      <div class="g2" style="gap:14px">
+        <div class="points"><div class="pt">日常八类</div><div class="pd">带人、业务、会议、跨部门、对上、对外、突发、事务</div></div>
+        <div class="points"><div class="pt">四象限</div><div class="pd">四句判断：今天出事 / 今年才出事</div></div>
+        <div class="points"><div class="pt">落在哪一格</div><div class="pd">把日常的活一个个放进去</div></div>
+        <div class="points"><div class="pt">每周怎么排</div><div class="pd">先锁两块时间：带人、复盘</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 16 -->
 <section class="s">
-  <div class="kick">04 · 时间管理</div>
+  <div class="kick">第三章 · 时间</div>
   <h2>日常都在干什么</h2>
   <div class="sub">先看清楚一天的时间去哪了</div>
   <div class="body">
@@ -547,7 +620,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 17 -->
 <section class="s">
-  <div class="kick">04 · 时间管理</div>
+  <div class="kick">第三章 · 时间</div>
   <h2>四象限：先记住四个判断</h2>
   <div class="body">
     <div class="mid">
@@ -572,7 +645,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 18 -->
 <section class="s">
-  <div class="kick">04 · 时间管理</div>
+  <div class="kick">第三章 · 时间</div>
   <h2>上面这些事，落在哪一格</h2>
   <div class="sub">同一件事，放在不同位置，性质就不一样</div>
   <div class="body">
@@ -598,7 +671,7 @@ tr.hl td{background:var(--card)}
 
 <!-- 19 -->
 <section class="s">
-  <div class="kick">04 · 时间管理</div>
+  <div class="kick">第三章 · 时间</div>
   <h2>每周怎么排：先锁时间</h2>
   <div class="sub">不锁在日历上，就等于没有安排</div>
   <div class="body">
