@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中层管理培训 · 目标 · 执行 · 时间</title>
+<style>
+:root{
+  --bg:#faf9f7; --ink:#1e1c1a; --sub:#6d6964; --line:#e3ddd6;
+  --card:#ffffff; --red:#d32f10; --head:#f2eeea; --soft:#f5f2ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#141312;
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--ink);-webkit-font-smoothing:antialiased}
+#stage{position:fixed;left:50%;top:50%;width:1600px;height:900px;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:var(--bg);overflow:hidden}
+
+.s{position:absolute;inset:0;padding:54px 84px 76px;display:none;flex-direction:column}
+.s.on{display:flex;animation:in .22s ease-out}
+@keyframes in{from{opacity:0}to{opacity:1}}
+
+.kick{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--sub);letter-spacing:1px;margin-bottom:12px}
+.kick::before{content:"";width:4px;height:15px;background:var(--red)}
+h2{font-size:36px;font-weight:700;line-height:1.3;letter-spacing:.5px}
+.sub{margin-top:12px;font-size:17px;color:var(--sub);line-height:1.6}
+.body{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:26px}
+.mid{margin:auto 0}
+
+/* 卡片 */
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 24px}
+.card.o{border-left:5px solid var(--red)}
+.card.soft{background:var(--soft);border-color:transparent}
+.card.bot{border-bottom:3px solid var(--ink)}
+.card.dash{border:1px dashed var(--line)}
+.card .tag{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--red);margin-bottom:6px}
+.card h3{font-size:17px;font-weight:700;line-height:1.4}
+.card .note{font-size:13px;color:var(--sub);line-height:1.5;margin-top:5px}
+.card ul{list-style:none}
+.card li{font-size:13px;line-height:1.6;color:#3d3a36;position:relative;padding-left:12px;margin-top:3px}
+.card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--red)}
+.card li b{color:var(--ink)}
+
+/* 链 */
+.ch{display:grid;grid-template-columns:2.05fr 26px 3.75fr 26px 1.75fr 26px 2.9fr;
+  gap:0;align-items:stretch;flex:1;margin-bottom:11px}
+.ch:last-child{margin-bottom:0}
+.ar{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:16px;font-weight:700}
+.colhead{display:grid;grid-template-columns:2.05fr 26px 3.75fr 26px 1.75fr 26px 2.9fr;margin-bottom:8px}
+.colhead div{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--sub)}
+
+/* 表 */
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{background:var(--head);text-align:left;padding:12px 14px;font-weight:700;
+  border-bottom:1px solid var(--line);letter-spacing:.5px;color:var(--sub);font-size:13px}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+td.n{font-weight:700}
+tr.hl td{background:var(--card)}
+
+/* 网格 */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+/* 大字 */
+.big{font-size:44px;font-weight:700;line-height:1.1}
+.say{font-size:24px;font-weight:700;line-height:1.5}
+
+/* 句子条 */
+.line{margin-top:18px;background:var(--soft);border-left:4px solid var(--red);
+  padding:16px 24px;font-size:19px;font-weight:700;line-height:1.5}
+
+/* 底部 */
+.foot{position:absolute;left:84px;right:170px;bottom:22px;display:flex;justify-content:space-between;
+  align-items:center;font-size:13px;color:var(--sub);letter-spacing:.5px}
+.foot b{color:var(--ink)}
+#prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--red);transition:width .22s}
+
+/* 控件 */
+.ctrl{position:absolute;right:20px;bottom:16px;display:flex;gap:8px;z-index:50}
+.ctrl button{width:38px;height:38px;border:1px solid #3a3733;background:#242220;color:#ddd;
+  border-radius:6px;font-size:16px;cursor:pointer;line-height:1}
+.ctrl button:hover{border-color:var(--red);color:#fff}
+
+/* 封面 */
+.cover{justify-content:center;padding-left:130px}
+.cover .t0{font-size:15px;letter-spacing:4px;color:var(--sub);margin-bottom:20px}
+.cover h1{font-size:64px;font-weight:700;line-height:1.15;letter-spacing:1px}
+.cover .t1{margin-top:18px;font-size:22px;color:var(--sub)}
+.cover .rule{width:70px;height:4px;background:var(--red);margin-top:34px}
+.cover .t2{position:absolute;left:130px;bottom:80px;font-size:14px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 -->
+<section class="s on cover">
+  <div class="t0">中层管理培训 · 2026.11</div>
+  <h1>目标 · 执行 · 时间</h1>
+  <div class="t1">从公司目标到每个人的动作</div>
+  <div class="rule"></div>
+  <div class="t2">分享人：陈嘉男　·　← → 或点右下角翻页</div>
+</section>
+
+<!-- 2 -->
+<section class="s">
+  <div class="kick">目录</div>
+  <h2>四章，一条线</h2>
+  <div class="body">
+    <div class="mid">
+      <div class="g2" style="gap:16px">
+        <div class="card o"><div class="tag">01</div><h3>OKR 是什么</h3><div class="note">先说清楚要什么</div></div>
+        <div class="card o"><div class="tag">02</div><h3>目标拆解</h3><div class="note">从公司 O 一路拆到岗位 KR</div></div>
+        <div class="card o"><div class="tag">03</div><h3>PDCA</h3><div class="note">执行怎么查</div></div>
+        <div class="card o"><div class="tag">04</div><h3>时间管理</h3><div class="note">中层的时间该花在哪</div></div>
+      </div>
+    </div>
+    <div class="line">后面三章都在回答一个问题：拆完之后，怎么让它真的发生。</div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="s">
+  <div class="kick">01 · OKR 是什么</div>
+  <h2>OKR：只有两个字母</h2>
+  <div class="sub">先把要什么说清楚，再谈怎么拆</div>
+  <div class="body">
+    <div class="mid">
+      <div class="g2">
+        <div class="card"><div class="tag">O</div><h3 style="font-size:22px">方向</h3>
+          <div class="note" style="font-size:15px;margin-top:10px">一句话，我们要去哪。定性描述，不考核，但所有人都得看见同一句。</div></div>
+        <div class="card"><div class="tag">KR</div><h3 style="font-size:22px">可验证的结果</h3>
+          <div class="note" style="font-size:15px;margin-top:10px">做到了长什么样，有数、有期限。KR 才考核，而且必须别人也能验证。</div></div>
+      </div>
+    </div>
+    <div class="line">OKR 的用处只有一个：让每个人知道自己在撑谁。</div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="s">
+  <div class="kick">01 · OKR 是什么</div>
+  <h2>同一句话，向上看是 KR，向下看是 O</h2>
+  <div class="sub">这是整套拆解的地基</div>
+  <div class="body">
+    <div class="mid">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="card" style="flex:1;text-align:center;padding:18px 8px"><h3 style="font-size:16px">公司 O</h3></div>
+        <div class="ar">→</div>
+        <div class="card" style="flex:1;text-align:center;padding:18px 8px"><h3 style="font-size:16px">部门 O</h3></div>
+        <div class="ar">→</div>
+        <div class="card" style="flex:1;text-align:center;padding:18px 8px"><h3 style="font-size:16px">系列 O / 分工</h3></div>
+        <div class="ar">→</div>
+        <div class="card" style="flex:1;text-align:center;padding:18px 8px"><h3 style="font-size:16px">关键结果</h3></div>
+        <div class="ar">→</div>
+        <div class="card" style="flex:1;text-align:center;padding:18px 8px"><h3 style="font-size:16px">岗位</h3></div>
+        <div class="ar">→</div>
+        <div class="card" style="flex:1;text-align:center;padding:18px 8px"><h3 style="font-size:16px">岗位 KR</h3></div>
+      </div>
+      <div class="card soft" style="margin-top:26px">
+        <div style="font-size:16px;line-height:2">
+          公司要的「新品 4000 万」，落到产品部就是产品部的 O。<br>
+          产品部要的「各系列业绩达标」，落到产品经理就是他的 O。<br>
+          <b style="color:var(--red)">每一层都要能回答一句：我这一格，撑着上面哪一格。</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>25 年，公司三个 O</h2>
+  <div class="sub">24 年 4000 万，25 年翻一番</div>
+  <div class="body">
+    <div class="mid">
+      <div class="g3">
+        <div class="card o"><div class="tag">O1 · 业绩</div><div class="big">8000 万</div>
+          <div class="note" style="font-size:14px;margin-top:12px">比 24 年翻一番，增量全部来自新品</div></div>
+        <div class="card o"><div class="tag">O2 · 利润</div><div class="big">+5%</div>
+          <div class="note" style="font-size:14px;margin-top:12px">比 24 年提升 5 个点，提毛利 + 降本两条路</div></div>
+        <div class="card o"><div class="tag">O3 · 标准化</div><div class="big">1 套</div>
+          <div class="note" style="font-size:14px;margin-top:12px">产品、运营、供应链、人资，各出一套标准</div></div>
+      </div>
+    </div>
+    <div class="line">三个 O 是三条主线，四个部门横着接。所以这张图是网，不是树。</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>部门 O 一览</h2>
+  <div class="sub">四个部门各接哪几块</div>
+  <div class="body">
+    <div class="mid">
+      <table>
+        <tr><th style="width:14%">部门</th><th style="width:30%">O1 业绩 8000 万</th><th style="width:24%">O2 利润率 +5%</th><th>O3 标准化</th></tr>
+        <tr class="hl"><td class="n">产品部</td><td>新品销售 4000 万</td><td>新品毛利 ≥ 50%</td><td>品质标准化</td></tr>
+        <tr><td class="n">电商运营</td><td>销售达成 / 店铺量级上一台阶</td><td>控费比</td><td>产能与 SOP 配套</td></tr>
+        <tr class="hl"><td class="n">供应链</td><td>供货保障</td><td>降本</td><td>流程与人员</td></tr>
+        <tr><td class="n">人力资源</td><td>编制与招聘到位</td><td>人工成本与预算</td><td>标准化人力配套</td></tr>
+      </table>
+    </div>
+    <div class="line" style="font-size:17px">每个部门都同时挂两到三个 O。各自为政的根子，就在这里。</div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>产品部：先拆到系列</h2>
+  <div class="sub">系列是系列 O，每个系列一个产品经理；岗位 KR 按数量、质量、业绩一起考</div>
+  <div class="body">
+    <div class="colhead"><div>部门 O / 系列 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div></div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>新品销售 4000 万</h3><div class="note">A 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>开 3 款品（Q1 两款 / Q2 一款）</li><li>客单价定在 399 档</li><li>单款成本 ≤ 190，守 50% 毛利</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>产品经理</h3><div class="note">A 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>数量：</b>按计划开出 3 款品</li><li><b>质量：</b>成本 ≤ 190、四项资料一次过</li><li><b>业绩：</b>A 系列每月目标达成</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>新品销售 4000 万</h3><div class="note">B 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>开 2 款品，上半年上完</li><li>客单价定在 299 档</li><li>单款成本 ≤ 145</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>产品经理</h3><div class="note">B 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>数量：</b>按计划开出 2 款品</li><li><b>质量：</b>成本 ≤ 145、四项资料一次过</li><li><b>业绩：</b>B 系列每月目标达成</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>新品销售 4000 万</h3><div class="note">C 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>开 2 款品，二季度起</li><li>客单价定在 499 档</li><li>单款成本 ≤ 245</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>产品经理</h3><div class="note">C 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>数量：</b>按计划开出 2 款品</li><li><b>质量：</b>成本 ≤ 245、四项资料一次过</li><li><b>业绩：</b>C 系列每月目标达成</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>新品销售 4000 万</h3><div class="note">D 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>开 1–2 款补充品</li><li>成本不高于现有同档品</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>产品经理</h3><div class="note">D 系列</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>数量：</b>按计划开出 1–2 款补充品</li><li><b>质量：</b>成本不超同档、四项资料一次过</li><li><b>业绩：</b>D 系列每月目标达成</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>产品部：接业绩，也接利润</h2>
+  <div class="sub">毛利和品质不挂在业绩上，是另外两个 O</div>
+  <div class="body">
+    <div class="mid">
+      <div class="ch" style="height:180px;flex:none;margin-bottom:16px">
+        <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O2</div><h3>新品毛利 ≥ 50%</h3><div class="note">全部系列</div></div>
+        <div class="ar">→</div>
+        <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>单款成本 ≤ 客单价 × 50%</li><li>每个系列月度毛利达标</li></ul></div>
+        <div class="ar">→</div>
+        <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>各系列产品经理</h3><div class="note">成本是自己的责任</div></div>
+        <div class="ar">→</div>
+        <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>成本：</b>单款成本 ≤ 客单 × 50%</li><li><b>毛利：</b>所辖系列每月毛利目标达成</li><li><b>复盘：</b>每季度给出降本点</li></ul></div>
+      </div>
+      <div class="ch" style="height:180px;flex:none">
+        <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O3</div><h3>品质标准化</h3><div class="note">全部系列</div></div>
+        <div class="ar">→</div>
+        <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>包装 / 说明书 / 合格证 / 合规，四项各一套模板</li><li>新品上架前四项必须齐</li></ul></div>
+        <div class="ar">→</div>
+        <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>产品经理 + 品质对接</h3></div>
+        <div class="ar">→</div>
+        <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>产出：</b>四项模板各一套并落地</li><li><b>执行：</b>新品上架前四项齐全</li><li><b>结果：</b>100% 合规，零下架</li></ul></div>
+      </div>
+      <div class="line" style="font-size:17px">定功能那天，成本就锁死了，毛利也就锁死了。产品和利润是同一件事的两个面。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>电商运营：三个岗位</h2>
+  <div class="sub">运营管产出，美工管素材，客服管转化和售后</div>
+  <div class="body">
+    <div class="colhead"><div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div></div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>销售达成</h3><div class="note">老品维持 + 新品 4000 万</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>GMV 达标</li><li>各系列达成率达标</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>运营</h3><div class="note">店铺整体产出</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>GMV：</b>月度目标达成、各系列达成率</li><li><b>新品起量：</b>上架后按计划起量</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>店铺量级上一台阶</h3></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>曝光 · 转化 · 复购 三率提升</li><li>三块分人负责</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>运营</h3><div class="note">曝光 / 复购 / 私域</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>爆品：</b>按年度爆品目标出量</li><li><b>三率：</b>种草量、复购率、私域转化率</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O3</div><h3>产能与 SOP 配套</h3></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>美工出图量达标</li><li>主图点击率达标</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>美工</h3><div class="note">素材支撑转化</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>数量：</b>月度出图量达标</li><li><b>质量：</b>主图点击率达到标准</li><li><b>规范：</b>详情页按模板出</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O3</div><h3>产能与 SOP 配套</h3></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>客服配置到位</li><li>接待量与咨询量匹配</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>客服</h3><div class="note">询单转化与售后</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>效率：</b>响应时长达标</li><li><b>转化：</b>询单转化率达标</li><li><b>质量：</b>好评率、退款率达标</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O2</div><h3>控费比</h3><div class="note">利润这块由电商承接</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>费比控制在目标区间</li><li>推广投产比达标</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>运营</h3><div class="note">投放与费用</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>费比：</b>月度费比不超目标</li><li><b>投产：</b>ROI 达到标准</li><li><b>结构：</b>推广费用按品分层投放</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>供应链：仓储、发货、采购</h2>
+  <div class="sub">仓储管货，发货管出，采购管价</div>
+  <div class="body">
+    <div class="colhead"><div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div></div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>供货保障</h3><div class="note">入库及时、数据准确</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>库存准确率达标</li><li>账实相符，月度盘点零差异</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>仓储</h3><div class="note">库存与库容</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>准确：</b>库存准确率达标</li><li><b>盘点：</b>账实相符，月度零差异</li><li><b>周转：</b>库容周转达标</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>供货保障</h3><div class="note">交付体验</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>发货时效达标</li><li>错发漏发率控制在标准内</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>发货</h3><div class="note">出库与配送</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>时效：</b>按承诺时效发出</li><li><b>质量：</b>错发漏发率达标</li><li><b>峰值：</b>大促期间不爆仓</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O2</div><h3>降本</h3><div class="note">降本额 = 单品降幅 × 预估销量</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>降本金额达标</li><li>到货及时率达标</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>采购</h3><div class="note">选品与议价</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>降本：</b>降本金额达成</li><li><b>交付：</b>到货及时率达标</li><li><b>质量：</b>来料合格率达标</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O3</div><h3>流程与人员</h3></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>流程节点优化</li><li>人员调整到位</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>三个岗位</h3><div class="note">各管一段</div></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>节点：</b>流程节点按计划完成</li><li><b>人岗：</b>人岗匹配，关键岗不缺位</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>人力资源：把结论收成一本账</h2>
+  <div class="sub">招聘管进人，薪酬管成本，制度管标准</div>
+  <div class="body">
+    <div class="colhead"><div>部门 O</div><div></div><div>关键结果</div><div></div><div>岗位</div><div></div><div>岗位 KR</div></div>
+    <div class="ch" style="margin-bottom:20px">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O1</div><h3>编制与招聘到位</h3><div class="note">关键岗按时到岗</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>按各部门人头定编制</li><li>关键岗按计划到岗</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>招聘</h3></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>数量：</b>关键岗按计划到岗</li><li><b>效率：</b>招聘周期达标</li><li><b>成本：</b>招聘预算不超</li><li><b>质量：</b>试用期留存达标</li></ul></div>
+    </div>
+    <div class="ch" style="margin-bottom:20px">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O2</div><h3>人工成本与预算</h3><div class="note">进各部门财务预算</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>各部门人工成本核定</li><li>薪酬占收入比在区间内</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>薪酬绩效</h3></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>成本：</b>人工成本占比在区间内</li><li><b>预算：</b>各部门预算核定完成</li><li><b>准确：</b>月度薪酬核算零差错</li></ul></div>
+    </div>
+    <div class="ch">
+      <div class="card o" style="display:flex;flex-direction:column;justify-content:center"><div class="tag">O3</div><h3>标准化人力配套</h3><div class="note">编制标准、制度落地</div></div>
+      <div class="ar">→</div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center"><ul><li>编制标准一套</li><li>制度按节点落地</li></ul></div>
+      <div class="ar">→</div>
+      <div class="card dash" style="display:flex;flex-direction:column;justify-content:center"><h3>制度与组织</h3></div>
+      <div class="ar">→</div>
+      <div class="card bot" style="display:flex;flex-direction:column;justify-content:center"><ul><li><b>产出：</b>编制标准与制度文件落地</li><li><b>节点：</b>制度按计划节点完成</li><li><b>执行：</b>制度执行率达标</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="s">
+  <div class="kick">02 · 目标拆解</div>
+  <h2>岗位一览</h2>
+  <div class="sub">15 个岗位，每个岗位一行</div>
+  <div class="body">
+    <div class="mid">
+      <table style="font-size:14px">
+        <tr><th style="width:22%">岗位</th><th style="width:24%">撑的部门 O</th><th>岗位 KR</th></tr>
+        <tr class="hl"><td class="n">产品经理 · A 系列</td><td>新品销售 4000 万</td><td>数量：开 3 款；质量：成本 ≤190、资料一次过；业绩：每月达成</td></tr>
+        <tr><td class="n">产品经理 · B 系列</td><td>新品销售 4000 万</td><td>数量：开 2 款；质量：成本 ≤145、资料一次过；业绩：每月达成</td></tr>
+        <tr class="hl"><td class="n">产品经理 · C 系列</td><td>新品销售 4000 万</td><td>数量：开 2 款；质量：成本 ≤245、资料一次过；业绩：每月达成</td></tr>
+        <tr><td class="n">产品经理 · D 系列</td><td>新品销售 4000 万</td><td>数量：开 1–2 款；质量：不超同档；业绩：每月达成</td></tr>
+        <tr class="hl"><td class="n">产品经理（全部）</td><td>新品毛利 ≥ 50%</td><td>成本：≤ 客单 ×50%；毛利：每月达成；每季降本点</td></tr>
+        <tr><td class="n">产品经理 + 品质对接</td><td>品质标准化</td><td>产出：四项模板；执行：上架前齐；结果：100% 合规</td></tr>
+        <tr class="hl"><td class="n">运营</td><td>销售、量级、控费比</td><td>GMV 月度达成；费比不超；爆品出量；新品起量</td></tr>
+        <tr><td class="n">美工</td><td>产能与 SOP 配套</td><td>出图量；主图点击率；详情页按模板</td></tr>
+        <tr class="hl"><td class="n">客服</td><td>产能与 SOP 配套</td><td>响应时长；询单转化率；好评率、退款率</td></tr>
+        <tr><td class="n">仓储</td><td>供货保障</td><td>库存准确率；账实相符；库容周转</td></tr>
+        <tr class="hl"><td class="n">发货</td><td>供货保障</td><td>按承诺发出；错发率；大促不爆仓</td></tr>
+        <tr><td class="n">采购</td><td>降本、供货保障</td><td>降本金额；到货及时率；来料合格率</td></tr>
+        <tr class="hl"><td class="n">招聘</td><td>编制与招聘到位</td><td>关键岗到岗；招聘周期；预算；试用期留存</td></tr>
+        <tr><td class="n">薪酬绩效</td><td>人工成本与预算</td><td>成本占比；预算核定；核算零差错</td></tr>
+        <tr class="hl"><td class="n">制度与组织</td><td>标准化人力配套</td><td>标准文件；节点按期；执行率</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="s">
+  <div class="kick">03 · PDCA</div>
+  <h2>执行怎么查：四步</h2>
+  <div class="sub">结果只能等，过程才能管</div>
+  <div class="body">
+      <div class="g4" style="gap:14px;flex:1">
+        <div class="card" style="display:flex;flex-direction:column"><div class="big" style="color:var(--red)">P</div>
+          <div class="note" style="letter-spacing:2px;margin-top:8px">计划</div>
+          <div style="font-size:13px;line-height:1.6;margin-top:10px">定目标，定动作，<b>定检查点</b>。目标要能对上公司 O，动作要能落到人。</div>
+          <div style="font-size:12px;color:var(--sub);margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)"><b style="color:var(--red)">最容易漏：</b>计划里没写什么时候看、看什么数。</div></div>
+        <div class="card" style="display:flex;flex-direction:column"><div class="big" style="color:var(--red)">D</div>
+          <div class="note" style="letter-spacing:2px;margin-top:8px">执行</div>
+          <div style="font-size:13px;line-height:1.6;margin-top:10px">按计划做，<b>过程留痕</b>。拜访有记录，进度有节点。</div>
+          <div style="font-size:12px;color:var(--sub);margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)"><b style="color:var(--red)">最容易漏：</b>做了没记，检查时说不清。</div></div>
+        <div class="card" style="display:flex;flex-direction:column"><div class="big" style="color:var(--red)">C</div>
+          <div class="note" style="letter-spacing:2px;margin-top:8px">检查</div>
+          <div style="font-size:13px;line-height:1.6;margin-top:10px">到点对数，<b>只看差异</b>。差异是信息，不是追责的由头。</div>
+          <div style="font-size:12px;color:var(--sub);margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)"><b style="color:var(--red)">最容易漏：</b>不检查，或只对态度不对数。</div></div>
+        <div class="card" style="display:flex;flex-direction:column"><div class="big" style="color:var(--red)">A</div>
+          <div class="note" style="letter-spacing:2px;margin-top:8px">处理</div>
+          <div style="font-size:13px;line-height:1.6;margin-top:10px">有效的<b>固化成标准动作</b>，无效的当轮改掉。</div>
+          <div style="font-size:12px;color:var(--sub);margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)"><b style="color:var(--red)">最容易漏：</b>改完不写进标准，下一轮再犯。</div></div>
+      </div>
+    <div class="line">没有检查点的计划，等于没计划。</div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="s">
+  <div class="kick">03 · PDCA</div>
+  <h2>检查点：每个目标落到一行</h2>
+  <div class="sub">三个空：看什么数、多久看、谁看</div>
+  <div class="body">
+    <div class="mid">
+      <table>
+        <tr><th style="width:26%">目标</th><th style="width:34%">看什么</th><th style="width:18%">多久看</th><th>谁看</th></tr>
+        <tr class="hl"><td class="n">业绩 8000 万</td><td>GMV、各系列达成率</td><td>每周</td><td>运营 + 老板</td></tr>
+        <tr><td class="n">新品毛利 ≥ 50%</td><td>新品实际毛利率、单款成本</td><td>每月</td><td>产品 + 财务</td></tr>
+        <tr class="hl"><td class="n">供应链降本</td><td>降本金额、达成率</td><td>每月</td><td>供应链 + 财务</td></tr>
+        <tr><td class="n">控费比</td><td>费比、ROI</td><td>每月</td><td>运营 + 财务</td></tr>
+        <tr class="hl"><td class="n">招聘到位</td><td>关键岗到岗率、招聘周期</td><td>每月</td><td>人资</td></tr>
+        <tr><td class="n">标准化建设</td><td>节点完成情况</td><td>每季度</td><td>总经办</td></tr>
+      </table>
+    </div>
+    <div class="line" style="font-size:16px">三个坑：只有月看没有周看；看数的人不管人；数是从嘴里问来的，不是表里出来的。</div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="s">
+  <div class="kick">03 · PDCA</div>
+  <h2>周会怎么开：只开三个数</h2>
+  <div class="sub">最容易开的会，是各部门轮流汇报，开完什么也没解决</div>
+  <div class="body">
+    <div class="mid">
+      <div class="g4" style="gap:14px">
+        <div class="card"><div class="tag">第一步</div><h3>对数</h3>
+          <div class="note" style="font-size:13px">只报三个数：GMV、新品毛利、降本进度。</div></div>
+        <div class="card"><div class="tag">第二步</div><h3>找差异</h3>
+          <div class="note" style="font-size:13px">哪个数没到，差多少，为什么差。只讲原因。</div></div>
+        <div class="card"><div class="tag">第三步</div><h3>定动作</h3>
+          <div class="note" style="font-size:13px">每个差异配一个动作：谁做、什么时候、做到什么程度。</div></div>
+        <div class="card"><div class="tag">第四步</div><h3>记下来</h3>
+          <div class="note" style="font-size:13px">当场记，下周对上次的动作有没有做。</div></div>
+      </div>
+    </div>
+    <div class="line" style="font-size:16px">不开的：部门轮流汇报、讲过程多辛苦。要开的：差异、原因、下一步。一小时以内结束。</div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="s">
+  <div class="kick">04 · 时间管理</div>
+  <h2>日常都在干什么</h2>
+  <div class="sub">先看清楚一天的时间去哪了</div>
+  <div class="body">
+    <div class="mid">
+      <div class="g4" style="gap:14px">
+        <div class="card"><div class="tag">带人</div><div class="note" style="font-size:13px">带新人上手、教方法、看进展、做绩效面谈</div></div>
+        <div class="card"><div class="tag">自己的业务</div><div class="note" style="font-size:13px">自己负责的品、客户、项目，还得亲自干</div></div>
+        <div class="card"><div class="tag">内部会议</div><div class="note" style="font-size:13px">日会、周会、月度经营会、复盘会</div></div>
+        <div class="card"><div class="tag">跨部门沟通</div><div class="note" style="font-size:13px">对齐口径、要资源、推协同、处理扯皮</div></div>
+        <div class="card"><div class="tag">对上</div><div class="note" style="font-size:13px">汇报、请示、写材料、准备数据</div></div>
+        <div class="card"><div class="tag">对外</div><div class="note" style="font-size:13px">客户、供应商、合作方</div></div>
+        <div class="card"><div class="tag">突发处理</div><div class="note" style="font-size:13px">投诉、交期卡点、质量异常</div></div>
+        <div class="card"><div class="tag">事务性</div><div class="note" style="font-size:13px">审批、签字、报表</div></div>
+      </div>
+    </div>
+    <div class="line" style="font-size:16px">八类里，真正长本事的是「带人」和「跨部门」，但通常排得最靠后。</div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="s">
+  <div class="kick">04 · 时间管理</div>
+  <h2>四象限：先记住四个判断</h2>
+  <div class="body">
+    <div class="mid">
+      <div class="g2">
+        <div class="card" style="min-height:290px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:28px">
+          <div class="note" style="letter-spacing:1px">重要 · 紧急</div>
+          <div class="say" style="margin-top:10px">不做，今天就出事</div></div>
+        <div class="card" style="min-height:290px;border:2px solid var(--red);display:flex;flex-direction:column;justify-content:flex-start;padding-top:28px">
+          <div class="note" style="letter-spacing:1px;color:var(--red);font-weight:700">重要 · 不紧急　← 管理者的活在这里</div>
+          <div class="say" style="margin-top:10px">不做，今年才出事</div></div>
+        <div class="card" style="min-height:290px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:28px">
+          <div class="note" style="letter-spacing:1px">紧急 · 不重要</div>
+          <div class="say" style="margin-top:10px">不做，也没人记得</div></div>
+        <div class="card" style="min-height:290px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:28px">
+          <div class="note" style="letter-spacing:1px">不重要 · 不紧急</div>
+          <div class="say" style="margin-top:10px">做了，也没用</div></div>
+      </div>
+    </div>
+    <div class="line" style="font-size:16px">第一格不做今天就出事，所以一定会做；第二格不做今年也不会出事，所以永远排最后。</div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="s">
+  <div class="kick">04 · 时间管理</div>
+  <h2>上面这些事，落在哪一格</h2>
+  <div class="sub">同一件事，放在不同位置，性质就不一样</div>
+  <div class="body">
+    <div class="mid">
+      <div class="g2">
+        <div class="card" style="min-height:190px">
+          <div class="note" style="letter-spacing:1px">重要 · 紧急</div>
+          <div style="font-size:15px;line-height:1.9;margin-top:10px">客户投诉　·　交期卡点　·　质量异常　·　老板临时要的数</div></div>
+        <div class="card" style="min-height:190px;border:2px solid var(--red)">
+          <div class="note" style="letter-spacing:1px;color:var(--red);font-weight:700">重要 · 不紧急　← 管理者的活在这里</div>
+          <div style="font-size:15px;line-height:1.9;margin-top:10px;font-weight:700">带新人教方法　·　绩效面谈　·　做计划定标准　·　复盘看数　·　跨部门规则</div></div>
+        <div class="card" style="min-height:190px">
+          <div class="note" style="letter-spacing:1px">紧急 · 不重要</div>
+          <div style="font-size:15px;line-height:1.9;margin-top:10px">大部分临时会议　·　别人拉你进的会　·　代签的字　·　群里随时找你</div></div>
+        <div class="card" style="min-height:190px">
+          <div class="note" style="letter-spacing:1px">不重要 · 不紧急</div>
+          <div style="font-size:15px;line-height:1.9;margin-top:10px">无目的刷后台数据　·　陪会　·　重复要的报表　·　无效社交</div></div>
+      </div>
+    </div>
+    <div class="line" style="font-size:16px">最值得警惕：自己的业务和突发处理把人吃光；带人和定规则永远排不进来。</div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="s">
+  <div class="kick">04 · 时间管理</div>
+  <h2>每周怎么排：先锁时间</h2>
+  <div class="sub">不锁在日历上，就等于没有安排</div>
+  <div class="body">
+    <div class="mid">
+      <div class="g3">
+        <div class="card o"><div class="note" style="letter-spacing:1px">每周固定</div>
+          <h3 style="font-size:20px;margin-top:8px">锁一块「带人」的时间</h3>
+          <div class="note" style="font-size:13px;margin-top:10px">两小时，一对一或小组，讲方法、看进展、解决卡点。锁在日历上，别人不能占。</div></div>
+        <div class="card o"><div class="note" style="letter-spacing:1px">每周固定</div>
+          <h3 style="font-size:20px;margin-top:8px">锁一块「复盘」的时间</h3>
+          <div class="note" style="font-size:13px;margin-top:10px">两小时，看数、找差异、定下周动作。为周会做准备，不是开会本身。</div></div>
+        <div class="card"><div class="note" style="letter-spacing:1px">剩下的时间</div>
+          <h3 style="font-size:20px;margin-top:8px">留给救火和日常</h3>
+          <div class="note" style="font-size:13px;margin-top:10px">救火的活往剩下的时间塞。塞不下说明资源不够，往上报，不要自己硬扛。</div></div>
+      </div>
+    </div>
+    <div class="line">管理者的时间，要花在「让别人能干成」上。</div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="s">
+  <div class="kick">收尾</div>
+  <h2>这周就能动的三件事</h2>
+  <div class="body">
+    <div class="mid">
+      <div style="display:flex;flex-direction:column;gap:46px">
+        <div style="display:flex;gap:22px;align-items:flex-start">
+          <div style="font-size:28px;font-weight:700;color:var(--red);width:34px">1</div>
+          <div><div style="font-size:22px;font-weight:700">把自己部门的目标，对着公司三个 O 说一遍</div>
+            <div style="font-size:14px;color:var(--sub);margin-top:6px">说不出它撑哪个 O，这个目标就该重写。</div></div>
+        </div>
+        <div style="display:flex;gap:22px;align-items:flex-start">
+          <div style="font-size:28px;font-weight:700;color:var(--red);width:34px">2</div>
+          <div><div style="font-size:22px;font-weight:700">给每个目标定一个检查点</div>
+            <div style="font-size:14px;color:var(--sub);margin-top:6px">什么时候看、看什么数、谁看。三个空，填完。</div></div>
+        </div>
+        <div style="display:flex;gap:22px;align-items:flex-start">
+          <div style="font-size:28px;font-weight:700;color:var(--red);width:34px">3</div>
+          <div><div style="font-size:22px;font-weight:700">每周先锁两块时间</div>
+            <div style="font-size:14px;color:var(--sub);margin-top:6px">一块带人，一块复盘。先占住，再谈别的。</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="line">结果只能等，过程可以管。</div>
+  </div>
+</section>
+
+<div class="foot"><span>中层管理培训 · 目标 · 执行 · 时间</span><span><b id="cur">1</b> / <span id="tot">20</span></span></div>
+<div id="prog"></div>
+
+  <div class="ctrl">
+    <button id="prev" title="上一页">‹</button>
+    <button id="next" title="下一页">›</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.s'));
+  var i=0,n=slides.length;
+  var cur=document.getElementById('cur'),tot=document.getElementById('tot'),prog=document.getElementById('prog');
+  tot.textContent=n;
+  function fit(){
+    var s=Math.min(window.innerWidth/1600, window.innerHeight/900);
+    document.getElementById('stage').style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  function show(k){
+    if(k<0)k=0; if(k>n-1)k=n-1;
+    slides[i].classList.remove('on');
+    i=k; slides[i].classList.add('on');
+    cur.textContent=i+1;
+    prog.style.width=(i/(n-1)*100)+'%';
+    try{history.replaceState(null,'','#'+(i+1));}catch(e){}
+  }
+  document.getElementById('prev').onclick=function(){show(i-1);};
+  document.getElementById('next').onclick=function(){show(i+1);};
+  window.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'||k==='Enter'){e.preventDefault();show(i+1);}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();show(i-1);}
+    else if(k==='Home'){e.preventDefault();show(0);}
+    else if(k==='End'){e.preventDefault();show(n-1);}
+    else if(k==='f'||k==='F'){
+      if(!document.fullscreenElement){document.documentElement.requestFullscreen();}
+      else{document.exitFullscreen();}
+    }
+  });
+  window.addEventListener('resize',fit);
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  fit();
+  if(h>=1&&h<=n){show(h-1);}else{show(0);}
+})();
+</script>
+</body>
+</html>
